@@ -1,7 +1,7 @@
 {
-    "license": "proprietary",
+    "license": "mit",
     "type": "project",
-    "homepage": "https://sulu.io/",
+    "homepage": "https://website.ddev.site",
     "keywords": [
         "symfony",
         "sulu",
