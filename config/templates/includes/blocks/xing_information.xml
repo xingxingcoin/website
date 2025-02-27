@@ -1,0 +1,18 @@
+<properties xmlns="http://schemas.sulu.io/template/template"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <block name="blocks" default-type="xing_information">
+        <types>
+            <type name="xing_information">
+                <properties>
+                    <property name="xing_information_image" type="single_media_selection">
+                         <meta>
+                            <title lang="en">Image</title>
+                            <title lang="de">Bild</title>
+                        </meta>
+                    </property>
+                </properties>
+            </type>
+        </types>
+    </block>
+</properties>
