@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2eb291bb13067f1ef752f1bebcb0d282",
+    "content-hash": "d904c9fb01ea2c3b3f5c667cde5f8e4d",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -6023,6 +6023,65 @@
                 "source": "https://github.com/sulu/skeleton"
             },
             "time": "2025-02-05T17:10:18+00:00"
+        },
+        {
+            "name": "sulu/web-twig",
+            "version": "v2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sulu/web-twig.git",
+                "reference": "76a219a3bd13ebf3652b0446daf16cc8fbbd4966"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sulu/web-twig/zipball/76a219a3bd13ebf3652b0446daf16cc8fbbd4966",
+                "reference": "76a219a3bd13ebf3652b0446daf16cc8fbbd4966",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0",
+                "twig/twig": "^1.38 || ^2.7 || ^3.0"
+            },
+            "conflict": {
+                "symfony/intl": ">=8.0",
+                "symfony/property-access": ">=8.0"
+            },
+            "require-dev": {
+                "jangregor/phpstan-prophecy": "^1.0",
+                "php-cs-fixer/shim": "^3.64",
+                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^7.5 || ^8.5",
+                "symfony/intl": "^2.8 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
+                "symfony/property-access": "^2.8 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
+                "thecodingmachine/phpstan-strict-rules": "^1.0"
+            },
+            "suggest": {
+                "symfony/intl": "The IntlExtension requires the symfony/intl service.",
+                "symfony/property-access": "The ImageExtension requires the symfony/property-access service."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sulu\\Twig\\Extensions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sulu Web Twig contributors",
+                    "homepage": "https://github.com/sulu/web-twig/graphs/contributors"
+                }
+            ],
+            "description": "The web twig extension for web-js component management",
+            "support": {
+                "issues": "https://github.com/sulu/web-twig/issues",
+                "source": "https://github.com/sulu/web-twig/tree/v2.6.0"
+            },
+            "time": "2024-09-04T08:15:56+00:00"
         },
         {
             "name": "symfony-cmf/routing",
