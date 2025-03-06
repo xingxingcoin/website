@@ -13,7 +13,7 @@
     },
     "tmpDir": "var/cache",
     "phpUnit": {
-        "customPath": "phpunit"
+        "customPath": "bin/phpunit"
     },
     "mutators": {
         "@default": true
