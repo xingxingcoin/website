@@ -1,1 +1,1 @@
-./bin/psalm --threads=4 --no-cache
+./bin/psalm --threads=4 --no-cache --show-info=true
