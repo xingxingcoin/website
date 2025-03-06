@@ -1,7 +1,7 @@
 {
     "license": "mit",
-    "type": "project",
-    "homepage": "https://website.ddev.site",
+    "type": "website",
+    "homepage": "https://xingmemes.com",
     "keywords": [
         "symfony",
         "sulu",
@@ -14,16 +14,10 @@
     ],
     "authors": [
         {
-            "name": "Sulu Community",
-            "homepage": "https://github.com/sulu/skeleton/graphs/contributors"
+            "name": "Aria Gholami",
+            "homepage": "https://github.com/xingxingcoin/website"
         }
     ],
-    "support": {
-        "issues": "https://github.com/sulu/skeleton/issues",
-        "source": "https://github.com/sulu/skeleton",
-        "docs": "https://docs.sulu.io/",
-        "chat": "https://sulu.io/services-and-support#chat"
-    },
     "require": {
         "php": "^8.4",
         "ext-ctype": "*",
@@ -125,7 +119,6 @@
         "test": "@php bin/phpunit",
         "test-with-coverage": "@test --coverage-php var/reports/coverage.php --coverage-cobertura=var/reports/cobertura-coverage.xml --coverage-html var/reports/html --log-junit var/reports/junit.xml",
         "lint": [
-            "@phpstan",
             "@lint-php-cs",
             "@lint-rector",
             "@lint-twig",
@@ -141,10 +134,6 @@
             "@rector",
             "@php-cs-fix",
             "@twig-cs-fix"
-        ],
-        "phpstan": [
-            "@php bin/websiteconsole cache:warmup --env=dev",
-            "@php vendor/bin/phpstan analyze"
         ],
         "rector": [
             "@php vendor/bin/rector process"
@@ -182,8 +171,7 @@
             "php-http/discovery": true,
             "symfony/flex": true,
             "symfony/runtime": true,
-            "symfony/thanks": true,
-            "phpstan/extension-installer": true
+            "symfony/thanks": true
         },
         "optimize-autoloader": true,
         "sort-packages": true
