@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Pages;
 
 use Sulu\Bundle\HttpCacheBundle\CacheLifetime\CacheLifetimeEnhancerInterface;
+use Sulu\Bundle\PreviewBundle\Preview\Preview;
 use Sulu\Bundle\WebsiteBundle\Resolver\ParameterResolverInterface;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Webspace\Analyzer\RequestAnalyzerInterface;
@@ -14,48 +15,108 @@ use Symfony\Component\HttpKernel\Exception\NotAcceptableHttpException;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use Twig\Environment as Twig;
 
+/**
+ * @codeCoverageIgnore
+ * @infection-ignore-all
+ * @psalm-suppress all
+ */
 class WebsiteController implements ServiceSubscriberInterface
 {
     public function __construct(
-        private RequestStack $requestStack,
-        private Twig $twig,
-        private ParameterResolverInterface $parmeterResolver,
-        private RequestAnalyzerInterface $requestAnalyzer,
-        private CacheLifetimeEnhancerInterface $cacheLiefetimeEnhancer
-    ) {
-    }
+        private readonly RequestStack $requestStack,
+        private readonly Twig $twig,
+        private readonly ParameterResolverInterface $parmeterResolver,
+        private readonly RequestAnalyzerInterface $requestAnalyzer,
+        private readonly CacheLifetimeEnhancerInterface $cacheLiefetimeEnhancer
+    ) {}
 
-    protected function render(
+    protected function renderStructure(
         StructureInterface $structure,
-        $attributes = []
+        $attributes = [],
+        $preview = false,
+        $partial = false
     ): Response {
         $request = $this->requestStack->getCurrentRequest();
-        $viewTemplate = $structure->getView() . '.html.twig';
-        if (!$this->twig->getLoader()->exists($viewTemplate)) {
-            throw new NotAcceptableHttpException('Page does not exist in "html" format.');
+        if (!$preview) {
+            $requestFormat = $request->getRequestFormat();
+        } else {
+            $requestFormat = 'html';
         }
 
-        $data = $this->getAttributes($attributes, $structure);
-        $content = $this->twig->render(
-            $viewTemplate,
-            $data
-        );
+        $viewTemplate = $structure->getView() . '.' . $requestFormat . '.twig';
+        if (!$this->twig->getLoader()->exists($viewTemplate)) {
+            throw new NotAcceptableHttpException(\sprintf('Page does not exist in "%s" format.', $requestFormat));
+        }
+        $data = $this->getAttributes($attributes, $structure, $preview);
+        if ($partial) {
+            $content = $this->renderBlockView(
+                $viewTemplate,
+                'content',
+                $data
+            );
+        } elseif ($preview) {
+            $content = $this->renderPreview(
+                $viewTemplate,
+                $data
+            );
+        } else {
+            $content = $this->twig->render(
+                $viewTemplate,
+                $data
+            );
+        }
+
         $response = new Response($content);
-        $mimeType = $request->getMimeType('html');
+        $mimeType = $request->getMimeType($requestFormat);
         if ($mimeType) {
             $response->headers->set('Content-Type', $mimeType);
         }
-        $this->cacheLiefetimeEnhancer->enhance($response, $structure);
+        if (!$preview && $this->cacheLiefetimeEnhancer) {
+            $this->cacheLiefetimeEnhancer->enhance($response, $structure);
+        }
 
         return $response;
     }
 
-    protected function getAttributes($attributes, StructureInterface $structure): array
+    protected function renderPreview(string $view, array $parameters = []): string
+    {
+        $parameters['previewParentTemplate'] = $view;
+        $parameters['previewContentReplacer'] = Preview::CONTENT_REPLACER;
+
+        return $this->twig->render('@SuluWebsite/Preview/preview.html.twig', $parameters);
+    }
+
+    protected function renderBlockView($view, $block, $parameters = []): string
+    {
+        $parameters = $this->twig->mergeGlobals($parameters);
+
+        $template = $this->twig->load($view);
+
+        $level = \ob_get_level();
+        \ob_start();
+
+        try {
+            $rendered = $template->renderBlock($block, $parameters);
+            \ob_end_clean();
+
+            return $rendered;
+        } catch (\Exception $exception) {
+            while (\ob_get_level() > $level) {
+                \ob_end_clean();
+            }
+
+            throw $exception;
+        }
+    }
+
+
+    protected function getAttributes($attributes, ?StructureInterface $structure = null, $preview = false): array
     {
         return $this->parmeterResolver->resolve(
             $attributes,
             $this->requestAnalyzer,
-            $structure
+            $structure,
+            $preview
         );
     }
 

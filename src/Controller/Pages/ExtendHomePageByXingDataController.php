@@ -13,11 +13,11 @@ use Twig\Environment as Twig;
 final class ExtendHomePageByXingDataController extends HomeController
 {
     public function __construct(
-        private RequestStack $requestStack,
-        private Twig $twig,
-        private ParameterResolverInterface $parmeterResolver,
-        private RequestAnalyzerInterface $requestAnalyzer,
-        private CacheLifetimeEnhancerInterface $cacheLiefetimeEnhancer,
+        private readonly RequestStack $requestStack,
+        private readonly Twig $twig,
+        private readonly ParameterResolverInterface $parmeterResolver,
+        private readonly RequestAnalyzerInterface $requestAnalyzer,
+        private readonly CacheLifetimeEnhancerInterface $cacheLiefetimeEnhancer,
         private readonly XingFinanceDataByDexScreenerApiHandler $xingFinanceDataHandler,
     ){
         parent::__construct(
@@ -29,7 +29,7 @@ final class ExtendHomePageByXingDataController extends HomeController
         );
     }
 
-    protected function getAttributes($attributes, StructureInterface $structure): array
+    protected function getAttributes($attributes, ?StructureInterface $structure = null, $preview = false): array
     {
         $attributes = parent::getAttributes($attributes, $structure);
         $attributes['xing']['finance'] = $this->xingFinanceDataHandler->handleAndGet()->data;
