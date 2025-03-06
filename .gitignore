@@ -14,7 +14,7 @@
 
 ###> phpunit/phpunit ###
 bin/phpunit
-.phpunit.result.cache
+.phpunit.cache
 public/coverage
 ###< phpunit/phpunit ###
 
