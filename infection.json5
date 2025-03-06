@@ -1,0 +1,21 @@
+{
+    "source": {
+        "directories": [
+            "src"
+        ],
+        "excludes": [
+            "Kernel.php"
+        ]
+    },
+    "timeout": 10,
+    "logs": {
+        "text": "var/log/infection.log"
+    },
+    "tmpDir": "var/cache",
+    "phpUnit": {
+        "customPath": "phpunit"
+    },
+    "mutators": {
+        "@default": true
+    }
+}
