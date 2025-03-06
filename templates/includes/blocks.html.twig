@@ -5,6 +5,7 @@
                 {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
                     content: block,
                     view: view.blocks[loop.index0],
+                    xing: xing
                 } only %}
             </div>
         {% endfor %}

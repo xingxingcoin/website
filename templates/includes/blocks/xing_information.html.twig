@@ -9,8 +9,12 @@
     </div>
 {% endset %}
 
- {{ image }}
+<h3>{{ 'xing_information.header'|trans }}</h3>
 
+<p>{{ 'xing_information.market_cap'|trans }} ${{ xing['finance']['marketCap'] }}</p>
+{{ image }}
+
+<p>{{ xing['finance']['priceChange'] }}</p>
 <iframe id="dextools-widget"
         title="DEXTools Trading Chart"
         width="400" height="400"

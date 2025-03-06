@@ -1,5 +1,6 @@
 parameters:
     default_locale: en
+    log_level: '%env(LOG_LEVEL)%'
 
 services:
     _defaults:
@@ -17,13 +18,64 @@ services:
         tags:
             - { name: 'twig.extension' }
 
+    App\Controller\Pages\WebsiteController:
+        public: true
+        arguments:
+            - '@request_stack'
+            - '@twig'
+            - '@sulu_website.resolver.parameter'
+            - '@sulu_core.webspace.request_analyzer'
+            - '@sulu_http_cache.cache_lifetime.enhancer'
+        tags:
+            - { name: 'controller.service_arguments' }
+            - { name: 'container.service_subscriber' }
+            - { name: 'sulu.context', context: 'website' }
 
-    App\:
-        resource: '../src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
+    App\Controller\Pages\HomeController:
+        public: true
+        arguments:
+            - '@request_stack'
+            - '@twig'
+            - '@sulu_website.resolver.parameter'
+            - '@sulu_core.webspace.request_analyzer'
+            - '@sulu_http_cache.cache_lifetime.enhancer'
+        tags:
+            - { name: 'controller.service_arguments' }
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\Controller\Pages\ExtendHomePageByXingDataController:
+        public: true
+        arguments:
+            - '@request_stack'
+            - '@twig'
+            - '@sulu_website.resolver.parameter'
+            - '@sulu_core.webspace.request_analyzer'
+            - '@sulu_http_cache.cache_lifetime.enhancer'
+            - '@App\Finance\DefaultXingFinanceDataByDexScreenerApiHandler'
+        tags:
+            - { name: 'controller.service_arguments' }
+            - { name: 'container.service_subscriber' }
+            - { name: 'sulu.context', context: 'website' }
+
+    App\Finance\DefaultXingFinanceDataByDexScreenerApiHandler:
+        arguments:
+            - '@App\Finance\Components\XingFinanceDataByDexScreenerApiLoader'
+            - '@pages.home.logger'
+    App\Finance\Components\XingFinanceDataByDexScreenerApiLoader:
+        arguments:
+            - '@http_client'
+            - '@pages.home.logger'
+
+    pages.home.logging-handler:
+        class: Monolog\Handler\RotatingFileHandler
+        arguments:
+            - '%kernel.logs_dir%/home_%kernel.environment%.log'
+            - 14
+            - '%log_level%'
+            - true
+            - 436
+    pages.home.logger:
+        class: Monolog\Logger
+        arguments:
+            - 'home'
+        calls:
+            - [pushHandler, ['@pages.home.logging-handler']]

@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <h1>{{ content.title }}</h1>
+    {% include 'includes/blocks.html.twig' with { xing: xing } %}
 {% endblock %}
