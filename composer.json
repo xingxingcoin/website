@@ -48,7 +48,6 @@
     },
     "require-dev": {
         "php-cs-fixer/shim": "^3.58",
-        "sulu/sulu-rector": "^1.0",
         "symfony/browser-kit": "^7.2",
         "symfony/css-selector": "^7.2",
         "symfony/debug-bundle": "^7.2",
@@ -131,16 +130,11 @@
             "@lint-doctrine"
         ],
         "fix": [
-            "@rector",
             "@php-cs-fix",
             "@twig-cs-fix"
         ],
-        "rector": [
-            "@php vendor/bin/rector process"
-        ],
         "lint-rector": [
-            "@php bin/websiteconsole cache:warmup --env=dev",
-            "@php vendor/bin/rector process --dry-run"
+            "@php bin/websiteconsole cache:warmup --env=dev"
         ],
         "php-cs-fix": "@php vendor/bin/php-cs-fixer fix",
         "lint-php-cs": "@php vendor/bin/php-cs-fixer fix --verbose --diff --dry-run",
