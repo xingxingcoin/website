@@ -22,6 +22,7 @@ final readonly class XingFinanceDataByDexScreenerApiLoader implements XingFinanc
     /**
      * @throws XingFinanceDataNotLoadedException
      */
+    #[\Override]
     public function load(): FinanceDataCollection
     {
         try {

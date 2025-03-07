@@ -25,9 +25,9 @@ class WebsiteController implements ServiceSubscriberInterface
     public function __construct(
         private readonly RequestStack $requestStack,
         private readonly Twig $twig,
-        private readonly ParameterResolverInterface $parmeterResolver,
+        private readonly ParameterResolverInterface $parameterResolver,
         private readonly RequestAnalyzerInterface $requestAnalyzer,
-        private readonly CacheLifetimeEnhancerInterface $cacheLiefetimeEnhancer
+        private readonly CacheLifetimeEnhancerInterface $cacheLifetimeEnhancer
     ) {}
 
     protected function renderStructure(
@@ -71,8 +71,8 @@ class WebsiteController implements ServiceSubscriberInterface
         if ($mimeType) {
             $response->headers->set('Content-Type', $mimeType);
         }
-        if (!$preview && $this->cacheLiefetimeEnhancer) {
-            $this->cacheLiefetimeEnhancer->enhance($response, $structure);
+        if (!$preview && $this->cacheLifetimeEnhancer) {
+            $this->cacheLifetimeEnhancer->enhance($response, $structure);
         }
 
         return $response;
@@ -110,9 +110,9 @@ class WebsiteController implements ServiceSubscriberInterface
     }
 
 
-    protected function getAttributes($attributes, ?StructureInterface $structure = null, $preview = false): array
+    protected function getAttributes(array $attributes, ?StructureInterface $structure = null, bool $preview = false): array
     {
-        return $this->parmeterResolver->resolve(
+        return $this->parameterResolver->resolve(
             $attributes,
             $this->requestAnalyzer,
             $structure,

@@ -14,12 +14,16 @@ final readonly class DefaultXingFinanceDataByDexScreenerApiHandler implements Xi
         private LoggerInterface $logger
     ) {}
 
+    #[\Override]
     public function handleAndGet(): FinanceDataCollection
     {
         try {
             $xingFinanceData = $this->xingFinanceDataLoader->load();
-            $xingPriceInformation['marketCap'] = $xingFinanceData->data['marketCap'];
-            $xingPriceInformation['priceChange'] = $xingFinanceData->data['priceChange']['h24'];
+            $xingPriceInformation = [];
+            $xingPriceInformation['marketCap'] = $xingFinanceData->data['marketCap'] ?? 0;
+            /** @var array<string, float> $priceChange */
+            $priceChange = $xingFinanceData->data['priceChange'] ?? [];
+            $xingPriceInformation['priceChange'] = $priceChange['h24'] ?? 0.0;
             return new FinanceDataCollection($xingPriceInformation);
         } catch (XingFinanceDataNotLoadedException $exception) {
             $this->logger->notice('Xing finance data is not loaded.');
@@ -30,7 +34,7 @@ final readonly class DefaultXingFinanceDataByDexScreenerApiHandler implements Xi
 
         return new FinanceDataCollection([
             'marketCap' => 0,
-            'priceChange' => 0
+            'priceChange' => 0.0
         ]);
     }
 }

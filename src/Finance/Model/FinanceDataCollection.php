@@ -1,8 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Finance\Model;
 
+use ArrayIterator;
 use IteratorAggregate;
 use Traversable;
 
@@ -14,10 +16,12 @@ use Traversable;
 final readonly class FinanceDataCollection implements IteratorAggregate
 {
     public function __construct(public array $data)
-    {}
+    {
+    }
 
+    #[\Override]
     public function getIterator(): Traversable
     {
-        return new \ArrayIterator($this->data);
+        return new ArrayIterator($this->data);
     }
 }

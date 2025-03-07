@@ -10,26 +10,31 @@ use Sulu\Component\Webspace\Analyzer\RequestAnalyzerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Environment as Twig;
 
+/**
+ * @codeCoverageIgnore
+ * @infection-ignore-all
+ */
 final class ExtendHomePageByXingDataController extends HomeController
 {
     public function __construct(
         private readonly RequestStack $requestStack,
         private readonly Twig $twig,
-        private readonly ParameterResolverInterface $parmeterResolver,
+        private readonly ParameterResolverInterface $parameterResolver,
         private readonly RequestAnalyzerInterface $requestAnalyzer,
-        private readonly CacheLifetimeEnhancerInterface $cacheLiefetimeEnhancer,
+        private readonly CacheLifetimeEnhancerInterface $cacheLifetimeEnhancer,
         private readonly XingFinanceDataByDexScreenerApiHandler $xingFinanceDataHandler,
     ){
         parent::__construct(
             $this->requestStack,
             $this->twig,
-            $this->parmeterResolver,
+            $this->parameterResolver,
             $this->requestAnalyzer,
-            $this->cacheLiefetimeEnhancer
+            $this->cacheLifetimeEnhancer
         );
     }
 
-    protected function getAttributes($attributes, ?StructureInterface $structure = null, $preview = false): array
+    #[\Override]
+    protected function getAttributes(array $attributes, ?StructureInterface $structure = null, bool $preview = false): array
     {
         $attributes = parent::getAttributes($attributes, $structure);
         $attributes['xing']['finance'] = $this->xingFinanceDataHandler->handleAndGet()->data;
