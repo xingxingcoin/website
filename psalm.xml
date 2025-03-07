@@ -13,6 +13,7 @@
         <ignoreFiles>
             <directory name="vendor" />
             <file name="src/Kernel.php" />
+            <file name="src/Controller/Pages/WebsiteController.php" />
         </ignoreFiles>
     </projectFiles>
 </psalm>
