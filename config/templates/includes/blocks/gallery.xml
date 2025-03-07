@@ -10,7 +10,7 @@
                 </meta>
 
                 <properties>
-                    <property name="media" type="media_selection" colspan="3">
+                    <property name="media" type="media_selection">
                         <meta>
                             <title lang="en">Select images</title>
                             <title lang="de">Bilder auswählen</title>
