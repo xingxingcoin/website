@@ -1,0 +1,14 @@
+{% for media in content['media'] %}
+    {% set image %}
+        {% set defaultFormat = 'sulu-400x400' %}
+        {% set mobileFormat = 'sulu-240x' %}
+
+        <div>
+            {{ get_image(media|default, defaultFormat, {
+                '(max-width: sulu-240x)': mobileFormat,
+            }) }}
+        </div>
+    {% endset %}
+
+    {{ image }}
+{% endfor %}
