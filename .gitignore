@@ -16,6 +16,7 @@
 bin/phpunit
 .phpunit.cache
 public/coverage
+phpunit.phar
 ###< phpunit/phpunit ###
 
 ###> friendsofphp/php-cs-fixer ###
