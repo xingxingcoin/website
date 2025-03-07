@@ -2,5 +2,17 @@
 
 {% block content %}
     <h1>{{ 'meme_generator.new_meme.title'|trans }}</h1>
-    {{ dump() }}
+    {% set media = sulu_resolve_media(app.request.query.get('mediaId'), localizations['en']['locale']) %}
+    {% set image %}
+        {% set defaultFormat = 'sulu-400x400' %}
+        {% set mobileFormat = 'sulu-240x' %}
+
+        <div>
+            {{ get_image(media|default, defaultFormat, {
+                '(max-width: sulu-240x)': mobileFormat,
+            }) }}
+        </div>
+    {% endset %}
+
+    {{ image }}
 {% endblock %}
