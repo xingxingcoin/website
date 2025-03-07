@@ -1,0 +1,26 @@
+{% set newMemeNavigation = null %}
+{% for navigation in sulu_navigation_root_tree() %}
+    {% if navigation.template == 'meme_generator' %}
+        {% for subNavigation in sulu_navigation_tree(navigation.id) %}
+            {% if subNavigation['template'] == 'new_meme' %}
+                {% set newMemeNavigation = subNavigation %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+{% for media in content['media'] %}
+    {% set image %}
+        {% set defaultFormat = 'sulu-400x400' %}
+        {% set mobileFormat = 'sulu-240x' %}
+
+        <div>
+            {{ get_image(media|default, defaultFormat, {
+                '(max-width: sulu-240x)': mobileFormat,
+            }) }}
+        </div>
+    {% endset %}
+
+    {% set url = newMemeNavigation['url'] ~ '?mediaId=' ~ media.entity.id %}
+    <a href="{{ url }}">{{ image }}</a>
+{% endfor %}

@@ -1,4 +1,7 @@
 {
   "xing_information.header": "Xing Xing Tool",
-  "xing_information.market_cap": "Marktkapitalisierung:"
+  "xing_information.market_cap": "Marktkapitalisierung:",
+  "gallery.title": "Xing Xing auf Kamera",
+  "meme_generator.title": "Meme Generator",
+  "meme_generator.new_meme.title": "Neues Meme"
 }
