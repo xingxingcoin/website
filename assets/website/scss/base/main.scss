@@ -4,3 +4,14 @@
 p, h1, h3, a {
   font-family: DynaPuff,system-ui;
 }
+
+@media (max-width: 768px) {
+  img {
+    width: 300px;
+    height: 300px;
+  }
+  iframe {
+    width: 300px;
+    height: 300px;
+  }
+}

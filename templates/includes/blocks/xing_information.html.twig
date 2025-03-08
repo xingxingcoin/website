@@ -3,13 +3,13 @@
 {% endset %}
 
 <div class="xing_information-main-container">
-    <div class="xing_information-inner-container xing_information-left-container">
+    <div class="xing_information-inner-container">
         <p class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.market_cap'|trans }}</p>
         <p class="xing_information-left-container-market-cap-text">${{ xing['finance']['marketCap'] }}</p>
         {{ image }}
     </div>
 
-    <div class="xing_information-inner-container xing_information-right-container">
+    <div class="xing_information-inner-container">
         <p class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.price_change'|trans }}</p>
         {% if xing['finance']['priceChange'] > 0 %}
             <p class="xing_information-right-container-price-change-positive-text">+{{ xing['finance']['priceChange'] }}
