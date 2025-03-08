@@ -2,17 +2,21 @@
 
 .xing-media-container {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  padding: 3rem 3rem;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .xing-image-container {
-  background-color: $brown;
-  border-style: solid;
+  border-color: $brown;
+  border-style: dashed;
   border-radius: 0.75rem;
-  border-width: 0.1rem;
-  padding: 1rem;
-  margin: 0.5rem;
+  border-width: 0.2rem;
+  margin-bottom: 1rem;
+  @media (max-width: 768px) {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
 }

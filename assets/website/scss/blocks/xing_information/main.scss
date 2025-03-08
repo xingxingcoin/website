@@ -19,6 +19,12 @@
   border-style: solid;
   border-radius: 0.75rem;
   border-width: 0.1rem;
+  @media (max-width: 768px) {
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  }
 }
 
 .xing_information-left-container-market-cap-info-text {

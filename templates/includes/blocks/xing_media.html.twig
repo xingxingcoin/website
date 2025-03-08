@@ -2,15 +2,9 @@
     {% set mediaCounter = 1 %}
     {% for media in content['media'] %}
         {% set image %}
-            {% if mediaCounter < 4 %}
-                <div class="xing-image-container">
-                    {{ get_image(media|default, 'sulu-400x400') }}
-                </div>
-            {% else %}
-                <div class="xing-image-container">
-                    {{ get_image(media|default, 'sulu-400x400') }}
-                </div>
-            {% endif %}
+            <div class="xing-image-container">
+                {{ get_image(media|default, 'sulu-200x200') }}
+            </div>
         {% endset %}
 
         {{ image }}

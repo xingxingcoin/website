@@ -16,6 +16,9 @@
     </format>
     -->
 
+    <format key="sulu-200x200">
+        <scale x="200" y="200"/>
+    </format>
     <!--
     Render an image from the media_selection in a specific format the following way:
 
