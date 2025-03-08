@@ -1,10 +1,24 @@
+{% set imageViewerNavigation = null %}
+{% for navigation in sulu_navigation_root_tree() %}
+    {% if navigation.template == 'gallery' %}
+        {% for subNavigation in sulu_navigation_tree(navigation.id) %}
+            {% if subNavigation['template'] == 'image_viewer' %}
+                {% set imageViewerNavigation = subNavigation %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
 <div class="xing-media-container">
     {% set mediaCounter = 1 %}
     {% for media in content['media'] %}
         {% set image %}
-            <div class="xing-image-container">
-                {{ get_image(media|default, 'sulu-200x200') }}
-            </div>
+            {% set url = imageViewerNavigation['url'] ~ '?mediaId=' ~ media.entity.id %}
+            <a href="{{ url }}">
+                <div class="xing-image-container">
+                    {{ get_image(media|default, 'sulu-200x200') }}
+                </div>
+            </a>
         {% endset %}
 
         {{ image }}
