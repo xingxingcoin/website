@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "system",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "outFile": "../../built/local/tsc.js",
+    "sourceMap": true
+  },
+  "include": ["assets/website/ts/src/**/*"],
+  "exclude": ["assets/website/ts/tests/**/*.spec.ts"]
+}

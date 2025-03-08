@@ -44,7 +44,8 @@
         "symfony/monolog-bundle": "^3.4",
         "symfony/runtime": "^7.2",
         "symfony/security-bundle": "^7.2",
-        "symfony/twig-bundle": "^7.2"
+        "symfony/twig-bundle": "^7.2",
+        "symfony/webpack-encore-bundle": "^2.2"
     },
     "require-dev": {
         "php-cs-fixer/shim": "^3.58",

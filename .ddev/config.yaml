@@ -2,6 +2,7 @@ name: website
 type: php
 docroot: "public"
 php_version: "8.4"
+nodejs_version: "22"
 webserver_type: nginx-fpm
 xdebug_enabled: false
 additional_hostnames: []

@@ -64,3 +64,10 @@ phpstan.neon
 
 bin/psalm
 bin/infection
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/website
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
