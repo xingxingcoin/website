@@ -14,6 +14,10 @@
   border-radius: 0.75rem;
   border-width: 0.2rem;
   margin-bottom: 1rem;
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+  }
   @media (max-width: 768px) {
     img {
       width: 100px;
