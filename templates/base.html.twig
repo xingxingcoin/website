@@ -19,36 +19,34 @@
     {% endblock %}
 </head>
 <body>
-    <header>
-        {% block header %}
-            <nav>
-                <ul>
-                    <li>
-                        <a href="{{ sulu_content_root_path() }}">Home</a>
-                    </li>
-
+<header>
+    {% block header %}
+        <nav class="navigation-main">
+            <div class="navigation-container">
+                <a class="navigation-text navigation-home-link-text" href="{{ sulu_content_root_path() }}">{{ 'navigation.title'|trans }}</a>
+                <div>
                     {% for item in sulu_navigation_root_tree() %}
-                        <li>
-                            <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
-                               title="{{ item.title }}">{{ item.title }}</a>
-                        </li>
+                        <a class="navigation-text navigation-sublinks-text" href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
+                           title="{{ item.title }}">{{ item.title }}</a>
                     {% endfor %}
-                </ul>
-            </nav>
-        {% endblock %}
-    </header>
-
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-
-    <footer>
-        {% block footer %}
-        {% endblock %}
-    </footer>
-
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
+                </div>
+            </div>
+        </nav>
     {% endblock %}
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
+
+{% block javascripts %}
+
+{% endblock %}
+            {{ encore_entry_script_tags('app') }}
 </body>
 </html>
