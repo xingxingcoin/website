@@ -31,4 +31,10 @@
   border-style: solid;
   border-radius: 0.75rem;
   border-width: 0.1rem;
+  background-color: $black;
+  transition: all 0.3s ease;
+  &:hover {
+    color: $black;
+    background-color: $white;
+  }
 }
