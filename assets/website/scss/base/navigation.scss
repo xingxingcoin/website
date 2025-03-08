@@ -1,26 +1,15 @@
 @import "../_shared/colors";
 
-.navigation-main {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: $jungleGreen;
-}
-
 .navigation-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  margin: 1.5rem 2.5rem;
   padding: 1.5rem 1.5rem;
   border-radius: .375rem;
   border-color: $black;
   border-style: dotted;
   border-width: 0.2rem;
-  background-color: $whiteTransparent;
+  background-color: $jungleGreen;
 }
 
 .navigation-text {
@@ -30,10 +19,12 @@
 }
 
 .navigation-home-link-text {
+  flex: 1;
   font-size: 2rem;
 }
 
 .navigation-sublinks-text {
+  flex: 1;
   padding: 1rem 1rem;
   font-size: 1rem;
   border-color: $black;
@@ -43,9 +34,26 @@
 }
 
 main {
-  margin-top: 12rem;
 }
 
 body {
   background-color: $white;
+}
+
+@media (max-width: 768px) {
+  .navigation-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .navigation-text {
+    font-size: 1.5rem;
+  }
+
+  .navigation-sublinks-text {
+    display: block;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
 }
