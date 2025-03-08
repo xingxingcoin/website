@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    {% include 'includes/blocks.html.twig' with { xing: xing } %}
-    <p>ETH</p>
-    <a href="https://dexscreener.com/solana/2puvkhdeq5uprxrowunggfnvpfun7pdommgqwxyq37hv" target="_blank">0x5JcdnWEwuHh1v3SAARq8zH9tEwDQGpaHzBrZ81m4pump</a>
+    <div class="home-title-container">
+        <h1 class="home-title">{{ 'xing_information.title'|trans }}</h1>
+        <p class="home-description">{{ 'xing_information.description'|trans }}</p>
+    </div>
 
-    <a href="https://linktr.ee/xingxing.cto" target="_blank">Website</a>
-    <a href="https://x.com/XingXingonX" target="_blank">Twitter</a>
-    <a href="https://t.me/xing_xing_cto" target="_blank">Telegram</a>
+    {% include 'includes/blocks.html.twig' with { xing: xing } %}
 {% endblock %}

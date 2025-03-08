@@ -1,7 +1,7 @@
 {% if content.blocks|default([])|length %}
-    <div class="blocks">
+    <div>
         {% for block in content.blocks %}
-            <div class="blocks__item">
+            <div>
                 {% if xing is defined %}
                     {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
                         content: block,

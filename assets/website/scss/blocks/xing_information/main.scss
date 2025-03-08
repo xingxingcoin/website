@@ -1,0 +1,49 @@
+@import "../../_shared/colors";
+
+.xing_information-main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.1rem 10rem;
+  padding: 3rem 3rem;
+}
+
+.xing_information-left-container {
+}
+
+.xing_information-right-container {
+}
+
+.xing_information-inner-container {
+  background-color: $brown;
+  padding-bottom: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  border-style: solid;
+  border-radius: 0.75rem;
+  border-width: 0.1rem;
+}
+
+.xing_information-left-container-market-cap-info-text {
+  text-align: center;
+  font-size: 2rem;
+  color: $white;
+}
+
+.xing_information-left-container-market-cap-text {
+  text-align: center;
+  font-size: 2rem;
+  color: $gray;
+}
+
+.xing_information-right-container-price-change-positive-text {
+  text-align: center;
+  font-size: 2rem;
+  color: $jungleGreen;
+}
+
+.xing_information-right-container-price-change-negative-text {
+  text-align: center;
+  font-size: 2rem;
+  color: $red;
+}

@@ -41,6 +41,18 @@
 
 <footer>
     {% block footer %}
+        <div class="footer-container">
+            <p class="footer-title">{{ 'footer.title'|trans }}</p>
+            <div>
+                <a class="footer-links" href="https://linktr.ee/xingxing.cto" target="_blank">Website</a>
+                <a class="footer-links" href="https://x.com/XingXingonX" target="_blank">Twitter</a>
+                <a class="footer-links" href="https://t.me/xing_xing_cto" target="_blank">Telegram</a>
+            </div>
+
+            <div class="footer-buy-xing-button-container">
+                <a class="footer-buy-xing-button" href="https://dexscreener.com/solana/2puvkhdeq5uprxrowunggfnvpfun7pdommgqwxyq37hv" target="_blank">{{ 'footer.buy-xing.button'|trans }}</a>
+            </div>
+        </div>
     {% endblock %}
 </footer>
 

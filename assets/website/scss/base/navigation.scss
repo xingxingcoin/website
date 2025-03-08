@@ -1,4 +1,4 @@
-@import "../shared/colors";
+@import "../_shared/colors";
 
 .navigation-main {
   position: fixed;
@@ -20,7 +20,7 @@
   border-color: $black;
   border-style: dotted;
   border-width: 0.2rem;
-  background-color: $white;
+  background-color: $whiteTransparent;
 }
 
 .navigation-text {
@@ -35,11 +35,11 @@
 
 .navigation-sublinks-text {
   padding: 1rem 1rem;
-  border-radius: .375rem;
+  font-size: 1rem;
   border-color: $black;
   border-style: solid;
+  border-radius: .375rem;
   border-width: 0.2rem;
-  font-size: 1rem;
 }
 
 main {

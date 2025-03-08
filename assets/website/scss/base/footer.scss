@@ -1,0 +1,34 @@
+@import '../_shared/colors';
+
+.footer-container {
+  background-color: $black;
+  padding-top: 2.5rem;
+  padding-bottom: 20rem;
+  text-align: center;
+}
+
+.footer-title {
+  color: $white;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.footer-links {
+  color: $white;
+  margin-right: 1rem;
+  font-size: 1rem;
+}
+
+.footer-buy-xing-button-container {
+  margin-top: 5rem;
+}
+
+.footer-buy-xing-button {
+  color: $white;
+  font-size: 1rem;
+  padding: 1rem;
+  text-decoration: none;
+  border-style: solid;
+  border-radius: 0.75rem;
+  border-width: 0.1rem;
+}
