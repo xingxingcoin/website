@@ -4,19 +4,23 @@
 
 <div class="xing_information-main-container">
     <div class="xing_information-inner-container">
-        <p class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.market_cap'|trans }}</p>
-        <p class="xing_information-left-container-market-cap-text">${{ xing['finance']['marketCap']|number_format(2) }}</p>
+        <div><p class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.market_cap.title'|trans }}</p>
+            {% set marketCap = xing['finance']['marketCap'] %}
+            {% set leftToBillion = 1000000000 - marketCap %}
+            <p class="xing_information-left-container-market-cap-text">{{ 'xing_information.market_cap'|trans }} ${{ marketCap|number_format(2) }}</p>
+            <p class="xing_information-left-container-market-cap-text">{{ 'xing_information.market_cap.left_to_billion'|trans }} ${{ leftToBillion|number_format(2) }}</p>
+        </div>
         {{ image }}
     </div>
 
     <div class="xing_information-inner-container">
-        <p class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.price_change'|trans }}</p>
+        <p class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.price_change.title'|trans }}</p>
         {% if xing['finance']['priceChange'] > 0 %}
-            <p class="xing_information-right-container-price-change-positive-text">+{{ xing['finance']['priceChange'] }}
-                %</p>
+            <p class="xing_information-right-container-price-change-positive-text">{{ 'xing_information.price_change'|trans }} +{{ xing['finance']['priceChange'] }}
+                % 🐵</p>
         {% else %}
-            <p class="xing_information-right-container-price-change-negative-text">{{ xing['finance']['priceChange'] }}
-                %</p>
+            <p class="xing_information-right-container-price-change-negative-text">{{ 'xing_information.price_change'|trans }} {{ xing['finance']['priceChange'] }}
+                % 🙈</p>
         {% endif %}
 
         <iframe id="dextools-widget"

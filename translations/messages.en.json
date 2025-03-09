@@ -1,14 +1,18 @@
 {
-  "navigation.title": "$XING",
+  "navigation.title": "$XING Meme Tool \uD83D\uDC12",
   "footer.title": "Xing Xing on Socials",
   "footer.buy-xing.button": "Buy $XING",
   "xing_information.title": "Xing Xing Meme Tool",
   "xing_information.description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-  "xing_information.market_cap": "One Arm - One Billion",
-  "xing_information.price_change": "Xing Xing Chart",
+  "xing_information.market_cap": "Market cap: ",
+  "xing_information.market_cap.title": "One Arm - One Billion",
+  "xing_information.market_cap.left_to_billion": "Left till 1 bio.: ",
+  "xing_information.price_change.title": "Xing Xing Chart",
+  "xing_information.price_change": "Performance: ",
   "gallery.title": "Xing Xing on camera",
   "image_viewer.download-button.text": "Download",
   "meme_generator.title": "Meme Generator",
   "meme_generator.description": "Select a meme...",
-  "meme_generator.new_meme.title": "New Meme"
+  "meme_generator.new_meme.title": "New Meme",
+  "meme_generator.new_meme.description": "Have fun! \uD83D\uDE48"
 }

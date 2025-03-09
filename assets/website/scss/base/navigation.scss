@@ -21,6 +21,10 @@
 .navigation-home-link-text {
   flex: 1;
   font-size: 2rem;
+  color: $black;
+  &:hover {
+    color: $white;
+  }
 }
 
 .navigation-sublinks-text {
