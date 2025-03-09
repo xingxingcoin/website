@@ -43,21 +43,28 @@
     {% block footer %}
         <div class="footer-container">
             <p class="footer-title">{{ 'footer.title'|trans }}</p>
-            <div>
-                <a href="https://x.com/XingXingonX" target="_blank">
-                    {{ get_image(content.twitter_logo|default, 'sulu-40x40') }}
-                </a>
-                <a href="https://dexscreener.com/solana/2puvkhdeq5uprxrowunggfnvpfun7pdommgqwxyq37hv" target="_blank">
+            <div class="footer-links-container">
+                <div class="footer-links">
+                    <a href="https://x.com/XingXingonX" target="_blank">
+                        {{ get_image(content.twitter_logo|default, 'sulu-40x40') }}
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="https://dexscreener.com/solana/2puvkhdeq5uprxrowunggfnvpfun7pdommgqwxyq37hv" target="_blank">
 
-                    {{ get_image(content.dexscreener_logo|default, 'sulu-40x40') }}
-                </a>
-                <a href="https://t.me/xing_xing_cto" target="_blank">
-
-                    {{ get_image(content.telegram_logo|default, 'sulu-40x40') }}
-                </a>
-                <a href="https://www.tiktok.com/@xingxingonsol" target="_blank">
-                    {{ get_image(content.tiktok_logo|default, 'sulu-40x40') }}
-                </a>
+                        {{ get_image(content.dexscreener_logo|default, 'sulu-40x40') }}
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="https://t.me/xing_xing_cto" target="_blank">
+                        {{ get_image(content.telegram_logo|default, 'sulu-40x40') }}
+                    </a>
+                </div>
+                <div class="footer-links">
+                    <a href="https://www.tiktok.com/@xingxingonsol" target="_blank">
+                        {{ get_image(content.tiktok_logo|default, 'sulu-40x40') }}
+                    </a>
+                </div>
             </div>
 
             <div class="footer-buy-xing-button-container">

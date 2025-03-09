@@ -7,6 +7,22 @@
   text-align: center;
 }
 
+.footer-links {
+  flex-shrink: 1;
+  border-style: solid;
+  border-radius: 0.75rem;
+  border-width: 0.1rem;
+  border-color: $white;
+  padding: 0.5rem;
+}
+
+.footer-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .footer-title {
   color: $white;
   text-align: center;
