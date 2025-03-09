@@ -20,3 +20,14 @@ main {
     height: 300px;
   }
 }
+
+.title {
+  text-align: center;
+  font-size: 5rem;
+}
+
+.description {
+  text-align: center;
+  font-size: 2rem;
+  color: $gray;
+}
