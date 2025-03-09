@@ -3,12 +3,14 @@ export default class MemeFileByInputReader {
     private readonly fileReader: FileReader;
     private readonly image: HTMLImageElement;
     private readonly memeCanvas: any;
+    private readonly memeImage: HTMLElement;
 
     constructor() {
         this.memeFile = document.getElementById('background-image-selector');
         this.fileReader = new FileReader();
         this.image = new Image();
         this.memeCanvas = document.getElementById('background-image-preview');
+        this.memeImage = document.querySelector("img");
 
         this.initEventListener();
     }
@@ -42,5 +44,10 @@ export default class MemeFileByInputReader {
         this.memeCanvas.height = Math.floor(height);
 
         canvasCtx.drawImage(this.image, 0, 0, Math.floor(width), Math.floor(height));
+        this.displayMemeImage();
+    }
+
+    private displayMemeImage() {
+        this.memeImage.style.display = 'block';
     }
 }

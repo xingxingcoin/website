@@ -3,14 +3,7 @@
 {% block content %}
     {% set media = sulu_resolve_media(app.request.query.get('mediaId'), localizations['en']['locale']) %}
     {% set image %}
-        {% set defaultFormat = 'sulu-400x400' %}
-        {% set mobileFormat = 'sulu-240x' %}
-
-        <div>
-            {{ get_image(media|default, defaultFormat, {
-                '(max-width: sulu-240x)': mobileFormat,
-            }) }}
-        </div>
+        {{ get_image(media|default, 'sulu-200x200') }}
     {% endset %}
 
     <h1 class="title">{{ 'meme_generator.new_meme.title'|trans }}</h1>
@@ -23,6 +16,8 @@
         </label>
     </div>
     <div class="new-meme-canvas-container">
-        <canvas id="background-image-preview" height="900"></canvas>
+        {{ image }}
+        <canvas id="background-image-preview" height="900">
+        </canvas>
     </div>
 {% endblock %}
