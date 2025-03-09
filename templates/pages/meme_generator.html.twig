@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <h1>{{ 'meme_generator.title'|trans }}</h1>
+    <div>
+        <h1 class="home-title">{{ 'meme_generator.title'|trans }}</h1>
+        <p class="home-description">{{ 'meme_generator.description'|trans }}</p>
+    </div>
+
     {% include 'includes/blocks.html.twig' %}
 {% endblock %}

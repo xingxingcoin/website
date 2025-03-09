@@ -9,18 +9,19 @@
     {% endif %}
 {% endfor %}
 
-{% for media in content['media'] %}
-    {% set image %}
-        {% set defaultFormat = 'sulu-400x400' %}
-        {% set mobileFormat = 'sulu-240x' %}
+<div class="xing-media-container">
+    {% set mediaCounter = 1 %}
+    {% for media in content['media'] %}
+        {% set image %}
+            {% set url = newMemeNavigation['url'] ~ '?mediaId=' ~ media.entity.id %}
+            <a href="{{ url }}">
+                <div class="xing-image-container">
+                    {{ get_image(media|default, 'sulu-200x200') }}
+                </div>
+            </a>
+        {% endset %}
 
-        <div>
-            {{ get_image(media|default, defaultFormat, {
-                '(max-width: sulu-240x)': mobileFormat,
-            }) }}
-        </div>
-    {% endset %}
-
-    {% set url = newMemeNavigation['url'] ~ '?mediaId=' ~ media.entity.id %}
-    <a href="{{ url }}">{{ image }}</a>
-{% endfor %}
+        {{ image }}
+        {% set mediaCounter = mediaCounter + 1 %}
+    {% endfor %}
+</div>
