@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <h1>{{ 'meme_generator.new_meme.title'|trans }}</h1>
     {% set media = sulu_resolve_media(app.request.query.get('mediaId'), localizations['en']['locale']) %}
     {% set image %}
         {% set defaultFormat = 'sulu-400x400' %}
@@ -14,5 +13,16 @@
         </div>
     {% endset %}
 
-    {{ image }}
+    <h1 class="title">{{ 'meme_generator.new_meme.title'|trans }}</h1>
+    <h1 class="description">{{ 'meme_generator.new_meme.description'|trans }}</h1>
+
+    <div class="new-meme-file-input-button-container">
+        <input id="background-image-selector" type="file" accept="image/*" hidden>
+        <label for="background-image-selector" class="new-meme-file-input-button">
+            {{ 'Select Background Image'|trans }}
+        </label>
+    </div>
+    <div class="new-meme-canvas-container">
+        <canvas id="background-image-preview" height="900"></canvas>
+    </div>
 {% endblock %}
