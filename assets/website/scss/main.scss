@@ -1,9 +1,9 @@
-@import 'base/main.scss';
+@use 'base/main.scss' as *;
 
-@import 'blocks/xing_information/main.scss';
+@use 'blocks/xing_information/main.scss' as *;
 
-@import 'gallery/main.scss';
-@import 'blocks/xing_media/main.scss';
+@use 'gallery/main.scss' as *;
+@use 'blocks/xing_media/main.scss' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
 

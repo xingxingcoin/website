@@ -1,4 +1,4 @@
-@import '../_shared/colors';
+@use '../_shared/colors' as *;
 
 .footer-container {
   background-color: $black;

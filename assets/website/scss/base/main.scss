@@ -1,5 +1,6 @@
-@import 'footer';
-@import 'navigation';
+@use 'footer';
+@use 'navigation';
+@use '../_shared/colors' as *;
 
 p, h1, h3, a {
   font-family: DynaPuff,system-ui;
