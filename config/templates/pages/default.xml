@@ -36,10 +36,28 @@
             <tag name="sulu.rlp"/>
         </property>
 
-        <property name="article" type="text_editor">
+        <property name="twitter_logo" type="single_media_selection" mandatory="true">
             <meta>
-                <title lang="en">Article</title>
-                <title lang="de">Artikel</title>
+                <title lang="en">Twitter logo</title>
+                <title lang="de">Twitter Logo</title>
+            </meta>
+        </property>
+        <property name="dexscreener_logo" type="single_media_selection" mandatory="true">
+            <meta>
+                <title lang="en">Dexscreener logo</title>
+                <title lang="de">Dexscreener Logo</title>
+            </meta>
+        </property>
+        <property name="telegram_logo" type="single_media_selection" mandatory="true">
+            <meta>
+                <title lang="en">Telegram logo</title>
+                <title lang="de">Telegram Logo</title>
+            </meta>
+        </property>
+        <property name="tiktok_logo" type="single_media_selection" mandatory="true">
+            <meta>
+                <title lang="en">TikTok logo</title>
+                <title lang="de">TikTok Logo</title>
             </meta>
         </property>
     </properties>
