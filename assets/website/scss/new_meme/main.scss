@@ -31,10 +31,13 @@
   margin-bottom: 5rem;
   border-style: solid;
   border-color: $black;
-
   img {
     display: none;
     position: absolute;
     z-index: 1000;
+    @media (max-width: 768px) {
+      width: 100px;
+      height: 100px;
+    }
   }
 }
