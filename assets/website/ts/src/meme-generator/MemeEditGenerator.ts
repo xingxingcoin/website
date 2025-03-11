@@ -8,7 +8,7 @@ export default class MemeEditGenerator {
     private newMemeImage: HTMLImageElement;
 
     constructor() {
-        this.editButton = document.getElementById('button');
+        this.editButton = document.getElementById('new-meme-edit-button');
         this.memePreviewContainer = document.getElementById('meme-preview-container');
         this.initEventListener();
     }
