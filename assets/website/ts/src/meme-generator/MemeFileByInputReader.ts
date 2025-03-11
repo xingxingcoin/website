@@ -15,7 +15,7 @@ export default class MemeFileByInputReader {
         this.initEventListener();
     }
 
-    initEventListener() {
+    private initEventListener() {
         this.inputFileForBackgroundImageElement.addEventListener('change', (event: any) => {
             this.fileReader.addEventListener('load', () => {
                 this.openImageByFileReader(this.fileReader.result);

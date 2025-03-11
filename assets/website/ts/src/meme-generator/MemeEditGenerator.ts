@@ -1,5 +1,6 @@
 import Cropper from 'cropperjs';
 import MemeFileDownloader from "./MemeFileDownloader";
+import MemeCanvasLoader from "./MemeCanvasLoader";
 
 export default class MemeEditGenerator {
     private readonly editButton: HTMLElement;
@@ -7,6 +8,7 @@ export default class MemeEditGenerator {
     private cropper: Cropper;
     private imageByFileReader: HTMLImageElement;
     private newMemeImage: HTMLImageElement;
+    private memeCanvasLoader: MemeCanvasLoader;
     private memeFileDownloader: MemeFileDownloader;
 
     constructor() {
@@ -23,7 +25,9 @@ export default class MemeEditGenerator {
                 return;
             }
 
-            let canvas = this.getCanvasWithBackgroundAndMemeImage();
+            this.memeCanvasLoader = new MemeCanvasLoader(this.cropper, this.imageByFileReader, this.newMemeImage);
+            let canvas = this.memeCanvasLoader.load();
+
             let newImage = document.createElement('img');
             newImage.src = canvas.toDataURL();
             this.memePreviewContainer.innerHTML = '';
@@ -42,27 +46,5 @@ export default class MemeEditGenerator {
         if (this.newMemeImage) {
             document.querySelector('.new-meme-meme-image').remove();
         }
-    }
-
-    private getCanvasWithBackgroundAndMemeImage(): HTMLCanvasElement {
-        let canvas = document.createElement('canvas');
-        let context = canvas.getContext('2d');
-
-        let newMemeImageWidth = this.cropper.getData().width;
-        let newMemeImageHeight = this.cropper.getData().height;
-        let newMemeImagePositionY =  this.cropper.getData().y;
-        let newMemeImagePositionX =  this.cropper.getData().x;
-
-        let backgroundImageWidth = this.cropper.getImageData().naturalWidth;
-        let backgroundImageHeight = this.cropper.getImageData().naturalHeight;
-
-        canvas.width = backgroundImageWidth;
-        canvas.height = backgroundImageHeight;
-        context.imageSmoothingEnabled = true;
-
-        context.drawImage(this.imageByFileReader, 0, 0, backgroundImageWidth, backgroundImageHeight);
-        context.drawImage( this.newMemeImage, newMemeImagePositionX, newMemeImagePositionY, newMemeImageWidth, newMemeImageHeight);
-
-        return canvas;
     }
 }
