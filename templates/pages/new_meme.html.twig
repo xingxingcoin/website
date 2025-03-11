@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+{% endblock %}
+
 {% block content %}
     {% set media = sulu_resolve_media(app.request.query.get('mediaId'), localizations['en']['locale']) %}
     {% set image %}
@@ -14,10 +24,14 @@
         <label for="background-image-selector" class="new-meme-file-input-button">
             {{ 'Select Background Image'|trans }}
         </label>
+        <button type="button" id="button">edit</button>
+        <button id="save-image">Test</button>
     </div>
+
     <div class="new-meme-canvas-container">
-        {{ image }}
-        <canvas id="background-image-preview" height="900">
-        </canvas>
+        <div class="new-meme-meme-image">
+            {{ image }}
+        </div>
+        <div id="meme-preview-container"></div>
     </div>
 {% endblock %}

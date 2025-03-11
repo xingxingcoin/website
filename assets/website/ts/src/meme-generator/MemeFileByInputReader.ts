@@ -1,24 +1,24 @@
+import MemeEditGenerator from './MemeEditGenerator';
+
 export default class MemeFileByInputReader {
-    private readonly memeFile: HTMLElement;
+    private readonly inputFileForBackgroundImageElement: HTMLElement;
     private readonly fileReader: FileReader;
-    private readonly image: HTMLImageElement;
-    private readonly memeCanvas: any;
-    private readonly memeImage: HTMLElement;
+    private readonly imageByFileReader: HTMLImageElement;
+    private readonly memeEditGenerator: MemeEditGenerator;
 
     constructor() {
-        this.memeFile = document.getElementById('background-image-selector');
+        this.inputFileForBackgroundImageElement = document.getElementById('background-image-selector');
         this.fileReader = new FileReader();
-        this.image = new Image();
-        this.memeCanvas = document.getElementById('background-image-preview');
-        this.memeImage = document.querySelector("img");
+        this.imageByFileReader = new Image();
+        this.memeEditGenerator = new MemeEditGenerator();
 
         this.initEventListener();
     }
 
     initEventListener() {
-        this.memeFile.addEventListener('change', (event: any) => {
+        this.inputFileForBackgroundImageElement.addEventListener('change', (event: any) => {
             this.fileReader.addEventListener('load', () => {
-                this.openImage(this.fileReader.result);
+                this.openImageByFileReader(this.fileReader.result);
             });
 
             let eventTarget: any = event.target;
@@ -26,28 +26,11 @@ export default class MemeFileByInputReader {
         });
     }
 
-    private openImage(imageSrc: any) {
-        this.image.addEventListener("load", () => {
-            this.resize(900, 900);
+    private openImageByFileReader(imageSrc: any) {
+        this.imageByFileReader.addEventListener('load', () => {
+            this.memeEditGenerator.generate(this.imageByFileReader);
         });
 
-        this.image.src = imageSrc;
-    }
-
-    private resize(width: number, height: number) {
-        const canvasCtx = this.memeCanvas.getContext("2d");
-        const containerWidth =  this.memeCanvas.parentElement?.offsetWidth|| width;
-        const aspectRatio = this.image.width / this.image.height;
-        width = containerWidth;
-        height = width / aspectRatio;
-        this.memeCanvas.width = Math.floor(width);
-        this.memeCanvas.height = Math.floor(height);
-
-        canvasCtx.drawImage(this.image, 0, 0, Math.floor(width), Math.floor(height));
-        this.displayMemeImage();
-    }
-
-    private displayMemeImage() {
-        this.memeImage.style.display = 'block';
+        this.imageByFileReader.src = imageSrc;
     }
 }
