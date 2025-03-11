@@ -1,7 +1,9 @@
 @use '../_shared/colors' as *;
 
 .new-meme-file-input-button {
-  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 1rem 1rem;
   cursor: pointer;
   background-color: $brown;
@@ -19,7 +21,8 @@
 .new-meme-file-input-button-container {
   display: flex;
   justify-content: start;
-  align-items: start;
+  align-items: stretch;
+  gap: 1rem;
 }
 
 .new-meme-canvas-container {

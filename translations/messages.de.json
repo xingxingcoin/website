@@ -14,5 +14,6 @@
   "meme_generator.title": "Meme Generator",
   "meme_generator.description": "Wähle ein Meme aus...",
   "meme_generator.new_meme.title": "Neues Meme",
-  "meme_generator.new_meme.description": "Viel Spaß! \uD83D\uDC35"
+  "meme_generator.new_meme.description": "Viel Spaß! \uD83D\uDC35",
+  "meme_generator.new_meme.download": "Download"
 }
