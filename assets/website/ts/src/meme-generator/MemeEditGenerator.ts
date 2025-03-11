@@ -1,4 +1,5 @@
 import Cropper from 'cropperjs';
+import MemeFileDownloader from "./MemeFileDownloader";
 
 export default class MemeEditGenerator {
     private readonly editButton: HTMLElement;
@@ -6,10 +7,13 @@ export default class MemeEditGenerator {
     private cropper: Cropper;
     private imageByFileReader: HTMLImageElement;
     private newMemeImage: HTMLImageElement;
+    private memeFileDownloader: MemeFileDownloader;
 
     constructor() {
         this.editButton = document.getElementById('new-meme-edit-button');
         this.memePreviewContainer = document.getElementById('meme-preview-container');
+        this.memeFileDownloader = new MemeFileDownloader();
+
         this.initEventListener();
     }
 
@@ -25,6 +29,8 @@ export default class MemeEditGenerator {
             this.memePreviewContainer.innerHTML = '';
             this.memePreviewContainer.appendChild(newImage);
             this.imageByFileReader.src = newImage.src;
+
+            this.memeFileDownloader.download(canvas);
         })
     }
 
