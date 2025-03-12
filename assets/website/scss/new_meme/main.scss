@@ -1,6 +1,6 @@
 @use '../_shared/colors' as *;
 
-.new-meme-file-input-button {
+.new-meme-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@
   }
 }
 
-.new-meme-file-input-button-container {
+.new-meme-button-container {
   display: flex;
   justify-content: start;
   align-items: stretch;
