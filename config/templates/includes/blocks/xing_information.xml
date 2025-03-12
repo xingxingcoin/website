@@ -5,10 +5,34 @@
         <types>
             <type name="xing_information">
                 <properties>
-                    <property name="xing_information_image" type="single_media_selection">
-                         <meta>
-                            <title lang="en">Image</title>
-                            <title lang="de">Bild</title>
+                    <property name="xing_information_image_rage_mode" type="single_media_selection" mandatory="true">
+                        <meta>
+                            <title lang="en">Xing Xing on rage mode</title>
+                            <title lang="de">Xing Xing auf Rage Mode</title>
+                        </meta>
+                    </property>
+                    <property name="xing_information_image_upset" type="single_media_selection" mandatory="true">
+                        <meta>
+                            <title lang="en">Upset Xing Xing</title>
+                            <title lang="de">Wütender Xing Xing</title>
+                        </meta>
+                    </property>
+                    <property name="xing_information_image_neutral" type="single_media_selection" mandatory="true">
+                        <meta>
+                            <title lang="en">Balanced Xing Xing</title>
+                            <title lang="de">Ausgeglichener Xing Xing</title>
+                        </meta>
+                    </property>
+                    <property name="xing_information_image_calm" type="single_media_selection" mandatory="true">
+                        <meta>
+                            <title lang="en">Calm Xing Xing</title>
+                            <title lang="de">Ruhiger Xing Xing</title>
+                        </meta>
+                    </property>
+                    <property name="xing_information_image_happy" type="single_media_selection" mandatory="true">
+                        <meta>
+                            <title lang="en">Happy Xing Xing</title>
+                            <title lang="de">Glücklicher Xing Xing</title>
                         </meta>
                     </property>
                 </properties>

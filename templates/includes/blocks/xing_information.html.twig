@@ -1,5 +1,16 @@
 {% set image %}
-    {{ get_image(content.xing_information_image|default, 'sulu-400x400') }}
+    {% if xing['finance']['priceChange'] <= -30 %}
+        {{ get_image(content.xing_information_image_rage_mode|default, 'sulu-400x400') }}
+    {% elseif xing['finance']['priceChange'] <= -10 and xing['finance']['priceChange'] > -30 %}
+        {{ get_image(content.xing_information_image_upset|default, 'sulu-400x400') }}
+    {% elseif ((xing['finance']['priceChange'] <= 0 and xing['finance']['priceChange'] > -10) or
+        (xing['finance']['priceChange'] >= 0 and xing['finance']['priceChange'] < 10)) %}
+        {{ get_image(content.xing_information_image_neutral|default, 'sulu-400x400') }}
+    {% elseif xing['finance']['priceChange'] >= 10 and xing['finance']['priceChange'] < 30 %}
+        {{ get_image(content.xing_information_image_calm|default, 'sulu-400x400') }}
+    {% elseif xing['finance']['priceChange'] >= 30%}
+        {{ get_image(content.xing_information_image_happy|default, 'sulu-400x400') }}
+    {% endif %}
 {% endset %}
 
 <div class="xing_information-main-container">
