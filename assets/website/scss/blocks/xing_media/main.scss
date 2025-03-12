@@ -14,8 +14,10 @@
   border-style: dashed;
   border-radius: 0.75rem;
   border-width: 0.2rem;
-  margin-bottom: 1rem;
   transition: transform 0.3s ease-in-out;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
   &:hover {
     transform: scale(1.1);
   }
@@ -24,5 +26,8 @@
       width: 100px;
       height: 100px;
     }
+
+    height: 100px;
+    width: 100px;
   }
 }
