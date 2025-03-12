@@ -6,16 +6,40 @@
   justify-content: center;
   padding: 1rem 1rem;
   cursor: pointer;
-  background-color: $brown;
   color: $white;
   border-radius: 1rem;
   font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.new-meme-background-selector-button {
+  background-color: $brown;
   &:hover {
-    background-color: $jungleGreen;
+    background-color: darken($brown, 15%);
   }
+}
+
+.new-meme-download-button {
+  background-color: $jungleGreen;
+  &:hover {
+    background-color: darken($jungleGreen, 15%);
+  }
+}
+
+.new-meme-button-disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1rem;
+  background-color: $gray;
+  color: $white;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .new-meme-button-container {

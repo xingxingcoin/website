@@ -46,5 +46,12 @@ export default class MemeEditGenerator {
         });
 
         this.newMemeImage.remove();
+        this.enableDownloadButton();
+    }
+
+    private enableDownloadButton(): void {
+        this.downloadButton.classList.remove('new-meme-button-disabled');
+        this.downloadButton.classList.add('new-meme-button');
+        this.downloadButton.classList.add('new-meme-download-button');
     }
 }

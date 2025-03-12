@@ -17,6 +17,12 @@ export default class MemeFileByInputReader {
 
     private initEventListener(): void {
         this.inputFileForBackgroundImageElement.addEventListener('change', (event: Event) => {
+            let inputFileForBackgroundImageLabel: HTMLElement = document.querySelector('label[for="background-image-selector"]');
+            if (inputFileForBackgroundImageLabel.classList.contains('new-meme-button-disabled')) {
+                return;
+            }
+            this.disableInputFile(inputFileForBackgroundImageLabel);
+
             this.fileReader.addEventListener('load', (): void => {
                 this.openImageByFileReader(this.fileReader.result as string);
             });
@@ -31,5 +37,12 @@ export default class MemeFileByInputReader {
         });
 
         this.imageByFileReader.src = imageSrc;
+    }
+
+    private disableInputFile(inputFileForBackgroundImageLabel: HTMLElement): void {
+        inputFileForBackgroundImageLabel.classList.add('new-meme-button-disabled');
+        inputFileForBackgroundImageLabel.classList.remove('new-meme-background-selector-button');
+        inputFileForBackgroundImageLabel.classList.remove('new-meme-button');
+        this.inputFileForBackgroundImageElement.remove();
     }
 }
