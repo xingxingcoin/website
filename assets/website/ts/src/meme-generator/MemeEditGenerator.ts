@@ -19,29 +19,26 @@ export default class MemeEditGenerator {
         this.initEventListener();
     }
 
-    private initEventListener() {
-        this.downloadButton.addEventListener('click', () => {
+    private initEventListener(): void {
+        this.downloadButton.addEventListener('click', (): void => {
             if (this.cropper === undefined) {
                 return;
             }
 
             this.memeCanvasLoader = new MemeCanvasLoader(this.cropper, this.imageByFileReader, this.newMemeImage);
-            let canvas = this.memeCanvasLoader.load();
+            let canvas: HTMLCanvasElement = this.memeCanvasLoader.load();
             this.memeFileDownloader.download(canvas);
         })
     }
 
-    public generate(imageByFileReader: HTMLImageElement) {
+    public generate(imageByFileReader: HTMLImageElement): void {
         this.imageByFileReader = imageByFileReader;
         this.memePreviewContainer.appendChild(this.imageByFileReader);
         this.newMemeImage = document.querySelector('.new-meme-image-container img');
-        if (!this.newMemeImage) {
-            return;
-        }
 
-        let newMemeImageSrc = this.newMemeImage.src;
+        let newMemeImageSrc: string = this.newMemeImage.src;
         this.cropper = new Cropper(this.imageByFileReader, {
-            ready() {
+            ready(): void {
                 let cropperFace: HTMLElement = document.querySelector('.cropper-face');
                 cropperFace.style.opacity = '1';
                 cropperFace.style.backgroundImage = `url(${newMemeImageSrc})`;
@@ -49,8 +46,6 @@ export default class MemeEditGenerator {
             }
         });
 
-        if (this.newMemeImage) {
-            this.newMemeImage.remove();
-        }
+        this.newMemeImage.remove();
     }
 }

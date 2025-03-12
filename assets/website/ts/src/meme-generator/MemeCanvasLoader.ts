@@ -9,16 +9,16 @@ export default class MemeCanvasLoader {
     }
 
     public load(): HTMLCanvasElement {
-        let canvas = document.createElement('canvas');
-        let context = canvas.getContext('2d');
+        let canvas: HTMLCanvasElement = document.createElement('canvas');
+        let context: CanvasRenderingContext2D = canvas.getContext('2d');
 
-        let newMemeImageWidth = this.cropper.getData().width;
-        let newMemeImageHeight = this.cropper.getData().height;
-        let newMemeImagePositionY =  this.cropper.getData().y;
-        let newMemeImagePositionX =  this.cropper.getData().x;
+        let newMemeImageWidth: number = this.cropper.getData().width;
+        let newMemeImageHeight: number = this.cropper.getData().height;
+        let newMemeImagePositionY: number =  this.cropper.getData().y;
+        let newMemeImagePositionX: number =  this.cropper.getData().x;
 
-        let backgroundImageWidth = this.cropper.getImageData().naturalWidth;
-        let backgroundImageHeight = this.cropper.getImageData().naturalHeight;
+        let backgroundImageWidth: number = this.cropper.getImageData().naturalWidth;
+        let backgroundImageHeight: number = this.cropper.getImageData().naturalHeight;
 
         canvas.width = backgroundImageWidth;
         canvas.height = backgroundImageHeight;

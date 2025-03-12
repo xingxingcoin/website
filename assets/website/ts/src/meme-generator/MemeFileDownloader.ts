@@ -1,6 +1,6 @@
 export default class MemeFileDownloader {
-    public download(memeCanvas: HTMLCanvasElement) {
-        memeCanvas.toBlob((blob: Blob | null) => {
+    public download(memeCanvas: HTMLCanvasElement): void {
+        memeCanvas.toBlob((blob: Blob | null): void => {
             if (!blob) {
                 return;
             }

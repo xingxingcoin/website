@@ -15,18 +15,17 @@ export default class MemeFileByInputReader {
         this.initEventListener();
     }
 
-    private initEventListener() {
-        this.inputFileForBackgroundImageElement.addEventListener('change', (event: any) => {
-            this.fileReader.addEventListener('load', () => {
-                this.openImageByFileReader(this.fileReader.result);
+    private initEventListener(): void {
+        this.inputFileForBackgroundImageElement.addEventListener('change', (event: Event) => {
+            this.fileReader.addEventListener('load', (): void => {
+                this.openImageByFileReader(this.fileReader.result as string);
             });
 
-            let eventTarget: any = event.target;
-            this.fileReader.readAsDataURL(eventTarget.files[0]);
+            this.fileReader.readAsDataURL((event.target as HTMLInputElement).files[0]);
         });
     }
 
-    private openImageByFileReader(imageSrc: any) {
+    private openImageByFileReader(imageSrc: string): void {
         this.imageByFileReader.addEventListener('load', () => {
             this.memeEditGenerator.generate(this.imageByFileReader);
         });
