@@ -35,7 +35,6 @@ export default class MemeEditGenerator {
         this.imageByFileReader = imageByFileReader;
         this.memePreviewContainer.appendChild(this.imageByFileReader);
         this.newMemeImage = document.querySelector('.new-meme-image-container img');
-
         let newMemeImageSrc: string = this.newMemeImage.src;
         this.cropper = new Cropper(this.imageByFileReader, {
             ready(): void {

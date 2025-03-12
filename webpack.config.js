@@ -20,7 +20,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. main.ts)
      * and one CSS file (e.g. main.scss) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/website/ts/src/main.ts')
+    .addEntry('meme-generator', './assets/website/ts/src/meme-generator/main.ts')
     .addStyleEntry('styles', './assets/website/scss/main.scss')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
