@@ -24,6 +24,15 @@
         <nav>
             <div class="navigation-container">
                 <a class="navigation-text navigation-home-link-text" href="{{ sulu_content_root_path() }}">{{ 'navigation.title'|trans }}</a>
+                <audio id="navigation-audio-player">
+                    <source src="{{ content.xing_header_audio.url }}" type="audio/mpeg">
+                </audio>
+
+                <button class="navigation-audio-player-button">
+                    <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
                 <div>
                     {% for item in sulu_navigation_root_tree() %}
                         <a class="navigation-text navigation-sublinks-text" href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
@@ -75,6 +84,7 @@
 </footer>
 
 {% block javascripts %}
+    {{ encore_entry_script_tags('navigation-audio-player') }}
 {% endblock %}
 </body>
 </html>
