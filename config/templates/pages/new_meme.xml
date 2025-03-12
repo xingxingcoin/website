@@ -36,29 +36,51 @@
             <tag name="sulu.rlp"/>
         </property>
 
+        <property name="xing_header_audio" type="single_media_selection" mandatory="true">
+            <meta>
+                <title lang="en">Header audio</title>
+                <title lang="de">Header Musik</title>
+            </meta>
+
+            <params>
+                <param name="types" value="audio"/>
+            </params>
+        </property>
         <property name="twitter_logo" type="single_media_selection" mandatory="true">
             <meta>
                 <title lang="en">Twitter logo</title>
                 <title lang="de">Twitter Logo</title>
             </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
         </property>
         <property name="dexscreener_logo" type="single_media_selection" mandatory="true">
             <meta>
                 <title lang="en">Dexscreener logo</title>
                 <title lang="de">Dexscreener Logo</title>
             </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
         </property>
         <property name="telegram_logo" type="single_media_selection" mandatory="true">
             <meta>
                 <title lang="en">Telegram logo</title>
                 <title lang="de">Telegram Logo</title>
             </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
         </property>
         <property name="tiktok_logo" type="single_media_selection" mandatory="true">
             <meta>
                 <title lang="en">TikTok logo</title>
                 <title lang="de">TikTok Logo</title>
             </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
         </property>
     </properties>
 </template>

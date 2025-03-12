@@ -15,6 +15,9 @@
                             <title lang="en">Select images</title>
                             <title lang="de">Bilder auswählen</title>
                         </meta>
+                        <params>
+                            <param name="types" value="image"/>
+                        </params>
                     </property>
                 </properties>
             </type>
