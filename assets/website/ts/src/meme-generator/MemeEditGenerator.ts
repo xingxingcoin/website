@@ -1,6 +1,6 @@
 import Cropper from 'cropperjs';
 import MemeFileDownloader from "./MemeFileDownloader";
-import MemeCanvasLoader from "./MemeCanvasLoader";
+import MemeCanvasConverter from "./MemeCanvasConverter";
 
 export default class MemeEditGenerator {
     private readonly downloadButton: HTMLElement;
@@ -8,7 +8,7 @@ export default class MemeEditGenerator {
     private cropper: Cropper;
     private imageByFileReader: HTMLImageElement;
     private newMemeImage: HTMLImageElement;
-    private memeCanvasLoader: MemeCanvasLoader;
+    private memeCanvasConverter: MemeCanvasConverter;
     private memeFileDownloader: MemeFileDownloader;
 
     constructor() {
@@ -25,8 +25,8 @@ export default class MemeEditGenerator {
                 return;
             }
 
-            this.memeCanvasLoader = new MemeCanvasLoader(this.cropper, this.imageByFileReader, this.newMemeImage);
-            let canvas: HTMLCanvasElement = this.memeCanvasLoader.load();
+            this.memeCanvasConverter = new MemeCanvasConverter(this.cropper, this.imageByFileReader, this.newMemeImage);
+            let canvas: HTMLCanvasElement = this.memeCanvasConverter.convert();
             this.memeFileDownloader.download(canvas);
         })
     }

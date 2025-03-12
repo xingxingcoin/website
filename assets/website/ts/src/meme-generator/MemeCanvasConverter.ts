@@ -1,6 +1,6 @@
 import Cropper from "cropperjs";
 
-export default class MemeCanvasLoader {
+export default class MemeCanvasConverter {
     constructor(
         private readonly cropper: Cropper,
         private readonly imageByFileReader: HTMLImageElement,
@@ -8,7 +8,7 @@ export default class MemeCanvasLoader {
     ) {
     }
 
-    public load(): HTMLCanvasElement {
+    public convert(): HTMLCanvasElement {
         let canvas: HTMLCanvasElement = document.createElement('canvas');
         let context: CanvasRenderingContext2D = canvas.getContext('2d');
 
