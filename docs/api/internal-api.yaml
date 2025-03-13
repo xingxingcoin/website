@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: Xing Xing Memetool Internal API
+  contact:
+    email: ariagholami@web.de
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+servers:
+  - url: https://website.ddev.site/api/v1
+tags:
+  - name: gallery
+    description: Pictures of Xing Xing
+paths:
+  /api/v1/gallery/images/{counter}:
+    get:
+      tags:
+        - gallery
+      summary: Load up to 30 images for infinite scrolling
+      description: Load up to 30 images for gallery by counter for infinite scrolling
+      operationId: load30ImagesByCounterForInfiniteScrolling
+      parameters:
+        - name: counter
+          in: path
+          description: Counter that need to be considered for loading images
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MediaUrls'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest'
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalServerError'
+
+components:
+  schemas:
+    MediaUrls:
+      type: object
+      required:
+        - urls
+      properties:
+        urls:
+          type: array
+          items:
+            type: string
+    BadRequest:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          example: 'Bad request.'
+    InternalServerError:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          example: 'Internal server error.'

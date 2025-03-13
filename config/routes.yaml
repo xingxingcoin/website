@@ -4,6 +4,11 @@ controllers:
         namespace: App\Controller\Pages
     type: attribute
 
+App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController:
+    path: /api/v1/gallery/images/{counter}
+    controller: App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController
+    methods: GET
+
 #static:
 #    path: /static-route
 #    controller: App\Controller\DefaultController::index

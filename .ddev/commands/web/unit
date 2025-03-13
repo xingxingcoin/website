@@ -1,1 +1,1 @@
-XDEBUG_MODE=coverage ./bin/phpunit -c phpunit.xml --coverage-html public/coverage
+XDEBUG_MODE=coverage ./bin/phpunit -c phpunit.xml --coverage-html public/coverage --exclude-group Acceptance

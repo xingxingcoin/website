@@ -12,9 +12,20 @@
          colors="true"
          failOnRisky="true"
          failOnWarning="true">
+
+    <php>
+        <env name="APP_ENV" value="test"/>
+        <env name="KERNEL_CLASS" value="App\Kernel"/>
+        <env name="DATABASE_URL" value="mysql://root:root@db:3306/db"/>
+        <env name="LOG_LEVEL" value="100"/>
+    </php>
+
     <testsuites>
-        <testsuite name="default">
-            <directory>tests</directory>
+        <testsuite name="Acceptance-Tests">
+            <directory>tests/Acceptance</directory>
+        </testsuite>
+        <testsuite name="Unit-Tests">
+            <directory>tests/Unit</directory>
         </testsuite>
     </testsuites>
 
