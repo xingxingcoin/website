@@ -49,6 +49,21 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
         self::assertEquals([], $this->loggerMock->logs);
     }
 
+    public function testLoadGalleryImages_with_invalid_image_counter(): void
+    {
+        $request = new Request();
+        $request->setLocale('en');
+        $mediaUrlCollection = new MediaUrlCollection([]);
+        $this->galleryImagesLoadHandlerMock->outputMediaUrlCollection = $mediaUrlCollection;
+
+        $jsonResponse = $this->galleryImagesInfiniteScrollingLoadController->__invoke($request);
+        self::assertSame(200, $jsonResponse->getStatusCode());
+        self::assertEquals('{"urls":[]}', $jsonResponse->getContent());
+        self::assertSame('en', $this->galleryImagesLoadHandlerMock->inputLocation->value);
+        self::assertSame(0, $this->galleryImagesLoadHandlerMock->inputImageCounter->value);
+        self::assertEquals([], $this->loggerMock->logs);
+    }
+
     public function testLoadGalleryImages_with_page_document_not_loaded(): void
     {
         $request = new Request();
