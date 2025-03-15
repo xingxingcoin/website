@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Gallery\Exception;
 
+use App\Exception\ValidationException;
+
 /**
  * @codeCoverageIgnore
  * @infection-ignore-all

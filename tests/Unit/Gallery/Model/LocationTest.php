@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Model;
 
-use App\Gallery\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 use App\Gallery\Model\Location;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

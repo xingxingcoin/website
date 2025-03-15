@@ -1,12 +1,11 @@
 <?php
-
 declare(strict_types=1);
 
-namespace App\Gallery\Model;
+namespace App\Json\Model;
 
 use App\Exception\EmptyStringException;
 
-final readonly class Location
+final readonly class JsonString
 {
     /**
      * @throws EmptyStringException
@@ -15,7 +14,7 @@ final readonly class Location
         public string $value
     ) {
         if ($this->value === '') {
-            throw EmptyStringException::stringIsEmpty($this->value);
+            throw EmptyStringException::stringIsEmpty('jsonString');
         }
     }
 }

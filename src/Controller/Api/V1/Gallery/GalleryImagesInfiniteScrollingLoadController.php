@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\V1\Gallery;
 
-use App\Gallery\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 use App\Gallery\Exception\MediaUrlNotLoadedException;
 use App\Gallery\Exception\PageDocumentNotLoadedException;
 use App\Gallery\Model\ImageCounter;
