@@ -8,7 +8,7 @@ interface GalleryInitialLoadImagesResponse {
 }
 
 export default class GalleryInitialImagesLoader {
-    static readonly URL: string = '/api/v1/gallery/images/0';
+    static readonly URL: string = '/api/v1/gallery/images?counter=0';
     static readonly METHOD: string = 'GET';
 
     private loadingIndicator: HTMLElement;
@@ -24,10 +24,10 @@ export default class GalleryInitialImagesLoader {
         document.addEventListener('DOMContentLoaded', (): void => {
             let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
             ajaxHttpClient.open(GalleryInitialImagesLoader.METHOD, GalleryInitialImagesLoader.URL, true);
-            ajaxHttpClient.onreadystatechange = () => {
+            ajaxHttpClient.onreadystatechange = (): void => {
                 if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
                     const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
-                    this.loadImagesInGallery(jsonResponse.urls);
+                    this.displayImagesInGallery(jsonResponse.urls);
                 }
             };
 
@@ -35,7 +35,7 @@ export default class GalleryInitialImagesLoader {
         });
     }
 
-    private loadImagesInGallery(jsonResponse: MediaUrl[]): void
+    private displayImagesInGallery(jsonResponse: MediaUrl[]): void
     {
         let galleryContainer = document.querySelector('.xing-media-container');
         jsonResponse.forEach((mediaUrl: MediaUrl): void => {
