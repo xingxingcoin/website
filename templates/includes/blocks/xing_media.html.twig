@@ -1,14 +1,3 @@
-{% set imageViewerNavigation = null %}
-{% for navigation in sulu_navigation_root_tree() %}
-    {% if navigation.template == 'gallery' %}
-        {% for subNavigation in sulu_navigation_tree(navigation.id) %}
-            {% if subNavigation['template'] == 'image_viewer' %}
-                {% set imageViewerNavigation = subNavigation %}
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-{% endfor %}
-
 <div class="xing-media-container">
     <div class="lds-dual-ring"></div>
 </div>
