@@ -72,6 +72,34 @@ abstract class AbstractWebTestCase extends SuluTestCase
             $manager->persist($document, $locale, [
                 'path' => self::BASE_PATH
             ]);
+            $manager->publish($document, $locale, [
+                'path' => self::BASE_PATH
+            ]);
+        }
+
+        $manager->flush();
+
+        /** @var HomeDocument $document */
+        $document = $manager->create('page');
+        $document->setTitle('Test');
+        $document->setStructureType('image_viewer');
+        $document->setResourceSegment('/xing-xing-on-camera/image_viewer');
+        $document->setLocale('en');
+        $document->getStructure()->bind([
+            'xing_header_audio' => 'default-audio.mp3',
+            'twitter_logo' => 'test_twitter_logo.png',
+            'dexscreener_logo' => 'test_dexscreener_logo.png',
+            'telegram_logo' => 'test_telegram_logo.png',
+            'tiktok_logo' => 'test_tiktok_logo.png'
+        ]);
+
+        foreach ($options['locales'] as $locale) {
+            $manager->persist($document, $locale, [
+                'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer'
+            ]);
+            $manager->publish($document, $locale, [
+                'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer'
+            ]);
         }
 
         $manager->flush();

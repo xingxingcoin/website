@@ -145,7 +145,7 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
                 [
                     'message' => 'Page document could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'Validation failed for value "" with error: "Value for "" should not be empty."'
+                        'exceptionMessage' => 'Validation failed for value "location" with error: "Value for "location" should not be empty."'
                     ]
                 ]
             ]

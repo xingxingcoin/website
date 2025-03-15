@@ -63,7 +63,13 @@ components:
         urls:
           type: array
           items:
-            type: string
+            type: object
+            required: [imageViewerUrl, mediaUrl]
+            properties:
+              imageViewerUrl:
+                type: string
+              mediaUrl:
+                type: string
     BadRequest:
       type: object
       required:

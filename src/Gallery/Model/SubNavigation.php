@@ -6,7 +6,7 @@ namespace App\Gallery\Model;
 
 use App\Exception\EmptyStringException;
 
-final readonly class Location
+final readonly class SubNavigation
 {
     /**
      * @throws EmptyStringException
@@ -15,7 +15,7 @@ final readonly class Location
         public string $value
     ) {
         if ($this->value === '') {
-            throw EmptyStringException::stringIsEmpty('location');
+            throw EmptyStringException::stringIsEmpty('subNavigation');
         }
     }
 }

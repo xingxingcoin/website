@@ -127,7 +127,12 @@ services:
     App\Gallery\Components\MediaUrlCollectionByDocumentLoader:
         arguments:
             - '@sulu_media.media_manager'
+            - '@App\Gallery\Components\DefaultNavigationMediaUrlLoader'
             - '@api.v1.gallery.logger'
+
+    App\Gallery\Components\DefaultNavigationMediaUrlLoader:
+        arguments:
+            - '@sulu_website.navigation_mapper'
 
     App\Http\ApiHttpClient:
         arguments:

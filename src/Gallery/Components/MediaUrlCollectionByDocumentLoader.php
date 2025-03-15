@@ -1,22 +1,30 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
 use App\Gallery\Exception\MediaUrlNotLoadedException;
+use App\Gallery\MediaUrlCollectionByDocumentLoader as MediaUrlCollectionByDocumentLoaderInterface;
 use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
-use App\Gallery\MediaUrlCollectionByDocumentLoader as MediaUrlCollectionByDocumentLoaderInterface;
+use App\Gallery\Model\RootNavigation;
+use App\Gallery\Model\SubNavigation;
 use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 
 final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlCollectionByDocumentLoaderInterface
 {
+    public const string ROOT_NAVIGATION = 'gallery';
+    public const string SUB_NAVIGATION = 'image_viewer';
+
     public function __construct(
         private MediaManagerInterface $mediaManager,
+        private NavigationMediaUrlLoader $navigationMediaUrlLoader,
         private LoggerInterface $logger
-    ){}
+    ) {
+    }
 
     /**
      * @throws MediaUrlNotLoadedException
@@ -27,9 +35,17 @@ final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlColle
         try {
             $this->logger->info('Start loading mediaUrls with mediaIds and location.');
             $mediaUrls = [];
+            $mediaNavigationUrl = $this->navigationMediaUrlLoader->load(
+                new RootNavigation(self::ROOT_NAVIGATION),
+                new SubNavigation(self::SUB_NAVIGATION),
+                $location
+            );
             foreach ($this->getMediaIds($document) as $mediaId) {
                 $media = $this->mediaManager->getById($mediaId, $location->value);
-                $mediaUrls[] = $media->getUrl();
+                $mediaUrls[] = [
+                    'imageViewerUrl' => $mediaNavigationUrl->value . '?mediaId=' . $mediaId,
+                    'mediaUrl' => $media->getUrl()
+                ];
             }
             $this->logger->info('MediaUrls are successfully loaded.');
 
@@ -50,7 +66,10 @@ final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlColle
     {
         /** @var array<string, array<string, int>>|null $mediaBlock */
         $mediaBlock = $document->getStructure()->getProperty('blocks')->offsetGet(0) ?? [];
-        if (!is_array($mediaBlock) || !array_key_exists('media', $mediaBlock) || !array_key_exists('ids', $mediaBlock['media'])) {
+        if (!is_array($mediaBlock) || !array_key_exists('media', $mediaBlock) || !array_key_exists(
+                'ids',
+                $mediaBlock['media']
+            )) {
             throw MediaUrlNotLoadedException::mediaIdNotFound();
         }
 

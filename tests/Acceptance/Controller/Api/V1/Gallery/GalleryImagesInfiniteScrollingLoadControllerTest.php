@@ -32,7 +32,12 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends AbstractWeb
         $response = $this->client->getResponse();
 
         self::assertEquals(json_encode([
-            'urls' => ['/media/' . $this->media->getId() . '/download/test-image.jpg?v=1']
+            'urls' => [
+                [
+                    'imageViewerUrl' => '/xing-xing-on-camera/image_viewer?mediaId=' . $this->media->getId(),
+                    'mediaUrl' => '/media/' . $this->media->getId() . '/download/test-image.jpg?v=1'
+                ]
+            ]
         ]), $response->getContent());
         self::assertSame(200, $response->getStatusCode());
     }

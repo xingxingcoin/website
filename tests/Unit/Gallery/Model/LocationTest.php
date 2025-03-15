@@ -25,7 +25,7 @@ final class LocationTest extends TestCase
         try {
             new Location($expectedLocationString);
         } catch (EmptyStringException $exception) {
-            self::assertSame('Validation failed for value "" with error: "Value for "" should not be empty."', $exception->getMessage());
+            self::assertSame('Validation failed for value "location" with error: "Value for "location" should not be empty."', $exception->getMessage());
         }
     }
 }
