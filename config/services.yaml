@@ -62,7 +62,7 @@ services:
             - '@pages.home.logger'
     App\Finance\Components\XingFinanceDataByDexScreenerApiLoader:
         arguments:
-            - '@http_client'
+            - '@App\Http\ApiHttpClient'
             - '@pages.home.logger'
 
     pages.home.logging-handler:
@@ -93,6 +93,20 @@ services:
             - 'gallery'
         calls:
             - [ pushHandler, [ '@api.v1.gallery.logging-handler' ] ]
+    http.logging-handler:
+        class: Monolog\Handler\RotatingFileHandler
+        arguments:
+            - '%kernel.logs_dir%/http_%kernel.environment%.log'
+            - 14
+            - '%log_level%'
+            - true
+            - 436
+    http.logger:
+        class: Monolog\Logger
+        arguments:
+            - 'http'
+        calls:
+            - [ pushHandler, [ '@http.logging-handler' ] ]
 
     App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController:
         arguments:
@@ -115,3 +129,9 @@ services:
             - '@sulu_media.media_manager'
             - '@api.v1.gallery.logger'
 
+    App\Http\ApiHttpClient:
+        arguments:
+            - '@App\Json\OpisJsonValidator'
+            - '@http_client'
+            - '@http.logger'
+    App\Json\OpisJsonValidator: ~

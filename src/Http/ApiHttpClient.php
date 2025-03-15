@@ -41,7 +41,8 @@ final readonly class ApiHttpClient implements HttpClientInterface
     {
         $response = $this->httpClient->request($method, $url, $options);
 
-        if (!file_exists(__DIR__ . '/Schema/' . $url . '.json')) {
+        $fileName = str_replace(':', '', str_replace('/', '_', $url));
+        if (!file_exists(__DIR__ . '/Schema/' . $fileName . '.json')) {
             $this->logger->error('JSON schema for for url and method not found.', [
                 'url' => $url,
                 'method' => $method
@@ -51,7 +52,7 @@ final readonly class ApiHttpClient implements HttpClientInterface
 
         $validationResult = $this->jsonValidator->validate(
             new JsonString($response->getContent()),
-            new SchemaPath(__DIR__ . '/Schema/' . $url . '.json'),
+            new SchemaPath(__DIR__ . '/Schema/' . $fileName . '.json'),
             new SchemaId($url . '.json')
         );
         if ($validationResult->hasError()) {

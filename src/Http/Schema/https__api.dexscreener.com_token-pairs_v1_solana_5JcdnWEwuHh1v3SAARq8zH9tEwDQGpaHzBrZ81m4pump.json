@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "chainId": { "type": "string" },
+      "dexId": { "type": "string" },
+      "url": { "type": "string", "format": "uri" },
+      "pairAddress": { "type": "string" },
+      "baseToken": {
+        "type": "object",
+        "properties": {
+          "address": { "type": "string" },
+          "name": { "type": "string" },
+          "symbol": { "type": "string" }
+        },
+        "required": ["address", "name", "symbol"]
+      },
+      "quoteToken": {
+        "type": "object",
+        "properties": {
+          "address": { "type": "string" },
+          "name": { "type": "string" },
+          "symbol": { "type": "string" }
+        },
+        "required": ["address", "name", "symbol"]
+      },
+      "priceNative": { "type": "string", "pattern": "^\\d+(\\.\\d+)?$" },
+      "priceUsd": { "type": "string", "pattern": "^\\d+(\\.\\d+)?$" },
+      "txns": {
+        "type": "object",
+        "properties": {
+          "m5": { "type": "object", "properties": { "buys": { "type": "integer" }, "sells": { "type": "integer" } }, "required": ["buys", "sells"] },
+          "h1": { "type": "object", "properties": { "buys": { "type": "integer" }, "sells": { "type": "integer" } }, "required": ["buys", "sells"] },
+          "h6": { "type": "object", "properties": { "buys": { "type": "integer" }, "sells": { "type": "integer" } }, "required": ["buys", "sells"] },
+          "h24": { "type": "object", "properties": { "buys": { "type": "integer" }, "sells": { "type": "integer" } }, "required": ["buys", "sells"] }
+        },
+        "required": ["m5", "h1", "h6", "h24"]
+      },
+      "volume": {
+        "type": "object",
+        "properties": {
+          "h24": { "type": "number" },
+          "h6": { "type": "number" },
+          "h1": { "type": "number" },
+          "m5": { "type": "number" }
+        },
+        "required": ["h24", "h6", "h1", "m5"]
+      },
+      "priceChange": { "type": "object", "properties": { "h24": { "type": "number" } }, "required": ["h24"] },
+      "liquidity": {
+        "type": "object",
+        "properties": {
+          "usd": { "type": "number" },
+          "base": { "type": "number" },
+          "quote": { "type": "number" }
+        },
+        "required": ["usd", "base", "quote"]
+      },
+      "fdv": { "type": "number" },
+      "marketCap": { "type": "number" },
+      "pairCreatedAt": { "type": "integer" },
+      "info": {
+        "type": "object",
+        "properties": {
+          "imageUrl": { "type": "string", "format": "uri" },
+          "header": { "type": "string", "format": "uri" },
+          "openGraph": { "type": "string", "format": "uri" },
+          "websites": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": { "type": "string" },
+                "url": { "type": "string", "format": "uri" }
+              },
+              "required": ["label", "url"]
+            }
+          },
+          "socials": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": { "type": "string" },
+                "url": { "type": "string", "format": "uri" }
+              },
+              "required": ["type", "url"]
+            }
+          }
+        },
+        "required": ["imageUrl", "header", "openGraph", "websites", "socials"]
+      }
+    },
+    "required": [
+      "chainId", "dexId", "url", "pairAddress", "baseToken", "quoteToken", "priceNative", "priceUsd", "txns", "volume", "priceChange", "liquidity", "fdv", "marketCap", "pairCreatedAt", "info"
+    ]
+  }
+}

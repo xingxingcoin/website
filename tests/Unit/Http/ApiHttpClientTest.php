@@ -38,7 +38,7 @@ final class ApiHttpClientTest extends TestCase
     public function testRequest_is_valid(): void
     {
         $method = 'GET';
-        $url = 'test-valid.com';
+        $url = 'https://test-valid.com';
         $options = ['test'];
 
         $expectedResponseMock = new ResponseMock();
@@ -56,9 +56,9 @@ final class ApiHttpClientTest extends TestCase
         self::assertSame($method, $this->httpClientMock->inputMethod);
         self::assertSame($options, $this->httpClientMock->inputOptions);
         self::assertSame('test', $this->jsonValidatorMock->inputJsonString->value);
-        self::assertSame('test-valid.com.json', $this->jsonValidatorMock->inputSchemaId->value);
+        self::assertSame('https://test-valid.com.json', $this->jsonValidatorMock->inputSchemaId->value);
         self::assertSame(
-            '/var/www/html/src/Http/Schema/test-valid.com.json',
+            '/var/www/html/src/Http/Schema/https__test-valid.com.json',
             $this->jsonValidatorMock->inputSchemaPath->value
         );
         self::assertEquals([], $this->loggerMock->logs);
@@ -102,7 +102,7 @@ final class ApiHttpClientTest extends TestCase
     public function testRequest_with_errors_in_validation_result(): void
     {
         $method = 'GET';
-        $url = 'test-valid.com';
+        $url = 'https://test-valid.com';
         $options = ['test'];
 
         $expectedResponseMock = new ResponseMock();
@@ -126,7 +126,7 @@ final class ApiHttpClientTest extends TestCase
             $this->fail('InvalidHttpJsonResponseSchema was expected to be thrown.');
         } catch (InvalidHttpJsonResponseSchema $exception) {
             self::assertSame(
-                'Validation failed for value "test-valid.com" with error: "Json schema for url "test-valid.com" and method "GET" is invalid."',
+                'Validation failed for value "https://test-valid.com" with error: "Json schema for url "https://test-valid.com" and method "GET" is invalid."',
                 $exception->getMessage()
             );
         }
