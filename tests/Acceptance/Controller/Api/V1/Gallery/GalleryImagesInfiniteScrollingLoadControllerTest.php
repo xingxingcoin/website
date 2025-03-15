@@ -26,7 +26,7 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends AbstractWeb
         $this->generateDocumentTestDataSet($this->media->getId());
         $this->client->request(
             'GET',
-            '/api/v1/gallery/images/0'
+            '/api/v1/gallery/images?counter=0'
         );
 
         $response = $this->client->getResponse();
@@ -46,7 +46,7 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends AbstractWeb
     {
         $this->client->request(
             'GET',
-            '/api/v1/gallery/images/0'
+            '/api/v1/gallery/images?counter=0'
         );
 
         $response = $this->client->getResponse();
@@ -63,7 +63,7 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends AbstractWeb
         $this->generateDocumentTestDataSet($mediaId);
         $this->client->request(
             'GET',
-            '/api/v1/gallery/images/0'
+            '/api/v1/gallery/images?counter=0'
         );
 
         $response = $this->client->getResponse();

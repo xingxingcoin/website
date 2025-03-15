@@ -26,8 +26,7 @@ final readonly class GalleryImagesInfiniteScrollingLoadController
     {
         try {
             $location = new Location($request->getLocale());
-            /** @var int $imageCounterAsInt */
-            $imageCounterAsInt = $request->query->get(self::REQUEST_IMAGE_COUNTER_KEY, 0);
+            $imageCounterAsInt = $request->query->getInt(self::REQUEST_IMAGE_COUNTER_KEY, 0);
             $imageCounter = new ImageCounter($imageCounterAsInt);
             $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($location, $imageCounter);
 

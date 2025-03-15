@@ -22,7 +22,7 @@ paths:
       operationId: load30ImagesByCounterForInfiniteScrolling
       parameters:
         - name: counter
-          in: path
+          in: query
           description: Counter that need to be considered for loading images
           required: true
           schema:

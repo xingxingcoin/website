@@ -5,7 +5,7 @@ controllers:
     type: attribute
 
 App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController:
-    path: /api/v1/gallery/images/{counter}
+    path: /api/v1/gallery/images
     controller: App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController
     methods: GET
 
