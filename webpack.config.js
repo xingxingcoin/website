@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('meme-generator', './assets/website/ts/src/meme-generator/main.ts')
     .addEntry('navigation-audio-player', './assets/website/ts/src/navigation-audio-player/main.ts')
+    .addEntry('gallery-infinite-scrolling', './assets/website/ts/src/gallery-infinite-scrolling/main.ts')
     .addStyleEntry('styles', './assets/website/scss/main.scss')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('gallery-infinite-scrolling') }}
+{% endblock %}
+
 {% block content %}
     <h1 class="title">{{ 'gallery.title'|trans }}</h1>
     {% include 'includes/blocks.html.twig' %}
