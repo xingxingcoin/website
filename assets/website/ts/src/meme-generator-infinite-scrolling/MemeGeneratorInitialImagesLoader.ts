@@ -3,7 +3,7 @@ interface MediaUrl {
     mediaUrl: string
 }
 
-interface GalleryInitialLoadImagesResponse {
+interface MemeGeneratorInitialLoadImagesResponse {
     urls: MediaUrl[]
 }
 
@@ -20,14 +20,13 @@ export default class MemeGeneratorInitialImagesLoader {
 
     private initEventListener(): void
     {
-        this.displayLoadingIndicator();
         document.addEventListener('DOMContentLoaded', (): void => {
             let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
             ajaxHttpClient.open(MemeGeneratorInitialImagesLoader.METHOD, MemeGeneratorInitialImagesLoader.URL, true);
             ajaxHttpClient.onreadystatechange = (): void => {
                 if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
-                    const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
-                    this.displayImagesInGallery(jsonResponse.urls);
+                    const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
+                    this.displayImagesInMemeGenerator(jsonResponse.urls);
                 }
             };
 
@@ -35,9 +34,9 @@ export default class MemeGeneratorInitialImagesLoader {
         });
     }
 
-    private displayImagesInGallery(jsonResponse: MediaUrl[]): void
+    private displayImagesInMemeGenerator(jsonResponse: MediaUrl[]): void
     {
-        let galleryContainer = document.querySelector('.xing-media-container');
+        let memeGeneratorContainer = document.querySelector('.xing-media-container');
         jsonResponse.forEach((mediaUrl: MediaUrl): void => {
             const anchor: HTMLAnchorElement = document.createElement('a');
             anchor.href = mediaUrl.imageViewerUrl;
@@ -51,14 +50,10 @@ export default class MemeGeneratorInitialImagesLoader {
 
             div.appendChild(img);
             anchor.appendChild(div);
-            galleryContainer.appendChild(anchor);
+            memeGeneratorContainer.appendChild(anchor);
 
             this.hideLoadingIndicator();
         });
-    }
-
-    private displayLoadingIndicator(): void {
-        this.loadingIndicator.style.display = 'flex';
     }
 
     private hideLoadingIndicator(): void {

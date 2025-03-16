@@ -20,7 +20,6 @@ export default class GalleryInitialImagesLoader {
 
     private initEventListener(): void
     {
-        this.displayLoadingIndicator();
         document.addEventListener('DOMContentLoaded', (): void => {
             let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
             ajaxHttpClient.open(GalleryInitialImagesLoader.METHOD, GalleryInitialImagesLoader.URL, true);
@@ -55,10 +54,6 @@ export default class GalleryInitialImagesLoader {
 
             this.hideLoadingIndicator();
         });
-    }
-
-    private displayLoadingIndicator(): void {
-        this.loadingIndicator.style.display = 'flex';
     }
 
     private hideLoadingIndicator(): void {

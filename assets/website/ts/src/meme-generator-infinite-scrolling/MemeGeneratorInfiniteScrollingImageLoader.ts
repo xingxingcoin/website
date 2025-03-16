@@ -3,7 +3,7 @@ interface MediaUrl {
     mediaUrl: string
 }
 
-interface GalleryInitialLoadImagesResponse {
+interface MemeGeneratorInitialLoadImagesResponse {
     urls: MediaUrl[]
 }
 
@@ -44,8 +44,8 @@ export default class MemeGeneratorInfiniteScrollingImageLoader {
         ajaxHttpClient.onreadystatechange = (): void => {
             if (ajaxHttpClient.readyState === 4) {
                 if (ajaxHttpClient.status === 200) {
-                    const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
-                    this.displayImagesInGallery(jsonResponse.urls);
+                    const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
+                    this.displayImagesInMemeGenerator(jsonResponse.urls);
                     if (jsonResponse.urls.length > 0) {
                         this.imageCounter++;
                     }
@@ -55,9 +55,9 @@ export default class MemeGeneratorInfiniteScrollingImageLoader {
         };
         ajaxHttpClient.send();
     }
-    private displayImagesInGallery(jsonResponse: MediaUrl[]): void
+    private displayImagesInMemeGenerator(jsonResponse: MediaUrl[]): void
     {
-        let galleryContainer = document.querySelector('.xing-media-container');
+        let memeGeneratorContainer = document.querySelector('.xing-media-container');
         jsonResponse.forEach((mediaUrl: MediaUrl): void => {
             const anchor: HTMLAnchorElement = document.createElement('a');
             anchor.href = mediaUrl.imageViewerUrl;
@@ -71,7 +71,7 @@ export default class MemeGeneratorInfiniteScrollingImageLoader {
 
             div.appendChild(img);
             anchor.appendChild(div);
-            galleryContainer.appendChild(anchor);
+            memeGeneratorContainer.appendChild(anchor);
         });
     }
 }
