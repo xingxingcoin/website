@@ -2,18 +2,11 @@
   "navigation.title": "$XING Meme Tool \uD83D\uDE48",
   "footer.title": "Xing Xing in den Sozialen Netzwerken",
   "footer.buy-xing.button": "Kaufe $XING",
-  "xing_information.title": "XING XING Meme Tool \uD83D\uDC12",
-  "xing_information.description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
   "xing_information.market_cap": "Market cap: ",
   "xing_information.market_cap.title": "1 Arm - 1 Milliarden",
   "xing_information.market_cap.left_to_billion": "Verbleidend bis 1 Mrd.: ",
   "xing_information.price_change.title": "Xing Xing Chart",
   "xing_information.price_change": "Performanz: ",
-  "gallery.title": "Xing Xing auf Kamera",
   "image_viewer.download-button.text": "Download",
-  "meme_generator.title": "Meme Generator",
-  "meme_generator.description": "Wähle ein Meme aus...",
-  "meme_generator.new_meme.title": "Neues Meme",
-  "meme_generator.new_meme.description": "Viel Spaß! \uD83D\uDC35",
   "meme_generator.new_meme.download": "Download"
 }

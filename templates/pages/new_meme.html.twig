@@ -17,8 +17,8 @@
         {{ get_image(media|default, 'sulu-200x200') }}
     {% endset %}
 
-    <h1 class="title">{{ 'meme_generator.new_meme.title'|trans }}</h1>
-    <h1 class="description">{{ 'meme_generator.new_meme.description'|trans }}</h1>
+    <h1 class="title">{{ content.title }}</h1>
+    <div class="description">{{ content.description|raw }}</div>
 
     <div class="new-meme-button-container">
         <input id="background-image-selector" type="file" accept="image/*" hidden>

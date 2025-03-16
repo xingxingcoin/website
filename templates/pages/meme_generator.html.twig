@@ -8,8 +8,8 @@
 
 {% block content %}
     <div>
-        <h1 class="title">{{ 'meme_generator.title'|trans }}</h1>
-        <p class="description">{{ 'meme_generator.description'|trans }}</p>
+        <h1 class="title">{{ content.title }}</h1>
+        <div class="description">{{ content.description|raw }}</div>
     </div>
 
     {% include 'includes/blocks.html.twig' %}
