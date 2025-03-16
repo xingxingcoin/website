@@ -1,27 +1,3 @@
-{% set newMemeNavigation = null %}
-{% for navigation in sulu_navigation_root_tree() %}
-    {% if navigation.template == 'meme_generator' %}
-        {% for subNavigation in sulu_navigation_tree(navigation.id) %}
-            {% if subNavigation['template'] == 'new_meme' %}
-                {% set newMemeNavigation = subNavigation %}
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-{% endfor %}
-
 <div class="xing-media-container">
-    {% set mediaCounter = 1 %}
-    {% for media in content['media'] %}
-        {% set image %}
-            {% set url = newMemeNavigation['url'] ~ '?mediaId=' ~ media.entity.id %}
-            <a href="{{ url }}">
-                <div class="xing-image-container">
-                    {{ get_image(media|default, 'sulu-200x200') }}
-                </div>
-            </a>
-        {% endset %}
-
-        {{ image }}
-        {% set mediaCounter = mediaCounter + 1 %}
-    {% endfor %}
+    <div class="lds-dual-ring"></div>
 </div>

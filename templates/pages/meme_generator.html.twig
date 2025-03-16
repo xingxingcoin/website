@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('meme-generator-infinite-scrolling') }}
+{% endblock %}
+
+
 {% block content %}
     <div>
         <h1 class="title">{{ 'meme_generator.title'|trans }}</h1>
