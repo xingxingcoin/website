@@ -43,13 +43,13 @@
             <tag name="sulu.rlp"/>
         </property>
 
-        <property name="header_audio" type="single_media_selection" mandatory="true">
+        <property name="header_music" type="single_snippet_selection" mandatory="true">
             <meta>
-                <title lang="en">Header audio</title>
+                <title lang="en">Header music</title>
                 <title lang="de">Header Musik</title>
             </meta>
             <params>
-                <param name="types" value="audio"/>
+                <param name="default" value="xing_music"/>
             </params>
         </property>
 

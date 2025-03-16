@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>xing_music</key>
+
+    <meta>
+        <title lang="en">Xing Xing music</title>
+        <title lang="de">Xing Xing Musik</title>
+    </meta>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+
+            <tag name="sulu.node.name"/>
+        </property>
+
+        <property name="xing_music" type="single_media_selection" mandatory="true">
+            <meta>
+                <title lang="en">Header audio</title>
+                <title lang="de">Header Musik</title>
+            </meta>
+            <params>
+                <param name="types" value="audio"/>
+            </params>
+        </property>
+    </properties>
+</template>
