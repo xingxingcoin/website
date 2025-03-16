@@ -7,6 +7,8 @@ namespace App\Gallery;
 use App\Gallery\Exception\MediaUrlNotLoadedException;
 use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
+use App\Gallery\Model\RootNavigation;
+use App\Gallery\Model\SubNavigation;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 
 interface MediaUrlCollectionByDocumentLoader
@@ -14,5 +16,5 @@ interface MediaUrlCollectionByDocumentLoader
     /**
      * @throws MediaUrlNotLoadedException
      */
-    public function load(BasePageDocument $document, Location $location): MediaUrlCollection;
+    public function load(BasePageDocument $document, Location $location, RootNavigation $rootNavigation, SubNavigation $subNavigation): MediaUrlCollection;
 }

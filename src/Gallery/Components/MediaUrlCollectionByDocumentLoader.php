@@ -16,9 +16,6 @@ use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 
 final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlCollectionByDocumentLoaderInterface
 {
-    public const string ROOT_NAVIGATION = 'gallery';
-    public const string SUB_NAVIGATION = 'image_viewer';
-
     public function __construct(
         private MediaManagerInterface $mediaManager,
         private NavigationMediaUrlLoader $navigationMediaUrlLoader,
@@ -30,14 +27,18 @@ final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlColle
      * @throws MediaUrlNotLoadedException
      */
     #[\Override]
-    public function load(BasePageDocument $document, Location $location): MediaUrlCollection
-    {
+    public function load(
+        BasePageDocument $document,
+        Location $location,
+        RootNavigation $rootNavigation,
+        SubNavigation $subNavigation
+    ): MediaUrlCollection {
         try {
             $this->logger->info('Start loading mediaUrls with mediaIds and location.');
             $mediaUrls = [];
             $mediaNavigationUrl = $this->navigationMediaUrlLoader->load(
-                new RootNavigation(self::ROOT_NAVIGATION),
-                new SubNavigation(self::SUB_NAVIGATION),
+                $rootNavigation,
+                $subNavigation,
                 $location
             );
             foreach ($this->getMediaIds($document) as $mediaId) {

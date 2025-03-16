@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Gallery;
 
-use App\Controller\Api\V1\Gallery\GalleryImagesLoadHandler as GalleryImagesLoadHandlerInterface;
+use App\Controller\Api\V1\Gallery\MemeGeneratorImagesLoadHandler as MemeGeneratorImagesLoadHandlerInterface;
 use App\Gallery\Exception\MediaUrlNotLoadedException;
 use App\Gallery\Exception\PageDocumentNotLoadedException;
 use App\Gallery\Model\ImageCounter;
@@ -14,13 +14,13 @@ use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
 use Sulu\Component\DocumentManager\PathBuilder;
 
-final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandlerInterface
+final readonly class MemeGeneratorImagesLoadHandler implements MemeGeneratorImagesLoadHandlerInterface
 {
-    public const string PATH = 'xing-xing-on-camera';
+    public const string PATH = 'meme-generator';
     public const int NUMBER_OF_PROVIDED_IMAGES = 30;
     public const int NEXT_IMAGE_COUNTER = 1;
-    public const string ROOT_NAVIGATION = 'gallery';
-    public const string SUB_NAVIGATION = 'image_viewer';
+    public const string ROOT_NAVIGATION = 'meme_generator';
+    public const string SUB_NAVIGATION = 'new_meme';
 
     public function __construct(
         private PathBuilder $pathBuilder,
@@ -38,7 +38,12 @@ final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandle
     {
         $path = $this->pathBuilder->build(['%base%', 'website', '%content%', self::PATH]);
         $document = $this->documentByPathLoader->load($path);
-        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentConverter->load($document, $location, new RootNavigation(self::ROOT_NAVIGATION), new SubNavigation(self::SUB_NAVIGATION));
+        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentConverter->load(
+            $document,
+            $location,
+            new RootNavigation(self::ROOT_NAVIGATION),
+            new SubNavigation(self::SUB_NAVIGATION)
+        );
         $mediaUrlCollectionForCounter = [];
         $nextImageIndex = ($imageCounter->value + self::NEXT_IMAGE_COUNTER) * self::NUMBER_OF_PROVIDED_IMAGES;
         for ($currentImageIndex = $imageCounter->value * self::NUMBER_OF_PROVIDED_IMAGES; $currentImageIndex < $nextImageIndex; $currentImageIndex++) {

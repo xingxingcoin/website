@@ -9,6 +9,11 @@ App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController:
     controller: App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController
     methods: GET
 
+App\Controller\Api\V1\Gallery\MemeGeneratorImagesInfiniteScrollingLoadController:
+    path: /api/v1/meme-generator/images
+    controller: App\Controller\Api\V1\Gallery\MemeGeneratorImagesInfiniteScrollingLoadController
+    methods: GET
+
 #static:
 #    path: /static-route
 #    controller: App\Controller\DefaultController::index

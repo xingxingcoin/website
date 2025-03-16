@@ -13,12 +13,51 @@ tags:
   - name: gallery
     description: Pictures of Xing Xing
 paths:
-  /api/v1/gallery/images/{counter}:
+  /api/v1/gallery/images:
     get:
       tags:
         - gallery
       summary: Load up to 30 images for infinite scrolling
       description: Load up to 30 images for gallery by counter for infinite scrolling
+      operationId: load30ImagesByCounterForInfiniteScrolling
+      parameters:
+        - name: counter
+          in: query
+          description: Counter that need to be considered for loading images
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MediaUrls'
+        '400':
+          description: bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest'
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalServerError'
+  /api/v1/meme-generator/images:
+    get:
+      tags:
+        - meme-generator
+      summary: Load up to 30 images for infinite scrolling
+      description: Load up to 30 images for meme-generator by counter for infinite scrolling
       operationId: load30ImagesByCounterForInfiniteScrolling
       parameters:
         - name: counter

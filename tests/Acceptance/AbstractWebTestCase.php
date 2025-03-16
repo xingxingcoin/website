@@ -17,8 +17,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 abstract class AbstractWebTestCase extends SuluTestCase
 {
-    private const string BASE_PATH = '/cmf/website/contents/xing-xing-on-camera';
-
     public KernelBrowser $client;
     public Media $media;
 
@@ -29,7 +27,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $this->purgeDatabase();
     }
 
-    protected function generateDocumentTestDataSet(int $mediaId): void
+    protected function generateGalleryDocumentTestDataSet(int $mediaId): void
     {
         $options = [
             'locales' => ['en'],
@@ -70,10 +68,10 @@ abstract class AbstractWebTestCase extends SuluTestCase
 
         foreach ($options['locales'] as $locale) {
             $manager->persist($document, $locale, [
-                'path' => self::BASE_PATH
+                'path' => '/cmf/website/contents/xing-xing-on-camera'
             ]);
             $manager->publish($document, $locale, [
-                'path' => self::BASE_PATH
+                'path' => '/cmf/website/contents/xing-xing-on-camera'
             ]);
         }
 
@@ -83,7 +81,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document = $manager->create('page');
         $document->setTitle('Test');
         $document->setStructureType('image_viewer');
-        $document->setResourceSegment('/xing-xing-on-camera/image_viewer');
+        $document->setResourceSegment('/xing-xing-on-camera/image-viewer');
         $document->setLocale('en');
         $document->getStructure()->bind([
             'xing_header_audio' => 'default-audio.mp3',
@@ -99,6 +97,82 @@ abstract class AbstractWebTestCase extends SuluTestCase
             ]);
             $manager->publish($document, $locale, [
                 'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer'
+            ]);
+        }
+
+        $manager->flush();
+    }
+
+    protected function generateMemeGeneratorDocumentTestDataSet(int $mediaId): void
+    {
+        $options = [
+            'locales' => ['en'],
+        ];
+
+        $manager = $this->getDocumentManager();
+        /** @var HomeDocument $document */
+        $document = $manager->create('page');
+        $document->setTitle('Test');
+        $document->setStructureType('meme_generator');
+        $document->setResourceSegment('/meme-generator');
+        $document->setLocale('en');
+        $document->getStructure()->bind([
+            'xing_header_audio' => 'default-audio.mp3',
+            'twitter_logo' => 'test_twitter_logo.png',
+            'dexscreener_logo' => 'test_dexscreener_logo.png',
+            'telegram_logo' => 'test_telegram_logo.png',
+            'tiktok_logo' => 'test_tiktok_logo.png',
+            'blocks' => [
+                [
+                    'type' => 'xing_meme_generator',
+                    'media' => [
+                        'ids' => [
+                            $mediaId
+                        ]
+                    ]
+                ],
+                [
+                    'type' => 'xing_meme_generator',
+                    'media' => [
+                        'ids' => [
+                            $mediaId
+                        ]
+                    ]
+                ]
+            ]
+        ]);
+
+        foreach ($options['locales'] as $locale) {
+            $manager->persist($document, $locale, [
+                'path' => '/cmf/website/contents/meme-generator'
+            ]);
+            $manager->publish($document, $locale, [
+                'path' => '/cmf/website/contents/meme-generator'
+            ]);
+        }
+
+        $manager->flush();
+
+        /** @var HomeDocument $document */
+        $document = $manager->create('page');
+        $document->setTitle('Test');
+        $document->setStructureType('new_meme');
+        $document->setResourceSegment('/meme-generator/new-meme');
+        $document->setLocale('en');
+        $document->getStructure()->bind([
+            'xing_header_audio' => 'default-audio.mp3',
+            'twitter_logo' => 'test_twitter_logo.png',
+            'dexscreener_logo' => 'test_dexscreener_logo.png',
+            'telegram_logo' => 'test_telegram_logo.png',
+            'tiktok_logo' => 'test_tiktok_logo.png'
+        ]);
+
+        foreach ($options['locales'] as $locale) {
+            $manager->persist($document, $locale, [
+                'path' => '/cmf/website/contents/meme-generator/new-meme'
+            ]);
+            $manager->publish($document, $locale, [
+                'path' => '/cmf/website/contents/meme-generator/new-meme'
             ]);
         }
 

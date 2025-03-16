@@ -114,6 +114,17 @@ services:
             - '@api.v1.gallery.logger'
         tags:
             - { name: 'controller.service_arguments' }
+    App\Controller\Api\V1\Gallery\MemeGeneratorImagesInfiniteScrollingLoadController:
+        arguments:
+            - '@App\Gallery\MemeGeneratorImagesLoadHandler'
+            - '@api.v1.gallery.logger'
+        tags:
+            - { name: 'controller.service_arguments' }
+    App\Gallery\MemeGeneratorImagesLoadHandler:
+        arguments:
+            - '@sulu_document_manager.path_builder'
+            - '@App\Gallery\Components\DocumentByPathLoader'
+            - '@App\Gallery\Components\MediaUrlCollectionByDocumentLoader'
     App\Gallery\GalleryImagesLoadHandler:
         arguments:
             - '@sulu_document_manager.path_builder'

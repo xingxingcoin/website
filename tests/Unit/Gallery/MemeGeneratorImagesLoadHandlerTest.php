@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery;
 
-use App\Gallery\GalleryImagesLoadHandler;
+use App\Gallery\MemeGeneratorImagesLoadHandler;
 use App\Gallery\Model\ImageCounter;
 use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
@@ -18,23 +18,23 @@ use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\PathBuilder;
 
-#[CoversClass(GalleryImagesLoadHandler::class)]
+#[CoversClass(MemeGeneratorImagesLoadHandler::class)]
 #[CoversClass(Location::class)]
 #[CoversClass(RootNavigation::class)]
 #[CoversClass(SubNavigation::class)]
-final class GalleryImagesLoadHandlerTest extends CustomTestCase
+final class MemeGeneratorImagesLoadHandlerTest extends CustomTestCase
 {
     private MockObject $pathBuilderMock;
     private DocumentByPathLoaderMock $documentByPathLoaderMock;
     private MediaUrlCollectionByDocumentLoaderMock $mediaUrlCollectionByDocumentConverterMock;
-    private GalleryImagesLoadHandler $galleryImagesLoadHandler;
+    private MemeGeneratorImagesLoadHandler $memeGeneratorImagesLoadHandler;
 
     protected function setUp(): void
     {
         $this->pathBuilderMock = $this->getMock(PathBuilder::class);
         $this->documentByPathLoaderMock = new DocumentByPathLoaderMock();
         $this->mediaUrlCollectionByDocumentConverterMock = new MediaUrlCollectionByDocumentLoaderMock();
-        $this->galleryImagesLoadHandler = new GalleryImagesLoadHandler(
+        $this->memeGeneratorImagesLoadHandler = new MemeGeneratorImagesLoadHandler(
             $this->pathBuilderMock,
             $this->documentByPathLoaderMock,
             $this->mediaUrlCollectionByDocumentConverterMock
@@ -48,14 +48,14 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $expectedPath = 'testPath';
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
-            ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
+            ->with(['%base%', 'website', '%content%', MemeGeneratorImagesLoadHandler::PATH])
             ->willReturn($expectedPath);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaUrlCollection = new MediaUrlCollection(['testUrl', 'testUrl']);
         $this->mediaUrlCollectionByDocumentConverterMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
 
-        $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
+        $mediaUrlCollection = $this->memeGeneratorImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
         self::assertEquals($expectedMediaUrlCollection->data, $mediaUrlCollection->data);
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
@@ -70,7 +70,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $expectedPath = 'testPath';
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
-            ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
+            ->with(['%base%', 'website', '%content%', MemeGeneratorImagesLoadHandler::PATH])
             ->willReturn($expectedPath);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
@@ -109,7 +109,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
         $this->mediaUrlCollectionByDocumentConverterMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
 
-        $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
+        $mediaUrlCollection = $this->memeGeneratorImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
         self::assertEquals($expectedMediaUrlCollection->data, $mediaUrlCollection->data);
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
@@ -124,7 +124,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $expectedPath = 'testPath';
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
-            ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
+            ->with(['%base%', 'website', '%content%', MemeGeneratorImagesLoadHandler::PATH])
             ->willReturn($expectedPath);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
@@ -164,7 +164,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
         $this->mediaUrlCollectionByDocumentConverterMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
 
-        $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
+        $mediaUrlCollection = $this->memeGeneratorImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
         $expectedMediaUrlGroups = [
             'testUrl',
@@ -211,14 +211,14 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $expectedPath = 'testPath';
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
-            ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
+            ->with(['%base%', 'website', '%content%', MemeGeneratorImagesLoadHandler::PATH])
             ->willReturn($expectedPath);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaUrlCollection = new MediaUrlCollection([]);
         $this->mediaUrlCollectionByDocumentConverterMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
 
-        $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
+        $mediaUrlCollection = $this->memeGeneratorImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
         self::assertEquals($expectedMediaUrlCollection->data, $mediaUrlCollection->data);
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
@@ -233,7 +233,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $expectedPath = 'testPath';
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
-            ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
+            ->with(['%base%', 'website', '%content%', MemeGeneratorImagesLoadHandler::PATH])
             ->willReturn($expectedPath);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
@@ -245,7 +245,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
         $this->mediaUrlCollectionByDocumentConverterMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
 
-        $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
+        $mediaUrlCollection = $this->memeGeneratorImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
         $expectedMediaUrlGroups = [];
         self::assertEquals($expectedMediaUrlGroups, $mediaUrlCollection->data);
