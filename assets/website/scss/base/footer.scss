@@ -15,7 +15,8 @@
   border-color: $white;
   padding: 0.5rem;
   transition: all 0.3s ease;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     background-color: $black;
     cursor:pointer;
   }
@@ -49,7 +50,8 @@
   border-color: $white;
   background-color: $white;
   transition: all 0.3s ease;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     color: $white;
     background-color: $black;
   }

@@ -18,7 +18,8 @@
   height: 200px;
   width: 200px;
   overflow: hidden;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     transform: scale(1.1);
   }
   @media (max-width: 768px) {

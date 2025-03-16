@@ -23,7 +23,8 @@
   flex: 1;
   font-size: 2rem;
   color: $black;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     color: $white;
   }
 }
@@ -38,7 +39,8 @@
   border-width: 0.2rem;
   background-color: $white;
   transition: all 0.3s ease;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     color: $white;
     background-color: $black;
   }
@@ -82,7 +84,8 @@ body {
   text-align: center;
   padding: 1rem 1rem;
   animation: scaleButton 3s infinite alternate;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     color: $white;
     background-color: $black;
     cursor:pointer;

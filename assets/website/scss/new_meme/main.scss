@@ -16,14 +16,16 @@
 
 .new-meme-background-selector-button {
   background-color: $brown;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     background-color: darken($brown, 15%);
   }
 }
 
 .new-meme-download-button {
   background-color: $jungleGreen;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     background-color: darken($jungleGreen, 15%);
   }
 }

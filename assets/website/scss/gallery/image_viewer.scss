@@ -18,7 +18,8 @@
   width: 200px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     transform: scale(1.1);
   }
   @media (max-width: 768px) {
@@ -58,7 +59,8 @@
   color: $black;
   background-color: $white;
   transition: all 0.3s ease;
-  &:hover {
+  &:hover, &:active {
+    user-select: none;
     color: $white;
     background-color: $black;
   }
