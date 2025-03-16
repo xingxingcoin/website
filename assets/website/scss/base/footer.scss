@@ -17,6 +17,7 @@
   transition: all 0.3s ease;
   &:hover {
     background-color: $black;
+    cursor:pointer;
   }
 }
 
