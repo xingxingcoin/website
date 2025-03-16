@@ -25,7 +25,7 @@
             <div class="navigation-container">
                 <a class="navigation-text navigation-home-link-text" href="{{ sulu_content_root_path() }}">{{ 'navigation.title'|trans }}</a>
                 <audio id="navigation-audio-player">
-                    <source src="{{ content.xing_header_audio.url }}" type="audio/mpeg">
+                    <source src="{{ content.header_audio.url }}" type="audio/mpeg">
                 </audio>
 
                 <button class="navigation-audio-player-button">
@@ -54,24 +54,24 @@
             <p class="footer-title">{{ 'footer.title'|trans }}</p>
             <div class="footer-links-container">
                 <div class="footer-links">
-                    <a href="https://x.com/XingXingonX" target="_blank">
-                        {{ get_image(content.twitter_logo|default, 'sulu-40x40') }}
+                    <a href="{{ content.footer_social_media.footer_twitter_link }}" target="_blank">
+                        {{ get_image(content.footer_social_media.footer_twitter_logo|default, 'sulu-40x40') }}
                     </a>
                 </div>
                 <div class="footer-links">
-                    <a href="https://dexscreener.com/solana/2puvkhdeq5uprxrowunggfnvpfun7pdommgqwxyq37hv" target="_blank">
+                    <a href="{{ content.footer_social_media.footer_dexscreener_link }}" target="_blank">
 
-                        {{ get_image(content.dexscreener_logo|default, 'sulu-40x40') }}
+                        {{ get_image(content.footer_social_media.footer_dexscreener_logo|default, 'sulu-40x40') }}
                     </a>
                 </div>
                 <div class="footer-links">
-                    <a href="https://t.me/xing_xing_cto" target="_blank">
-                        {{ get_image(content.telegram_logo|default, 'sulu-40x40') }}
+                    <a href="{{ content.footer_social_media.footer_telegram_link }}" target="_blank">
+                        {{ get_image(content.footer_social_media.footer_telegram_logo|default, 'sulu-40x40') }}
                     </a>
                 </div>
                 <div class="footer-links">
-                    <a href="https://www.tiktok.com/@xingxingonsol" target="_blank">
-                        {{ get_image(content.tiktok_logo|default, 'sulu-40x40') }}
+                    <a href="{{ content.footer_social_media.footer_tiktok_link }}" target="_blank">
+                        {{ get_image(content.footer_social_media.footer_tiktok_logo|default, 'sulu-40x40') }}
                     </a>
                 </div>
             </div>

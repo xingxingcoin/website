@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>social_media</key>
+
+    <meta>
+        <title lang="en">Social media</title>
+        <title lang="de">Social Media</title>
+    </meta>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+
+            <tag name="sulu.node.name"/>
+        </property>
+
+        <property name="footer_twitter_logo" type="single_media_selection" colspan="3" mandatory="true">
+            <meta>
+                <title lang="en">Twitter logo</title>
+                <title lang="de">Twitter Logo</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+        <property name="footer_twitter_link" type="url" colspan="9" mandatory="true">
+            <meta>
+                <title lang="en">Twitter link</title>
+                <title lang="de">Twitter Link</title>
+            </meta>
+            <params>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </params>
+        </property>
+        <property name="footer_dexscreener_logo" type="single_media_selection" colspan="3" mandatory="true">
+            <meta>
+                <title lang="en">Dexscreener logo</title>
+                <title lang="de">Dexscreener Logo</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+        <property name="footer_dexscreener_link" type="url" colspan="9" mandatory="true">
+            <meta>
+                <title lang="en">Dexscreener link</title>
+                <title lang="de">Dexscreener Link</title>
+            </meta>
+            <params>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </params>
+        </property>
+        <property name="footer_telegram_logo" type="single_media_selection" colspan="3" mandatory="true">
+            <meta>
+                <title lang="en">Telegram logo</title>
+                <title lang="de">Telegram Logo</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+        <property name="footer_telegram_link" type="url" colspan="9" mandatory="true">
+            <meta>
+                <title lang="en">Telegram link</title>
+                <title lang="de">Telegram Link</title>
+            </meta>
+            <params>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </params>
+        </property>
+        <property name="footer_tiktok_logo" type="single_media_selection" colspan="3" mandatory="true">
+            <meta>
+                <title lang="en">TikTok logo</title>
+                <title lang="de">TikTok Logo</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+        <property name="footer_tiktok_link" type="url" colspan="9" mandatory="true">
+            <meta>
+                <title lang="en">TikTok link</title>
+                <title lang="de">TikTok Link</title>
+            </meta>
+            <params>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </params>
+        </property>
+    </properties>
+</template>
