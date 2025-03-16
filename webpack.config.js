@@ -20,7 +20,7 @@ Encore
      * Each entry will result in one JavaScript file (e.g. main.ts)
      * and one CSS file (e.g. main.scss) if your JavaScript imports CSS.
      */
-    .addEntry('meme-generator', './assets/website/ts/src/meme-generator/main.ts')
+    .addEntry('new-meme', './assets/website/ts/src/new-meme/main.ts')
     .addEntry('navigation-audio-player', './assets/website/ts/src/navigation-audio-player/main.ts')
     .addEntry('gallery-infinite-scrolling', './assets/website/ts/src/gallery-infinite-scrolling/main.ts')
     .addStyleEntry('styles', './assets/website/scss/main.scss')
