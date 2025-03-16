@@ -33,7 +33,7 @@
                         <path d="M8 5v14l11-7z"/>
                     </svg>
                 </button>
-                <div>
+                <div class="navigation-sublinks-text-container">
                     {% for item in sulu_navigation_root_tree() %}
                         <a class="navigation-text navigation-sublinks-text" href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
                            title="{{ item.title }}">{{ item.title }}</a>
