@@ -48,8 +48,6 @@ export default class MemeGeneratorInitialImagesLoader {
             const img: HTMLImageElement = document.createElement('img');
             img.src = mediaUrl.mediaUrl;
             img.alt = 'Image of Xing';
-            img.style.width = '200px';
-            img.style.height = '200px';
 
             div.appendChild(img);
             anchor.appendChild(div);

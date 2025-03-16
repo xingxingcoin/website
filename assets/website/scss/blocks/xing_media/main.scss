@@ -30,4 +30,10 @@
     height: 100px;
     width: 100px;
   }
+  @media (min-width: 768px) {
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
 }
