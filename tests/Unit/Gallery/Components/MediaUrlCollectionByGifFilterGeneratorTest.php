@@ -46,12 +46,12 @@ final class MediaUrlCollectionByGifFilterGeneratorTest extends TestCase
 
         $expectedMediaUrlCollection = new MediaUrlCollection([
             [
-                'testImageViewerUrl',
-                'testMediaUrl'
+                MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY  =>'testImageViewerUrl',
+                MediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl'
             ],
             [
-                'testImageViewerUrl3',
-                'testMediaUrl3'
+                MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY  =>'testImageViewerUrl3',
+                MediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3'
             ]
         ]);
         self::assertEquals($expectedMediaUrlCollection, $mediaUrlCollection);

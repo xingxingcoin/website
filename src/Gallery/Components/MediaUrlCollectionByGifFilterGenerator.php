@@ -17,7 +17,10 @@ final readonly class MediaUrlCollectionByGifFilterGenerator implements MediaUrlC
         $mediaUrlData = [];
         foreach ($mediaCollection as $mediaData) {
             if ($mediaData[MediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_GIF) {
-                $mediaUrlData[] = [$mediaData[MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY], $mediaData[MediaCollectionByDocumentLoader::MEDIA_URL_KEY]];
+                $mediaUrlData[] = [
+                    MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
+                    MediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[MediaCollectionByDocumentLoader::MEDIA_URL_KEY]
+                ];
             }
         }
 
