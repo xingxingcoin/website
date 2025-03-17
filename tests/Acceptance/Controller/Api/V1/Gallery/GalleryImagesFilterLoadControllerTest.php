@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Acceptance\Controller\Api\V1\Gallery;
+namespace App\Tests\Acceptance\Controller\Api\V1\Gallery;
 
 use App\Tests\Acceptance\AbstractWebTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
