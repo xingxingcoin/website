@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('xing-address') }}
+{% endblock %}
+
 {% block content %}
     <div>
         <h1 class="title">{{ content.title }}</h1>

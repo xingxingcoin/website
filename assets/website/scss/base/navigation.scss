@@ -26,6 +26,7 @@
   border-bottom-style: solid;
   border-radius: .375rem;
   text-align: center;
+  transition: all 0.3s ease;
   &:hover, &:active {
     user-select: none;
     color: $white;

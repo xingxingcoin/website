@@ -10,5 +10,6 @@
   "xing_media.gifs-button.text": "Gifs",
   "xing_media.images-button.text": "Bilder",
   "image_viewer.download-button.text": "Download",
-  "meme_generator.new_meme.download": "Download"
+  "meme_generator.new_meme.download": "Download",
+  "xing_address.address.label.text": "Adresse:"
 }
