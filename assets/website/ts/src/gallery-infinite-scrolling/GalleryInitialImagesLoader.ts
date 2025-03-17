@@ -12,14 +12,19 @@ export default class GalleryInitialImagesLoader {
     static readonly METHOD: string = 'GET';
 
     private loadingIndicator: HTMLElement;
+    private filterButtons: NodeList;
+    private galleryContainer: Element;
 
     constructor() {
         this.loadingIndicator = document.querySelector('.lds-dual-ring');
+        this.filterButtons = document.querySelectorAll('.xing-media-filter-button-disabled');
+        this.galleryContainer = document.querySelector('.xing-media-container');
         this.initEventListener();
     }
 
     private initEventListener(): void
     {
+        this.displayLoadingIndicator();
         document.addEventListener('DOMContentLoaded', (): void => {
             let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
             ajaxHttpClient.open(GalleryInitialImagesLoader.METHOD, GalleryInitialImagesLoader.URL, true);
@@ -36,7 +41,6 @@ export default class GalleryInitialImagesLoader {
 
     private displayImagesInGallery(jsonResponse: MediaUrl[]): void
     {
-        let galleryContainer = document.querySelector('.xing-media-container');
         jsonResponse.forEach((mediaUrl: MediaUrl): void => {
             const anchor: HTMLAnchorElement = document.createElement('a');
             anchor.href = mediaUrl.imageViewerUrl;
@@ -50,13 +54,25 @@ export default class GalleryInitialImagesLoader {
 
             div.appendChild(img);
             anchor.appendChild(div);
-            galleryContainer.appendChild(anchor);
+            this.galleryContainer.appendChild(anchor);
 
             this.hideLoadingIndicator();
+            this.enableFilterButtons();
         });
+    }
+
+    private displayLoadingIndicator(): void {
+        this.loadingIndicator.style.display = 'flex';
     }
 
     private hideLoadingIndicator(): void {
         this.loadingIndicator.style.display = 'none';
+    }
+
+    private enableFilterButtons(): void {
+        Array.from(this.filterButtons).forEach((filterButton: Element): void => {
+            filterButton.classList.remove('xing-media-filter-button-disabled');
+            filterButton.classList.add('xing-media-filter-button');
+        });
     }
 }

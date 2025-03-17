@@ -1,3 +1,6 @@
+import GalleryImagesByImageFilterLoader from '../gallery-filter/GalleryImagesByImageFilterLoader';
+import GalleryImagesByGifFilterLoader from '../gallery-filter/GalleryImagesByGifFilterLoader';
+
 interface MediaUrl {
     imageViewerUrl: string
     mediaUrl: string
@@ -9,12 +12,19 @@ interface GalleryInitialLoadImagesResponse {
 
 export default class GalleryInfiniteScrollingImageLoader {
     static readonly URL: string = '/api/v1/gallery/images?counter=';
+    private urlForRequest: string;
     static readonly METHOD: string = 'GET';
     private imageCounter: number;
     private isLoading: boolean;
+    private imageFilterButton: HTMLElement;
+    private gifFilterButton: HTMLElement;
+    private galleryContainer: Element;
 
     constructor() {
         this.imageCounter = 1;
+        this.imageFilterButton = document.getElementById('xing-media-images-filter-button');
+        this.gifFilterButton = document.getElementById('xing-media-gifs-filter-button');
+        this.galleryContainer = document.querySelector('.xing-media-container');
         this.initEventListener();
     }
 
@@ -22,14 +32,34 @@ export default class GalleryInfiniteScrollingImageLoader {
         document.addEventListener('DOMContentLoaded', (): void => {
             window.addEventListener('scroll', (): void => this.onScroll());
         });
+        this.imageFilterButton.addEventListener('afterImageFilterButtonCLicked', (): void => {
+            this.imageCounter = 1;
+            this.urlForRequest = GalleryInfiniteScrollingImageLoader.URL;
+            if (this.imageFilterButton.classList.contains('xing-media-filter-button-selected')) {
+                this.urlForRequest = GalleryImagesByImageFilterLoader.URL;
+            }
+        });
+        this.urlForRequest = GalleryInfiniteScrollingImageLoader.URL;
+        this.gifFilterButton.addEventListener('afterGifFilterButtonCLicked', (): void => {
+            this.imageCounter = 1;
+            if (this.gifFilterButton.classList.contains('xing-media-filter-button-selected')) {
+                this.urlForRequest = GalleryImagesByGifFilterLoader.URL;
+            }
+        });
+        document.addEventListener('resetFilter', (): void => {
+            this.imageCounter = 1;
+            this.urlForRequest = GalleryInfiniteScrollingImageLoader.URL;
+        });
     }
 
     private onScroll() {
         const footer: HTMLElement = document.querySelector('footer');
-        if (!footer || this.isLoading) return;
+        if (!footer || this.isLoading) {
+            return;
+        }
 
-        const footerPosition = footer.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
+        const footerPosition: number = footer.getBoundingClientRect().top;
+        const windowHeight: number = window.innerHeight;
 
         if (footerPosition < windowHeight + 50) {
             this.loadImages();
@@ -40,7 +70,7 @@ export default class GalleryInfiniteScrollingImageLoader {
         this.isLoading = true;
 
         let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
-        ajaxHttpClient.open(GalleryInfiniteScrollingImageLoader.METHOD, GalleryInfiniteScrollingImageLoader.URL + this.imageCounter, true);
+        ajaxHttpClient.open(GalleryInfiniteScrollingImageLoader.METHOD, this.urlForRequest + this.imageCounter, true);
         ajaxHttpClient.onreadystatechange = (): void => {
             if (ajaxHttpClient.readyState === 4) {
                 if (ajaxHttpClient.status === 200) {
@@ -57,7 +87,6 @@ export default class GalleryInfiniteScrollingImageLoader {
     }
     private displayImagesInGallery(jsonResponse: MediaUrl[]): void
     {
-        let galleryContainer = document.querySelector('.xing-media-container');
         jsonResponse.forEach((mediaUrl: MediaUrl): void => {
             const anchor: HTMLAnchorElement = document.createElement('a');
             anchor.href = mediaUrl.imageViewerUrl;
@@ -71,7 +100,7 @@ export default class GalleryInfiniteScrollingImageLoader {
 
             div.appendChild(img);
             anchor.appendChild(div);
-            galleryContainer.appendChild(anchor);
+            this.galleryContainer.appendChild(anchor);
         });
     }
 }

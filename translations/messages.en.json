@@ -7,6 +7,8 @@
   "xing_information.market_cap.left_to_billion": "Left till 1 bio.: ",
   "xing_information.price_change.title": "Xing Xing Chart",
   "xing_information.price_change": "Performance: ",
+  "xing_media.gifs-button.text": "Gifs",
+  "xing_media.images-button.text": "Images",
   "image_viewer.download-button.text": "Download",
   "meme_generator.new_meme.download": "Download"
 }
