@@ -1,14 +1,7 @@
 import GalleryImagesByImageFilterLoader from '../gallery-filter/GalleryImagesByImageFilterLoader';
 import GalleryImagesByGifFilterLoader from '../gallery-filter/GalleryImagesByGifFilterLoader';
-
-interface MediaUrl {
-    imageViewerUrl: string
-    mediaUrl: string
-}
-
-interface GalleryInitialLoadImagesResponse {
-    urls: MediaUrl[]
-}
+import GalleryInitialLoadImagesResponse from '../types/GalleryInitialLoadImagesResponse';
+import MediaUrl from '../types/MediaUrl';
 
 export default class GalleryInfiniteScrollingImageLoader {
     static readonly URL: string = '/api/v1/gallery/images?counter=';

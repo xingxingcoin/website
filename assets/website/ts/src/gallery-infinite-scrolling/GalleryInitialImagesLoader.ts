@@ -1,11 +1,5 @@
-interface MediaUrl {
-    imageViewerUrl: string
-    mediaUrl: string
-}
-
-interface GalleryInitialLoadImagesResponse {
-    urls: MediaUrl[]
-}
+import GalleryInitialLoadImagesResponse from '../types/GalleryInitialLoadImagesResponse';
+import MediaUrl from '../types/MediaUrl';
 
 export default class GalleryInitialImagesLoader {
     static readonly URL: string = '/api/v1/gallery/images?counter=0';
