@@ -1,13 +1,5 @@
 import MemeGeneratorImagesManipulator from './MemeGeneratorImagesManipulator';
-
-interface MediaUrl {
-    imageViewerUrl: string
-    mediaUrl: string
-}
-
-interface MemeGeneratorInitialLoadImagesResponse {
-    urls: MediaUrl[]
-}
+import MemeGeneratorInitialLoadImagesResponse from './types/MemeGeneratorInitialLoadImagesResponse';
 
 export default class MemeGeneratorInfiniteScrollingImageLoader {
     static readonly URL: string = '/api/v1/meme-generator/images?counter=';

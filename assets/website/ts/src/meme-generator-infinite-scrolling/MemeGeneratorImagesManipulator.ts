@@ -1,4 +1,4 @@
-import MediaUrl from '../types/MediaUrl';
+import MediaUrl from './types/MediaUrl';
 
 export default class MemeGeneratorImagesManipulator {
     private memeGeneratorContainer: HTMLElement;
@@ -7,8 +7,7 @@ export default class MemeGeneratorImagesManipulator {
         this.memeGeneratorContainer = document.querySelector('.xing-media-container');
     }
 
-    public displayImagesInMemeGenerator(jsonResponse: MediaUrl[]): void
-    {
+    public displayImagesInMemeGenerator(jsonResponse: MediaUrl[]): void {
         jsonResponse.forEach((mediaUrl: MediaUrl): void => {
             const anchor: HTMLAnchorElement = document.createElement('a');
             anchor.href = mediaUrl.imageViewerUrl;
