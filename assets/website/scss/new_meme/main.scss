@@ -16,17 +16,21 @@
 
 .new-meme-background-selector-button {
   background-color: $brown;
+  transition: transform 0.3s ease-in-out;
   &:hover, &:active {
     user-select: none;
     background-color: darken($brown, 15%);
+    transform: scale(1.1);
   }
 }
 
 .new-meme-download-button {
   background-color: $jungleGreen;
+  transition: transform 0.3s ease-in-out;
   &:hover, &:active {
     user-select: none;
     background-color: darken($jungleGreen, 15%);
+    transform: scale(1.1);
   }
 }
 
