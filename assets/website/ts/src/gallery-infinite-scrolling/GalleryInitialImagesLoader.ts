@@ -1,5 +1,5 @@
 import GalleryInitialLoadImagesResponse from '../types/GalleryInitialLoadImagesResponse';
-import MediaUrl from '../types/MediaUrl';
+import GalleryImagesManipulator from "../components/GalleryImagesManipulator";
 
 export default class GalleryInitialImagesLoader {
     static readonly URL: string = '/api/v1/gallery/images?counter=0';
@@ -7,12 +7,12 @@ export default class GalleryInitialImagesLoader {
 
     private loadingIndicator: HTMLElement;
     private filterButtons: NodeList;
-    private galleryContainer: Element;
+    private galleryImagesManipulator: GalleryImagesManipulator;
 
     constructor() {
         this.loadingIndicator = document.querySelector('.lds-dual-ring');
         this.filterButtons = document.querySelectorAll('.xing-media-filter-button-disabled');
-        this.galleryContainer = document.querySelector('.xing-media-container');
+        this.galleryImagesManipulator = new GalleryImagesManipulator();
         this.initEventListener();
     }
 
@@ -25,33 +25,13 @@ export default class GalleryInitialImagesLoader {
             ajaxHttpClient.onreadystatechange = (): void => {
                 if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
                     const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
-                    this.displayImagesInGallery(jsonResponse.urls);
+                    this.galleryImagesManipulator.displayImagesInGallery(jsonResponse.urls);
+                    this.hideLoadingIndicator();
+                    this.enableFilterButtons();
                 }
             };
 
             ajaxHttpClient.send();
-        });
-    }
-
-    private displayImagesInGallery(jsonResponse: MediaUrl[]): void
-    {
-        jsonResponse.forEach((mediaUrl: MediaUrl): void => {
-            const anchor: HTMLAnchorElement = document.createElement('a');
-            anchor.href = mediaUrl.imageViewerUrl;
-
-            const div: HTMLDivElement = document.createElement('div');
-            div.classList.add('xing-image-container');
-
-            const img: HTMLImageElement = document.createElement('img');
-            img.src = mediaUrl.mediaUrl;
-            img.alt = 'Image of Xing';
-
-            div.appendChild(img);
-            anchor.appendChild(div);
-            this.galleryContainer.appendChild(anchor);
-
-            this.hideLoadingIndicator();
-            this.enableFilterButtons();
         });
     }
 

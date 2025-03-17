@@ -1,3 +1,5 @@
+import MemeGeneratorImagesManipulator from './MemeGeneratorImagesManipulator';
+
 interface MediaUrl {
     imageViewerUrl: string
     mediaUrl: string
@@ -10,42 +12,42 @@ interface MemeGeneratorInitialLoadImagesResponse {
 export default class MemeGeneratorInfiniteScrollingImageLoader {
     static readonly URL: string = '/api/v1/meme-generator/images?counter=';
     static readonly METHOD: string = 'GET';
+
     private imageCounter: number;
     private isLoading: boolean;
+    private memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator;
 
     constructor() {
         this.imageCounter = 1;
+        this.memeGeneratorImagesManipulator = new MemeGeneratorImagesManipulator();
         this.initEventListener();
     }
 
     private initEventListener(): void {
         document.addEventListener('DOMContentLoaded', (): void => {
-            window.addEventListener('scroll', (): void => this.onScroll());
+            window.addEventListener('scroll', (): void => {
+                const footer: HTMLElement = document.querySelector('footer');
+                if (!footer || this.isLoading) return;
+
+                const footerPosition = footer.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (footerPosition < windowHeight + 50) {
+                    this.loadImages();
+                }
+            });
         });
     }
 
-    private onScroll() {
-        const footer: HTMLElement = document.querySelector('footer');
-        if (!footer || this.isLoading) return;
-
-        const footerPosition = footer.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if (footerPosition < windowHeight + 50) {
-            this.loadImages();
-        }
-    }
-    private loadImages(): void
-    {
+    private loadImages(): void {
         this.isLoading = true;
-
         let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
         ajaxHttpClient.open(MemeGeneratorInfiniteScrollingImageLoader.METHOD, MemeGeneratorInfiniteScrollingImageLoader.URL + this.imageCounter, true);
         ajaxHttpClient.onreadystatechange = (): void => {
             if (ajaxHttpClient.readyState === 4) {
                 if (ajaxHttpClient.status === 200) {
                     const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
-                    this.displayImagesInMemeGenerator(jsonResponse.urls);
+                    this.memeGeneratorImagesManipulator.displayImagesInMemeGenerator(jsonResponse.urls);
                     if (jsonResponse.urls.length > 0) {
                         this.imageCounter++;
                     }
@@ -54,24 +56,5 @@ export default class MemeGeneratorInfiniteScrollingImageLoader {
             }
         };
         ajaxHttpClient.send();
-    }
-    private displayImagesInMemeGenerator(jsonResponse: MediaUrl[]): void
-    {
-        let memeGeneratorContainer = document.querySelector('.xing-media-container');
-        jsonResponse.forEach((mediaUrl: MediaUrl): void => {
-            const anchor: HTMLAnchorElement = document.createElement('a');
-            anchor.href = mediaUrl.imageViewerUrl;
-
-            const div: HTMLDivElement = document.createElement('div');
-            div.classList.add('xing-image-container');
-
-            const img: HTMLImageElement = document.createElement('img');
-            img.src = mediaUrl.mediaUrl;
-            img.alt = 'Image of Xing';
-
-            div.appendChild(img);
-            anchor.appendChild(div);
-            memeGeneratorContainer.appendChild(anchor);
-        });
     }
 }

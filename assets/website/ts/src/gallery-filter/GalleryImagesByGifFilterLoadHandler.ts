@@ -30,6 +30,7 @@ export default class GalleryImagesByGifFilterLoadHandler {
             }
         })
     }
+
     private deleteAllImageHtmlElements(): void {
         Array.from(this.galleryContainer.children).forEach((child: HTMLElement): void => {
             if (!child.classList.contains('lds-dual-ring')) {

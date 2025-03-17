@@ -37,10 +37,12 @@ export default class GalleryImagesByImageFilterLoadHandler {
         this.imageFilterButton.classList.remove('xing-media-filter-button');
         this.imageFilterButton.classList.add('xing-media-filter-button-selected');
     }
+
     private displayImageButtonAsNotSelected(): void {
         this.imageFilterButton.classList.remove('xing-media-filter-button-selected');
         this.imageFilterButton.classList.add('xing-media-filter-button');
     }
+
     private deleteAllImageHtmlElements(): void {
         Array.from(this.galleryContainer.children).forEach((child: HTMLElement): void => {
             if (!child.classList.contains('lds-dual-ring')) {

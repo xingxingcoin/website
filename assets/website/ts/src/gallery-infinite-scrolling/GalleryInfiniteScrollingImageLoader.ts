@@ -1,7 +1,7 @@
 import GalleryImagesByImageFilterLoader from '../gallery-filter/GalleryImagesByImageFilterLoader';
 import GalleryImagesByGifFilterLoader from '../gallery-filter/GalleryImagesByGifFilterLoader';
 import GalleryInitialLoadImagesResponse from '../types/GalleryInitialLoadImagesResponse';
-import MediaUrl from '../types/MediaUrl';
+import GalleryImagesManipulator from '../components/GalleryImagesManipulator';
 
 export default class GalleryInfiniteScrollingImageLoader {
     static readonly URL: string = '/api/v1/gallery/images?counter=';
@@ -11,19 +11,31 @@ export default class GalleryInfiniteScrollingImageLoader {
     private isLoading: boolean;
     private imageFilterButton: HTMLElement;
     private gifFilterButton: HTMLElement;
-    private galleryContainer: Element;
+    private footer: HTMLElement;
+    private galleryImagesManipulator: GalleryImagesManipulator;
 
     constructor() {
         this.imageCounter = 1;
         this.imageFilterButton = document.getElementById('xing-media-images-filter-button');
         this.gifFilterButton = document.getElementById('xing-media-gifs-filter-button');
-        this.galleryContainer = document.querySelector('.xing-media-container');
+        this.footer = document.querySelector('footer');
+        this.galleryImagesManipulator = new GalleryImagesManipulator();
         this.initEventListener();
     }
 
     private initEventListener(): void {
         document.addEventListener('DOMContentLoaded', (): void => {
-            window.addEventListener('scroll', (): void => this.onScroll());
+            window.addEventListener('scroll', (): void => {
+                if (this.isLoading) {
+                    return;
+                }
+
+                const footerPosition: number = this.footer.getBoundingClientRect().top;
+                const windowHeight: number = window.innerHeight;
+                if (footerPosition < windowHeight + 50) {
+                    this.loadImages();
+                }
+            });
         });
         this.imageFilterButton.addEventListener('afterImageFilterButtonCLicked', (): void => {
             this.imageCounter = 1;
@@ -45,30 +57,15 @@ export default class GalleryInfiniteScrollingImageLoader {
         });
     }
 
-    private onScroll() {
-        const footer: HTMLElement = document.querySelector('footer');
-        if (!footer || this.isLoading) {
-            return;
-        }
-
-        const footerPosition: number = footer.getBoundingClientRect().top;
-        const windowHeight: number = window.innerHeight;
-
-        if (footerPosition < windowHeight + 50) {
-            this.loadImages();
-        }
-    }
-    private loadImages(): void
-    {
+    private loadImages(): void {
         this.isLoading = true;
-
         let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
         ajaxHttpClient.open(GalleryInfiniteScrollingImageLoader.METHOD, this.urlForRequest + this.imageCounter, true);
         ajaxHttpClient.onreadystatechange = (): void => {
             if (ajaxHttpClient.readyState === 4) {
                 if (ajaxHttpClient.status === 200) {
                     const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
-                    this.displayImagesInGallery(jsonResponse.urls);
+                    this.galleryImagesManipulator.displayImagesInGallery(jsonResponse.urls);
                     if (jsonResponse.urls.length > 0) {
                         this.imageCounter++;
                     }
@@ -77,23 +74,5 @@ export default class GalleryInfiniteScrollingImageLoader {
             }
         };
         ajaxHttpClient.send();
-    }
-    private displayImagesInGallery(jsonResponse: MediaUrl[]): void
-    {
-        jsonResponse.forEach((mediaUrl: MediaUrl): void => {
-            const anchor: HTMLAnchorElement = document.createElement('a');
-            anchor.href = mediaUrl.imageViewerUrl;
-
-            const div: HTMLDivElement = document.createElement('div');
-            div.classList.add('xing-image-container');
-
-            const img: HTMLImageElement = document.createElement('img');
-            img.src = mediaUrl.mediaUrl;
-            img.alt = 'Image of Xing';
-
-            div.appendChild(img);
-            anchor.appendChild(div);
-            this.galleryContainer.appendChild(anchor);
-        });
     }
 }
