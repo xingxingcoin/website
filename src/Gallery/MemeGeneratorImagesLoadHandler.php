@@ -25,7 +25,7 @@ final readonly class MemeGeneratorImagesLoadHandler implements MemeGeneratorImag
     public function __construct(
         private PathBuilder $pathBuilder,
         private DocumentByPathLoader $documentByPathLoader,
-        private MediaUrlCollectionByDocumentLoader $mediaUrlCollectionByDocumentConverter
+        private MediaUrlCollectionByDocumentLoader $mediaUrlCollectionByDocumentLoader
     ) {
     }
 
@@ -38,7 +38,7 @@ final readonly class MemeGeneratorImagesLoadHandler implements MemeGeneratorImag
     {
         $path = $this->pathBuilder->build(['%base%', 'website', '%content%', self::PATH]);
         $document = $this->documentByPathLoader->load($path);
-        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentConverter->load(
+        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentLoader->load(
             $document,
             $location,
             new RootNavigation(self::ROOT_NAVIGATION),

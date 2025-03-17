@@ -25,7 +25,7 @@ final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandle
     public function __construct(
         private PathBuilder $pathBuilder,
         private DocumentByPathLoader $documentByPathLoader,
-        private MediaUrlCollectionByDocumentLoader $mediaUrlCollectionByDocumentConverter
+        private MediaUrlCollectionByDocumentLoader $mediaUrlCollectionByDocumentLoader
     ) {
     }
 
@@ -38,7 +38,7 @@ final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandle
     {
         $path = $this->pathBuilder->build(['%base%', 'website', '%content%', self::PATH]);
         $document = $this->documentByPathLoader->load($path);
-        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentConverter->load($document, $location, new RootNavigation(self::ROOT_NAVIGATION), new SubNavigation(self::SUB_NAVIGATION));
+        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentLoader->load($document, $location, new RootNavigation(self::ROOT_NAVIGATION), new SubNavigation(self::SUB_NAVIGATION));
         $mediaUrlCollectionForCounter = [];
         $nextImageIndex = ($imageCounter->value + self::NEXT_IMAGE_COUNTER) * self::NUMBER_OF_PROVIDED_IMAGES;
         for ($currentImageIndex = $imageCounter->value * self::NUMBER_OF_PROVIDED_IMAGES; $currentImageIndex < $nextImageIndex; $currentImageIndex++) {
