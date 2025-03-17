@@ -42,6 +42,7 @@ export default class MemeEditGenerator {
                 cropperFace.style.opacity = '1';
                 cropperFace.style.backgroundImage = `url(${newMemeImageSrc})`;
                 cropperFace.style.backgroundSize = 'cover';
+                cropperFace.style.backgroundColor = 'transparent';
             }
         });
 
