@@ -91,6 +91,7 @@ body {
   text-align: center;
   padding: 1rem 1rem;
   animation: scaleButton 3s infinite alternate;
+  transition: all 0.3s ease;
   &:hover, &:active {
     user-select: none;
     color: $white;
