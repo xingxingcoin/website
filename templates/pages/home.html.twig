@@ -3,7 +3,7 @@
 {% block content %}
     <div>
         <h1 class="title">{{ content.title }}</h1>
-        <div class="description">{{ content.description|raw }}</div>
+        <div class="xing_information-description-container">{{ content.description|raw }}</div>
     </div>
 
     {% include 'includes/blocks.html.twig' with { xing: xing } %}

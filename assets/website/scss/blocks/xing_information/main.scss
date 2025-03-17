@@ -54,3 +54,27 @@
   font-size: 1.2rem;
   color: $red;
 }
+
+
+.xing_information-description-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+  background-color: $brown;
+  font-size: 1.5rem;
+  border-bottom-style: solid;
+  border-radius: 0.75rem;
+  border-width: 0.3rem;
+  border-color: $black;
+  color: $white;
+  margin-bottom: 1rem;
+  @media (max-width: 768px) {
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}
