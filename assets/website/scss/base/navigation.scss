@@ -23,6 +23,9 @@
   flex: 1;
   font-size: 2rem;
   color: $black;
+  border-bottom-style: solid;
+  border-radius: .375rem;
+  text-align: center;
   &:hover, &:active {
     user-select: none;
     color: $white;
