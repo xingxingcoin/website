@@ -24,24 +24,20 @@ main {
 
 .title {
   text-align: center;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .description {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: $gray;
 }
 
 @font-face {
   font-family: 'DynaPuff';
   src: url('../../fonts/DynaPuff-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
 }
 
 @font-face {
   font-family: 'DynaPuff';
   src: url('../../fonts/DynaPuff-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
 }
