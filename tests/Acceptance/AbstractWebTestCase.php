@@ -41,11 +41,19 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setResourceSegment('/xing-xing-on-camera');
         $document->setLocale('en');
         $document->getStructure()->bind([
-            'xing_header_audio' => 'default-audio.mp3',
-            'twitter_logo' => 'test_twitter_logo.png',
-            'dexscreener_logo' => 'test_dexscreener_logo.png',
-            'telegram_logo' => 'test_telegram_logo.png',
-            'tiktok_logo' => 'test_tiktok_logo.png',
+            'header_music' => [
+                'xing_music' => 'default-audio.mp3'
+            ],
+            'footer_social_media' => [
+                'footer_twitter_logo' => 'test_twitter_logo.png',
+                'footer_twitter_link' => 'x.com',
+                'footer_dexscreener_logo' => 'test_dexscreener_logo.png',
+                'footer_dexscreener_link' => 'dexscreener.com',
+                'footer_telegram_logo' => 'test_telegram_logo.png',
+                'footer_telegram_link' => 'telegram.com',
+                'footer_tiktok_logo' => 'test_tiktok_logo.png',
+                'footer_tiktok_link' => 'tiktok.com',
+            ],
             'blocks' => [
                 [
                     'type' => 'xing_media',
@@ -84,11 +92,19 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setResourceSegment('/xing-xing-on-camera/image-viewer');
         $document->setLocale('en');
         $document->getStructure()->bind([
-            'xing_header_audio' => 'default-audio.mp3',
-            'twitter_logo' => 'test_twitter_logo.png',
-            'dexscreener_logo' => 'test_dexscreener_logo.png',
-            'telegram_logo' => 'test_telegram_logo.png',
-            'tiktok_logo' => 'test_tiktok_logo.png'
+            'header_music' => [
+                'xing_music' => 'default-audio.mp3'
+            ],
+            'footer_social_media' => [
+                'footer_twitter_logo' => 'test_twitter_logo.png',
+                'footer_twitter_link' => 'x.com',
+                'footer_dexscreener_logo' => 'test_dexscreener_logo.png',
+                'footer_dexscreener_link' => 'dexscreener.com',
+                'footer_telegram_logo' => 'test_telegram_logo.png',
+                'footer_telegram_link' => 'telegram.com',
+                'footer_tiktok_logo' => 'test_tiktok_logo.png',
+                'footer_tiktok_link' => 'tiktok.com',
+            ],
         ]);
 
         foreach ($options['locales'] as $locale) {
@@ -117,11 +133,19 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setResourceSegment('/meme-generator');
         $document->setLocale('en');
         $document->getStructure()->bind([
-            'xing_header_audio' => 'default-audio.mp3',
-            'twitter_logo' => 'test_twitter_logo.png',
-            'dexscreener_logo' => 'test_dexscreener_logo.png',
-            'telegram_logo' => 'test_telegram_logo.png',
-            'tiktok_logo' => 'test_tiktok_logo.png',
+            'header_music' => [
+                'xing_music' => 'default-audio.mp3'
+            ],
+            'footer_social_media' => [
+                'footer_twitter_logo' => 'test_twitter_logo.png',
+                'footer_twitter_link' => 'x.com',
+                'footer_dexscreener_logo' => 'test_dexscreener_logo.png',
+                'footer_dexscreener_link' => 'dexscreener.com',
+                'footer_telegram_logo' => 'test_telegram_logo.png',
+                'footer_telegram_link' => 'telegram.com',
+                'footer_tiktok_logo' => 'test_tiktok_logo.png',
+                'footer_tiktok_link' => 'tiktok.com',
+            ],
             'blocks' => [
                 [
                     'type' => 'xing_meme_generator',
@@ -160,11 +184,19 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setResourceSegment('/meme-generator/new-meme');
         $document->setLocale('en');
         $document->getStructure()->bind([
-            'xing_header_audio' => 'default-audio.mp3',
-            'twitter_logo' => 'test_twitter_logo.png',
-            'dexscreener_logo' => 'test_dexscreener_logo.png',
-            'telegram_logo' => 'test_telegram_logo.png',
-            'tiktok_logo' => 'test_tiktok_logo.png'
+            'header_music' => [
+                'xing_music' => 'default-audio.mp3'
+            ],
+            'footer_social_media' => [
+                'footer_twitter_logo' => 'test_twitter_logo.png',
+                'footer_twitter_link' => 'x.com',
+                'footer_dexscreener_logo' => 'test_dexscreener_logo.png',
+                'footer_dexscreener_link' => 'dexscreener.com',
+                'footer_telegram_logo' => 'test_telegram_logo.png',
+                'footer_telegram_link' => 'telegram.com',
+                'footer_tiktok_logo' => 'test_tiktok_logo.png',
+                'footer_tiktok_link' => 'tiktok.com',
+            ],
         ]);
 
         foreach ($options['locales'] as $locale) {
@@ -190,7 +222,6 @@ abstract class AbstractWebTestCase extends SuluTestCase
 
         $collection = new Collection();
         $collection->setType($collectionTypes);
-        $collection->setType($collectionTypes);
         $this->getEntityManager()->persist($collection);
         $this->getEntityManager()->flush();
 
@@ -203,9 +234,10 @@ abstract class AbstractWebTestCase extends SuluTestCase
         );
 
         $mediaTypes = new MediaType();
-        $mediaTypes->setName('document');
+        $mediaTypes->setName('image');
         $this->getEntityManager()->persist($mediaTypes);
         $this->getEntityManager()->flush();
+
         $this->media = $mediaManager->save($uploadedFile, [
             'id' => null,
             'type' => 'image',

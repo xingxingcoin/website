@@ -13,6 +13,8 @@ use Sulu\Component\Security\Authentication\UserInterface;
 
 final class MediaMock implements MediaInterface
 {
+    public Collection $outputFileCollection;
+
     public function getId(): int
     {
         // TODO: Implement getId() method.
@@ -38,9 +40,9 @@ final class MediaMock implements MediaInterface
         // TODO: Implement removeFile() method.
     }
 
-    public function getFiles(): MediaInterface
+    public function getFiles(): Collection
     {
-        // TODO: Implement getFiles() method.
+        return $this->outputFileCollection;
     }
 
     public function setCollection(CollectionInterface $collection): MediaInterface

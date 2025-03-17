@@ -151,3 +151,27 @@ services:
             - '@http_client'
             - '@http.logger'
     App\Json\OpisJsonValidator: ~
+
+    App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadController:
+        arguments:
+            - '@App\Gallery\GalleryImagesFilterLoadHandler'
+            - '@api.v1.gallery.logger'
+        tags:
+            - { name: 'controller.service_arguments' }
+    App\Gallery\GalleryImagesFilterLoadHandler:
+        arguments:
+            - '@sulu_document_manager.path_builder'
+            - '@App\Gallery\Components\DocumentByPathLoader'
+            - '@App\Gallery\Components\MediaCollectionByDocumentLoader'
+            - '@App\Gallery\Components\MediaUrlCollectionByFilterGenerateHandler'
+    App\Gallery\Components\MediaCollectionByDocumentLoader:
+        arguments:
+            - '@sulu_media.media_manager'
+            - '@App\Gallery\Components\DefaultNavigationMediaUrlLoader'
+            - '@api.v1.gallery.logger'
+    App\Gallery\Components\MediaUrlCollectionByFilterGenerateHandler:
+        arguments:
+            - '@App\Gallery\Components\MediaUrlCollectionByGifFilterGenerator'
+            - '@App\Gallery\Components\MediaUrlCollectionByAllImagesFilterGenerator'
+    App\Gallery\Components\MediaUrlCollectionByAllImagesFilterGenerator: ~
+    App\Gallery\Components\MediaUrlCollectionByGifFilterGenerator: ~
