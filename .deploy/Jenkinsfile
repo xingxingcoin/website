@@ -5,6 +5,8 @@ pipeline {
             steps {
                 script {
                     sh 'curl https://get.volta.sh | bash'
+                    sh 'export VOLTA_HOME="$HOME/.volta"'
+                    sh 'export PATH="$VOLTA_HOME/bin:$PATH"'
                 }
             }
         }
