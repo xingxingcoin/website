@@ -1,9 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Install Volta') {
             steps {
-                echo 'Building..'
+                script {
+                    sh 'curl https://get.volta.sh | bash'
+                }
             }
         }
         stage('Test') {
