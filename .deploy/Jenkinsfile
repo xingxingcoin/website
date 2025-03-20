@@ -10,6 +10,13 @@ pipeline {
                 }
             }
         }
+        stage('Install Node') {
+            steps {
+                script {
+                    sh 'volta install node'
+                }
+            }
+        }
         stage('Test') {
             steps {
                 echo 'Testing..'
