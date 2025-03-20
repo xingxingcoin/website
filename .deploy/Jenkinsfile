@@ -1,22 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Install Volta') {
-            steps {
-                script {
-                    sh 'curl https://get.volta.sh | bash'
-                    sh 'export VOLTA_HOME="$HOME/.volta"'
-                    sh 'export PATH="$VOLTA_HOME/bin:$PATH"'
-                }
-            }
-        }
-        stage('Install Node') {
-            steps {
-                script {
-                    sh 'volta install node'
-                }
-            }
-        }
         stage('Test') {
             steps {
                 echo 'Testing..'
