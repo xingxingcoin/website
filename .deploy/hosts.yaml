@@ -3,6 +3,7 @@ hosts:
     stage: production
     hostname: localhost
     remote_user: jenkins
+    deploy_path: var/jenkins_home/workspace
     identity_file: /root/.ssh/id_rsa
     multiplexing: true
     sshOptions:
