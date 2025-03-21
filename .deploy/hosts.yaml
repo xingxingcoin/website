@@ -1,0 +1,19 @@
+hosts:
+  production:
+    stage: production
+    hostname: localhost
+    remote_user: jenkins
+    identity_file: /root/.ssh/id_rsa
+    multiplexing: true
+    sshOptions:
+      UserKnownHostsFile: /dev/null
+      StrictHostKeyChecking: no
+    bin/php: php
+    bin/local-php: php
+    keep_releases: 2
+    database: xing_meme_tool
+    application: xing-meme-tool
+    repository: git@github.com:xingxingcoin/website.git
+    allow_anymous_stats: false
+    default_timeout: 3600
+    writable_mode: sticky

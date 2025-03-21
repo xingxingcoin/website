@@ -1,12 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Install Deployer') {
             steps {
-                echo 'Testing..'
+                steps {
+                    sh script: "cd .deploy && composer install"
+                }
             }
         }
-        stage('Deploy') {
+        stage('Deploy Prod') {
             steps {
                 echo 'Deploying....'
             }
