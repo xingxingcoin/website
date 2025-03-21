@@ -3,9 +3,7 @@ pipeline {
     stages {
         stage('Install Deployer') {
             steps {
-                steps {
-                    sh 'cd .deploy && composer install'
-                }
+                sh 'cd .deploy && composer install'
             }
         }
         stage('Deploy Prod') {
