@@ -54,7 +54,5 @@ task('local:npm:build', static function (): void {
 task('deploy', [
     'local:composer:install',
     'local:npm:install',
-    'local:npm:build',
-    'deploy:lock',
-    'deploy:unlock'
+    'local:npm:build'
 ]);

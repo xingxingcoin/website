@@ -8,7 +8,6 @@ pipeline {
         }
         stage('Deploy Prod') {
             steps {
-                sh 'cd .deploy && php vendor/bin/dep -f deploy.php deploy:unlock production'
                 sh 'cd .deploy && php vendor/bin/dep -f deploy.php deploy'
             }
         }
