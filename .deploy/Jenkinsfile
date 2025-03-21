@@ -4,7 +4,7 @@ pipeline {
         stage('Install Deployer') {
             steps {
                 steps {
-                    sh script: "cd .deploy && composer install"
+                    sh 'cd .deploy && composer install'
                 }
             }
         }
