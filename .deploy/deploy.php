@@ -55,4 +55,6 @@ task('deploy', [
     'local:composer:install',
     'local:npm:install',
     'local:npm:build',
+    'deploy:lock',
+    'deploy:unlock'
 ]);
