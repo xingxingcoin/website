@@ -1,9 +1,9 @@
 hosts:
   production:
     stage: production
-    hostname: localhost
-    remote_user: jenkins
-    deploy_path: var/jenkins_home/workspace
+    hostname: xingxingmemes.com
+    remote_user: xingxi
+    deploy_path: /var/www/xing-meme-tool
     identity_file: /root/.ssh/id_rsa
     multiplexing: true
     sshOptions:
