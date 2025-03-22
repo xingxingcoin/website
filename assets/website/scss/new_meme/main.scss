@@ -94,13 +94,18 @@
   }
 }
 
-.draggable-text {
+.new-meme-draggable-text {
   position: absolute;
   text-align: center;
-  font: 3rem Impact;
-  color: white;
+  font: min(7vw, 7vh) Impact;
+  color: $white;
   z-index: 100;
-  -webkit-text-stroke: 0.1rem black;
+  text-transform: uppercase;
+  -webkit-text-stroke: 4px $black;
+  letter-spacing: 1px;
+  @media (max-width: 768px) {
+    font: min(8vw, 8vh) Impact;
+  }
 }
 
 .new-meme-canvas-input-text-container {

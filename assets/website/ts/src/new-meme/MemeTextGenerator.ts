@@ -13,7 +13,7 @@ export default class MemeTextGenerator {
     private initEventListener(): void {
         this.inputMemeText.addEventListener('change', (event: any): void => {
             this.memeText.textContent = event.target.value;
-            this.memeText.classList.add('draggable-text');
+            this.memeText.classList.add('new-meme-draggable-text');
             document.querySelector('#meme-preview-container div').appendChild(this.memeText);
         });
         const position = {x: 0, y: 0}

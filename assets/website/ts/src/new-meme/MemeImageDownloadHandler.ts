@@ -25,18 +25,18 @@ export default class MemeImageDownloadHandler {
         const memeCanvasContainerRect: DOMRect = memeCanvasContainer.getBoundingClientRect();
         const memeTextRect: DOMRect = memeText.getBoundingClientRect();
 
-        const fontSize: number = Math.min(memeCanvas.width, memeCanvas.height) / 9;
+        const fontSize: number = Math.min(memeCanvas.width, memeCanvas.height) / 6;
         const memeTextPositionX: number = (memeTextRect.x - memeCanvasContainerRect.x) * (memeCanvas.width / memeCanvasContainerRect.width) + fontSize;
         const memeTextPositionY: number = (memeTextRect.y - memeCanvasContainerRect.y) * (memeCanvas.height / memeCanvasContainerRect.height) + fontSize;
 
         context.font = `${fontSize}px Impact`;
         context.fillStyle = 'white';
         context.textAlign = 'center';
-        context.textBaseline = 'middle';
         context.strokeStyle = 'black';
-        context.lineWidth = 20;
-        context.strokeText(memeText.textContent, memeTextPositionX, memeTextPositionY);
-        context.fillText(memeText.textContent, memeTextPositionX, memeTextPositionY);
+        context.lineWidth = fontSize / 6;
+        context.letterSpacing = '1px';
+        context.strokeText(memeText.textContent.toUpperCase(), memeTextPositionX, memeTextPositionY);
+        context.fillText(memeText.textContent.toUpperCase(), memeTextPositionX, memeTextPositionY);
 
         return memeCanvas;
     }
