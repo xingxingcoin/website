@@ -11,6 +11,7 @@
   "xing_media.images-button.text": "Images",
   "image_viewer.download-button.text": "Download",
   "meme_generator.new_meme.download": "Download",
-  "meme_generator.new_meme.select-text.meme": "Continue",
+  "meme_generator.new_meme.select-text.button": "Continue",
+  "meme_generator.new_meme.select-text.input.placeholder": "Select text...",
   "xing_address.address.label.text": "Address:"
 }
