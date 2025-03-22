@@ -36,6 +36,5 @@ export default class MemeCanvasGenerator {
         const div: HTMLDivElement = document.createElement('div');
         div.appendChild(canvas);
         this.memePreviewContainer.appendChild(div);
-        this.memePreviewContainer.classList.add('new-meme-canvas-visible-input-text-container');
     }
 }

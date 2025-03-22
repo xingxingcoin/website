@@ -60,20 +60,7 @@
   }
 }
 
-.new-meme-canvas-hidden-input-text-container {
-  display: flex;
-  flex-shrink: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: $gray;
-  margin-bottom: 5rem;
-  border-style: solid;
-  border-color: $black;
-  overflow: hidden;
-}
-
-.new-meme-canvas-visible-input-text-container {
+.new-meme-canvas-container {
   display: flex;
   flex-shrink: 1;
   flex-direction: column;
@@ -83,7 +70,6 @@
   border-style: solid;
   border-color: $black;
   overflow: hidden;
-  margin-bottom: 1rem;
 }
 
 #meme-preview-container {
@@ -122,4 +108,8 @@
   flex-grow: 1;
   flex-direction: column;
   margin-bottom: 5rem;
+}
+
+.new-meme-text-input {
+  margin-bottom: 1rem;
 }

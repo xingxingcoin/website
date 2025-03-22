@@ -17,7 +17,7 @@ export default class MemeImageEditGenerator {
         this.selectTextButton = document.getElementById('new-meme-select-text-button');
         this.memePreviewContainer = document.getElementById('meme-preview-container');
         this.memeTextInput = document.querySelector('.new-meme-text-input');
-        this.memeCanvasTextInputContainer = document.querySelector('.new-meme-canvas-hidden-input-text-container');
+        this.memeCanvasTextInputContainer = document.querySelector('.new-meme-canvas-container');
 
         this.initEventListener();
     }
@@ -58,8 +58,6 @@ export default class MemeImageEditGenerator {
 
     private displayMemeTextField(): void {
         this.memeTextInput.classList.remove('hidden');
-        this.memeCanvasTextInputContainer.classList.remove('new-meme-canvas-hidden-input-text-container');
-        this.memeCanvasTextInputContainer.classList.add('new-meme-canvas-visible-input-text-container');
     }
 
     private enableDownloadButton(): void {
