@@ -10,14 +10,12 @@ export default class MemeImageEditGenerator {
     private newMemeImage: HTMLImageElement;
     private memeCanvasGenerator: MemeCanvasGenerator;
     private memeTextInput: HTMLInputElement;
-    private memeCanvasTextInputContainer: HTMLDivElement;
 
     constructor() {
         this.downloadButton = document.getElementById('new-meme-download-button');
         this.selectTextButton = document.getElementById('new-meme-select-text-button');
         this.memePreviewContainer = document.getElementById('meme-preview-container');
         this.memeTextInput = document.querySelector('.new-meme-text-input');
-        this.memeCanvasTextInputContainer = document.querySelector('.new-meme-canvas-container');
 
         this.initEventListener();
     }

@@ -97,14 +97,14 @@
 .new-meme-draggable-text {
   position: absolute;
   text-align: center;
-  font: min(7vw, 7vh) Impact;
+  font: 50px Impact;
   color: $white;
   z-index: 100;
   text-transform: uppercase;
-  -webkit-text-stroke: 4px $black;
+  -webkit-text-stroke: 2px $black;
   letter-spacing: 1px;
   @media (max-width: 768px) {
-    font: min(8vw, 8vh) Impact;
+    font: 50px Impact;
   }
 }
 
