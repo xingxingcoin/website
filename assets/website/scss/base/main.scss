@@ -33,24 +33,19 @@ main {
 }
 
 input {
-  padding: 12px 20px;
-  font-size: 1rem;
-  border-width: calc(var(--border-width) * 1px);
-  border-style: solid;
-  border-color: var(--accent);
-  border-radius: calc(var(--border-radius) * 1px);
-  text-align: center;
-  outline: transparent;
-  transition: border-color calc(var(--transition, 0.2) * 1s) ease;
-  width: auto;
-  &:valid {
-    --accent: hsl(41, 44%, 67%);
-  }
-  &:invalid {
-    --accent: hsl(346, 100%, 42%);
-  }
-  &:placeholder-shown {
-    --accent: hsl(0, 0%, 100%);
+  border: 3px solid $brown;
+  border-radius: 5px;
+  height: 50px;
+  line-height: normal;
+  color: $black;
+  width: 100%;
+  box-sizing: border-box;
+  user-select: auto;
+  font-size: 16px;
+  padding: 0 6px 0 12px;
+  &:focus{
+    border: 3px solid $jungleGreen;
+    outline: none;
   }
 }
 
