@@ -22,16 +22,22 @@
 
     <div class="new-meme-button-container">
         <input id="background-image-selector" type="file" accept="image/*" hidden>
-        <label for="background-image-selector" class="new-meme-button new-meme-background-selector-button">
+        <label for="background-image-selector" class="new-meme-button new-meme-settings-button">
             {{ 'Select Background Image'|trans }}
         </label>
-        <label class="new-meme-button-disabled" id="new-meme-download-button">{{ 'meme_generator.new_meme.download'|trans }}</label>
+        <label class="new-meme-button-disabled"
+               id="new-meme-select-text-button">{{ 'meme_generator.new_meme.select-text.meme'|trans }}</label>
+        <label class="new-meme-button-disabled"
+               id="new-meme-download-button">{{ 'meme_generator.new_meme.download'|trans }}</label>
     </div>
 
-    <div class="new-meme-canvas-container">
-        <div class="new-meme-image-container">
-            {{ image }}
+    <div class="new-meme-canvas-input-text-container">
+        <div class="new-meme-canvas-hidden-input-text-container">
+            <div class="new-meme-image-container">
+                {{ image }}
+            </div>
+            <div id="meme-preview-container"></div>
         </div>
-        <div id="meme-preview-container"></div>
+        <input type="text" class="new-meme-text-input hidden" placeholder="Text..">
     </div>
 {% endblock %}

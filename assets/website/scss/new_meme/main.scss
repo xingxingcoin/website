@@ -14,7 +14,7 @@
   margin-bottom: 2rem;
 }
 
-.new-meme-background-selector-button {
+.new-meme-settings-button {
   background-color: $brown;
   transition: transform 0.3s ease-in-out;
   &:hover, &:active {
@@ -60,7 +60,7 @@
   }
 }
 
-.new-meme-canvas-container {
+.new-meme-canvas-hidden-input-text-container {
   display: flex;
   flex-shrink: 1;
   flex-direction: column;
@@ -73,16 +73,53 @@
   overflow: hidden;
 }
 
+.new-meme-canvas-visible-input-text-container {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $gray;
+  border-style: solid;
+  border-color: $black;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
 #meme-preview-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   max-height: 20rem;
+  div {
+    display: flex;
+    max-height: 20rem;
+    canvas {
+      max-height: 20rem;
+      width: 100%;
+    }
+  }
 }
 
 .new-meme-image-container {
   img {
     display: flex;
   }
+}
+
+.draggable-text {
+  position: absolute;
+  text-align: center;
+  font: 3rem Impact;
+  color: white;
+  z-index: 100;
+  -webkit-text-stroke: 0.1rem black;
+}
+
+.new-meme-canvas-input-text-container {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  margin-bottom: 5rem;
 }

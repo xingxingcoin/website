@@ -1,16 +1,16 @@
-import MemeEditGenerator from './MemeEditGenerator';
+import MemeImageEditGenerator from './MemeImageEditGenerator';
 
 export default class MemeFileByInputReader {
     private readonly inputFileForBackgroundImageElement: HTMLElement;
     private readonly fileReader: FileReader;
     private readonly imageByFileReader: HTMLImageElement;
-    private readonly memeEditGenerator: MemeEditGenerator;
+    private readonly memeImageEditGenerator: MemeImageEditGenerator;
 
     constructor() {
         this.inputFileForBackgroundImageElement = document.getElementById('background-image-selector');
         this.fileReader = new FileReader();
         this.imageByFileReader = new Image();
-        this.memeEditGenerator = new MemeEditGenerator();
+        this.memeImageEditGenerator = new MemeImageEditGenerator();
 
         this.initEventListener();
     }
@@ -33,7 +33,7 @@ export default class MemeFileByInputReader {
 
     private openImageByFileReader(imageSrc: string): void {
         this.imageByFileReader.addEventListener('load', () => {
-            this.memeEditGenerator.generate(this.imageByFileReader);
+            this.memeImageEditGenerator.generate(this.imageByFileReader);
         });
 
         this.imageByFileReader.src = imageSrc;
@@ -41,7 +41,7 @@ export default class MemeFileByInputReader {
 
     private disableInputFile(inputFileForBackgroundImageLabel: HTMLElement): void {
         inputFileForBackgroundImageLabel.classList.add('new-meme-button-disabled');
-        inputFileForBackgroundImageLabel.classList.remove('new-meme-background-selector-button');
+        inputFileForBackgroundImageLabel.classList.remove('new-meme-settings-button');
         inputFileForBackgroundImageLabel.classList.remove('new-meme-button');
         this.inputFileForBackgroundImageElement.remove();
     }
