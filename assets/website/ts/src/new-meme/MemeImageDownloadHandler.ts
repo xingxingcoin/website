@@ -12,15 +12,19 @@ export default class MemeImageDownloadHandler {
 
     private initEventListener(): void {
         this.downloadButton.addEventListener('click', (): void => {
-            const memeCanvas: HTMLCanvasElement = document.querySelector('#meme-preview-container div canvas');
+            const memeImageCanvas: HTMLCanvasElement = document.querySelector('#meme-preview-container div canvas');
             const memeText: HTMLParagraphElement = document.querySelector('#meme-preview-container div p');
-            this.memeFileDownloader.download(this.generateCanvasWithText(memeCanvas, memeText));
+            let memeCanvas: HTMLCanvasElement = memeImageCanvas;
+            if (memeText !== null) {
+                memeCanvas = this.generateCanvasWithText(memeImageCanvas, memeText);
+            }
+            this.memeFileDownloader.download(memeCanvas);
         });
     }
 
-    private generateCanvasWithText(memeCanvas: HTMLCanvasElement, memeText: HTMLParagraphElement): HTMLCanvasElement {
-        const canvas: HTMLCanvasElement = document.createElement('canvas');
-        const context: CanvasRenderingContext2D = canvas.getContext('2d');
+    private generateCanvasWithText(memeImageCanvas: HTMLCanvasElement, memeText: HTMLParagraphElement): HTMLCanvasElement {
+        const memeCanvas: HTMLCanvasElement = document.createElement('canvas');
+        const context: CanvasRenderingContext2D = memeCanvas.getContext('2d');
         const memeCanvasContainer = document.querySelector('#meme-preview-container div') as HTMLDivElement;
         const memeCanvasContainerRect: DOMRect = memeCanvasContainer.getBoundingClientRect();
         const memeTextRect: DOMRect = memeText.getBoundingClientRect();
@@ -29,18 +33,18 @@ export default class MemeImageDownloadHandler {
         const memeTextPositionX: number = (memeTextRect.x - memeCanvasContainerRect.x) + fontSize;
         const memeTextPositionY: number = (memeTextRect.y - memeCanvasContainerRect.y) + fontSize;
 
-        canvas.width = memeCanvasContainerRect.width;
-        canvas.height = memeCanvasContainerRect.height;
+        memeCanvas.width = memeCanvasContainerRect.width;
+        memeCanvas.height = memeCanvasContainerRect.height;
         context.font = `${fontSize}px Impact`;
         context.fillStyle = 'white';
         context.textAlign = 'center';
         context.strokeStyle = 'black';
         context.lineWidth = 2;
         context.letterSpacing = '1px';
-        context.drawImage(memeCanvas, 0, 0, memeCanvasContainerRect.width, memeCanvasContainerRect.height);
+        context.drawImage(memeImageCanvas, 0, 0, memeCanvasContainerRect.width, memeCanvasContainerRect.height);
         context.fillText(memeText.textContent.toUpperCase(), memeTextPositionX, memeTextPositionY);
         context.strokeText(memeText.textContent.toUpperCase(), memeTextPositionX, memeTextPositionY);
 
-        return canvas;
+        return memeCanvas;
     }
 }
