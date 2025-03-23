@@ -43,6 +43,7 @@ input[type="text"]  {
   user-select: auto;
   font-size: 16px;
   padding: 0 6px 0 12px;
+  transition: all 0.3s ease;
   &:focus{
     box-shadow: 0 0 5px $jungleGreen;
     border: 3px solid $jungleGreen;
@@ -61,7 +62,8 @@ input[type="color"]  {
   user-select: auto;
   background-color: $white;
   cursor: pointer;
-  &:focus{
+  transition: all 0.3s ease;
+  &:hover, &:active{
     box-shadow: 0 0 5px $brown;
     outline: none;
     background-color: darken($white, 15);
