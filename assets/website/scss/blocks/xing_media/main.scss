@@ -101,6 +101,7 @@
   transition: transform 0.3s ease-in-out;
   transform: scale(1.2);
   &:hover, &:active {
+    box-shadow: 0 0 5px $jungleGreen;
     user-select: none;
     background-color: $brown;
     transform: scale(0.9);
