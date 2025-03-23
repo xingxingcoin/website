@@ -64,7 +64,8 @@ input[type="color"]  {
   cursor: pointer;
   transition: all 0.3s ease;
   &:hover, &:active{
-    box-shadow: 0 0 5px $brown;
+    box-shadow: 0 0 5px $jungleGreen;
+    border-color: $jungleGreen;
     outline: none;
     background-color: darken($white, 15);
   }
