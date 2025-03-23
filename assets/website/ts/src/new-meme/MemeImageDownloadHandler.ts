@@ -3,11 +3,13 @@ import MemeFileDownloader from './MemeFileDownloader';
 export default class MemeImageDownloadHandler {
     private readonly downloadButton: HTMLElement;
     private readonly memeTextColorPicker: HTMLInputElement;
+    private memeTextSizeInput: HTMLInputElement;
     private readonly memeFileDownloader: MemeFileDownloader;
 
     constructor() {
         this.downloadButton = document.getElementById('new-meme-download-button');
         this.memeTextColorPicker = document.querySelector('.new-meme-input-color-picker');
+        this.memeTextSizeInput = document.querySelector('.new-meme-input-text-size-number');
         this.memeFileDownloader = new MemeFileDownloader();
         this.initEventListener();
     }
@@ -31,7 +33,7 @@ export default class MemeImageDownloadHandler {
         const memeCanvasContainerRect: DOMRect = memeCanvasContainer.getBoundingClientRect();
         const memeTextRect: DOMRect = memeText.getBoundingClientRect();
 
-        const fontSize: number = 50;
+        const fontSize: number = parseInt(this.memeTextSizeInput.value, 10);
         const memeTextPositionX: number = (memeTextRect.x - memeCanvasContainerRect.x) + fontSize;
         const memeTextPositionY: number = (memeTextRect.y - memeCanvasContainerRect.y) + fontSize;
 

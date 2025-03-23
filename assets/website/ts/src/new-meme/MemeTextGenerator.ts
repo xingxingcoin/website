@@ -4,11 +4,13 @@ export default class MemeTextGenerator {
     private readonly inputMemeText: HTMLInputElement;
     private readonly memeText: HTMLParagraphElement;
     private readonly memeTextColorPicker: HTMLInputElement;
+    private memeTextSizeInput: HTMLInputElement;
 
     constructor() {
         this.inputMemeText = document.querySelector('.new-meme-text-input');
         this.memeText = document.createElement('p');
         this.memeTextColorPicker = document.querySelector('.new-meme-input-color-picker');
+        this.memeTextSizeInput = document.querySelector('.new-meme-input-text-size-number');
         this.initEventListener();
     }
 
@@ -38,6 +40,10 @@ export default class MemeTextGenerator {
         });
         this.memeTextColorPicker.addEventListener('change', (): void => {
             this.memeText.style.color = this.memeTextColorPicker.value;
-        })
+        });
+        this.memeTextSizeInput.addEventListener('change', (): void => {
+            const fontSizeValue: string = this.memeTextSizeInput.value;
+           this.memeText.style.fontSize = `${fontSizeValue}px`;
+        });
     }
 }

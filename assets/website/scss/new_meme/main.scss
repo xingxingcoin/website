@@ -106,9 +106,6 @@
   text-transform: uppercase;
   -webkit-text-stroke: 2px $black;
   letter-spacing: 1px;
-  @media (max-width: 768px) {
-    font: 50px Impact;
-  }
 }
 
 .new-meme-canvas-input-text-container {
@@ -127,6 +124,11 @@
   flex-direction: row;
   gap: 1rem;
 }
+
 .new-meme-input-color-picker {
+  max-width: 5rem;
+}
+
+.new-meme-input-text-size-number {
   max-width: 5rem;
 }
