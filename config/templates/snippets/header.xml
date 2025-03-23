@@ -29,5 +29,15 @@
                 <param name="types" value="audio"/>
             </params>
         </property>
+
+        <property name="xing_video" type="single_media_selection" mandatory="true">
+            <meta>
+                <title lang="en">Header video</title>
+                <title lang="de">Header Video</title>
+            </meta>
+            <params>
+                <param name="types" value="video"/>
+            </params>
+        </property>
     </properties>
 </template>
