@@ -23,21 +23,30 @@
     {% block header %}
         <nav>
             <div class="navigation-container">
-                <a class="navigation-text navigation-home-link-text" href="{{ sulu_content_root_path() }}">{{ 'navigation.title'|trans }}</a>
-                <audio id="navigation-audio-player">
-                    <source src="{{ content.header.xing_music.url }}" type="audio/mpeg">
-                </audio>
-
-                <button class="navigation-audio-player-button">
-                    <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                </button>
-                <div class="navigation-sublinks-text-container">
-                    {% for item in sulu_navigation_root_tree() %}
-                        <a class="navigation-text navigation-sublinks-text" href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
-                           title="{{ item.title }}">{{ item.title }}</a>
-                    {% endfor %}
+                <video class="background-video" playsinline autoplay muted loop>
+                    <source src="{{ content.header.xing_video.url }}" type="video/webm">
+                    <source src="{{ content.header.xing_video.url }}" type="video/mp4">
+                </video>
+                <div class="background-video-overlay"></div>
+                <div class="navigation-links-container">
+                    <a class="navigation-text navigation-home-link-text"
+                       href="{{ sulu_content_root_path() }}">{{ 'navigation.title'|trans }}</a>
+                    <div class="navigation-sublinks-text-container">
+                        {% for item in sulu_navigation_root_tree() %}
+                            <a class="navigation-text navigation-sublinks-text"
+                               href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
+                               title="{{ item.title }}">{{ item.title }}</a>
+                        {% endfor %}
+                    </div>
+                    <audio id="navigation-audio-player">
+                        <source src="{{ content.header.xing_music.url }}" type="audio/mpeg">
+                    </audio>
+                    <button class="navigation-audio-player-button">
+                        <svg id="playIcon" width="24" height="24" viewBox="0 0 24 24" fill="black"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -77,7 +86,8 @@
             </div>
 
             <div class="footer-buy-xing-button-container">
-                <a class="footer-buy-xing-button" href="https://jup.ag/swap/SOL-xing" target="_blank">{{ 'footer.buy-xing.button'|trans }}</a>
+                <a class="footer-buy-xing-button" href="https://jup.ag/swap/SOL-xing"
+                   target="_blank">{{ 'footer.buy-xing.button'|trans }}</a>
             </div>
         </div>
     {% endblock %}
