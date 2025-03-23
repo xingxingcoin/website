@@ -3,10 +3,12 @@ import interact from 'interactjs';
 export default class MemeTextGenerator {
     private readonly inputMemeText: HTMLInputElement;
     private readonly memeText: HTMLParagraphElement;
+    private readonly memeTextColorPicker: HTMLInputElement;
 
     constructor() {
         this.inputMemeText = document.querySelector('.new-meme-text-input');
         this.memeText = document.createElement('p');
+        this.memeTextColorPicker = document.querySelector('.new-meme-input-color-picker');
         this.initEventListener();
     }
 
@@ -34,5 +36,11 @@ export default class MemeTextGenerator {
                 })
             ],
         });
+        this.memeTextColorPicker.onchange = function (): void {
+            console.warn('Test');
+        }
+        this.memeTextColorPicker.addEventListener('change', (): void => {
+            this.memeText.style.color = this.memeTextColorPicker.value;
+        })
     }
 }

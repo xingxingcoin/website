@@ -2,10 +2,12 @@ import MemeFileDownloader from './MemeFileDownloader';
 
 export default class MemeImageDownloadHandler {
     private readonly downloadButton: HTMLElement;
+    private readonly memeTextColorPicker: HTMLInputElement;
     private readonly memeFileDownloader: MemeFileDownloader;
 
     constructor() {
         this.downloadButton = document.getElementById('new-meme-download-button');
+        this.memeTextColorPicker = document.querySelector('.new-meme-input-color-picker');
         this.memeFileDownloader = new MemeFileDownloader();
         this.initEventListener();
     }
@@ -36,7 +38,7 @@ export default class MemeImageDownloadHandler {
         memeCanvas.width = memeCanvasContainerRect.width;
         memeCanvas.height = memeCanvasContainerRect.height;
         context.font = `${fontSize}px Impact`;
-        context.fillStyle = 'white';
+        context.fillStyle = this.memeTextColorPicker.value;
         context.textAlign = 'center';
         context.strokeStyle = 'black';
         context.lineWidth = 2;

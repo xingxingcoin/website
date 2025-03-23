@@ -10,12 +10,14 @@ export default class MemeImageEditGenerator {
     private newMemeImage: HTMLImageElement;
     private memeCanvasGenerator: MemeCanvasGenerator;
     private memeTextInput: HTMLInputElement;
+    private memeTextColorPicker: HTMLInputElement;
 
     constructor() {
         this.downloadButton = document.getElementById('new-meme-download-button');
         this.selectTextButton = document.getElementById('new-meme-select-text-button');
         this.memePreviewContainer = document.getElementById('meme-preview-container');
         this.memeTextInput = document.querySelector('.new-meme-text-input');
+        this.memeTextColorPicker = document.querySelector('.new-meme-input-color-picker');
 
         this.initEventListener();
     }
@@ -56,6 +58,7 @@ export default class MemeImageEditGenerator {
 
     private displayMemeTextField(): void {
         this.memeTextInput.classList.remove('hidden');
+        this.memeTextColorPicker.classList.remove('hidden');
     }
 
     private enableDownloadButton(): void {

@@ -120,3 +120,12 @@
 .new-meme-text-input {
   margin-bottom: 1rem;
 }
+
+.new-meme-input-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.new-meme-input-color-picker {
+  max-width: 5rem;
+}

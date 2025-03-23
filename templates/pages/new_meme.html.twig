@@ -32,7 +32,10 @@
     </div>
 
     <div class="new-meme-canvas-input-text-container">
-        <input type="text" class="new-meme-text-input hidden" placeholder="{{ 'meme_generator.new_meme.select-text.input.placeholder'|trans }}">
+        <div class="new-meme-input-container">
+            <input type="text" class="new-meme-text-input hidden" placeholder="{{ 'meme_generator.new_meme.select-text.input.placeholder'|trans }}">
+            <input type="color" value="#ffffff"  class="new-meme-input-color-picker hidden"/>
+        </div>
         <div class="new-meme-canvas-container">
             <div class="new-meme-image-container">
                 {{ image }}
