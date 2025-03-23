@@ -36,9 +36,6 @@ export default class MemeTextGenerator {
                 })
             ],
         });
-        this.memeTextColorPicker.onchange = function (): void {
-            console.warn('Test');
-        }
         this.memeTextColorPicker.addEventListener('change', (): void => {
             this.memeText.style.color = this.memeTextColorPicker.value;
         })
