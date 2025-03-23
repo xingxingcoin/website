@@ -11,6 +11,7 @@
   border-width: 0.2rem;
   background-color: $brown;
   gap: 2rem;
+  box-shadow: 0 0 5px $black;
 }
 
 .navigation-text {
@@ -28,6 +29,7 @@
   text-align: center;
   transition: all 0.3s ease;
   &:hover, &:active {
+    box-shadow: 0 0 5px $white;
     user-select: none;
     color: $white;
   }
@@ -44,6 +46,7 @@
   background-color: $white;
   transition: all 0.3s ease;
   &:hover, &:active {
+    box-shadow: 0 0 5px $black;
     user-select: none;
     color: $white;
     background-color: $black;
@@ -93,6 +96,7 @@ body {
   animation: scaleButton 3s infinite alternate;
   transition: all 0.3s ease;
   &:hover, &:active {
+    box-shadow: 0 0 5px $black;
     user-select: none;
     color: $white;
     background-color: $black;

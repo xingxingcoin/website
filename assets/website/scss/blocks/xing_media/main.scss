@@ -21,6 +21,7 @@
   &:hover, &:active {
     user-select: none;
     transform: scale(1.1);
+    box-shadow: 0 0 5px $brown;
   }
   @media (max-width: 768px) {
     img {

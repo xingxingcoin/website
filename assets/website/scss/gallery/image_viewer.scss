@@ -19,6 +19,7 @@
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
   &:hover, &:active {
+    box-shadow: 0 0 5px $brown;
     user-select: none;
     transform: scale(1.1);
   }
@@ -60,6 +61,7 @@
   background-color: $white;
   transition: all 0.3s ease;
   &:hover, &:active {
+    box-shadow: 0 0 5px $black;
     user-select: none;
     color: $white;
     background-color: $black;

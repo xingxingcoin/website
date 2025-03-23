@@ -14,6 +14,7 @@
   border-color: $black;
   margin-bottom: 4rem;
   gap: 1rem;
+  box-shadow: 0 0 5px $brown;
   div {
     display: flex;
     flex: 1;
@@ -30,7 +31,8 @@
     background-color: lighten($brown, 10%);
     color: darken($jungleGreen, 10%);
     transition: all 0.3s ease;
-    :hover {
+    &:hover, &:active {
+      box-shadow: 0 0 5px $black;
       background-color: darken($brown, 10%);
     }
     a {
@@ -41,7 +43,7 @@
       overflow: hidden;
       width: 100%;
       transition: all 0.3s ease;
-      :hover {
+      &:hover, &:active {
         background-color: darken($brown, 10%);
       }
     }

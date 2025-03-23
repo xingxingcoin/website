@@ -16,6 +16,7 @@
   padding: 0.5rem;
   transition: all 0.3s ease;
   &:hover, &:active {
+    box-shadow: 0 0 5px $white;
     user-select: none;
     background-color: $black;
     cursor:pointer;
@@ -51,6 +52,7 @@
   background-color: $white;
   transition: all 0.3s ease;
   &:hover, &:active {
+    box-shadow: 0 0 5px $white;
     user-select: none;
     color: $white;
     background-color: $black;
