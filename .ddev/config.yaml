@@ -17,6 +17,7 @@ corepack_enable: false
 hooks:
     post-start:
         - exec: composer install
+        - exec: npm install && npm run build
         - exec: wget -O phpunit https://phar.phpunit.de/phpunit-12.phar && chmod +x phpunit && mv phpunit bin/phpunit
         - exec: wget -O psalm https://github.com/vimeo/psalm/releases/download/6.8.8/psalm.phar && chmod +x psalm && mv psalm bin/psalm
         - exec: wget -O infection https://github.com/infection/infection/releases/download/0.29.12/infection.phar && chmod +x infection && mv infection bin/infection
