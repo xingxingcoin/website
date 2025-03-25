@@ -8,6 +8,12 @@
   padding: 1.5rem 1.5rem;
   background-color: transparent;
   position: relative;
+  height: 75dvh;
+}
+@media (max-height: 450px) {
+  .navigation-container {
+    height: auto;
+  }
 }
 
 .navigation-text {
