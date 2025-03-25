@@ -10,6 +10,7 @@ export default class MemeGeneratorImagesManipulator {
     public displayImagesInMemeGenerator(jsonResponse: MediaUrl[]): void {
         jsonResponse.forEach((mediaUrl: MediaUrl): void => {
             const anchor: HTMLAnchorElement = document.createElement('a');
+            anchor.classList.add('container-left-hidden');
             anchor.href = mediaUrl.imageViewerUrl;
 
             const div: HTMLDivElement = document.createElement('div');

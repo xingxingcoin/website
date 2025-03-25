@@ -1,5 +1,6 @@
 import GalleryInitialLoadImagesResponse from '../types/GalleryInitialLoadImagesResponse';
 import GalleryImagesManipulator from '../components/GalleryImagesManipulator';
+import ContainerAnimationInitializer from "../components/ContainerAnimationInitializer";
 
 export default class GalleryImagesByGifFilterLoader {
     static readonly URL: string = '/api/v1/gallery/images/filter?filter=gif&counter=';
@@ -9,12 +10,14 @@ export default class GalleryImagesByGifFilterLoader {
     private gifFilterButton: HTMLElement;
     private imageFilterButton: HTMLElement;
     private galleryImagesManipulator: GalleryImagesManipulator;
+    private readonly containerAnimationInitializer: ContainerAnimationInitializer;
 
     constructor() {
         this.loadingIndicator = document.querySelector('.lds-dual-ring');
         this.gifFilterButton = document.getElementById('xing-media-gifs-filter-button');
         this.imageFilterButton = document.getElementById('xing-media-images-filter-button');
         this.galleryImagesManipulator = new GalleryImagesManipulator();
+        this.containerAnimationInitializer = new ContainerAnimationInitializer();
     }
 
     public load(): void {
@@ -28,6 +31,7 @@ export default class GalleryImagesByGifFilterLoader {
                 this.galleryImagesManipulator.displayImagesInGallery(jsonResponse.urls);
                 this.hideLoadingIndicator();
                 this.enableFilterButtonsWithSelectedGifButton();
+                this.containerAnimationInitializer.init();
                 const event = new Event('afterGifFilterButtonCLicked');
                 this.gifFilterButton.dispatchEvent(event);
             }

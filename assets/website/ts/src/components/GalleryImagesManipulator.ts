@@ -11,6 +11,7 @@ export default class GalleryImagesManipulator {
     {
         jsonResponse.forEach((mediaUrl: MediaUrl): void => {
             const anchor: HTMLAnchorElement = document.createElement('a');
+            anchor.classList.add('container-bottom-hidden');
             anchor.href = mediaUrl.imageViewerUrl;
 
             const div: HTMLDivElement = document.createElement('div');
