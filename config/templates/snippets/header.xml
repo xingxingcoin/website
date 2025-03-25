@@ -3,11 +3,11 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
 
-    <key>xing_music</key>
+    <key>header</key>
 
     <meta>
-        <title lang="en">Xing Xing music</title>
-        <title lang="de">Xing Xing Musik</title>
+        <title lang="en">Header</title>
+        <title lang="de">Header</title>
     </meta>
 
     <properties>
@@ -27,6 +27,16 @@
             </meta>
             <params>
                 <param name="types" value="audio"/>
+            </params>
+        </property>
+
+        <property name="xing_video" type="single_media_selection" mandatory="true">
+            <meta>
+                <title lang="en">Header video</title>
+                <title lang="de">Header Video</title>
+            </meta>
+            <params>
+                <param name="types" value="video"/>
             </params>
         </property>
     </properties>

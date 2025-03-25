@@ -2,6 +2,7 @@ import GalleryImagesByImageFilterLoader from '../gallery-filter/GalleryImagesByI
 import GalleryImagesByGifFilterLoader from '../gallery-filter/GalleryImagesByGifFilterLoader';
 import GalleryInitialLoadImagesResponse from '../types/GalleryInitialLoadImagesResponse';
 import GalleryImagesManipulator from '../components/GalleryImagesManipulator';
+import ContainerAnimationInitializer from '../components/ContainerAnimationInitializer';
 
 export default class GalleryInfiniteScrollingImageLoader {
     static readonly URL: string = '/api/v1/gallery/images?counter=';
@@ -13,6 +14,7 @@ export default class GalleryInfiniteScrollingImageLoader {
     private gifFilterButton: HTMLElement;
     private footer: HTMLElement;
     private galleryImagesManipulator: GalleryImagesManipulator;
+    private readonly containerAnimationInitializer: ContainerAnimationInitializer;
 
     constructor() {
         this.imageCounter = 1;
@@ -20,6 +22,7 @@ export default class GalleryInfiniteScrollingImageLoader {
         this.gifFilterButton = document.getElementById('xing-media-gifs-filter-button');
         this.footer = document.querySelector('footer');
         this.galleryImagesManipulator = new GalleryImagesManipulator();
+        this.containerAnimationInitializer = new ContainerAnimationInitializer();
         this.initEventListener();
     }
 
@@ -69,6 +72,7 @@ export default class GalleryInfiniteScrollingImageLoader {
                     if (jsonResponse.urls.length > 0) {
                         this.imageCounter++;
                     }
+                    this.containerAnimationInitializer.init();
                 }
                 this.isLoading = false;
             }

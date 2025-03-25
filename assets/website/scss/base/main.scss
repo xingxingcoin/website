@@ -6,12 +6,17 @@ p, h1, h3, a, label, li {
   font-family: DynaPuff,system-ui;
 }
 
+body {
+  margin: 0;
+  background-color: lighten($brown, 30);
+}
+
 main {
   margin-left: 10rem;
   margin-right: 10rem;
   @media (max-width: 768px) {
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
 
@@ -24,7 +29,16 @@ main {
 
 .title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 3rem;
+  }
+  .description {
+    font-size: 0.75rem;
+  }
 }
 
 .description {
@@ -54,6 +68,21 @@ main {
       height: 300px;
     }
   }
+}
+
+.container-left-hidden {
+  opacity: 0;
+  transform: translateX(-200px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.container-bottom-hidden {
+  opacity: 0;
+  transform: translateY(200px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.container-show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 input[type="text"], input[type="number"]  {
@@ -101,9 +130,11 @@ input[type="color"]  {
 @font-face {
   font-family: 'DynaPuff';
   src: url('../../fonts/DynaPuff-Regular.ttf') format('truetype');
+  font-weight: normal;
 }
 
 @font-face {
   font-family: 'DynaPuff';
   src: url('../../fonts/DynaPuff-Bold.ttf') format('truetype');
+  font-weight: bold;
 }

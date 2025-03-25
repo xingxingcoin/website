@@ -1,5 +1,6 @@
 import GalleryInitialLoadImagesResponse from '../types/GalleryInitialLoadImagesResponse';
-import GalleryImagesManipulator from "../components/GalleryImagesManipulator";
+import GalleryImagesManipulator from '../components/GalleryImagesManipulator';
+import ContainerAnimationInitializer from '../components/ContainerAnimationInitializer';
 
 export default class GalleryInitialImagesLoader {
     static readonly URL: string = '/api/v1/gallery/images?counter=0';
@@ -8,11 +9,13 @@ export default class GalleryInitialImagesLoader {
     private loadingIndicator: HTMLElement;
     private filterButtons: NodeList;
     private galleryImagesManipulator: GalleryImagesManipulator;
+    private containerAnimationInitializer: ContainerAnimationInitializer;
 
     constructor() {
         this.loadingIndicator = document.querySelector('.lds-dual-ring');
         this.filterButtons = document.querySelectorAll('.xing-media-filter-button-disabled');
         this.galleryImagesManipulator = new GalleryImagesManipulator();
+        this.containerAnimationInitializer = new ContainerAnimationInitializer();
         this.initEventListener();
     }
 
@@ -28,6 +31,7 @@ export default class GalleryInitialImagesLoader {
                     this.galleryImagesManipulator.displayImagesInGallery(jsonResponse.urls);
                     this.hideLoadingIndicator();
                     this.enableFilterButtons();
+                    this.containerAnimationInitializer.init();
                 }
             };
 

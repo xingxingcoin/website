@@ -43,13 +43,13 @@
             <tag name="sulu.rlp"/>
         </property>
 
-        <property name="header_music" type="single_snippet_selection" mandatory="true">
+        <property name="header" type="single_snippet_selection" mandatory="true">
             <meta>
-                <title lang="en">Header music</title>
-                <title lang="de">Header Musik</title>
+                <title lang="en">Header</title>
+                <title lang="de">Header</title>
             </meta>
             <params>
-                <param name="default" value="xing_music"/>
+                <param name="default" value="header"/>
             </params>
         </property>
 

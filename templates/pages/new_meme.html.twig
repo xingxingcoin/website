@@ -9,6 +9,7 @@
     {{ parent() }}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
     {{ encore_entry_script_tags('new-meme') }}
+    {{ encore_entry_script_tags('container-animation') }}
 {% endblock %}
 
 {% block content %}
@@ -18,9 +19,9 @@
     {% endset %}
 
     <h1 class="title">{{ content.title }}</h1>
-    <div class="new-meme-description-container description-container">{{ content.description|raw }}</div>
+    <div class="new-meme-description-container description-container container-left-hidden">{{ content.description|raw }}</div>
 
-    <div class="new-meme-button-container">
+    <div class="new-meme-button-container container-left-hidden">
         <input id="background-image-selector" type="file" accept="image/*" hidden>
         <label for="background-image-selector" class="new-meme-button new-meme-settings-button">
             {{ 'Select Background Image'|trans }}
@@ -31,7 +32,7 @@
                id="new-meme-download-button">{{ 'meme_generator.new_meme.download'|trans }}</label>
     </div>
 
-    <div class="new-meme-canvas-input-text-container">
+    <div class="new-meme-canvas-input-text-container container-bottom-hidden">
         <div class="new-meme-input-container">
             <input type="text" class="new-meme-text-input hidden" placeholder="{{ 'meme_generator.new_meme.select-text.input.placeholder'|trans }}">
             <input type="number" value="50" min="1" class="new-meme-input-text-size-number hidden">

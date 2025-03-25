@@ -1,5 +1,6 @@
 import MemeGeneratorImagesManipulator from './MemeGeneratorImagesManipulator';
 import MemeGeneratorInitialLoadImagesResponse from './types/MemeGeneratorInitialLoadImagesResponse';
+import ContainerAnimationInitializer from '../components/ContainerAnimationInitializer';
 
 export default class MemeGeneratorInitialImagesLoader {
     static readonly URL: string = '/api/v1/meme-generator/images?counter=0';
@@ -7,10 +8,12 @@ export default class MemeGeneratorInitialImagesLoader {
 
     private loadingIndicator: HTMLElement;
     private memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator;
+    private readonly containerAnimationInitializer: ContainerAnimationInitializer;
 
     constructor() {
         this.loadingIndicator = document.querySelector('.lds-dual-ring');
         this.memeGeneratorImagesManipulator = new MemeGeneratorImagesManipulator();
+        this.containerAnimationInitializer = new ContainerAnimationInitializer();
         this.initEventListener();
     }
 
@@ -23,6 +26,7 @@ export default class MemeGeneratorInitialImagesLoader {
                     const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
                     this.memeGeneratorImagesManipulator.displayImagesInMemeGenerator(jsonResponse.urls);
                     this.hideLoadingIndicator();
+                    this.containerAnimationInitializer.init();
                 }
             };
 
