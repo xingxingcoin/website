@@ -29,7 +29,16 @@ main {
 
 .title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  .description {
+    font-size: 0.75rem;
+  }
 }
 
 .description {
@@ -121,9 +130,11 @@ input[type="color"]  {
 @font-face {
   font-family: 'DynaPuff';
   src: url('../../fonts/DynaPuff-Regular.ttf') format('truetype');
+  font-weight: normal;
 }
 
 @font-face {
   font-family: 'DynaPuff';
   src: url('../../fonts/DynaPuff-Bold.ttf') format('truetype');
+  font-weight: bold;
 }
