@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function (): void {
-    const hiddenContainerCollection: NodeList = document.querySelectorAll('.container-left-hidden, .container-right-hidden');
+    const hiddenContainerCollection: NodeList = document.querySelectorAll('.container-left-hidden, .container-bottom-hidden');
 
     Array.from(hiddenContainerCollection).forEach((hiddenContainer: HTMLDivElement): void => {
         window.addEventListener('scroll', (): void => {

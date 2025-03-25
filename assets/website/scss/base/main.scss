@@ -63,17 +63,17 @@ main {
 
 .container-left-hidden {
   opacity: 0;
-  transform: translateX(-50px);
+  transform: translateX(-200px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-.container-right-hidden {
+.container-bottom-hidden {
   opacity: 0;
-  transform: translateX(50px);
+  transform: translateY(200px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 .container-show {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 input[type="text"], input[type="number"]  {
