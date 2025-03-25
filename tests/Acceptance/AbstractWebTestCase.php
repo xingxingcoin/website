@@ -41,7 +41,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setResourceSegment('/xing-xing-on-camera');
         $document->setLocale('en');
         $document->getStructure()->bind([
-            'header_music' => [
+            'header' => [
                 'xing_music' => 'default-audio.mp3'
             ],
             'footer_social_media' => [
@@ -92,7 +92,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setResourceSegment('/xing-xing-on-camera/image-viewer');
         $document->setLocale('en');
         $document->getStructure()->bind([
-            'header_music' => [
+            'header' => [
                 'xing_music' => 'default-audio.mp3'
             ],
             'footer_social_media' => [
@@ -133,7 +133,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setResourceSegment('/meme-generator');
         $document->setLocale('en');
         $document->getStructure()->bind([
-            'header_music' => [
+            'header' => [
                 'xing_music' => 'default-audio.mp3'
             ],
             'footer_social_media' => [
@@ -184,7 +184,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setResourceSegment('/meme-generator/new-meme');
         $document->setLocale('en');
         $document->getStructure()->bind([
-            'header_music' => [
+            'header' => [
                 'xing_music' => 'default-audio.mp3'
             ],
             'footer_social_media' => [
