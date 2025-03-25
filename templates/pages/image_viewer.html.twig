@@ -9,11 +9,10 @@
     {% set media = sulu_resolve_media(app.request.query.get('mediaId'), localizations['en']['locale']) %}
     {% set image %}
         <div class="image-viewer-inner-container">
-            {{ get_image(media|default, 'sulu-200x200') }}
+            {{ get_image(media|default, 'sulu-400x400') }}
         </div>
     {% endset %}
 
-    <div class="container-left-hidden">
         <div class="image-viewer-image-container">
             {{ image }}
         </div>
@@ -22,6 +21,8 @@
         {% for file in media.entity.files %}
             {% set fileName = file.fileVersions.first().name %}
         {% endfor %}
+
+    <div class="container-left-hidden">
         <p class="image-viewer-file-name">{{ fileName }}</p>
 
         <div class="image-viewer-image-download-button-container">
