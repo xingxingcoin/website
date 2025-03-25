@@ -26,6 +26,7 @@ Encore
     .addEntry('gallery-filter', './assets/website/ts/src/gallery-filter/main.ts')
     .addEntry('meme-generator-infinite-scrolling', './assets/website/ts/src/meme-generator-infinite-scrolling/main.ts')
     .addEntry('xing-address', './assets/website/ts/src/xing-address/main.ts')
+    .addEntry('container-animation', './assets/website/ts/src/container-animation/main.ts')
     .addStyleEntry('styles', './assets/website/scss/main.scss')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

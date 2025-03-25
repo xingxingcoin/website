@@ -61,6 +61,21 @@ main {
   }
 }
 
+.container-left-hidden {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.container-right-hidden {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.container-show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 input[type="text"], input[type="number"]  {
   border: 3px solid $brown;
   border-radius: 5px;

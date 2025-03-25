@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('container-animation') }}
+{% endblock %}
+
 {% block content %}
     {% set media = sulu_resolve_media(app.request.query.get('mediaId'), localizations['en']['locale']) %}
     {% set image %}
@@ -8,17 +13,20 @@
         </div>
     {% endset %}
 
-    <div class="image-viewer-image-container">
-        {{ image }}
-    </div>
+    <div class="container-left-hidden">
+        <div class="image-viewer-image-container">
+            {{ image }}
+        </div>
 
-    {% set fileName = '' %}
-    {% for file in media.entity.files %}
-        {% set fileName = file.fileVersions.first().name %}
-    {% endfor %}
-    <p class="image-viewer-file-name">{{ fileName }}</p>
+        {% set fileName = '' %}
+        {% for file in media.entity.files %}
+            {% set fileName = file.fileVersions.first().name %}
+        {% endfor %}
+        <p class="image-viewer-file-name">{{ fileName }}</p>
 
-    <div class="image-viewer-image-download-button-container">
-        <a class="image-viewer-image-download-button" href="{{ media.url }}" download="{{ fileName }}">{{ 'image_viewer.download-button.text'|trans }}</a>
+        <div class="image-viewer-image-download-button-container">
+            <a class="image-viewer-image-download-button" href="{{ media.url }}"
+               download="{{ fileName }}">{{ 'image_viewer.download-button.text'|trans }}</a>
+        </div>
     </div>
 {% endblock %}

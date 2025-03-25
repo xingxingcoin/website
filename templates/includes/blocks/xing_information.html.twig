@@ -14,7 +14,7 @@
 {% endset %}
 
 <div class="xing_information-main-container">
-    <div class="xing_information-inner-container">
+    <div class="xing_information-inner-container container-left-hidden">
         <div><p class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.market_cap.title'|trans }}</p>
             {% set marketCap = xing['finance']['marketCap'] %}
             {% set leftToBillion = 1000000000 - marketCap %}
@@ -24,7 +24,7 @@
         {{ image }}
     </div>
 
-    <div class="xing_information-inner-container">
+    <div class="xing_information-inner-container container-right-hidden">
         <p class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.price_change.title'|trans }}</p>
         {% if xing['finance']['priceChange'] > 0 %}
             <p class="xing_information-right-container-price-change-positive-text">{{ 'xing_information.price_change'|trans }} +{{ xing['finance']['priceChange'] }}
