@@ -1,31 +1,37 @@
 {
-    "devDependencies": {
-        "@babel/core": "^7.17.0",
-        "@babel/preset-env": "^7.16.0",
-        "@symfony/webpack-encore": "^5.0.0",
-        "core-js": "^3.38.0",
-        "regenerator-runtime": "^0.13.9",
-        "sass": "^1.85.1",
-        "sass-loader": "^16.0.5",
-        "ts-loader": "^9.5.2",
-        "typescript": "^5.8.2",
-        "webpack": "^5.74.0",
-        "webpack-cli": "^5.1.0",
-        "webpack-notifier": "^1.15.0"
-    },
-    "license": "UNLICENSED",
-    "private": true,
-    "scripts": {
-        "dev-server": "encore dev-server",
-        "dev": "encore dev",
-        "watch": "encore dev --watch",
-        "build": "encore production --progress"
-    },
-    "dependencies": {
-        "cropperjs": "1.6.2",
-        "interactjs": "^1.10.27"
-    },
-    "volta": {
-        "node": "22.14.0"
-    }
+  "devDependencies": {
+    "@babel/core": "^7.17.0",
+    "@babel/preset-env": "^7.16.0",
+    "@symfony/webpack-encore": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "core-js": "^3.38.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "regenerator-runtime": "^0.13.9",
+    "sass": "^1.85.1",
+    "sass-loader": "^16.0.5",
+    "ts-jest": "^29.3.0",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-notifier": "^1.15.0"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev-server": "encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress",
+    "test": "jest"
+  },
+  "dependencies": {
+    "cropperjs": "1.6.2",
+    "interactjs": "^1.10.27"
+  },
+  "volta": {
+    "node": "22.14.0"
+  }
 }

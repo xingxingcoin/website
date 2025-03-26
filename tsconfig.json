@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
+    "target": "ES6",
     "module": "nodenext",
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
     "sourceMap": true
   },
-  "include": ["assets/website/ts/src/**/*"],
-  "exclude": ["assets/website/ts/tests/**/*.spec.ts"]
+  "include": [
+    "assets/website/ts/src/**/*.ts",
+    "assets/website/ts/__tests__/**/*.ts"
+  ]
 }
