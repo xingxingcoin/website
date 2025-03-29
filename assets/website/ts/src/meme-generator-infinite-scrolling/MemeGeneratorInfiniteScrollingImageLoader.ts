@@ -8,21 +8,22 @@ export default class MemeGeneratorInfiniteScrollingImageLoader {
 
     private imageCounter: number;
     private isLoading: boolean;
-    private memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator;
-    private containerAnimationInitializer: ContainerAnimationInitializer;
 
-    constructor() {
+    constructor(
+        private readonly memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator,
+        private readonly containerAnimationInitializer: ContainerAnimationInitializer) {
         this.imageCounter = 1;
-        this.memeGeneratorImagesManipulator = new MemeGeneratorImagesManipulator();
-        this.containerAnimationInitializer = new ContainerAnimationInitializer();
+        this.isLoading = false;
         this.initEventListener();
     }
 
     private initEventListener(): void {
         document.addEventListener('DOMContentLoaded', (): void => {
             window.addEventListener('scroll', (): void => {
-                const footer: HTMLElement = document.querySelector('footer');
-                if (!footer || this.isLoading) return;
+                const footer: HTMLElement | null = document.querySelector('footer') as HTMLElement | null;
+                if (!footer || this.isLoading) {
+                    return;
+                }
 
                 const footerPosition: number = footer.getBoundingClientRect().top;
                 const windowHeight: number = window.innerHeight;
@@ -39,14 +40,12 @@ export default class MemeGeneratorInfiniteScrollingImageLoader {
         let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
         ajaxHttpClient.open(MemeGeneratorInfiniteScrollingImageLoader.METHOD, MemeGeneratorInfiniteScrollingImageLoader.URL + this.imageCounter, true);
         ajaxHttpClient.onreadystatechange = (): void => {
-            if (ajaxHttpClient.readyState === 4) {
-                if (ajaxHttpClient.status === 200) {
-                    const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
-                    this.memeGeneratorImagesManipulator.displayImagesInMemeGenerator(jsonResponse.urls);
-                    this.containerAnimationInitializer.init();
-                    if (jsonResponse.urls.length > 0) {
-                        this.imageCounter++;
-                    }
+            if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
+                const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
+                this.memeGeneratorImagesManipulator.displayImagesInMemeGenerator(jsonResponse.urls);
+                this.containerAnimationInitializer.init();
+                if (jsonResponse.urls.length > 0) {
+                    this.imageCounter++;
                 }
                 this.isLoading = false;
             }

@@ -1,10 +1,16 @@
 import MediaUrl from './types/MediaUrl';
 
 export default class MemeGeneratorImagesManipulator {
-    private memeGeneratorContainer: HTMLElement;
+    private readonly xingMediaContainer: HTMLDivElement | null;
 
-    constructor() {
-        this.memeGeneratorContainer = document.querySelector('.xing-media-container');
+    /**
+     * @exception Error
+     */
+    constructor(xingMediaContainerClass: string) {
+        this.xingMediaContainer = document.querySelector(xingMediaContainerClass);
+        if (this.xingMediaContainer === null) {
+            throw new Error('Memes are not added to xing media container.');
+        }
     }
 
     public displayImagesInMemeGenerator(jsonResponse: MediaUrl[]): void {
@@ -22,7 +28,7 @@ export default class MemeGeneratorImagesManipulator {
 
             div.appendChild(img);
             anchor.appendChild(div);
-            this.memeGeneratorContainer.appendChild(anchor);
+            (this.xingMediaContainer as HTMLElement).appendChild(anchor);
         });
     }
 }

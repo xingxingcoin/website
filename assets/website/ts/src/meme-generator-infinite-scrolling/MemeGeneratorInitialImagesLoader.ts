@@ -6,14 +6,19 @@ export default class MemeGeneratorInitialImagesLoader {
     static readonly URL: string = '/api/v1/meme-generator/images?counter=0';
     static readonly METHOD: string = 'GET';
 
-    private loadingIndicator: HTMLElement;
-    private memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator;
-    private readonly containerAnimationInitializer: ContainerAnimationInitializer;
+    private readonly loadingIndicator: HTMLElement | null;
 
-    constructor() {
-        this.loadingIndicator = document.querySelector('.lds-dual-ring');
-        this.memeGeneratorImagesManipulator = new MemeGeneratorImagesManipulator();
-        this.containerAnimationInitializer = new ContainerAnimationInitializer();
+    /**
+     * @exception Error
+     */
+    constructor(private readonly memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator,
+                private readonly containerAnimationInitializer: ContainerAnimationInitializer,
+                loadingIndicatorClass: string) {
+        this.loadingIndicator = document.querySelector(loadingIndicatorClass);
+        if (this.loadingIndicator === null) {
+            throw new Error('Meme generator initial images are not loaded.');
+        }
+
         this.initEventListener();
     }
 
@@ -35,6 +40,6 @@ export default class MemeGeneratorInitialImagesLoader {
     }
 
     private hideLoadingIndicator(): void {
-        this.loadingIndicator.style.display = 'none';
+        (this.loadingIndicator as HTMLElement).style.display = 'none';
     }
 }
