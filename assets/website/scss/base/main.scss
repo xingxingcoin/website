@@ -9,7 +9,7 @@ p, h1, h3, a, label, li {
 
 body {
   margin: 0;
-  background-color: lighten($brown, 30);
+  background-color: color.scale($brown, $lightness: 80%);
 }
 
 main {
