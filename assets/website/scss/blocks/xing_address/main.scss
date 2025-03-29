@@ -29,7 +29,7 @@
     border-width: 0.3rem;
     border-color: $black;
     overflow: hidden;
-    background-color: color.scale($brown, $lightness: -10%);
+    background-color: color.scale($brown, $lightness: 10%);
     color: color.scale($jungleGreen, $lightness: -10%);
     transition: all 0.3s ease;
     &:hover, &:active {
