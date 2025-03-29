@@ -6,18 +6,29 @@ export default class GalleryImagesByNoFilterLoader {
     static readonly URL: string = '/api/v1/gallery/images?counter=0';
     static readonly METHOD: string = 'GET';
 
-    private loadingIndicator: HTMLElement;
-    private gifFilterButton: HTMLElement;
-    private imageFilterButton: HTMLElement;
-    private galleryImagesManipulator: GalleryImagesManipulator;
-    private readonly containerAnimationInitializer: ContainerAnimationInitializer;
+    private readonly loadingIndicator: HTMLElement | null;
+    private readonly gifFilterButton: HTMLAnchorElement | null;
+    private readonly imageFilterButton: HTMLAnchorElement | null;
 
-    constructor() {
-        this.loadingIndicator = document.querySelector('.lds-dual-ring');
-        this.gifFilterButton = document.getElementById('xing-media-gifs-filter-button');
-        this.imageFilterButton = document.getElementById('xing-media-images-filter-button');
-        this.galleryImagesManipulator = new GalleryImagesManipulator();
-        this.containerAnimationInitializer = new ContainerAnimationInitializer();
+    /**
+     * @exception Error
+     */
+    constructor(
+        private readonly galleryImagesManipulator: GalleryImagesManipulator,
+        private readonly containerAnimationInitializer: ContainerAnimationInitializer,
+        loadingIndicatorClass: string,
+        gifFilterButtonId: string,
+        imageFilterButtonId: string
+    ) {
+        this.loadingIndicator = document.querySelector(loadingIndicatorClass);
+        this.gifFilterButton = document.getElementById(gifFilterButtonId) as HTMLAnchorElement | null;
+        this.imageFilterButton = document.getElementById(imageFilterButtonId) as HTMLAnchorElement | null;
+        if (this.loadingIndicator === null ||
+            this.imageFilterButton === null ||
+            this.gifFilterButton === null
+        ) {
+            throw new Error('Gallery images with no filter are not loaded');
+        }
     }
 
     public load(): void {
@@ -32,8 +43,7 @@ export default class GalleryImagesByNoFilterLoader {
                 this.hideLoadingIndicator();
                 this.enableFilterButtons();
                 this.containerAnimationInitializer.init();
-                const event = new Event('resetFilter');
-                document.dispatchEvent(event);
+                document.dispatchEvent(new Event('resetFilter'));
             }
         };
 
@@ -41,24 +51,24 @@ export default class GalleryImagesByNoFilterLoader {
     }
 
     private displayLoadingIndicator(): void {
-        this.loadingIndicator.style.display = 'flex';
+        (this.loadingIndicator as HTMLElement).style.display = 'flex';
     }
 
     private hideLoadingIndicator(): void {
-        this.loadingIndicator.style.display = 'none';
+        (this.loadingIndicator as HTMLElement).style.display = 'none';
     }
 
     private disableFilterButtons(): void {
-        this.imageFilterButton.classList.remove('xing-media-filter-button', 'xing-media-filter-button-selected');
-        this.imageFilterButton.classList.add('xing-media-filter-button-disabled');
-        this.gifFilterButton.classList.remove('xing-media-filter-button-selected', 'xing-media-filter-button');
-        this.gifFilterButton.classList.add('xing-media-filter-button-disabled');
+        (this.imageFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button', 'xing-media-filter-button-selected');
+        (this.imageFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button-disabled');
+        (this.gifFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-selected', 'xing-media-filter-button');
+        (this.gifFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button-disabled');
     }
 
     private enableFilterButtons(): void {
-        this.imageFilterButton.classList.remove('xing-media-filter-button-disabled');
-        this.imageFilterButton.classList.add('xing-media-filter-button');
-        this.gifFilterButton.classList.remove('xing-media-filter-button-disabled');
-        this.gifFilterButton.classList.add('xing-media-filter-button');
+        (this.imageFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-disabled');
+        (this.imageFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button');
+        (this.gifFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-disabled');
+        (this.gifFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button');
     }
 }
