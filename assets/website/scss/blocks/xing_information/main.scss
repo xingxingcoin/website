@@ -1,4 +1,5 @@
 @use '../../_shared/colors' as *;
+@use 'sass:color';
 
 .xing_information-main-container {
   display: flex;
@@ -22,6 +23,14 @@
   box-shadow: 0 0 5px $brown;
   @media (max-width: 768px) {
     img {
+      width: 300px;
+      height: 300px;
+    }
+    iframe {
+      width: 300px;
+      height: 300px;
+    }
+    .xing_information-right-container-cookie-container {
       width: 300px;
       height: 300px;
     }
@@ -54,4 +63,29 @@
   text-align: center;
   font-size: 1.2rem;
   color: $red;
+}
+
+.xing_information-right-container-cookie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  background-color: color.scale($brown, $lightness: 10%);
+  a {
+    text-align: center;
+    font-size: 0.75rem;
+    color: $white;
+    cursor: pointer;
+    border-radius: 1rem;
+    border-color: color.scale($brown, $lightness: -10%);
+    padding: 1rem 1rem;
+    background-color: color.scale($brown, $lightness: -10%);
+    transition: all 0.3s ease;
+    &:hover, &:active {
+      box-shadow: 0 0 5px $black;
+      user-select: none;
+      background-color: color.scale($brown, $lightness: -15%);
+    }
+  }
 }

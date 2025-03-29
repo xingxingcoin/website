@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "cropperjs": "1.6.2",
-    "interactjs": "^1.10.27"
+    "interactjs": "^1.10.27",
+    "vanilla-cookieconsent": "^3.1.0"
   },
   "volta": {
     "node": "22.14.0"

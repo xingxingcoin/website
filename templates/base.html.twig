@@ -19,7 +19,7 @@
         default-src 'none';
         script-src 'self' https://cdnjs.cloudflare.com;
         connect-src 'self' https://www.dextools.io;
-        style-src 'self' https://cdnjs.cloudflare.com;
+        style-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;
         style-src-attr 'unsafe-hashes' 'sha256-Wi3+8jbn12vus9Oq4FOqEUCOpuRG3clBaVvLZZ2b9Fs=';
         img-src 'self' data:;
         media-src 'self';
@@ -30,6 +30,7 @@
 
     {% block style %}
         {{ encore_entry_link_tags('styles') }}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.1/dist/cookieconsent.css"/>
     {% endblock %}
 </head>
 <body>
@@ -109,6 +110,7 @@
 
 {% block javascripts %}
     {{ encore_entry_script_tags('navigation-audio-player') }}
+    {{ encore_entry_script_tags('cookie-consent') }}
 {% endblock %}
 </body>
 </html>

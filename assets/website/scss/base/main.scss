@@ -139,3 +139,16 @@ input[type="color"]  {
   src: url('../../fonts/DynaPuff-Bold.ttf') format('truetype');
   font-weight: bold;
 }
+
+#cc-main {
+  --cc-font-family: DynaPuff;
+
+  --cc-btn-primary-bg: #d0b886;
+  --cc-btn-primary-border-color: #d0b886;
+  --cc-btn-primary-hover-bg: #92815e;
+  --cc-btn-primary-hover-border-color: #92815e;
+
+  --cc-toggle-on-bg: var(--cc-btn-primary-bg);
+
+  --cc-btn-border-radius: 10px;
+}
