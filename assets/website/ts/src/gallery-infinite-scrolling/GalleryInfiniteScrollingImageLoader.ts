@@ -10,19 +10,33 @@ export default class GalleryInfiniteScrollingImageLoader {
     static readonly METHOD: string = 'GET';
     private imageCounter: number;
     private isLoading: boolean;
-    private imageFilterButton: HTMLElement;
-    private gifFilterButton: HTMLElement;
-    private footer: HTMLElement;
-    private galleryImagesManipulator: GalleryImagesManipulator;
-    private readonly containerAnimationInitializer: ContainerAnimationInitializer;
+    private readonly imageFilterButton: HTMLAnchorElement | null;
+    private readonly gifFilterButton: HTMLAnchorElement | null;
+    private readonly footer: HTMLElement | null;
 
-    constructor() {
+    /**
+     * @exception Error
+     */
+    constructor(
+        private readonly galleryImagesManipulator: GalleryImagesManipulator,
+        private readonly containerAnimationInitializer: ContainerAnimationInitializer,
+        imageFilterButtonId: string,
+        gifFilterButtonId: string,
+        footerTag: string
+    ) {
         this.imageCounter = 1;
-        this.imageFilterButton = document.getElementById('xing-media-images-filter-button');
-        this.gifFilterButton = document.getElementById('xing-media-gifs-filter-button');
-        this.footer = document.querySelector('footer');
-        this.galleryImagesManipulator = new GalleryImagesManipulator();
-        this.containerAnimationInitializer = new ContainerAnimationInitializer();
+        this.isLoading = false;
+        this.urlForRequest = '';
+        this.imageFilterButton = document.getElementById(imageFilterButtonId) as HTMLAnchorElement | null;
+        this.gifFilterButton = document.getElementById(gifFilterButtonId) as HTMLAnchorElement | null;
+        this.footer = document.querySelector(footerTag);
+        if (this.imageFilterButton === null ||
+            this.gifFilterButton === null ||
+            this.footer === null
+        ) {
+            throw new Error('Gallery infinite scrolling images are not loaded.');
+        }
+
         this.initEventListener();
     }
 
@@ -33,24 +47,24 @@ export default class GalleryInfiniteScrollingImageLoader {
                     return;
                 }
 
-                const footerPosition: number = this.footer.getBoundingClientRect().top;
+                const footerPosition: number = (this.footer as HTMLElement).getBoundingClientRect().top;
                 const windowHeight: number = window.innerHeight;
                 if (footerPosition < windowHeight + 50) {
                     this.loadImages();
                 }
             });
         });
-        this.imageFilterButton.addEventListener('afterImageFilterButtonCLicked', (): void => {
+        (this.imageFilterButton as HTMLElement).addEventListener('afterImageFilterButtonCLicked', (): void => {
             this.imageCounter = 1;
             this.urlForRequest = GalleryInfiniteScrollingImageLoader.URL;
-            if (this.imageFilterButton.classList.contains('xing-media-filter-button-selected')) {
+            if ((this.imageFilterButton as HTMLElement).classList.contains('xing-media-filter-button-selected')) {
                 this.urlForRequest = GalleryImagesByImageFilterLoader.URL;
             }
         });
         this.urlForRequest = GalleryInfiniteScrollingImageLoader.URL;
-        this.gifFilterButton.addEventListener('afterGifFilterButtonCLicked', (): void => {
+        (this.gifFilterButton as HTMLElement).addEventListener('afterGifFilterButtonCLicked', (): void => {
             this.imageCounter = 1;
-            if (this.gifFilterButton.classList.contains('xing-media-filter-button-selected')) {
+            if ((this.gifFilterButton as HTMLElement).classList.contains('xing-media-filter-button-selected')) {
                 this.urlForRequest = GalleryImagesByGifFilterLoader.URL;
             }
         });
@@ -65,15 +79,13 @@ export default class GalleryInfiniteScrollingImageLoader {
         let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
         ajaxHttpClient.open(GalleryInfiniteScrollingImageLoader.METHOD, this.urlForRequest + this.imageCounter, true);
         ajaxHttpClient.onreadystatechange = (): void => {
-            if (ajaxHttpClient.readyState === 4) {
-                if (ajaxHttpClient.status === 200) {
-                    const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
-                    this.galleryImagesManipulator.displayImagesInGallery(jsonResponse.urls);
-                    if (jsonResponse.urls.length > 0) {
-                        this.imageCounter++;
-                    }
-                    this.containerAnimationInitializer.init();
+            if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
+                const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
+                this.galleryImagesManipulator.displayImagesInGallery(jsonResponse.urls);
+                if (jsonResponse.urls.length > 0) {
+                    this.imageCounter++;
                 }
+                this.containerAnimationInitializer.init();
                 this.isLoading = false;
             }
         };

@@ -6,21 +6,28 @@ export default class GalleryInitialImagesLoader {
     static readonly URL: string = '/api/v1/gallery/images?counter=0';
     static readonly METHOD: string = 'GET';
 
-    private loadingIndicator: HTMLElement;
-    private filterButtons: NodeList;
-    private galleryImagesManipulator: GalleryImagesManipulator;
-    private containerAnimationInitializer: ContainerAnimationInitializer;
+    private readonly loadingIndicator: HTMLDivElement | null;
+    private readonly filterButtons: NodeList;
 
-    constructor() {
-        this.loadingIndicator = document.querySelector('.lds-dual-ring');
-        this.filterButtons = document.querySelectorAll('.xing-media-filter-button-disabled');
-        this.galleryImagesManipulator = new GalleryImagesManipulator();
-        this.containerAnimationInitializer = new ContainerAnimationInitializer();
+    /**
+     * @exception Error
+     */
+    constructor(
+        private readonly galleryImagesManipulator: GalleryImagesManipulator,
+        private readonly containerAnimationInitializer: ContainerAnimationInitializer,
+        loadingIndicatorClass: string,
+        filterButtonsClass: string
+    ) {
+        this.loadingIndicator = document.querySelector(loadingIndicatorClass);
+        this.filterButtons = document.querySelectorAll(filterButtonsClass);
+        if (this.loadingIndicator === null || this.filterButtons.length === 0) {
+            throw new Error('Gallery initial images are not loaded.');
+        }
+
         this.initEventListener();
     }
 
-    private initEventListener(): void
-    {
+    private initEventListener(): void {
         this.displayLoadingIndicator();
         document.addEventListener('DOMContentLoaded', (): void => {
             let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
@@ -40,15 +47,15 @@ export default class GalleryInitialImagesLoader {
     }
 
     private displayLoadingIndicator(): void {
-        this.loadingIndicator.style.display = 'flex';
+        (this.loadingIndicator as HTMLDivElement).style.display = 'flex';
     }
 
     private hideLoadingIndicator(): void {
-        this.loadingIndicator.style.display = 'none';
+        (this.loadingIndicator as HTMLDivElement).style.display = 'none';
     }
 
     private enableFilterButtons(): void {
-        Array.from(this.filterButtons).forEach((filterButton: Element): void => {
+        Array.from(this.filterButtons).forEach((filterButton: any): void => {
             filterButton.classList.remove('xing-media-filter-button-disabled');
             filterButton.classList.add('xing-media-filter-button');
         });
