@@ -132,6 +132,11 @@ body {
   object-position: center;
   z-index: -2;
 }
+@media (max-width: 768px) {
+  .background-video {
+    object-position: left;
+  }
+}
 
 .background-video-overlay {
   position: absolute;
