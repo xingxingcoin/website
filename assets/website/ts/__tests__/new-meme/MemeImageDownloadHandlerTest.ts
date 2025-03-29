@@ -144,4 +144,32 @@ describe('handle meme image for download', (): void => {
             expect(error.message).toBe('Meme image image could not be downloaded.');
         }
     });
+    test('memeImageCanvas is not found', (): void => {
+        Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+            value: jest.fn((): any => ({
+                drawImage: jest.fn(),
+                fillText: jest.fn(),
+                strokeText: jest.fn()
+            })),
+        });
+
+        const memeCanvasContainer: HTMLDivElement = document.querySelector('#meme-preview-container div') as HTMLDivElement;
+        memeCanvasContainer.remove();
+
+        const memeFileDownloaderMock: any = {
+            download: jest.fn()
+        };
+        new MemeImageDownloadHandler(
+            memeFileDownloaderMock,
+            'new-meme-download-button',
+            '.new-meme-input-color-picker',
+            '.new-meme-input-font-size-number'
+        );
+
+        downloadButton.click();
+
+        memeImageCanvas.width = 400;
+        memeImageCanvas.height = 400;
+        expect(memeFileDownloaderMock.download).not.toHaveBeenCalledWith(memeImageCanvas);
+    });
 });

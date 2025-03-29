@@ -28,9 +28,12 @@ export default class MemeImageDownloadHandler {
         (this.downloadButton as HTMLLabelElement).addEventListener('click', (): void => {
             const memeImageCanvas: HTMLCanvasElement | null = document.querySelector('#meme-preview-container div canvas');
             const memeText: HTMLParagraphElement | null = document.querySelector('#meme-preview-container div p');
+            if (memeImageCanvas === null) {
+                return;
+            }
             let memeCanvas: HTMLCanvasElement | null = memeImageCanvas;
             if (memeText !== null) {
-                memeCanvas = this.generateCanvasWithText(memeImageCanvas, memeText);
+                memeCanvas = this.generateCanvasWithText(memeCanvas, memeText);
             }
             this.memeFileDownloader.download(memeCanvas);
         });
@@ -43,7 +46,7 @@ export default class MemeImageDownloadHandler {
         const memeCanvas: HTMLCanvasElement = document.createElement('canvas');
         const context: CanvasRenderingContext2D | null = memeCanvas.getContext('2d');
         if (context === null) {
-            return;
+            return memeCanvas;
         }
         const memeCanvasContainer = document.querySelector('#meme-preview-container div') as HTMLDivElement;
         const memeCanvasContainerRect: DOMRect = memeCanvasContainer.getBoundingClientRect();
@@ -62,8 +65,8 @@ export default class MemeImageDownloadHandler {
         context.lineWidth = 2;
         context.letterSpacing = '1px';
         context.drawImage(memeImageCanvas, 0, 0, memeCanvasContainerRect.width, memeCanvasContainerRect.height);
-        context.fillText(memeText.textContent.toUpperCase(), memeTextPositionX, memeTextPositionY);
-        context.strokeText(memeText.textContent.toUpperCase(), memeTextPositionX, memeTextPositionY);
+        context.fillText((memeText.textContent as string).toUpperCase(), memeTextPositionX, memeTextPositionY);
+        context.strokeText((memeText.textContent as string).toUpperCase(), memeTextPositionX, memeTextPositionY);
 
         return memeCanvas;
     }
