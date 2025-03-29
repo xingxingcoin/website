@@ -4,13 +4,13 @@ import GalleryImagesManipulator from '../components/GalleryImagesManipulator';
 import ContainerAnimationInitializer from '../components/ContainerAnimationInitializer';
 
 new GalleryInitialImagesLoader(
-    new GalleryImagesManipulator(),
+    new GalleryImagesManipulator('.xing-media-container'),
     new ContainerAnimationInitializer(),
     '.lds-dual-ring',
     '.xing-media-filter-button-disabled'
 );
 new GalleryInfiniteScrollingImageLoader(
-    new GalleryImagesManipulator(),
+    new GalleryImagesManipulator('.xing-media-container'),
     new ContainerAnimationInitializer(),
     'xing-media-images-filter-button',
     'xing-media-gifs-filter-button',

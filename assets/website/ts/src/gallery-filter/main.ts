@@ -8,14 +8,14 @@ import GalleryImagesByGifFilterLoader from './GalleryImagesByGifFilterLoader';
 
 new GalleryImagesByGifFilterLoadHandler(
     new GalleryImagesByGifFilterLoader(
-        new GalleryImagesManipulator(),
+        new GalleryImagesManipulator('.xing-media-container'),
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-gifs-filter-button',
         'xing-media-images-filter-button'
     ),
     new GalleryImagesByNoFilterLoader(
-        new GalleryImagesManipulator(),
+        new GalleryImagesManipulator('.xing-media-container'),
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-gifs-filter-button',
@@ -26,14 +26,14 @@ new GalleryImagesByGifFilterLoadHandler(
 );
 new GalleryImagesByImageFilterLoadHandler(
     new GalleryImagesByImageFilterLoader(
-        new GalleryImagesManipulator(),
+        new GalleryImagesManipulator('.xing-media-container'),
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-gifs-filter-button',
         'xing-media-images-filter-button'
     ),
     new GalleryImagesByNoFilterLoader(
-        new GalleryImagesManipulator(),
+        new GalleryImagesManipulator('.xing-media-container'),
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-gifs-filter-button',

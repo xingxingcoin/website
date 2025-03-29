@@ -1,10 +1,16 @@
 import MediaUrl from '../types/MediaUrl';
 
 export default class GalleryImagesManipulator {
-    private galleryContainer: Element;
+    private readonly galleryContainer: Element | null;
 
-    constructor() {
-        this.galleryContainer = document.querySelector('.xing-media-container');
+    /**
+     * @exception Error
+     */
+    constructor(mediaContainerClass: string) {
+        this.galleryContainer = document.querySelector(mediaContainerClass);
+        if (this.galleryContainer === null) {
+            throw new Error('Gallery images could not be manipulated.');
+        }
     }
 
     public displayImagesInGallery(jsonResponse: MediaUrl[]): void
@@ -23,7 +29,7 @@ export default class GalleryImagesManipulator {
 
             div.appendChild(img);
             anchor.appendChild(div);
-            this.galleryContainer.appendChild(anchor);
+            (this.galleryContainer as Element).appendChild(anchor);
         });
     }
 }
