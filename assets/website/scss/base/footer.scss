@@ -3,7 +3,6 @@
 .footer-container {
   background-color: $brown;
   padding-top: 2.5rem;
-  padding-bottom: 20rem;
   text-align: center;
 }
 
@@ -56,5 +55,23 @@
     user-select: none;
     color: $white;
     background-color: $black;
+  }
+}
+
+.footer-information-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-top: 5rem;
+  color: $white;
+  font-size: 0.75rem;
+}
+@media (max-width: 768px) {
+  .footer-information-container {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
