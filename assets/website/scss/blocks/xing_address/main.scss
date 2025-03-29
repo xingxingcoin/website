@@ -1,4 +1,5 @@
 @use '../../_shared/colors.scss' as *;
+@use 'sass:color';
 
 .xing_address-container {
   display: flex;
@@ -29,11 +30,11 @@
     border-color: $black;
     overflow: hidden;
     background-color: lighten($brown, 10%);
-    color: darken($jungleGreen, 10%);
+    color: color.scale($jungleGreen, $lightness: -10%);
     transition: all 0.3s ease;
     &:hover, &:active {
       box-shadow: 0 0 5px $black;
-      background-color: darken($brown, 10%);
+      background-color: color.scale($brown, $lightness: -10%);
     }
     a {
       padding: 1rem 1rem;
@@ -44,7 +45,7 @@
       width: 100%;
       transition: all 0.3s ease;
       &:hover, &:active {
-        background-color: darken($brown, 10%);
+        background-color: color.scale($brown, $lightness: -10%);
       }
     }
   }

@@ -1,6 +1,7 @@
 @use 'footer';
 @use 'navigation';
 @use '../_shared/colors' as *;
+@use 'sass:color';
 
 p, h1, h3, a, label, li {
   font-family: DynaPuff,system-ui;
@@ -119,7 +120,7 @@ input[type="color"]  {
     box-shadow: 0 0 5px $jungleGreen;
     border-color: $jungleGreen;
     outline: none;
-    background-color: darken($white, 15);
+    background-color: color.scale($white, $lightness: -15%);
   }
 }
 
