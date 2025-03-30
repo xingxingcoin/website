@@ -108,4 +108,9 @@
     background-color: $brown;
     transform: scale(0.9);
   }
+
+  &:not(:active) {
+    transform: scale(1.2);
+    background-color: color.scale($brown, $lightness: -15%);
+  }
 }
