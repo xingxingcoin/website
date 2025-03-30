@@ -9,9 +9,6 @@ export default class CookieConsentHandler {
      */
     constructor(cookieConsentPreferenceSelector: string) {
         this.cookiePreferenceShowButton = document.querySelector(cookieConsentPreferenceSelector);
-        if (this.cookiePreferenceShowButton === null) {
-            throw new Error('Cookie Consent is not displayed.');
-        }
 
         this.initEventListener();
     }
@@ -22,6 +19,9 @@ export default class CookieConsentHandler {
             CookieConsent.run(CookieConsentConfiguration.getConfig());
         });
 
+        if (this.cookiePreferenceShowButton === null) {
+            return;
+        }
         (this.cookiePreferenceShowButton as Element).addEventListener('click', (): void => {
             CookieConsent.showPreferences();
         });

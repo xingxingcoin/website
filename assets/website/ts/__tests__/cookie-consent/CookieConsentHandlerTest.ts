@@ -37,13 +37,10 @@ describe('handle cookie consent', (): void => {
         expect(CookieConsent.showPreferences).toHaveBeenCalled();
     });
     test('cookiePreferenceShowButton is not found', (): void => {
-        try {
-            new CookieConsentHandler('.xing_information-right-container-cookie-container-wrong a');
-        } catch (error: any) {
-            expect(error.message).toBe('Cookie Consent is not displayed.');
-        }
+        new CookieConsentHandler('.xing_information-right-container-cookie-container-wrong a');
+        document.dispatchEvent(new Event('DOMContentLoaded'));
 
         expect(CookieConsent.showPreferences).not.toHaveBeenCalled();
-        expect(CookieConsent.run).not.toHaveBeenCalled();
+        expect(CookieConsent.run).toHaveBeenCalled();
     });
 });
