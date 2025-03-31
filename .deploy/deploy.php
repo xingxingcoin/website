@@ -16,6 +16,7 @@ add('shared_files', [
 add('shared_dirs', []);
 add('writable_dirs', []);
 set('do_not_deploy', [
+    '.git',
     '.ddev',
     '.deploy',
     'docs',
@@ -29,26 +30,37 @@ set('do_not_deploy', [
     'README.md'
 ]);
 
+task('local:create:working:dir', static function (): void {
+   if (is_dir(__DIR__ . './build')) {
+       runLocally('rm -rf build');
+   }
+   runLocally('mkdir build');
+});
+task('local:checkout', static function (): void {
+    runLocally('git clone --depth=1 {{repository}} build');
+});
 task('local:composer:install', static function (): void {
-    runLocally('composer install');
+    runLocallyInBuildDir('composer install');
 });
 task('local:npm:install', static function (): void {
-    runLocally('npm install');
+    runLocallyInBuildDir('npm install');
 });
 task('local:npm:build', static function (): void {
-    runLocally('npm run build');
+    runLocallyInBuildDir('npm run build');
 });
 task('deploy:do:not:deploy', static function () {
     $doNotDeploy = get('do_not_deploy');
     foreach ($doNotDeploy as $item) {
-        runLocally('rm -rf ' . $item);
+        runLocallyInBuildDir('rm -rf ' . $item);
     }
 });
 task('deploy:update_code', static function (): void {
-   upload('.', '{{release_path}}');
+   upload('build/.', '{{release_path}}');
 });
 
 task('deploy:prepare', [
+    'local:create:working:dir',
+    'local:checkout',
     'local:composer:install',
     'local:npm:install',
     'local:npm:build',
@@ -70,3 +82,11 @@ task('deploy', [
 ]);
 
 after('deploy:failed', 'deploy:unlock');
+
+function runLocallyInBuildDir(string $command): string
+{
+    return runLocally(
+        command: 'cd build && ' . $command,
+        env: ['PROJECT_ROOT' => __DIR__ . '/build']
+    );
+}
