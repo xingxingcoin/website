@@ -28,6 +28,7 @@ set('do_not_deploy', [
     'infection.json5',
     'README.md'
 ]);
+set('writable_mode', 'sticky');
 
 task('local:composer:install', static function (): void {
     runLocally('composer install');
