@@ -41,7 +41,7 @@ task('local:npm:build', static function (): void {
 task('deploy:do:not:deploy', static function () {
     $doNotDeploy = get('do_not_deploy');
     foreach ($doNotDeploy as $item) {
-        runLocally('rm -RF ' . $item);
+        runLocally('rm -rf ' . $item);
     }
 });
 task('deploy:update_code', static function (): void {
