@@ -51,7 +51,6 @@ task('deploy:prepare', [
     'local:composer:install',
     'local:npm:install',
     'local:npm:build',
-    'deploy:info',
     'deploy:setup',
     'deploy:lock',
     'deploy:release',
