@@ -28,6 +28,7 @@ Encore
     .addEntry('xing-address', './assets/website/ts/src/xing-address/main.ts')
     .addEntry('container-animation', './assets/website/ts/src/container-animation/main.ts')
     .addEntry('cookie-consent', './assets/website/ts/src/cookie-consent/main.ts')
+    .addEntry('background-image', './assets/website/ts/src/background-image/main.ts')
     .addStyleEntry('styles', './assets/website/scss/main.scss')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
