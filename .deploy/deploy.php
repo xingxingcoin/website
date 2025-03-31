@@ -64,7 +64,7 @@ task('deploy:prepare', [
 task('deploy', [
     'deploy:prepare',
     'deploy:publish',
-    'deploy:cache:clear',
+    'deploy:cleanup',
 ]);
 
 after('deploy:failed', 'deploy:unlock');
