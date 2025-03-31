@@ -32,8 +32,8 @@ export default class CookieConsentConfiguration {
                 translations: {
                     en: {
                         consentModal: {
-                            title: 'We use cookies',
-                            description: 'This website uses cookies and other tracking technologies to improve your browsing experience for the following purposes: to enable basic functionality of the website, to provide a better experience on the website, to measure your interest in our products and services and to personalize marketing interactions, to deliver ads that are more relevant to you.',
+                            title: 'This website is using cookies',
+                            description: 'At xingxingmemes.com we use cookies to track information about your visit. Cookies, including those from third parties, help us to improve our website and make you tailor-made offers to suit your interests. By clicking on "Accept all", you consent to such processing. Your consent is voluntary and can be revoked at any time with effect for the future.',
                             acceptAllBtn: 'Accept all',
                             acceptNecessaryBtn: 'Reject all',
                             showPreferencesBtn: 'Manage Individual preferences'
@@ -46,8 +46,8 @@ export default class CookieConsentConfiguration {
                             closeIconLabel: 'Close modal',
                             sections: [
                                 {
-                                    title: 'Tracking and Performance',
-                                    description: 'These cookies are used to collect information to analyze the traffic to our website and how visitors are using our website.',
+                                    title: 'Tracking and Statistics',
+                                    description: 'Statistic cookies help website owners to understand how visitors interact with websites by collecting and reporting information anonymously.',
                                     linkedCategory: 'analytics'
                                 }
                             ]
