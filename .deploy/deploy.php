@@ -38,6 +38,14 @@ task('local:npm:install', static function (): void {
 task('local:npm:build', static function (): void {
     runLocally('npm run build');
 });
+task('deploy:update_code', static function (): void {
+   $doNotDeploy = get('do_not_deploy');
+   foreach ($doNotDeploy as $item) {
+       runLocally('run -RF ' . $item);
+   }
+
+   upload('./.', '{{release_path}}');
+});
 
 task('deploy:prepare', [
     'local:composer:install',
