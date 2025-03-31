@@ -85,8 +85,5 @@ after('deploy:failed', 'deploy:unlock');
 
 function runLocallyInBuildDir(string $command): string
 {
-    return runLocally(
-        command: 'cd build && ' . $command,
-        env: ['PROJECT_ROOT' => __DIR__ . '/build']
-    );
+    return runLocally('cd build && ' . $command);
 }
