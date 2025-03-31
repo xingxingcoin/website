@@ -64,6 +64,8 @@ task('deploy', [
     'deploy:prepare',
     'deploy:publish',
     'deploy:cleanup',
+    'phpcr:migrate',
+    'deploy:cache:clear'
 ]);
 
 after('deploy:failed', 'deploy:unlock');
