@@ -68,6 +68,25 @@
   margin-top: 5rem;
   color: $white;
   font-size: 0.75rem;
+  a {
+    display: inline-block;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.25rem 0.25rem;
+    background-color: $white;
+    color: $black;
+    border-width: 0.1rem;
+    border-color: $white;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    margin: 0.1rem 0.3rem;
+    &:hover, &:active {
+      box-shadow: 0 0 5px $white;
+      background-color: $black;
+      color: $white;
+    }
+  }
 }
 @media (max-width: 768px) {
   .footer-information-container {

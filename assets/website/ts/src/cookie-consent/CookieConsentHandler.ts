@@ -3,12 +3,11 @@ import CookieConsentConfiguration from './CookieConsentConfiguration';
 
 export default class CookieConsentHandler {
     private readonly cookiePreferenceShowButton: Element | null;
+    private readonly cookieFooterPreferenceShowButton: Element | null;
 
-    /**
-     * @exception Error
-     */
-    constructor(cookieConsentPreferenceSelector: string) {
+    constructor(cookieConsentPreferenceSelector: string, cookieFooterPreferenceShowButtonSelector: string) {
         this.cookiePreferenceShowButton = document.querySelector(cookieConsentPreferenceSelector);
+        this.cookieFooterPreferenceShowButton = document.querySelector(cookieFooterPreferenceShowButtonSelector);
 
         this.initEventListener();
     }
@@ -22,6 +21,12 @@ export default class CookieConsentHandler {
                 return;
             }
             (this.cookiePreferenceShowButton as Element).addEventListener('click', (): void => {
+                CookieConsent.showPreferences();
+            });
+            if (this.cookieFooterPreferenceShowButton === null) {
+                return;
+            }
+            (this.cookieFooterPreferenceShowButton as Element).addEventListener('click', (): void => {
                 CookieConsent.showPreferences();
             });
         });
