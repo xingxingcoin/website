@@ -31,7 +31,7 @@ set('do_not_deploy', [
 ]);
 
 task('local:create:working:dir', static function (): void {
-   if (is_dir(__DIR__ . './build')) {
+   if (is_dir(__DIR__ . '/build')) {
        runLocally('rm -rf build');
    }
    runLocally('mkdir build');
