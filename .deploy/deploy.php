@@ -56,7 +56,6 @@ task('deploy:prepare', [
     'deploy:lock',
     'deploy:release',
     'deploy:update_code',
-    'deploy:env',
     'deploy:shared',
     'deploy:writable',
 ]);
