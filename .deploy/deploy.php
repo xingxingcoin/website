@@ -39,12 +39,13 @@ task('local:npm:install', static function (): void {
 task('local:npm:build', static function (): void {
     runLocally('npm run build');
 });
+task('deploy:do:not:deploy', static function () {
+    $doNotDeploy = get('do_not_deploy');
+    foreach ($doNotDeploy as $item) {
+        runLocally('run -RF ' . $item);
+    }
+});
 task('deploy:update_code', static function (): void {
-   $doNotDeploy = get('do_not_deploy');
-   foreach ($doNotDeploy as $item) {
-       runLocally('run -RF ' . $item);
-   }
-
    upload('.', '{{release_path}}');
 });
 
@@ -55,6 +56,7 @@ task('deploy:prepare', [
     'deploy:setup',
     'deploy:lock',
     'deploy:release',
+    'deploy:do:not:deploy',
     'deploy:update_code',
     'deploy:shared',
     'deploy:writable',
