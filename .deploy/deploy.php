@@ -45,7 +45,7 @@ task('deploy:update_code', static function (): void {
        runLocally('run -RF ' . $item);
    }
 
-   upload('./.', '{{release_path}}');
+   upload('.', '{{release_path}}');
 });
 
 task('deploy:prepare', [
