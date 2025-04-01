@@ -1,5 +1,5 @@
 ---
-- name: Install necessary packages for Ondrej PHP PPA
+- name: Install necessary packages for ppa:ondrej/php repository
   ansible.builtin.apt:
     name:
       - software-properties-common
@@ -7,9 +7,9 @@
     update_cache: yes
 
 - name: Add Ondrej PHP PPA
-  ansible.builtin.shell: |
-    echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/ondrej-php.list
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E5267A6C
+  ansible.builtin.shell: "LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php"
+  args:
+    creates: /etc/apt/sources.list.d/ondrej-php.list
 
 - name: Update apt cache
   ansible.builtin.apt:
