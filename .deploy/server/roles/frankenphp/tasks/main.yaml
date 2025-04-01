@@ -19,8 +19,3 @@
           file_server
       }
   notify: Restart Caddy
-  handlers:
-    - name: Restart Caddy
-      systemd:
-        name: caddy
-        state: restarted
