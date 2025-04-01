@@ -42,6 +42,10 @@
   notify:
     - Reload systemd
 
+- name: Set cap_net_bind_service capability on frankenphp
+  ansible.builtin.command:
+    cmd: setcap cap_net_bind_service=+ep /usr/bin/frankenphp
+
 - name: Reload systemd daemon to pick up new service
   ansible.builtin.systemd:
     daemon_reload: yes
