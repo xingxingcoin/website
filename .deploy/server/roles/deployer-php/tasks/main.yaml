@@ -1,6 +1,5 @@
 ---
-- name: Install rsync on remote server
-  become: yes
+- become: yes
   tasks:
     - name: Install rsync
       apt:
