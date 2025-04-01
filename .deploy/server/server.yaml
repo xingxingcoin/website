@@ -8,5 +8,4 @@
   hosts: website
   roles:
     - { role: frankenphp, tags: frankenphp }
-    - { role: caddy, tags: caddy }
     - { role: php, tags: php }
