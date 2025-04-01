@@ -1,0 +1,13 @@
+---
+- name: Install rsync on remote server
+  hosts: your_remote_servers
+  become: yes
+  tasks:
+    - name: Update package list
+      apt:
+        update_cache: yes
+
+    - name: Install rsync
+      apt:
+        name: rsync
+        state: present
