@@ -13,6 +13,9 @@
   copy:
     dest: "/etc/caddy/Caddyfile"
     content: |
+      {
+          frankenphp
+      }
       :80 {
           root * /var/www/html
           php_fastcgi frankenphp
