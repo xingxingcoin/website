@@ -4,10 +4,10 @@
   args:
     creates: frankenphp
 
-- name: Move FrankenPHP binary to /usr/local/bin/
-  command: mv frankenphp /usr/local/bin/frankenphp
+- name: Move FrankenPHP binary to /usr/bin/
+  command: mv frankenphp /usr/bin/frankenphp
   args:
-    creates: /usr/local/bin/frankenphp
+    creates: /usr/bin/frankenphp
 
 - name: Create Caddyfile for FrankenPHP
   copy:
@@ -30,7 +30,7 @@
       After=network.target
 
       [Service]
-      ExecStart=/usr/local/bin/frankenphp run --config /etc/caddy/Caddyfile
+      ExecStart=/usr/bin/frankenphp run --config /etc/caddy/Caddyfile
       WorkingDirectory=/etc/caddy
       User=caddy
       Group=caddy
