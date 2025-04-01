@@ -18,8 +18,7 @@
       }
       :80 {
           root * /var/www/html
-          php_fastcgi frankenphp
-          file_server
+          php_server
       }
 
 - name: Create systemd service file for FrankenPHP with Caddy
