@@ -1,7 +1,7 @@
 hosts:
   production:
     stage: production
-    hostname: 192.168.0.229
+    hostname: v2202504263357327248.quicksrv.de
     remote_user: deploy
     deploy_path: /var/www/xing-meme-tool
     identity_file: /root/.ssh/id_rsa
