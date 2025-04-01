@@ -7,6 +7,6 @@
 - name: Server Configuration
   hosts: website
   roles:
-    - { role: caddy, tags: caddy }
     - { role: frankenphp, tags: frankenphp }
+    - { role: caddy, tags: caddy }
     - { role: php, tags: php }
