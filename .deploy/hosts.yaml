@@ -3,7 +3,7 @@ hosts:
     stage: production
     hostname: 92.60.39.183
     remote_user: deploy
-    deploy_path: /home/deploy/xing-meme-tool
+    deploy_path: /var/www/xing-meme-tool
     identity_file: /root/.ssh/id_rsa
     multiplexing: true
     sshOptions:
