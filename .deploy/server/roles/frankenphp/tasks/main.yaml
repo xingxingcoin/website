@@ -19,3 +19,34 @@
           file_server
       }
   notify: Restart Caddy
+
+- name: Create systemd service file for FrankenPHP with Caddy
+  ansible.builtin.copy:
+    dest: /etc/systemd/system/frankenphp-caddy.service
+    content: |
+      [Unit]
+      Description=FrankenPHP with Caddy
+      After=network.target
+
+      [Service]
+      ExecStart=/usr/local/bin/frankenphp run --config /etc/caddy/Caddyfile
+      WorkingDirectory=/etc/caddy
+      User=caddy
+      Group=caddy
+      Restart=on-failure
+      LimitNOFILE=4096
+
+      [Install]
+      WantedBy=multi-user.target
+  notify:
+    - Reload systemd
+
+- name: Reload systemd daemon to pick up new service
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Enable and start FrankenPHP with Caddy service
+  ansible.builtin.systemd:
+    name: frankenphp-caddy.service
+    enabled: yes
+    state: started
