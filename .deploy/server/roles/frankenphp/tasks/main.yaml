@@ -1,0 +1,26 @@
+- name: Download and install FrankenPHP
+  ansible.builtin.shell: |
+    curl -fsSL https://frankenphp.dev/install.sh | sh
+  args:
+    creates: frankenphp
+
+- name: Move FrankenPHP binary to /usr/local/bin/
+  command: mv frankenphp /usr/local/bin/frankenphp
+  args:
+    creates: /usr/local/bin/frankenphp
+
+- name: Create Caddyfile for FrankenPHP
+  copy:
+    dest: "/etc/caddy/Caddyfile"
+    content: |
+      :80 {
+          root * /var/www/html
+          php_fastcgi frankenphp
+          file_server
+      }
+  notify: Restart Caddy
+  handlers:
+    - name: Restart Caddy
+      systemd:
+        name: caddy
+        state: restarted
