@@ -18,3 +18,5 @@ hosts:
     allow_anymous_stats: false
     default_timeout: 3600
     writable_mode: sticky
+    http_user: caddy
+    http_group: caddy
