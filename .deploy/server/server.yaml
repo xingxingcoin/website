@@ -1,5 +1,4 @@
 ---
-- hosts: xingxingmemes.com
-  name: Deployer PHP
+- name: Deployer PHP
   roles:
     - { role: deployer-php, tags: deployer-php }
