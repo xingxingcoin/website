@@ -3,6 +3,7 @@
   ansible.builtin.apt:
     name:
       - software-properties-common
+      - python3-launchpadlib
     state: present
     update_cache: yes
 
