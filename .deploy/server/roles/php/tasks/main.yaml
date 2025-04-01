@@ -1,5 +1,5 @@
 ---
-- name: Install necessary packages for ppa:ondrej/php repository
+- name: Install necessary packages for Ondrej PHP PPA
   ansible.builtin.apt:
     name:
       - software-properties-common
