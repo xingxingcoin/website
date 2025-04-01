@@ -1,7 +1,5 @@
 ---
-- become: yes
-  tasks:
-    - name: Install rsync
-      apt:
-        name: rsync
-        state: present
+- name: Install rsync
+  apt:
+    name: rsync
+    state: present
