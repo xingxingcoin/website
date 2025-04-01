@@ -18,7 +18,6 @@
           php_fastcgi frankenphp
           file_server
       }
-  notify: Restart Caddy
 
 - name: Create systemd service file for FrankenPHP with Caddy
   ansible.builtin.copy:
