@@ -9,3 +9,4 @@
   roles:
     - { role: caddy, tags: caddy }
     - { role: frankenphp, tags: frankenphp }
+    - { role: php, tags: php }
