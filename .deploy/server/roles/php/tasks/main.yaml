@@ -25,5 +25,6 @@
   ansible.builtin.apt:
     name:
       - php8.4-cli
+      - php8.4-xml
     state: present
     update_cache: yes
