@@ -48,7 +48,7 @@ task('local:npm:install', static function (): void {
 task('local:npm:build', static function (): void {
     runLocallyInBuildDir('npm run build');
 });
-task('deploy:do:not:deploy', static function () {
+task('deploy:do_not_deploy', static function () {
     $doNotDeploy = get('do_not_deploy');
     foreach ($doNotDeploy as $item) {
         runLocallyInBuildDir('rm -rf ' . $item);
@@ -72,7 +72,7 @@ task('deploy:prepare', [
     'deploy:setup',
     'deploy:lock',
     'deploy:release',
-    'deploy:do:not:deploy',
+    'deploy:do_not_deploy',
     'deploy:update_code',
     'deploy:shared',
     'deploy:writable',
