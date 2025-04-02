@@ -11,34 +11,13 @@
 
 - name: Create Caddyfile for FrankenPHP
   copy:
-    dest: "/etc/caddy/Caddyfile"
-    content: |
-      {
-          frankenphp
-      }
-      :80 {
-          root * /var/www/html
-          php_server
-      }
+    src: ./Caddyfile
+    dest: /etc/caddy/Caddyfile
 
 - name: Create systemd service file for FrankenPHP with Caddy
-  ansible.builtin.copy:
+  copy:
+    src: ./frankenphp-caddy.service
     dest: /etc/systemd/system/frankenphp-caddy.service
-    content: |
-      [Unit]
-      Description=FrankenPHP with Caddy
-      After=network.target
-
-      [Service]
-      ExecStart=/usr/bin/frankenphp run --config /etc/caddy/Caddyfile
-      WorkingDirectory=/etc/caddy
-      User=caddy
-      Group=caddy
-      Restart=on-failure
-      LimitNOFILE=4096
-
-      [Install]
-      WantedBy=multi-user.target
   notify:
     - Reload systemd
 

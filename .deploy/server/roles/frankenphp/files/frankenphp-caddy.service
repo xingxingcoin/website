@@ -1,0 +1,14 @@
+[Unit]
+Description=FrankenPHP with Caddy
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/frankenphp run --config /etc/caddy/Caddyfile
+WorkingDirectory=/etc/caddy
+User=caddy
+Group=caddy
+Restart=on-failure
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
