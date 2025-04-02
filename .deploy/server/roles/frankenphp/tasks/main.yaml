@@ -29,8 +29,8 @@
   ansible.builtin.systemd:
     daemon_reload: yes
 
-- name: Enable and start FrankenPHP with Caddy service
+- name: Restart FrankenPHP with Caddy service to apply configuration
   ansible.builtin.systemd:
     name: frankenphp-caddy.service
     enabled: yes
-    state: started
+    state: restarted
