@@ -18,7 +18,6 @@ hosts:
     allow_anymous_stats: false
     default_timeout: 3600
     writable_mode: sticky
-    writable_chmod_mode: 0775
     http_user: caddy
     http_group: caddy
     cachetool_args: --web=SymfonyHttpClient --web-url=http://188.68.35.42/ --web-path=/var/www/xing-meme-tool/current/public --web-basic-auth="xing:W0oIlb4HzH"
