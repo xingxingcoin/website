@@ -8,7 +8,7 @@ require 'recipe/sulu.php';
 
 import(__DIR__ . '/hosts.yaml');
 
-add('shared_files', [
+set('shared_files', [
     '.env',
     'public/.htaccess',
     'public/robots.txt'
