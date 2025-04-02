@@ -25,7 +25,7 @@ describe('copy xing address to clip board.', (): void => {
         expect(navigator.clipboard.writeText).toHaveBeenCalledWith('5JcdnWEwuHh1v3SAARq8zH9tEwDQGpaHzBrZ81m4pump');
 
         jest.advanceTimersByTime(1000);
-        expect(button.textContent).toBe('Copied!');
+        expect(button.textContent).toBe('📋 5JcdnWEwuHh1v3SAARq8zH9tEwDQGpaHzBrZ81m4pump');
         jest.useRealTimers();
     });
 
