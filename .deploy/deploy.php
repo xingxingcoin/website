@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Deployer;
 
-require 'recipe/sulu.php';
+require_once 'recipe/sulu.php';
+require_once 'contrib/cachetool.php';
 
 import(__DIR__ . '/hosts.yaml');
 
@@ -56,6 +57,11 @@ task('deploy:do:not:deploy', static function () {
 task('deploy:update_code', static function (): void {
    upload('build/.', '{{release_path}}');
 });
+task('deploy:opcache:clear', static function (): void {
+   if (get('cachetool_args') !== '') {
+       invoke('cachetool:clear:opcache');
+   }
+});
 
 task('deploy:prepare', [
     'local:create:working:dir',
@@ -77,7 +83,8 @@ task('deploy', [
     'deploy:publish',
     'deploy:cleanup',
     'phpcr:migrate',
-    'deploy:cache:clear'
+    'deploy:cache:clear',
+    'deploy:opcache:clear'
 ]);
 
 after('deploy:failed', 'deploy:unlock');
