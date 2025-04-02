@@ -26,5 +26,6 @@
     name:
       - php8.4-cli
       - php8.4-xml
+      - php8.4-mysql
     state: present
     update_cache: yes
