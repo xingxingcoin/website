@@ -82,9 +82,9 @@ task('deploy', [
     'deploy:prepare',
     'deploy:publish',
     'deploy:cleanup',
-    'phpcr:migrate',
+    'deploy:opcache:clear',
     'deploy:cache:clear',
-    'deploy:opcache:clear'
+    'phpcr:migrate'
 ]);
 
 after('deploy:failed', 'deploy:unlock');
