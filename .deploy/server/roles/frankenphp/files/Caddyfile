@@ -17,4 +17,11 @@
   basicauth /* {
     xing $2a$14$n9xCgv.3SKGg36P6KqZWneA4BkrkUfdS3APxzR0aM4ktA6Po.uLiG
   }
+  log {
+    output file /var/log/caddy/access.log {
+        roll_size 1gb
+        roll_keep 10
+        roll_keep_for 168h
+    }
+  }
 }
