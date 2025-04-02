@@ -7,5 +7,5 @@
 - name: Server Configuration
   hosts: website
   roles:
-    - { role: frankenphp, tags: frankenphp }
     - { role: php, tags: php }
+    - { role: frankenphp, tags: frankenphp }
