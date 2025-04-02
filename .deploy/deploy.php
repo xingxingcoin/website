@@ -42,7 +42,7 @@ task('local:checkout', static function (): void {
     runLocally('git clone --depth=1 {{repository}} build');
 });
 task('local:composer:install', static function (): void {
-    runLocallyInBuildDir('composer install');
+    runLocallyInBuildDir('composer install --no-dev --no-interaction --optimize-autoloader --no-suggest --no-scripts');
 });
 task('local:npm:install', static function (): void {
     runLocallyInBuildDir('npm install');
