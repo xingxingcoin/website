@@ -9,3 +9,8 @@
   roles:
     - { role: php, tags: php }
     - { role: frankenphp, tags: frankenphp }
+
+- name: Database Configuration
+  hosts: website
+  roles:
+    - { role: mariadb, tags: mariadb }
