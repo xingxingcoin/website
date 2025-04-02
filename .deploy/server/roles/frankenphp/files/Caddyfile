@@ -14,21 +14,9 @@
   try_files {path} index.php
   root /var/www/xing-meme-tool/current/public
   php_server
-
-  @public_files {
-    path_regexp .*\.js$
+  basicauth /* {
+    xing $2a$14$n9xCgv.3SKGg36P6KqZWneA4BkrkUfdS3APxzR0aM4ktA6Po.uLiG
   }
-  route {
-    handle @public_files {
-      file_server
-    }
-    handle {
-      basicauth /* {
-        xing $2a$14$n9xCgv.3SKGg36P6KqZWneA4BkrkUfdS3APxzR0aM4ktA6Po.uLiG
-      }
-    }
-  }
-
   header {
     Access-Control-Allow-Origin http://92.60.39.183/
     Access-Control-Allow-Credentials true
@@ -43,7 +31,6 @@
     -X-Powered-By
     -Server
   }
-
   log {
     output file /var/log/caddy/access.log {
         roll_size 1gb
