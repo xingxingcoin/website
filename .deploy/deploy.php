@@ -10,7 +10,6 @@ import(__DIR__ . '/hosts.yaml');
 
 set('shared_files', [
     '.env',
-    'public/.htaccess',
     'public/robots.txt'
 ]);
 add('shared_dirs', []);
