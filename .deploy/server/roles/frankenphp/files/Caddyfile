@@ -15,7 +15,7 @@
   root /var/www/xing-meme-tool/current/public
   php_server
 
-  @protected not path /build/* /admin/*
+  @protected not path /build/* /admin/media/*
   basicauth @protected {
     xing $2a$14$n9xCgv.3SKGg36P6KqZWneA4BkrkUfdS3APxzR0aM4ktA6Po.uLiG
   }
