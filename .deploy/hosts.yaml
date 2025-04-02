@@ -20,4 +20,4 @@ hosts:
     writable_mode: sticky
     http_user: caddy
     http_group: caddy
-    cachetool_args: --web=SymfonyHttpClient --web-url=http://92.60.39.183/ --web-path=/var/www/xing-meme-tool/current/public
+    cachetool_args: --web=SymfonyHttpClient --web-url=http://92.60.39.183/ --web-path=/var/www/xing-meme-tool/current/public --web-auth="xing:W0oIlb4HzH"
