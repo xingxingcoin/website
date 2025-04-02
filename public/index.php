@@ -17,6 +17,7 @@ use Symfony\Component\Dotenv\Dotenv;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 
+umask(002);
 \defined('SULU_MAINTENANCE') || \define('SULU_MAINTENANCE', \getenv('SULU_MAINTENANCE') ?: false);
 
 // maintenance mode
@@ -32,7 +33,6 @@ require \dirname(__DIR__) . '/vendor/autoload.php';
 
 (new Dotenv())->bootEnv(\dirname(__DIR__) . '/.env');
 
-umask(002);
 if ($_SERVER['APP_DEBUG']) {
     \umask(0000);
 
