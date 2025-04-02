@@ -29,5 +29,6 @@
       - php8.4-mysql
       - php8.4-gd
       - php8.4-opcache
+      - php8.4-imagick
     state: present
     update_cache: yes
