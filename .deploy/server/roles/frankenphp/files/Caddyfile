@@ -30,6 +30,7 @@
     Permissions-Policy: microphone=(), camera=(), geolocation=()
     X-XSS-Protection: true
     X-Frame-Options SAMEORIGIN
+    X-Content-Type-Options: nosniff
     -X-Powered-By
     -Server
   }
