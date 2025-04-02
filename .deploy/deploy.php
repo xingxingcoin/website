@@ -14,7 +14,9 @@ set('shared_files', [
     'public/robots.txt'
 ]);
 add('shared_dirs', []);
-add('writable_dirs', []);
+add('writable_dirs', [
+    'var/cache'
+]);
 set('do_not_deploy', [
     '.git',
     '.ddev',
