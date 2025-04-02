@@ -1,4 +1,6 @@
 #!/usr/bin/env php
 <?php
 
+umask(002);
+
 return include __DIR__ . DIRECTORY_SEPARATOR. 'console.php';

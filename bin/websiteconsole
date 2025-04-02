@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 <?php
 
+umask(002);
+
 // we are not allowed to load the autoloader here to get constant because symfony/runtime does else not work correctly
 $suluContext = 'website';
 
