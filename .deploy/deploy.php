@@ -62,6 +62,7 @@ task('deploy:opcache:clear', static function (): void {
        invoke('cachetool:clear:opcache');
    }
 });
+after('deploy:symlink', 'deploy:opcache:clear');
 
 task('deploy:prepare', [
     'local:create:working:dir',
@@ -82,7 +83,6 @@ task('deploy', [
     'deploy:prepare',
     'deploy:publish',
     'deploy:cleanup',
-    'deploy:opcache:clear',
     'deploy:cache:clear',
     'phpcr:migrate'
 ]);
