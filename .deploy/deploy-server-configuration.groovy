@@ -7,4 +7,12 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenNotBuilt: true, cleanWhenUnstable: true)
+            dir("${env.WORKSPACE}@tmp") {
+                deleteDir()
+            }
+        }
+    }
 }
