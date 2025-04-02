@@ -21,6 +21,12 @@
     Access-Control-Allow-Origin http://92.60.39.183/
     Access-Control-Allow-Credentials true
     Access-Control-Allow-Methods POST, GET
+    Access-Control-Max-Age: 100
+    Referrer-Policy strict-origin-when-cross-origin
+    Permissions-Policy: microphone=(), camera=(), geolocation=()
+    X-XSS-Protection: true
+    X-Frame-Options SAMEORIGIN
+    X-Content-Type-Options: nosniff
     -X-Powered-By
     -Server
   }
