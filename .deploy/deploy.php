@@ -15,7 +15,7 @@ set('shared_files', [
 ]);
 add('shared_dirs', []);
 add('writable_dirs', [
-    'var/cache'
+    'var'
 ]);
 set('do_not_deploy', [
     '.git',
