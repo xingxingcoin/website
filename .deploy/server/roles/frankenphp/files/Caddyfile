@@ -6,9 +6,8 @@
       opcache.max_accelerated_files 4000
       opcache.revalidate_freq 60
       opcache.enable_cli 1
-      file_uploads On
-      upload_max_filesize 10M
-      post_max_size 10M
+      upload_max_filesize 50M
+      post_max_size 50M
     }
   }
 }
