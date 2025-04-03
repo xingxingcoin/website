@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Composer Install') {
             steps {
-                sh 'composer install --no-dev --no-interaction --optimize-autoloader --no-suggest --no-scripts'
+                sh 'composer install --no-interaction --no-suggest --no-scripts'
             }
         }
         stage('Npm Install') {
