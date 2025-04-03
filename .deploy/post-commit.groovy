@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Run PHPUnit Tests') {
             steps {
-                sh 'export XDEBUG_MODE=coverage && php bin/phpunit --log-junit reports/phpunit/phpunit.xml --coverage-clover reports/phpunit/coverage.xml --coverage-html reports/phpunit/coverage --coverage-xml reports/infection/coverage/coverage-xml --exclude-group Acceptance'
+                sh 'export XDEBUG_MODE=coverage && php bin/phpunit  -c phpunit.xml --log-junit reports/phpunit/phpunit.xml --coverage-clover reports/phpunit/coverage.xml --coverage-html reports/phpunit/coverage --coverage-xml reports/infection/coverage/coverage-xml --exclude-group Acceptance'
             }
             post {
                 always {
