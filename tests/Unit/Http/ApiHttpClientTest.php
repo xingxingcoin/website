@@ -57,8 +57,10 @@ final class ApiHttpClientTest extends TestCase
         self::assertSame($options, $this->httpClientMock->inputOptions);
         self::assertSame('test', $this->jsonValidatorMock->inputJsonString->value);
         self::assertSame('https://test-valid.com.json', $this->jsonValidatorMock->inputSchemaId->value);
+        $expectedPath = __DIR__ . '/Schema/https__test-valid.com.json';
+        $expectedPath = str_replace('tests/Unit', 'src', $expectedPath);
         self::assertSame(
-            '/var/www/html/src/Http/Schema/https__test-valid.com.json',
+            $expectedPath,
             $this->jsonValidatorMock->inputSchemaPath->value
         );
         self::assertEquals([], $this->loggerMock->logs);
