@@ -54,7 +54,7 @@ pipeline {
             post {
                 always {
                     archiveArtifacts artifacts: 'var/log/infection.log', fingerprint: true
-                    publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'public/infection', reportFiles: 'index.html', reportName: "Infection Report"])
+                    publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'reports/infection/coverage/coverage-xml', reportFiles: 'index.html', reportName: "Infection Report"])
                 }
             }
         }
