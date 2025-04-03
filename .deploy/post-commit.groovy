@@ -11,11 +11,6 @@ pipeline {
                 sh 'npm install --no-color'
             }
         }
-        stage('Npm Run Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
         stage('Preparing Testing Tools') {
             steps {
                 sh 'wget -O phpunit https://phar.phpunit.de/phpunit-12.phar && chmod +x phpunit'
