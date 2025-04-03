@@ -45,7 +45,7 @@ task('local:composer:install', static function (): void {
     runLocallyInBuildDir('composer install --no-dev --no-interaction --optimize-autoloader --no-suggest --no-scripts');
 });
 task('local:npm:install', static function (): void {
-    runLocallyInBuildDir('npm install --omit=dev --no-color ');
+    runLocallyInBuildDir('npm install --no-color ');
 });
 task('local:npm:build', static function (): void {
     runLocallyInBuildDir('npm run build');
