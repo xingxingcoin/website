@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Run Psalm') {
             steps {
-                sh 'php bin/psalm --threads=4 --no-cache --report=reports/psalm/psalm.checkstyle.xml --show-info=true'
+                sh 'php bin/psalm --threads=4 --no-cache --report=reports/psalm/psalm.checkstyle.xml --show-info=true --no-progress'
             }
             post {
                 always {
