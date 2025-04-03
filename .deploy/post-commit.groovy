@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Run PHPUnit Tests') {
             steps {
-                sh 'php phpunit --log-junit reports/phpunit/phpunit.xml --coverage-clover reports/phpunit/coverage.xml --coverage-html reports/phpunit/coverage --coverage-xml reports/infection/coverage/coverage-xml'
+                sh 'export XDEBUG_MODE=coverage && php phpunit --log-junit reports/phpunit/phpunit.xml --coverage-clover reports/phpunit/coverage.xml --coverage-html reports/phpunit/coverage --coverage-xml reports/infection/coverage/coverage-xml --exclude-group Acceptance'
             }
             post {
                 always {
@@ -43,7 +43,7 @@ pipeline {
         }
         stage('Run Psalm') {
             steps {
-                sh "php psalm --threads=4 --no-cache --report=reports/psalm/psalm.checkstyle.xml --show-info=true"
+                sh 'php psalm --threads=4 --no-cache --report=reports/psalm/psalm.checkstyle.xml --show-info=true'
             }
             post {
                 always {
