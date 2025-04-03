@@ -36,6 +36,11 @@ pipeline {
                 }
             }
         }
+        stage('Run Acceptance Tests') {
+            steps {
+                sh 'php bin/phpunit  -c phpunit.xml --group Acceptance'
+            }
+        }
         stage('Run Psalm') {
             steps {
                 sh '/usr/bin/psalm --threads=4 --no-cache --report=reports/psalm/psalm.checkstyle.xml --show-info=true --no-progress'
