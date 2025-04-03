@@ -14,7 +14,7 @@ pipeline {
         stage('Preparing Testing Tools') {
             steps {
                 sh 'cd bin && wget -O phpunit https://phar.phpunit.de/phpunit-12.phar && chmod +x phpunit'
-                sh 'cd bin && wget -O psalm https://github.com/vimeo/psalm/releases/download/6.8.8/psalm.phar && chmod +x psalm'
+                sh 'wget https://github.com/vimeo/psalm/releases/download/6.8.8/psalm.phar -O /usr/bin/psalm && chmod +x /usr/bin/psalm'
                 sh 'cd bin && wget -O infection https://github.com/infection/infection/releases/download/0.29.12/infection.phar && chmod +x infection'
             }
         }
@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Run Psalm') {
             steps {
-                sh 'php bin/psalm --threads=4 --no-cache --report=reports/psalm/psalm.checkstyle.xml --show-info=true --no-progress'
+                sh '/usr/bin/psalm --threads=4 --no-cache --report=reports/psalm/psalm.checkstyle.xml --show-info=true --no-progress'
             }
             post {
                 always {
