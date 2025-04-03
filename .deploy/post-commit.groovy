@@ -13,14 +13,14 @@ pipeline {
         }
         stage('Preparing Testing Tools') {
             steps {
-                sh 'wget -O phpunit https://phar.phpunit.de/phpunit-12.phar && chmod +x phpunit'
-                sh 'wget -O psalm https://github.com/vimeo/psalm/releases/download/6.8.8/psalm.phar && chmod +x psalm'
-                sh 'wget -O infection https://github.com/infection/infection/releases/download/0.29.12/infection.phar && chmod +x infection'
+                sh 'cd bin && wget -O phpunit https://phar.phpunit.de/phpunit-12.phar && chmod +x phpunit'
+                sh 'cd bin && wget -O psalm https://github.com/vimeo/psalm/releases/download/6.8.8/psalm.phar && chmod +x psalm'
+                sh 'cd bin && wget -O infection https://github.com/infection/infection/releases/download/0.29.12/infection.phar && chmod +x infection'
             }
         }
         stage('Run PHPUnit Tests') {
             steps {
-                sh 'export XDEBUG_MODE=coverage && php phpunit --log-junit reports/phpunit/phpunit.xml --coverage-clover reports/phpunit/coverage.xml --coverage-html reports/phpunit/coverage --coverage-xml reports/infection/coverage/coverage-xml --exclude-group Acceptance'
+                sh 'export XDEBUG_MODE=coverage && php bin/phpunit --log-junit reports/phpunit/phpunit.xml --coverage-clover reports/phpunit/coverage.xml --coverage-html reports/phpunit/coverage --coverage-xml reports/infection/coverage/coverage-xml --exclude-group Acceptance'
             }
             post {
                 always {
@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Run Psalm') {
             steps {
-                sh 'php psalm --threads=4 --no-cache --report=reports/psalm/psalm.checkstyle.xml --show-info=true'
+                sh 'php bin/psalm --threads=4 --no-cache --report=reports/psalm/psalm.checkstyle.xml --show-info=true'
             }
             post {
                 always {
@@ -49,7 +49,7 @@ pipeline {
         stage('Run Infection') {
             steps {
                 sh 'chmod a+rw -R reports && cp reports/phpunit/phpunit.xml reports/infection/coverage/junit.xml'
-                sh 'php infection --threads=4 --min-covered-msi=100 --no-progress --coverage=reports/infection/coverage --skip-initial-tests'
+                sh 'php bin/infection --threads=4 --min-covered-msi=100 --no-progress --coverage=reports/infection/coverage --skip-initial-tests'
             }
             post {
                 always {
