@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Composer Install') {
             steps {
-                sh 'composer install'
+                sh 'composer install --no-dev --no-interaction --optimize-autoloader --no-suggest --no-scripts'
             }
         }
         stage('Npm Install') {
@@ -25,7 +25,7 @@ pipeline {
             post {
                 always {
                     junit 'reports/phpunit/phpunit.xml'
-                    publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'reports/phpunit/coverage', reportFiles: 'index.html', reportName: "Coverage Report"])
+                    publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'reports/phpunit/coverage', reportFiles: 'index.html', reportName: "PHPUnit Coverage Report"])
                     step([
                         $class: 'CloverPublisher',
                         cloverReportDir: 'reports/phpunit',
@@ -64,7 +64,7 @@ pipeline {
             }
             post {
                 always {
-                    publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'assets/website/ts/coverage/', reportFiles: 'index.html', reportName: "Coverage Report"])
+                    publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'assets/website/ts/coverage/', reportFiles: 'index.html', reportName: "Jest Coverage Report"])
                     step([
                         $class: 'CloverPublisher',
                         cloverReportDir: 'reports/jest',
