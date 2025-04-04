@@ -1,6 +1,8 @@
 parameters:
     default_locale: en
     log_level: '%env(LOG_LEVEL)%'
+    router.request_context.scheme: 'https'
+    router.request_context.host: '%env(DEFAULT_URI)%'
 
 services:
     _defaults:
