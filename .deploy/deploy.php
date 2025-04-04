@@ -29,7 +29,8 @@ set('do_not_deploy', [
     'phpunit.xml',
     'psalm.xml',
     'infection.json5',
-    'README.md'
+    'README.md',
+    'jest.config.ts'
 ]);
 
 task('local:create:working:dir', static function (): void {
