@@ -13,7 +13,7 @@
   "xing_media.images-button.text": "Images",
   "image_viewer.download-button.text": "Download \uD83C\uDF4C",
   "meme_generator.new_meme.download": "Download \uD83C\uDF4C",
-  "meme_generator.new_meme.select-text.button": "Continue",
+  "meme_generator.new_meme.select-text.button": "Continue without background",
   "meme_generator.new_meme.select-text.input.placeholder": "Select text...",
   "xing_address.address.label.text": "Address:"
 }

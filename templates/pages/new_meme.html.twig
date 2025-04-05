@@ -26,7 +26,7 @@
         <label for="background-image-selector" class="new-meme-button new-meme-settings-button">
             {{ 'Select Background Image'|trans }}
         </label>
-        <label class="new-meme-button-disabled"
+        <label class="new-meme-button new-meme-settings-button"
                id="new-meme-select-text-button">{{ 'meme_generator.new_meme.select-text.button'|trans }}</label>
         <label class="new-meme-button-disabled"
                id="new-meme-download-button">{{ 'meme_generator.new_meme.download'|trans }}</label>
@@ -39,10 +39,11 @@
             <input type="color" value="#ffffff"  class="new-meme-input-color-picker hidden"/>
         </div>
         <div class="new-meme-canvas-container">
-            <div class="new-meme-image-container">
-                {{ image }}
+            <div id="meme-preview-container">
+                <div class="new-meme-image-container">
+                    {{ image }}
+                </div>
             </div>
-            <div id="meme-preview-container"></div>
         </div>
     </div>
 {% endblock %}

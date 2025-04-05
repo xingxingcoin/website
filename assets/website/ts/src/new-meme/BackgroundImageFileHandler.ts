@@ -1,4 +1,5 @@
 import BackgroundImageCropperCreater from './BackgroundImageCropperCreater';
+import BackgroundImageFileInputRemover from './BackgroundImageFileInputRemover';
 
 export default class BackgroundImageFileHandler {
     private readonly backgroundImageInput: HTMLInputElement | null;
@@ -8,7 +9,8 @@ export default class BackgroundImageFileHandler {
      */
     constructor(backgroundImageSelectorId: string,
                 private readonly fileReader: FileReader,
-                private readonly backgroundImageCropperCreater: BackgroundImageCropperCreater
+                private readonly backgroundImageCropperCreater: BackgroundImageCropperCreater,
+                private readonly backgroundImageFileInputRemover: BackgroundImageFileInputRemover
     ) {
         this.backgroundImageInput = document.getElementById(backgroundImageSelectorId) as HTMLInputElement | null;
         if (this.backgroundImageInput === null) {
@@ -23,12 +25,7 @@ export default class BackgroundImageFileHandler {
      */
     private initEventListener(): void {
         (this.backgroundImageInput as HTMLInputElement).addEventListener('change', (event: Event): void => {
-            let backgroundImageFileInputSelector: HTMLLabelElement | null = document.querySelector('label[for="background-image-selector"]');
-            if (backgroundImageFileInputSelector === null || backgroundImageFileInputSelector.classList.contains('new-meme-button-disabled')) {
-                return;
-            }
-            this.disableInputFile(backgroundImageFileInputSelector);
-
+            this.backgroundImageFileInputRemover.disableInputFile('label[for="background-image-selector"]');
             this.fileReader.addEventListener('load', (): void => {
                 let backgroundImageByFileReader: HTMLImageElement = new Image();
                 backgroundImageByFileReader.src = this.fileReader.result as string;
@@ -41,12 +38,5 @@ export default class BackgroundImageFileHandler {
             }
             this.fileReader.readAsDataURL(fileItem);
         });
-    }
-
-    private disableInputFile(inputFileForBackgroundImageLabel: HTMLLabelElement): void {
-        inputFileForBackgroundImageLabel.classList.add('new-meme-button-disabled');
-        inputFileForBackgroundImageLabel.classList.remove('new-meme-settings-button');
-        inputFileForBackgroundImageLabel.classList.remove('new-meme-button');
-        (this.backgroundImageInput as HTMLInputElement).remove();
     }
 }

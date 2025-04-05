@@ -1,5 +1,7 @@
 import Cropper from 'cropperjs';
 import MemeCanvasCreater from './MemeCanvasCreater';
+import BackgroundImageFileInputRemover from "./BackgroundImageFileInputRemover";
+import MemeCanvasWithoutBackgroundCreater from "./MemeCanvasWithoutBackgroundCreater";
 
 export default class BackgroundImageCropperCreater {
     private readonly downloadButton: HTMLLabelElement | null;
@@ -15,7 +17,15 @@ export default class BackgroundImageCropperCreater {
     /**
      * @exception Error
      */
-    constructor(downloadButtonId: string, selectTextButtonId: string, memePreviewContainerId: string, memeTextInputClass: string, memeTextColorPickerClass: string, memeTextSizeInputClass: string, memeTemplateImage: HTMLImageElement) {
+    constructor(downloadButtonId: string,
+                selectTextButtonId: string,
+                memePreviewContainerId: string,
+                memeTextInputClass: string,
+                memeTextColorPickerClass: string,
+                memeTextSizeInputClass: string,
+                memeTemplateImage: HTMLImageElement,
+                private readonly backgroundImageFileInputRemover: BackgroundImageFileInputRemover
+    ) {
         this.downloadButton = document.getElementById(downloadButtonId) as HTMLLabelElement | null;
         this.selectTextButton = document.getElementById(selectTextButtonId) as HTMLLabelElement | null;
         this.memePreviewContainer = document.getElementById(memePreviewContainerId) as HTMLDivElement | null;
@@ -35,27 +45,33 @@ export default class BackgroundImageCropperCreater {
         this.initEventListener();
     }
 
-    /**
-     * @exception Error
-     */
     private initEventListener(): void {
         (this.selectTextButton as HTMLElement).addEventListener('click', (): void => {
-            if (this.cropper === undefined ||
-                this.backgroundImageByFileReader === undefined ||
-                this.memeTemplateImage === undefined ||
+            if (this.memeTemplateImage === undefined ||
                 this.memeTemplateImage === null) {
                 return;
             }
-            const memeCanvasCreater = new MemeCanvasCreater(
-                this.cropper,
-                this.backgroundImageByFileReader,
-                this.memeTemplateImage,
-                'meme-preview-container'
-            );
-            memeCanvasCreater.create();
+
+            if (this.cropper !== undefined && this.backgroundImageByFileReader !== undefined) {
+                const memeCanvasCreater = new MemeCanvasCreater(
+                    this.cropper,
+                    this.backgroundImageByFileReader,
+                    this.memeTemplateImage,
+                    'meme-preview-container'
+                );
+                memeCanvasCreater.create();
+            }
+            if (this.cropper === undefined && this.backgroundImageByFileReader === undefined) {
+                const memeCanvasCreater = new MemeCanvasWithoutBackgroundCreater(
+                    '.new-meme-image-container img',
+                    'meme-preview-container'
+                );
+                memeCanvasCreater.create();
+            }
             this.displayMemeTextEditFields();
             this.disableSelectTextButton();
             this.enableDownloadButton();
+            this.backgroundImageFileInputRemover.disableInputFile('label[for="background-image-selector"]');
         });
     }
 
@@ -85,13 +101,11 @@ export default class BackgroundImageCropperCreater {
         });
 
         this.memeTemplateImage.remove();
-        this.enableSelectTextButton();
+        this.editSelectTextButtonText();
     }
 
-    private enableSelectTextButton(): void {
-        (this.selectTextButton as HTMLLabelElement).classList.remove('new-meme-button-disabled');
-        (this.selectTextButton as HTMLLabelElement).classList.add('new-meme-button');
-        (this.selectTextButton as HTMLLabelElement).classList.add('new-meme-settings-button');
+    private editSelectTextButtonText(): void {
+        (this.selectTextButton as HTMLLabelElement).textContent = 'Continue';
     }
 
     private displayMemeTextEditFields(): void {

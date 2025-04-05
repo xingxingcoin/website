@@ -3,6 +3,7 @@ import MemeTextCreater from './MemeTextCreater';
 import MemeImageDownloadHandler from './MemeImageDownloadHandler';
 import BackgroundImageCropperCreater from './BackgroundImageCropperCreater';
 import MemeFileDownloader from "./MemeFileDownloader";
+import BackgroundImageFileInputRemover from "./BackgroundImageFileInputRemover";
 
 new BackgroundImageFileHandler(
     'background-image-selector',
@@ -14,7 +15,13 @@ new BackgroundImageFileHandler(
         '.new-meme-text-input',
         '.new-meme-input-color-picker',
         '.new-meme-input-font-size-number',
-        new Image()
+        new Image(),
+        new BackgroundImageFileInputRemover(
+            'background-image-selector'
+        )
+    ),
+    new BackgroundImageFileInputRemover(
+        'background-image-selector'
     )
 );
 new MemeTextCreater(
