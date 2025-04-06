@@ -8,14 +8,18 @@ App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController:
     path: /api/v1/gallery/images
     controller: App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController
     methods: GET
+App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadController:
+    path: /api/v1/gallery/images/filter
+    controller: App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadController
+    methods: GET
 
 App\Controller\Api\V1\Gallery\MemeGeneratorImagesInfiniteScrollingLoadController:
     path: /api/v1/meme-generator/images
     controller: App\Controller\Api\V1\Gallery\MemeGeneratorImagesInfiniteScrollingLoadController
     methods: GET
-App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadController:
-    path: /api/v1/gallery/images/filter
-    controller: App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadController
+App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadController:
+    path: /api/v1/meme-generator/images/filter
+    controller: App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadController
     methods: GET
 
 #static:

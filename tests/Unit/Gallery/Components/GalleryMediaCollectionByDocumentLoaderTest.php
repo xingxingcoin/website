@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components;
 
-use App\Gallery\Components\MediaCollectionByDocumentLoader;
+use App\Gallery\Components\GalleryMediaCollectionByDocumentLoader;
 use App\Gallery\Exception\MediaDataNotLoadedException;
 use App\Gallery\GalleryImagesLoadHandler;
 use App\Gallery\Model\Location;
@@ -27,24 +27,24 @@ use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
 
-#[CoversClass(MediaCollectionByDocumentLoader::class)]
+#[CoversClass(GalleryMediaCollectionByDocumentLoader::class)]
 #[CoversClass(Location::class)]
 #[CoversClass(MediaNavigationUrl::class)]
 #[CoversClass(SubNavigation::class)]
 #[CoversClass(RootNavigation::class)]
-final class MediaCollectionByDocumentLoaderTest extends CustomTestCase
+final class GalleryMediaCollectionByDocumentLoaderTest extends CustomTestCase
 {
     private MediaManagerMock $mediaManagerMock;
     private NavigationMediaUrlLoaderMock $navigationMediaUrlLoaderMock;
     private LoggerMock $loggerMock;
-    private MediaCollectionByDocumentLoader $mediaCollectionByDocumentLoader;
+    private GalleryMediaCollectionByDocumentLoader $mediaCollectionByDocumentLoader;
 
     protected function setUp(): void
     {
         $this->mediaManagerMock = new MediaManagerMock();
         $this->navigationMediaUrlLoaderMock = new NavigationMediaUrlLoaderMock();
         $this->loggerMock = new LoggerMock();
-        $this->mediaCollectionByDocumentLoader = new MediaCollectionByDocumentLoader(
+        $this->mediaCollectionByDocumentLoader = new GalleryMediaCollectionByDocumentLoader(
             $this->mediaManagerMock,
             $this->navigationMediaUrlLoaderMock,
             $this->loggerMock
@@ -99,14 +99,14 @@ final class MediaCollectionByDocumentLoaderTest extends CustomTestCase
 
         $expectedMediaCollection = new MediaCollection([
             [
-                MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testUrl?mediaId=1',
-                MediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testUrl',
-                MediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => null,
+                GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testUrl?mediaId=1',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testUrl',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => null,
             ],
             [
-                MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testUrl?mediaId=2',
-                MediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testUrl',
-                MediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => null
+                GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testUrl?mediaId=2',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testUrl',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => null
             ]
         ]);
         self::assertEquals($expectedMediaCollection->data, $mediaCollection->data);

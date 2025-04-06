@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Gallery\Components;
 
 use App\Gallery\Exception\MediaDataNotLoadedException;
-use App\Gallery\MediaCollectionByDocumentLoader as MediaCollectionByDocumentLoaderInterface;
+use App\Gallery\MediaCollectionByDocumentLoader;
 use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\RootNavigation;
@@ -14,11 +14,11 @@ use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 
-final  readonly class MediaCollectionByDocumentLoader implements MediaCollectionByDocumentLoaderInterface
+final readonly class MemeGeneratorMediaCollectionByDocumentLoader implements MediaCollectionByDocumentLoader
 {
     public const string IMAGE_VIEWER_URL_KEY = 'imageViewerUrl';
     public const string MEDIA_URL_KEY = 'mediaUrl';
-    public const string MEDIA_FILE_EXTENSION = 'mediaFileExtension';
+    public const string MEDIA_NAME_KEY = 'mediaName';
 
     public function __construct(
         private MediaManagerInterface $mediaManager,
@@ -50,7 +50,7 @@ final  readonly class MediaCollectionByDocumentLoader implements MediaCollection
                 $mediaData[] = [
                     self::IMAGE_VIEWER_URL_KEY => $mediaNavigationUrl->value . '?mediaId=' . $mediaId,
                     self::MEDIA_URL_KEY => $media->getUrl(),
-                    self::MEDIA_FILE_EXTENSION => $media->getExtension()
+                    self::MEDIA_NAME_KEY => $media->getName()
                 ];
             }
             $this->logger->info('Media data are successfully loaded.');

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components;
 
-use App\Gallery\Components\MediaUrlCollectionByFilterGenerateHandler;
+use App\Gallery\Components\MemeGeneratorMediaUrlCollectionByFilterGenerateHandler;
 use App\Gallery\Model\ImageFilter;
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\MediaUrlCollection;
@@ -12,28 +12,28 @@ use App\Tests\Unit\Gallery\Components\Mocks\MediaUrlCollectionByFilterGeneratorM
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(MediaUrlCollectionByFilterGenerateHandler::class)]
+#[CoversClass(MemeGeneratorMediaUrlCollectionByFilterGenerateHandler::class)]
 #[CoversClass(ImageFilter::class)]
-final class MediaUrlCollectionByFilterGenerateHandlerTest extends TestCase
+final class MemeGeneratorMediaUrlCollectionByFilterGenerateHandlerTest extends TestCase
 {
     private MediaUrlCollectionByFilterGeneratorMock $mediaUrlCollectionByAllImagesFilterGeneratorMock;
     private MediaUrlCollectionByFilterGeneratorMock $mediaUrlCollectionByGifFilterGeneratorMock;
-    private MediaUrlCollectionByFilterGenerateHandler $mediaUrlCollectionByFilterGenerateHandler;
+    private MemeGeneratorMediaUrlCollectionByFilterGenerateHandler $mediaUrlCollectionByFilterGenerateHandler;
 
     protected function setUp(): void
     {
         $this->mediaUrlCollectionByAllImagesFilterGeneratorMock = new MediaUrlCollectionByFilterGeneratorMock();
         $this->mediaUrlCollectionByGifFilterGeneratorMock = new MediaUrlCollectionByFilterGeneratorMock();
-        $this->mediaUrlCollectionByFilterGenerateHandler = new MediaUrlCollectionByFilterGenerateHandler(
+        $this->mediaUrlCollectionByFilterGenerateHandler = new MemeGeneratorMediaUrlCollectionByFilterGenerateHandler(
             $this->mediaUrlCollectionByGifFilterGeneratorMock,
             $this->mediaUrlCollectionByAllImagesFilterGeneratorMock
         );
     }
 
-    public function testHandle_with_gif(): void
+    public function testHandle_with_meme_template(): void
     {
         $mediaCollection = new MediaCollection([]);
-        $imageFilter = new ImageFilter(MediaUrlCollectionByFilterGenerateHandler::IMAGE_FILTER_GIF_VALUE);
+        $imageFilter = new ImageFilter(MemeGeneratorMediaUrlCollectionByFilterGenerateHandler::IMAGE_FILTER_TEMPLATE_VALUE);
 
         $mediaGifUrlCollection = new MediaUrlCollection(['test']);
         $this->mediaUrlCollectionByGifFilterGeneratorMock->outputMediaUrlCollection = $mediaGifUrlCollection;
@@ -45,10 +45,10 @@ final class MediaUrlCollectionByFilterGenerateHandlerTest extends TestCase
         self::assertEquals($mediaCollection, $this->mediaUrlCollectionByGifFilterGeneratorMock->inputMediaCollection);
     }
 
-    public function testHandle_with_image(): void
+    public function testHandle_with_meme_image(): void
     {
         $mediaCollection = new MediaCollection([]);
-        $imageFilter = new ImageFilter(MediaUrlCollectionByFilterGenerateHandler::IMAGE_FILTER_IMAGE_VALUE);
+        $imageFilter = new ImageFilter(MemeGeneratorMediaUrlCollectionByFilterGenerateHandler::IMAGE_FILTER_IMAGE_VALUE);
 
         $mediaGifUrlCollection = new MediaUrlCollection(['test']);
         $this->mediaUrlCollectionByGifFilterGeneratorMock->outputMediaUrlCollection = $mediaGifUrlCollection;

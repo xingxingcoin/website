@@ -18,22 +18,22 @@ final readonly class MediaUrlCollectionByAllImagesFilterGenerator implements Med
     {
         $mediaUrlData = [];
         foreach ($mediaCollection as $mediaData) {
-            if ($mediaData[MediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_JPG) {
+            if ($mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_JPG) {
                 $mediaUrlData[] = [
-                    MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
-                    MediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[MediaCollectionByDocumentLoader::MEDIA_URL_KEY]
+                    GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
+                    GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY]
                 ];
             }
-            if ($mediaData[MediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_WEBP) {
+            if ($mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_WEBP) {
                 $mediaUrlData[] = [
-                    MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
-                    MediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[MediaCollectionByDocumentLoader::MEDIA_URL_KEY]
+                    GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
+                    GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY]
                 ];
             }
-            if ($mediaData[MediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_PNG) {
+            if ($mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_PNG) {
                 $mediaUrlData[] = [
-                    MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
-                    MediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[MediaCollectionByDocumentLoader::MEDIA_URL_KEY]
+                    GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
+                    GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY]
                 ];
             }
         }

@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Gallery\Components;
+
+use App\Gallery\MediaUrlCollectionByFilterGenerateHandler;
+use App\Gallery\Model\ImageFilter;
+use App\Gallery\Model\MediaCollection;
+use App\Gallery\Model\MediaUrlCollection;
+
+final readonly class MemeGeneratorMediaUrlCollectionByFilterGenerateHandler implements
+    MediaUrlCollectionByFilterGenerateHandler
+{
+    public const string IMAGE_FILTER_TEMPLATE_VALUE = 'meme_template';
+    public const string IMAGE_FILTER_IMAGE_VALUE = 'meme_image';
+
+    public function __construct(
+        private MediaUrlCollectionByFilterGenerator $mediaUrlCollectionByMemeTemplateFilterGenerator,
+        private MediaUrlCollectionByFilterGenerator $mediaUrlCollectionByMemeImageFilterGenerator,
+    ) {
+    }
+
+    #[\Override]
+    public function handle(MediaCollection $mediaCollection, ImageFilter $imageFilter): MediaUrlCollection
+    {
+        if ($imageFilter->value === self::IMAGE_FILTER_TEMPLATE_VALUE) {
+            return $this->mediaUrlCollectionByMemeTemplateFilterGenerator->generate($mediaCollection);
+        }
+        if ($imageFilter->value === self::IMAGE_FILTER_IMAGE_VALUE) {
+            return $this->mediaUrlCollectionByMemeImageFilterGenerator->generate($mediaCollection);
+        }
+
+        return new MediaUrlCollection([]);
+    }
+}

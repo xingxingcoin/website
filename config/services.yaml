@@ -164,16 +164,40 @@ services:
         arguments:
             - '@sulu_document_manager.path_builder'
             - '@App\Gallery\Components\DocumentByPathLoader'
-            - '@App\Gallery\Components\MediaCollectionByDocumentLoader'
-            - '@App\Gallery\Components\MediaUrlCollectionByFilterGenerateHandler'
-    App\Gallery\Components\MediaCollectionByDocumentLoader:
+            - '@App\Gallery\Components\GalleryMediaCollectionByDocumentLoader'
+            - '@App\Gallery\Components\GalleryMediaUrlCollectionByFilterGenerateHandler'
+    App\Gallery\Components\GalleryMediaCollectionByDocumentLoader:
         arguments:
             - '@sulu_media.media_manager'
             - '@App\Gallery\Components\DefaultNavigationMediaUrlLoader'
             - '@api.v1.gallery.logger'
-    App\Gallery\Components\MediaUrlCollectionByFilterGenerateHandler:
+    App\Gallery\Components\GalleryMediaUrlCollectionByFilterGenerateHandler:
         arguments:
             - '@App\Gallery\Components\MediaUrlCollectionByGifFilterGenerator'
             - '@App\Gallery\Components\MediaUrlCollectionByAllImagesFilterGenerator'
     App\Gallery\Components\MediaUrlCollectionByAllImagesFilterGenerator: ~
     App\Gallery\Components\MediaUrlCollectionByGifFilterGenerator: ~
+
+    App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadController:
+        arguments:
+            - '@App\Gallery\MemeGeneratorImagesFilterLoadHandler'
+            - '@api.v1.gallery.logger'
+        tags:
+            - { name: 'controller.service_arguments' }
+    App\Gallery\MemeGeneratorImagesFilterLoadHandler:
+        arguments:
+            - '@sulu_document_manager.path_builder'
+            - '@App\Gallery\Components\DocumentByPathLoader'
+            - '@App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader'
+            - '@App\Gallery\Components\MemeGeneratorMediaUrlCollectionByFilterGenerateHandler'
+    App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader:
+        arguments:
+            - '@sulu_media.media_manager'
+            - '@App\Gallery\Components\DefaultNavigationMediaUrlLoader'
+            - '@api.v1.gallery.logger'
+    App\Gallery\Components\MemeGeneratorMediaUrlCollectionByFilterGenerateHandler:
+        arguments:
+            - '@App\Gallery\Components\MediaUrlCollectionByMemeTemplateFilterGenerator'
+            - '@App\Gallery\Components\MediaUrlCollectionByMemeImageFilterGenerator'
+    App\Gallery\Components\MediaUrlCollectionByMemeImageFilterGenerator: ~
+    App\Gallery\Components\MediaUrlCollectionByMemeTemplateFilterGenerator: ~

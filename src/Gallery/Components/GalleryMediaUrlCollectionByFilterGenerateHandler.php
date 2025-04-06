@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
-use App\Gallery\MediaUrlCollectionByFilterGenerateHandler as MediaUrlCollectionByFilterGenerateHandlerInterface;
+use App\Gallery\MediaUrlCollectionByFilterGenerateHandler;
 use App\Gallery\Model\ImageFilter;
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\MediaUrlCollection;
 
-final readonly class MediaUrlCollectionByFilterGenerateHandler implements
-    MediaUrlCollectionByFilterGenerateHandlerInterface
+final readonly class GalleryMediaUrlCollectionByFilterGenerateHandler implements
+    MediaUrlCollectionByFilterGenerateHandler
 {
     public const string IMAGE_FILTER_GIF_VALUE = 'gif';
     public const string IMAGE_FILTER_IMAGE_VALUE = 'image';

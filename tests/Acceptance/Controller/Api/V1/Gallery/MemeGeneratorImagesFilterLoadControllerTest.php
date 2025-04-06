@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Acceptance\Controller\Api\V1\Gallery;
 
+use App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadController;
 use App\Tests\Acceptance\AbstractWebTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
-
 #[Group('Acceptance')]
-#[CoversNothing(GalleryImagesFilterLoadControllerTest::class)]
-final class GalleryImagesFilterLoadControllerTest extends AbstractWebTestCase
+#[CoversNothing(MemeGeneratorImagesFilterLoadController::class)]
+final class MemeGeneratorImagesFilterLoadControllerTest extends AbstractWebTestCase
 {
     public function setUp(): void
     {
@@ -20,13 +20,13 @@ final class GalleryImagesFilterLoadControllerTest extends AbstractWebTestCase
         parent::setUp();
     }
 
-    public function testLoadGalleryImagesByFilterForInfiniteScrolling_is_valid(): void
+    public function testLoadMemeGeneratorImagesByFilterForInfiniteScrolling_is_valid(): void
     {
         $this->generateMediaTestDataSet();
-        $this->generateGalleryDocumentTestDataSet($this->media->getId());
+        $this->generateMemeGeneratorDocumentTestDataSet($this->media->getId());
         $this->client->request(
             'GET',
-            '/api/v1/gallery/images/filter?counter=0&filter=image'
+            '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image'
         );
 
         $response = $this->client->getResponse();
@@ -34,7 +34,7 @@ final class GalleryImagesFilterLoadControllerTest extends AbstractWebTestCase
         self::assertEquals(json_encode([
             'urls' => [
                 [
-                    'imageViewerUrl' => '/xing-xing-on-camera/image-viewer?mediaId=' . $this->media->getId(),
+                    'imageViewerUrl' => '/meme-generator/new-meme?mediaId=' . $this->media->getId(),
                     'mediaUrl' => '/media/' . $this->media->getId() . '/download/test-image.jpg?v=1'
                 ]
             ]
@@ -42,11 +42,11 @@ final class GalleryImagesFilterLoadControllerTest extends AbstractWebTestCase
         self::assertSame(200, $response->getStatusCode());
     }
 
-    public function testLoadGalleryImagesByFilterForInfiniteScrolling_with_bad_request(): void
+    public function testLoadMemeGeneratorImagesByFilterForInfiniteScrolling_with_bad_request(): void
     {
         $this->client->request(
             'GET',
-            '/api/v1/gallery/images/filter?counter=0&filter=image'
+            '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image'
         );
 
         $response = $this->client->getResponse();
@@ -57,13 +57,13 @@ final class GalleryImagesFilterLoadControllerTest extends AbstractWebTestCase
         self::assertSame(400, $response->getStatusCode());
     }
 
-    public function testLoadGalleryImagesByFilterForInfiniteScrolling_with_internal_server_error(): void
+    public function testLoadMemeGeneratorImagesByFilterForInfiniteScrolling_with_internal_server_error(): void
     {
         $mediaId = 0;
-        $this->generateGalleryDocumentTestDataSet($mediaId);
+        $this->generateMemeGeneratorDocumentTestDataSet($mediaId);
         $this->client->request(
             'GET',
-            '/api/v1/gallery/images/filter?counter=0&filter=image'
+            '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image'
         );
 
         $response = $this->client->getResponse();

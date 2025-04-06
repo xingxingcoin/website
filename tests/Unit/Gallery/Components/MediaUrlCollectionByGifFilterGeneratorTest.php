@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components;
 
-use App\Gallery\Components\MediaCollectionByDocumentLoader;
+use App\Gallery\Components\GalleryMediaCollectionByDocumentLoader;
 use App\Gallery\Components\MediaUrlCollectionByAllImagesFilterGenerator;
 use App\Gallery\Components\MediaUrlCollectionByGifFilterGenerator;
 use App\Gallery\Model\MediaCollection;
@@ -26,19 +26,19 @@ final class MediaUrlCollectionByGifFilterGeneratorTest extends TestCase
     {
         $mediaCollection = new MediaCollection([
             [
-                MediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => MediaUrlCollectionByGifFilterGenerator::FILE_EXTENSION_GIF,
-                MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl',
-                MediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => MediaUrlCollectionByGifFilterGenerator::FILE_EXTENSION_GIF,
+                GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl',
             ],
             [
-                MediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => MediaUrlCollectionByAllImagesFilterGenerator::FILE_EXTENSION_JPG,
-                MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl2',
-                MediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl2',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => MediaUrlCollectionByAllImagesFilterGenerator::FILE_EXTENSION_JPG,
+                GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl2',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl2',
             ],
             [
-                MediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => MediaUrlCollectionByGifFilterGenerator::FILE_EXTENSION_GIF,
-                MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl3',
-                MediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION => MediaUrlCollectionByGifFilterGenerator::FILE_EXTENSION_GIF,
+                GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl3',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3',
             ],
         ]);
 
@@ -46,12 +46,12 @@ final class MediaUrlCollectionByGifFilterGeneratorTest extends TestCase
 
         $expectedMediaUrlCollection = new MediaUrlCollection([
             [
-                MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY  =>'testImageViewerUrl',
-                MediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl'
+                GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl'
             ],
             [
-                MediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY  =>'testImageViewerUrl3',
-                MediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3'
+                GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl3',
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3'
             ]
         ]);
         self::assertEquals($expectedMediaUrlCollection, $mediaUrlCollection);
