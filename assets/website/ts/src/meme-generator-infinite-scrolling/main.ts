@@ -6,7 +6,8 @@ import ContainerAnimationInitializer from "../components/ContainerAnimationIniti
 new MemeGeneratorInitialImagesLoader(
     new MemeGeneratorImagesManipulator('.xing-media-container'),
     new ContainerAnimationInitializer(),
-    '.lds-dual-ring'
+    '.lds-dual-ring',
+    '.xing-media-filter-button-disabled'
 );
 new MemeGeneratorInfiniteScrollingImageLoader(
     new MemeGeneratorImagesManipulator('.xing-media-container'),

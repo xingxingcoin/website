@@ -7,15 +7,19 @@ export default class MemeGeneratorInitialImagesLoader {
     static readonly METHOD: string = 'GET';
 
     private readonly loadingIndicator: HTMLElement | null;
+    private readonly filterButtons: NodeList;
 
     /**
      * @exception Error
      */
     constructor(private readonly memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator,
                 private readonly containerAnimationInitializer: ContainerAnimationInitializer,
-                loadingIndicatorClass: string) {
+                loadingIndicatorClass: string,
+                filterButtonsClass: string
+                ) {
         this.loadingIndicator = document.querySelector(loadingIndicatorClass);
-        if (this.loadingIndicator === null) {
+        this.filterButtons = document.querySelectorAll(filterButtonsClass);
+        if (this.loadingIndicator === null || this.filterButtons.length === 0) {
             throw new Error('Meme generator initial images are not loaded.');
         }
 
@@ -31,6 +35,7 @@ export default class MemeGeneratorInitialImagesLoader {
                     const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
                     this.memeGeneratorImagesManipulator.displayImagesInMemeGenerator(jsonResponse.urls);
                     this.hideLoadingIndicator();
+                    this.enableFilterButtons();
                     this.containerAnimationInitializer.init();
                 }
             };
@@ -41,5 +46,12 @@ export default class MemeGeneratorInitialImagesLoader {
 
     private hideLoadingIndicator(): void {
         (this.loadingIndicator as HTMLElement).style.display = 'none';
+    }
+
+    private enableFilterButtons(): void {
+        Array.from(this.filterButtons).forEach((filterButton: any): void => {
+            filterButton.classList.remove('xing-media-filter-button-disabled');
+            filterButton.classList.add('xing-media-filter-button');
+        });
     }
 }
