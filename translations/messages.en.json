@@ -16,6 +16,6 @@
   "meme_generator.new_meme.select-text.button": "Continue without background",
   "meme_generator.new_meme.select-text.input.placeholder": "Select text...",
   "xing_address.address.label.text": "Address:",
-  "xing_media.meme-image-button.text": "Meme Images",
-  "xing_media.meme-template-button.text": "Meme Templates"
+  "xing_media.meme-image-button.text": "Images",
+  "xing_media.meme-template-button.text": "Templates"
 }
