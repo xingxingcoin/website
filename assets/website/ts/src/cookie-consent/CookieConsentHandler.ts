@@ -17,16 +17,16 @@ export default class CookieConsentHandler {
         document.addEventListener('DOMContentLoaded', (): void => {
             CookieConsent.run(CookieConsentConfiguration.getConfig());
 
-            if (this.cookiePreferenceShowButton === null) {
-                return;
-            }
-            (this.cookiePreferenceShowButton as Element).addEventListener('click', (): void => {
-                CookieConsent.showPreferences();
-            });
             if (this.cookieFooterPreferenceShowButton === null) {
                 return;
             }
             (this.cookieFooterPreferenceShowButton as Element).addEventListener('click', (): void => {
+                CookieConsent.showPreferences();
+            });
+            if (this.cookiePreferenceShowButton === null) {
+                return;
+            }
+            (this.cookiePreferenceShowButton as Element).addEventListener('click', (): void => {
                 CookieConsent.showPreferences();
             });
         });
