@@ -19,7 +19,7 @@ export default class MemeGeneratorImagesByMemeImageFilterLoadHandler {
         if (this.memeImageFilterButton === null ||
             this.memeGeneratorContainer === null
         ) {
-            throw new Error('Meme generator images by image filter not loaded.');
+            throw new Error('Meme generator images by meme image filter not loaded.');
         }
 
         this.initEventListener();

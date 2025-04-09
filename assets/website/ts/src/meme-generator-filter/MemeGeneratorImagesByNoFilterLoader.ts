@@ -27,7 +27,7 @@ export default class MemeGeneratorImagesByNoFilterLoader {
             this.memeTemplateFilterButton === null ||
             this.memeImageFilterButton === null
         ) {
-            throw new Error('Meme generator images with no filter are not loaded');
+            throw new Error('Meme generator images with no filter are not loaded.');
         }
     }
 
