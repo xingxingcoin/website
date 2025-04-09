@@ -53,14 +53,15 @@ export default class MemeImageDownloadHandler {
         const memeTextRect: DOMRect = memeText.getBoundingClientRect();
 
         const fontSize: number = parseInt((this.memeTextSizeInput as HTMLInputElement).value, 10);
-        const memeTextPositionX: number = (memeTextRect.x - memeCanvasContainerRect.x) + fontSize;
-        const memeTextPositionY: number = (memeTextRect.y - memeCanvasContainerRect.y) + fontSize;
+        const memeTextPositionX: number = memeTextRect.x - memeCanvasContainerRect.x;
+        const memeTextPositionY: number = memeTextRect.y - memeCanvasContainerRect.y + 10;
 
         memeCanvas.width = memeCanvasContainerRect.width;
         memeCanvas.height = memeCanvasContainerRect.height;
         context.font = `${fontSize}px Impact`;
         context.fillStyle = (this.memeTextColorPicker as HTMLInputElement).value;
-        context.textAlign = 'center';
+        context.textAlign = 'start';
+        context.textBaseline = 'top';
         context.strokeStyle = 'black';
         context.lineWidth = 2;
         context.letterSpacing = '1px';
