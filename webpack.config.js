@@ -53,9 +53,12 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // configure Babel
-    // .configureBabel((config) => {
-    //     config.plugins.push('@babel/a-babel-plugin');
-    // })
+    .configureBabel((config) => {
+        config.presets.push('@babel/preset-typescript');
+        if (Encore.isProduction()) {
+            config.plugins.push('@interactjs/dev-tools/babel-plugin-prod');
+        }
+    })
 
     // enables and configure @babel/preset-env polyfills
     .configureBabelPresetEnv((config) => {
