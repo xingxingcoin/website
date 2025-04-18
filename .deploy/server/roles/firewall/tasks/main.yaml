@@ -6,9 +6,13 @@
 
 - name: Set default UFW policies to deny incoming and allow outgoing
   ufw:
-    state: enabled
-    default: deny incoming
-    default_outgoing: allow
+    direction: incoming
+    policy: deny
+
+- name: Set default UFW policy to allow all outgoing traffic
+  ufw:
+    direction: outgoing
+    policy: allow
 
 - name: Allow SSH (port 22)
   ufw:
