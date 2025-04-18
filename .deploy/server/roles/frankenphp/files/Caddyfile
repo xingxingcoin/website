@@ -13,6 +13,10 @@
 }
 
 xingxing-memes.com {
+  redir https://www.xingxing-memes.com{uri} permanent
+}
+
+www.xingxing-memes.com {
   try_files {path} index.php
   root /var/www/xing-meme-tool/current/public
   php_server
