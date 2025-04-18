@@ -33,7 +33,7 @@ export default class CookieConsentConfiguration {
                     en: {
                         consentModal: {
                             title: 'This website is using cookies',
-                            description: 'At xingxingmemes.com we use cookies to track information about your visit. Cookies, including those from third parties, help us to improve our website and make you tailor-made offers to suit your interests. By clicking on "Accept all", you consent to such processing. Your consent is voluntary and can be revoked at any time with effect for the future.',
+                            description: 'At xingxing-memes.com we use cookies to track information about your visit. Cookies, including those from third parties, help us to improve our website and make you tailor-made offers to suit your interests. By clicking on "Accept all", you consent to such processing. Your consent is voluntary and can be revoked at any time with effect for the future.',
                             acceptAllBtn: 'Accept all',
                             acceptNecessaryBtn: 'Reject all',
                             showPreferencesBtn: 'Manage Individual preferences'
