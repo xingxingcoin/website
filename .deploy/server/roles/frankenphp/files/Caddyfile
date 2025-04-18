@@ -44,3 +44,37 @@
     }
   }
 }
+
+:443 {
+  try_files {path} index.php
+  root /var/www/xing-meme-tool/current/public
+  php_server
+  tls ariagholami@web.de
+
+  @protected not path /build/* /admin/api/*
+  basicauth @protected {
+    xing $2a$14$tfyCd/ICF13V5QtBuywTDuy8Sw30scJ.P8oyask4pgoR/0qIghxNm
+  }
+
+  header {
+    Access-Control-Allow-Origin http://188.68.35.42/
+    Access-Control-Allow-Credentials true
+    Access-Control-Allow-Methods POST, GET
+    Access-Control-Allow-Headers Content-Type, Authorization
+    Access-Control-Max-Age: 100
+    Referrer-Policy strict-origin-when-cross-origin
+    Permissions-Policy: microphone=(), camera=(), geolocation=()
+    X-XSS-Protection: true
+    X-Frame-Options SAMEORIGIN
+    X-Content-Type-Options: nosniff
+    -X-Powered-By
+    -Server
+  }
+  log {
+    output file /var/log/caddy/access.log {
+        roll_size 1gb
+        roll_keep 10
+        roll_keep_for 168h
+    }
+  }
+}
