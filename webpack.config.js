@@ -55,9 +55,6 @@ Encore
     // configure Babel
     .configureBabel((config) => {
         config.presets.push('@babel/preset-typescript');
-        if (Encore.isProduction()) {
-            config.plugins.push('@interactjs/dev-tools/babel-plugin-prod');
-        }
     })
 
     // enables and configure @babel/preset-env polyfills
