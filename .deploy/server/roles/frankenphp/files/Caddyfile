@@ -27,7 +27,7 @@ www.xingxing-memes.com {
   }
 
   header {
-    Access-Control-Allow-Origin https://xingxing-memes.com/
+    Access-Control-Allow-Origin https://www.xingxing-memes.com/
     Access-Control-Allow-Credentials true
     Access-Control-Allow-Methods POST, GET
     Access-Control-Allow-Headers Content-Type, Authorization
