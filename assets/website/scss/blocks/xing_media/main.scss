@@ -72,6 +72,9 @@
     background-color: color.scale($brown, $lightness: -15%);
     transform: scale(1.2);
   }
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 }
 
 .xing-media-filter-button-disabled {
@@ -87,6 +90,9 @@
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 2rem;
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 }
 
 .xing-media-filter-button-selected {
@@ -116,5 +122,9 @@
   &:not(:active) {
     transform: scale(1.2);
     background-color: color.scale($brown, $lightness: -15%);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
   }
 }
