@@ -54,7 +54,7 @@ export default class MemeImageDownloadHandler {
 
         const fontSize: number = parseInt((this.memeTextSizeInput as HTMLInputElement).value, 10);
         const memeTextPositionX: number = memeTextRect.x - memeCanvasContainerRect.x;
-        const memeTextPositionY: number = memeTextRect.y - memeCanvasContainerRect.y + 10;
+        const memeTextPositionY: number = memeTextRect.y - memeCanvasContainerRect.y;
 
         memeCanvas.width = memeCanvasContainerRect.width;
         memeCanvas.height = memeCanvasContainerRect.height;
