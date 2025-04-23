@@ -1,4 +1,6 @@
 {
+    "name": "xingxingcoin/website",
+    "description": "$XING Meme Tool Website",
     "license": "mit",
     "type": "website",
     "homepage": "https://xingmemes.com",
