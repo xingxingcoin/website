@@ -154,3 +154,10 @@ input[type="color"]  {
 
   --cc-btn-border-radius: 10px;
 }
+
+.error-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -17,5 +17,6 @@
   "meme_generator.new_meme.select-text.input.placeholder": "Text eingeben...",
   "xing_address.address.label.text": "Adresse:",
   "xing_media.meme-image-button.text": "Bilder",
-  "xing_media.meme-template-button.text": "Templates"
+  "xing_media.meme-template-button.text": "Templates",
+  "page.error.description": "Die Seite, die Sie suchen, existiert leider nicht oder wurde verschoben."
 }

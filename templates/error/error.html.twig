@@ -1,5 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    <title>Error | $XING Meme Tool</title>
+{% endblock %}
+
 {% block content %}
-    <h1>Error {{ status_code }}: {{ status_text }}</h1>
+    <div class="description-container error-text-container">
+        <h1>{{ status_code }} - {{ status_text }}</h1>
+        <p>{{ 'page.error.description'|trans }}</p>
+    </div>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}
