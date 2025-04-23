@@ -3,7 +3,7 @@
 @use '../_shared/colors' as *;
 @use 'sass:color';
 
-p, h1, h3, a, label, li {
+p, h1, h2, h3, h4, a, label, li, strong {
   font-family: DynaPuff,system-ui;
 }
 

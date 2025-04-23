@@ -57,7 +57,11 @@ services:
             - { name: 'controller.service_arguments' }
             - { name: 'container.service_subscriber' }
             - { name: 'sulu.context', context: 'website' }
-
+    App\Controller\PrivacyPolicy\LoadController:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'controller.service_arguments' }
     App\Finance\DefaultXingFinanceDataByDexScreenerApiHandler:
         arguments:
             - '@App\Finance\Components\XingFinanceDataByDexScreenerApiLoader'

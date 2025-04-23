@@ -4,6 +4,7 @@
 User-agent: *
 Disallow: /api/
 Disallow: /admin/
+Disallow: /privacy-policy/
 
 Allow: /
 

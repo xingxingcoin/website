@@ -22,6 +22,11 @@ App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadController:
     controller: App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadController
     methods: GET
 
+App\Controller\PrivacyPolicy\LoadController:
+    path: /privacy-policy
+    controller: App\Controller\PrivacyPolicy\LoadController
+    methods: GET
+
 #static:
 #    path: /static-route
 #    controller: App\Controller\DefaultController::index
