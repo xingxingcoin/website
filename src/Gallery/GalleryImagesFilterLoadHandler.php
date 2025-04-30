@@ -25,7 +25,8 @@ final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilt
         private PathBuilder $pathBuilder,
         private DocumentByPathLoader $documentByPathLoader,
         private MediaCollectionByDocumentLoader $mediaCollectionByDocumentLoader,
-        private MediaUrlCollectionByFilterGenerateHandler $mediaUrlCollectionByFilterGenerateHandler
+        private MediaUrlCollectionByFilterGenerateHandler $mediaUrlCollectionByFilterGenerateHandler,
+        private MediaUrlCollectionRandomizer $mediaUrlCollectionRandomizer
     ) {
     }
 
@@ -55,6 +56,6 @@ final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilt
             $mediaUrlCollectionForCounter[] = $mediaUrlCollection->data[$currentImageIndex];
         }
 
-        return new MediaUrlCollection($mediaUrlCollectionForCounter);
+        return $this->mediaUrlCollectionRandomizer->randomize($mediaUrlCollectionForCounter);
     }
 }

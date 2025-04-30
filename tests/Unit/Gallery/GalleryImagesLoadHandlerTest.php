@@ -13,6 +13,7 @@ use App\Gallery\Model\SubNavigation;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Gallery\Mocks\DocumentByPathLoaderMock;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionByDocumentLoaderMock;
+use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionRandomizerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
@@ -27,6 +28,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
     private MockObject $pathBuilderMock;
     private DocumentByPathLoaderMock $documentByPathLoaderMock;
     private MediaUrlCollectionByDocumentLoaderMock $mediaUrlCollectionByDocumentLoaderMock;
+    private MediaUrlCollectionRandomizerMock $mediaUrlCollectionRandomizerMock;
     private GalleryImagesLoadHandler $galleryImagesLoadHandler;
 
     protected function setUp(): void
@@ -34,10 +36,12 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $this->pathBuilderMock = $this->getMock(PathBuilder::class);
         $this->documentByPathLoaderMock = new DocumentByPathLoaderMock();
         $this->mediaUrlCollectionByDocumentLoaderMock = new MediaUrlCollectionByDocumentLoaderMock();
+        $this->mediaUrlCollectionRandomizerMock = new MediaUrlCollectionRandomizerMock();
         $this->galleryImagesLoadHandler = new GalleryImagesLoadHandler(
             $this->pathBuilderMock,
             $this->documentByPathLoaderMock,
-            $this->mediaUrlCollectionByDocumentLoaderMock
+            $this->mediaUrlCollectionByDocumentLoaderMock,
+            $this->mediaUrlCollectionRandomizerMock,
         );
     }
 
@@ -54,6 +58,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaUrlCollection = new MediaUrlCollection(['testUrl', 'testUrl']);
         $this->mediaUrlCollectionByDocumentLoaderMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
 
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
@@ -61,6 +66,10 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
+        self::assertEquals(
+            $expectedMediaUrlCollection->data,
+            $this->mediaUrlCollectionRandomizerMock->inputMediaUrlData
+        );
     }
 
     public function testHandle_with_30_urls(): void
@@ -108,6 +117,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         ];
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
         $this->mediaUrlCollectionByDocumentLoaderMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
 
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
@@ -115,6 +125,10 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
+        self::assertEquals(
+            $expectedMediaUrlCollection->data,
+            $this->mediaUrlCollectionRandomizerMock->inputMediaUrlData
+        );
     }
 
     public function testHandle_with_31_urls(): void
@@ -163,9 +177,6 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         ];
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
         $this->mediaUrlCollectionByDocumentLoaderMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
-
-        $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
-
         $expectedMediaUrlGroups = [
             'testUrl',
             'testUrl',
@@ -198,10 +209,18 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
             'testUrl',
             'testUrl'
         ];
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
+
+        $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
+
         self::assertEquals($expectedMediaUrlGroups, $mediaUrlCollection->data);
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
+        self::assertEquals(
+            $expectedMediaUrlGroups,
+            $this->mediaUrlCollectionRandomizerMock->inputMediaUrlData
+        );
     }
 
     public function testHandle_with_counter_equals_negative_one(): void
@@ -217,6 +236,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaUrlCollection = new MediaUrlCollection([]);
         $this->mediaUrlCollectionByDocumentLoaderMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
 
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
@@ -224,6 +244,10 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
+        self::assertEquals(
+            $expectedMediaUrlCollection->data,
+            $this->mediaUrlCollectionRandomizerMock->inputMediaUrlData
+        );
     }
 
     public function testHandle_with_invalid_key(): void
@@ -244,6 +268,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         ];
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
         $this->mediaUrlCollectionByDocumentLoaderMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection =  new MediaUrlCollection([]);
 
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
@@ -252,5 +277,9 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
+        self::assertEquals(
+            $expectedMediaUrlGroups,
+            $this->mediaUrlCollectionRandomizerMock->inputMediaUrlData
+        );
     }
 }

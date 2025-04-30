@@ -25,7 +25,8 @@ final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandle
     public function __construct(
         private PathBuilder $pathBuilder,
         private DocumentByPathLoader $documentByPathLoader,
-        private MediaUrlCollectionByDocumentLoader $mediaUrlCollectionByDocumentLoader
+        private MediaUrlCollectionByDocumentLoader $mediaUrlCollectionByDocumentLoader,
+        private MediaUrlCollectionRandomizer $mediaUrlCollectionRandomizer
     ) {
     }
 
@@ -49,6 +50,6 @@ final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandle
             $mediaUrlCollectionForCounter[] = $mediaUrlCollection->data[$currentImageIndex];
         }
 
-        return new MediaUrlCollection($mediaUrlCollectionForCounter);
+        return $this->mediaUrlCollectionRandomizer->randomize($mediaUrlCollectionForCounter);
     }
 }

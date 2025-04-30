@@ -16,6 +16,7 @@ use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Gallery\Mocks\DocumentByPathLoaderMock;
 use App\Tests\Unit\Gallery\Mocks\MediaCollectionByDocumentLoaderMock;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionByFilterGenerateHandlerMock;
+use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionRandomizerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
@@ -32,6 +33,7 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
     private DocumentByPathLoaderMock $documentByPathLoaderMock;
     private MediaCollectionByDocumentLoaderMock $mediaCollectionByDocumentLoaderMock;
     private MediaUrlCollectionByFilterGenerateHandlerMock $mediaUrlCollectionByFilterGenerateHandlerMock;
+    private MediaUrlCollectionRandomizerMock $mediaUrlCollectionRandomizerMock;
     private MemeGeneratorImagesFilterLoadHandler $memeGeneratorImagesFilterLoadHandler;
 
     protected function setUp(): void
@@ -40,11 +42,13 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         $this->documentByPathLoaderMock = new DocumentByPathLoaderMock();
         $this->mediaCollectionByDocumentLoaderMock = new MediaCollectionByDocumentLoaderMock();
         $this->mediaUrlCollectionByFilterGenerateHandlerMock = new MediaUrlCollectionByFilterGenerateHandlerMock();
+        $this->mediaUrlCollectionRandomizerMock = new MediaUrlCollectionRandomizerMock();
         $this->memeGeneratorImagesFilterLoadHandler = new MemeGeneratorImagesFilterLoadHandler(
             $this->pathBuilderMock,
             $this->documentByPathLoaderMock,
             $this->mediaCollectionByDocumentLoaderMock,
             $this->mediaUrlCollectionByFilterGenerateHandlerMock,
+            $this->mediaUrlCollectionRandomizerMock,
         );
     }
 
@@ -96,6 +100,7 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         $this->mediaCollectionByDocumentLoaderMock->outputMediaCollection = $expectedMediaCollection;
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaGroups);
         $this->mediaUrlCollectionByFilterGenerateHandlerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
         $mediaUrlCollection = $this->memeGeneratorImagesFilterLoadHandler->handle(
             $expectedLocation,
             $expectedImageCounter,
@@ -113,6 +118,10 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         self::assertSame(
             $expectedImageFilter->value,
             $this->mediaUrlCollectionByFilterGenerateHandlerMock->inputImageFilter->value
+        );
+        self::assertEquals(
+            $expectedMediaUrlCollection->data,
+            $this->mediaUrlCollectionRandomizerMock->inputMediaUrlData
         );
     }
 
@@ -165,13 +174,6 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         $this->mediaCollectionByDocumentLoaderMock->outputMediaCollection = $expectedMediaCollection;
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaGroups);
         $this->mediaUrlCollectionByFilterGenerateHandlerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
-
-        $mediaUrlCollection = $this->memeGeneratorImagesFilterLoadHandler->handle(
-            $expectedLocation,
-            $expectedImageCounter,
-            $expectedImageFilter
-        );
-
         $expectedMediaGroups = [
             'testUrl',
             'testUrl',
@@ -204,6 +206,14 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
             'testUrl',
             'testUrl'
         ];
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection($expectedMediaGroups);
+
+        $mediaUrlCollection = $this->memeGeneratorImagesFilterLoadHandler->handle(
+            $expectedLocation,
+            $expectedImageCounter,
+            $expectedImageFilter
+        );
+
         self::assertEquals($expectedMediaGroups, $mediaUrlCollection->data);
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
         self::assertSame($expectedPageDocument, $this->mediaCollectionByDocumentLoaderMock->inputDocument);
@@ -216,6 +226,10 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
             $expectedImageFilter->value,
             $this->mediaUrlCollectionByFilterGenerateHandlerMock->inputImageFilter->value
         );
+        self::assertEquals(
+            $expectedMediaGroups,
+            $this->mediaUrlCollectionRandomizerMock->inputMediaUrlData
+        );;
     }
 
     public function testHandle_with_counter_equals_negative_one(): void
@@ -234,6 +248,7 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         $this->mediaCollectionByDocumentLoaderMock->outputMediaCollection = $expectedMediaCollection;
         $expectedMediaUrlCollection = new MediaUrlCollection([]);
         $this->mediaUrlCollectionByFilterGenerateHandlerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
 
         $mediaUrlCollection = $this->memeGeneratorImagesFilterLoadHandler->handle(
             $expectedLocation,
@@ -252,6 +267,10 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         self::assertSame(
             $expectedImageFilter->value,
             $this->mediaUrlCollectionByFilterGenerateHandlerMock->inputImageFilter->value
+        );
+        self::assertEquals(
+            $expectedMediaUrlCollection->data,
+            $this->mediaUrlCollectionRandomizerMock->inputMediaUrlData
         );
     }
 
@@ -276,6 +295,7 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         $this->mediaCollectionByDocumentLoaderMock->outputMediaCollection = $expectedMediaCollection;
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaGroups);
         $this->mediaUrlCollectionByFilterGenerateHandlerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection([]);
 
         $mediaUrlCollection = $this->memeGeneratorImagesFilterLoadHandler->handle(
             $expectedLocation,
@@ -295,6 +315,10 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         self::assertSame(
             $expectedImageFilter->value,
             $this->mediaUrlCollectionByFilterGenerateHandlerMock->inputImageFilter->value
+        );
+        self::assertEquals(
+            $expectedMediaUrlGroups,
+            $this->mediaUrlCollectionRandomizerMock->inputMediaUrlData
         );
     }
 }

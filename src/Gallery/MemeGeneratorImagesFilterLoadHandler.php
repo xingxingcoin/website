@@ -25,7 +25,8 @@ final readonly class MemeGeneratorImagesFilterLoadHandler implements MemeGenerat
         private PathBuilder $pathBuilder,
         private DocumentByPathLoader $documentByPathLoader,
         private MediaCollectionByDocumentLoader $mediaCollectionByDocumentLoader,
-        private MediaUrlCollectionByFilterGenerateHandler $mediaUrlCollectionByFilterGenerateHandler
+        private MediaUrlCollectionByFilterGenerateHandler $mediaUrlCollectionByFilterGenerateHandler,
+        private MediaUrlCollectionRandomizer $mediaUrlCollectionRandomizer
     ) {
     }
 
@@ -58,6 +59,6 @@ final readonly class MemeGeneratorImagesFilterLoadHandler implements MemeGenerat
             $mediaUrlCollectionForCounter[] = $mediaUrlCollection->data[$currentImageIndex];
         }
 
-        return new MediaUrlCollection($mediaUrlCollectionForCounter);
+        return $this->mediaUrlCollectionRandomizer->randomize($mediaUrlCollectionForCounter);
     }
 }

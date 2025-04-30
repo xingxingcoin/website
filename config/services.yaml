@@ -131,11 +131,13 @@ services:
             - '@sulu_document_manager.path_builder'
             - '@App\Gallery\Components\DocumentByPathLoader'
             - '@App\Gallery\Components\MediaUrlCollectionByDocumentLoader'
+            - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
     App\Gallery\GalleryImagesLoadHandler:
         arguments:
             - '@sulu_document_manager.path_builder'
             - '@App\Gallery\Components\DocumentByPathLoader'
             - '@App\Gallery\Components\MediaUrlCollectionByDocumentLoader'
+            - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
     App\Gallery\Components\DocumentByPathLoader:
         arguments:
             - '@sulu_document_manager.document_manager'
@@ -170,6 +172,7 @@ services:
             - '@App\Gallery\Components\DocumentByPathLoader'
             - '@App\Gallery\Components\GalleryMediaCollectionByDocumentLoader'
             - '@App\Gallery\Components\GalleryMediaUrlCollectionByFilterGenerateHandler'
+            - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
     App\Gallery\Components\GalleryMediaCollectionByDocumentLoader:
         arguments:
             - '@sulu_media.media_manager'
@@ -194,6 +197,7 @@ services:
             - '@App\Gallery\Components\DocumentByPathLoader'
             - '@App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader'
             - '@App\Gallery\Components\MemeGeneratorMediaUrlCollectionByFilterGenerateHandler'
+            - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
     App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader:
         arguments:
             - '@sulu_media.media_manager'
@@ -205,3 +209,5 @@ services:
             - '@App\Gallery\Components\MediaUrlCollectionByMemeImageFilterGenerator'
     App\Gallery\Components\MediaUrlCollectionByMemeImageFilterGenerator: ~
     App\Gallery\Components\MediaUrlCollectionByMemeTemplateFilterGenerator: ~
+    App\Gallery\Components\MediaUrlCollectionRandomizer: ~
+
