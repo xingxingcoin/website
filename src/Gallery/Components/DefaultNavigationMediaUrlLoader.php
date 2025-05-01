@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Gallery\Components;
 
 use App\Exception\EmptyStringException;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaNavigationUrl;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
+use App\Model\Location;
 use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
 
 final readonly class DefaultNavigationMediaUrlLoader implements NavigationMediaUrlLoader

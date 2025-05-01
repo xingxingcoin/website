@@ -10,9 +10,33 @@ info:
 servers:
   - url: https://website.ddev.site/api/v1
 tags:
+  - name: finance
+    description: Finance data
   - name: gallery
     description: Pictures of Xing Xing
 paths:
+  /api/v1/finance/xing:
+    get:
+      tags:
+        - finance
+      summary: Load basic xing finance data
+      description: Load basic xing finance data by dexscreener
+      operationId: loadXingFinanceData
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinanceData'
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalServerError'
   /api/v1/gallery/images:
     get:
       tags:
@@ -189,6 +213,26 @@ paths:
                   $ref: '#/components/schemas/InternalServerError'
 components:
   schemas:
+    FinanceData:
+      type: object
+      required:
+        - finance
+        - media
+      properties:
+        finance:
+          type: object
+          required: [ marketCap, priceChange ]
+          properties:
+            marketCap:
+              type: number
+            priceChange:
+              type: number
+        media:
+          type: object
+          required: [url]
+          properties:
+            url:
+              type: string
     MediaUrls:
       type: object
       required:

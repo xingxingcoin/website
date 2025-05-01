@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Gallery;
 
 use App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadHandler as GalleryImagesFilterLoadHandlerInterface;
+use App\Data\DocumentByPathLoader;
 use App\Gallery\Model\ImageCounter;
 use App\Gallery\Model\ImageFilter;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
+use App\Model\Location;
 use Sulu\Component\DocumentManager\PathBuilder;
 
 final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilterLoadHandlerInterface
@@ -32,7 +33,7 @@ final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilt
 
     /**
      * @throws Exception\MediaDataNotLoadedException
-     * @throws Exception\PageDocumentNotLoadedException
+     * @throws \App\Data\Exception\PageDocumentNotLoadedException
      */
     #[\Override]
     public function handle(Location $location, ImageCounter $imageCounter, ImageFilter $imageFilter): MediaUrlCollection
@@ -45,7 +46,10 @@ final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilt
             new RootNavigation(self::ROOT_NAVIGATION),
             new SubNavigation(self::SUB_NAVIGATION)
         );
-        $mediaUrlCollection = $this->mediaUrlCollectionByFilterGenerateHandler->handle($mediaUrlCollection, $imageFilter);
+        $mediaUrlCollection = $this->mediaUrlCollectionByFilterGenerateHandler->handle(
+            $mediaUrlCollection,
+            $imageFilter
+        );
         $mediaUrlCollectionForCounter = [];
         $nextImageIndex = ($imageCounter->value + self::NEXT_IMAGE_COUNTER) * self::NUMBER_OF_PROVIDED_IMAGES;
         for ($currentImageIndex = $imageCounter->value * self::NUMBER_OF_PROVIDED_IMAGES; $currentImageIndex < $nextImageIndex; $currentImageIndex++) {

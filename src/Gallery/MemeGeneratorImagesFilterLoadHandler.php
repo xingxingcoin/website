@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Gallery;
 
 use App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadHandler as MemeGeneratorImagesFilterLoadHandlerInterface;
+use App\Data\DocumentByPathLoader;
 use App\Gallery\Model\ImageCounter;
 use App\Gallery\Model\ImageFilter;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
+use App\Model\Location;
 use Sulu\Component\DocumentManager\PathBuilder;
 
 final readonly class MemeGeneratorImagesFilterLoadHandler implements MemeGeneratorImagesFilterLoadHandlerInterface
@@ -32,7 +33,7 @@ final readonly class MemeGeneratorImagesFilterLoadHandler implements MemeGenerat
 
     /**
      * @throws Exception\MediaDataNotLoadedException
-     * @throws Exception\PageDocumentNotLoadedException
+     * @throws \App\Data\Exception\PageDocumentNotLoadedException
      */
     #[\Override]
     public function handle(Location $location, ImageCounter $imageCounter, ImageFilter $imageFilter): MediaUrlCollection

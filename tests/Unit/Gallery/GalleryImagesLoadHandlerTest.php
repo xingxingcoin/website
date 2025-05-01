@@ -6,14 +6,14 @@ namespace App\Tests\Unit\Gallery;
 
 use App\Gallery\GalleryImagesLoadHandler;
 use App\Gallery\Model\ImageCounter;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
+use App\Model\Location;
 use App\Tests\Unit\CustomTestCase;
-use App\Tests\Unit\Gallery\Mocks\DocumentByPathLoaderMock;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionByDocumentLoaderMock;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionRandomizerMock;
+use App\Tests\Unit\Mocks\DocumentByPathLoaderMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;

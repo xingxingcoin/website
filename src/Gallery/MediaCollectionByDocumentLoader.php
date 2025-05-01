@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Gallery;
 
 use App\Gallery\Exception\MediaDataNotLoadedException;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
+use App\Model\Location;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 
 interface MediaCollectionByDocumentLoader

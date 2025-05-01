@@ -6,10 +6,10 @@ namespace App\Gallery\Components;
 
 use App\Gallery\Exception\MediaUrlNotLoadedException;
 use App\Gallery\MediaUrlCollectionByDocumentLoader as MediaUrlCollectionByDocumentLoaderInterface;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
+use App\Model\Location;
 use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;

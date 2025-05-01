@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Gallery\Mocks;
+namespace App\Tests\Unit\Mocks;
 
-use App\Gallery\DocumentByPathLoader;
+use App\Data\DocumentByPathLoader;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 
 final class DocumentByPathLoaderMock implements DocumentByPathLoader

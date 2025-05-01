@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Gallery\Exception;
+namespace App\Data\Exception;
 
 use App\Exception\ValidationException;
 

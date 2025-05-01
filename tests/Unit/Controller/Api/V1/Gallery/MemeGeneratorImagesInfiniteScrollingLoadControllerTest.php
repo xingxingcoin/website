@@ -6,9 +6,9 @@ namespace App\Tests\Unit\Controller\Api\V1\Gallery;
 
 use App\Controller\Api\V1\Gallery\MemeGeneratorImagesInfiniteScrollingLoadController;
 use App\Gallery\Exception\MediaUrlNotLoadedException;
-use App\Gallery\Exception\PageDocumentNotLoadedException;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
+use App\Model\Location;
+use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Tests\Unit\Controller\Api\V1\Gallery\Mocks\MemeGeneratorImagesLoadHandlerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;

@@ -7,7 +7,7 @@
     <key>home</key>
 
     <view>pages/home</view>
-    <controller>App\Controller\Pages\ExtendHomePageByXingDataController::indexAction</controller>
+    <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
     <cacheLifetime>86400</cacheLifetime>
 
     <meta>

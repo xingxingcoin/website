@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Gallery\Model;
+namespace App\tests\Unit\Model;
 
 use App\Exception\EmptyStringException;
-use App\Gallery\Model\Location;
+use App\Model\Location;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 

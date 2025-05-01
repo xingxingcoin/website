@@ -6,10 +6,10 @@ namespace App\Tests\Unit\Controller\Api\V1\Gallery\Mocks;
 
 use App\Controller\Api\V1\Gallery\MemeGeneratorImagesLoadHandler;
 use App\Gallery\Exception\MediaUrlNotLoadedException;
-use App\Gallery\Exception\PageDocumentNotLoadedException;
 use App\Gallery\Model\ImageCounter;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
+use App\Model\Location;
+use App\Data\Exception\PageDocumentNotLoadedException;
 
 final class MemeGeneratorImagesLoadHandlerMock implements MemeGeneratorImagesLoadHandler
 {

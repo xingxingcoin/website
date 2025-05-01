@@ -6,10 +6,10 @@ namespace App\Tests\Unit\Gallery\Components;
 
 use App\Exception\EmptyStringException;
 use App\Gallery\Components\DefaultNavigationMediaUrlLoader;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaNavigationUrl;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
+use App\Model\Location;
 use App\Tests\Unit\Mocks\NavigationMapperMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

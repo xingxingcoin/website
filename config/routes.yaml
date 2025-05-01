@@ -1,8 +1,7 @@
-controllers:
-    resource:
-        path: ../src/Controller/Pages/
-        namespace: App\Controller\Pages
-    type: attribute
+App\Controller\Api\V1\Finance\XingGeneralDataLoadController:
+    path: /api/v1/finance/xing
+    controller: App\Controller\Api\V1\Finance\XingGeneralDataLoadController
+    methods: GET
 
 App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController:
     path: /api/v1/gallery/images

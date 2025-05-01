@@ -6,10 +6,10 @@ namespace App\Controller\Api\V1\Gallery;
 
 use App\Exception\EmptyStringException;
 use App\Gallery\Exception\MediaDataNotLoadedException;
-use App\Gallery\Exception\PageDocumentNotLoadedException;
 use App\Gallery\Model\ImageCounter;
 use App\Gallery\Model\ImageFilter;
-use App\Gallery\Model\Location;
+use App\Model\Location;
+use App\Data\Exception\PageDocumentNotLoadedException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

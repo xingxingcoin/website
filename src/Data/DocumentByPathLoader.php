@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Gallery;
+namespace App\Data;
 
-use App\Gallery\Exception\PageDocumentNotLoadedException;
+use App\Data\Exception\PageDocumentNotLoadedException;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 
 interface DocumentByPathLoader

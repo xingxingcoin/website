@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Gallery;
 
 use App\Controller\Api\V1\Gallery\MemeGeneratorImagesLoadHandler as MemeGeneratorImagesLoadHandlerInterface;
+use App\Data\DocumentByPathLoader;
 use App\Gallery\Exception\MediaUrlNotLoadedException;
-use App\Gallery\Exception\PageDocumentNotLoadedException;
 use App\Gallery\Model\ImageCounter;
-use App\Gallery\Model\Location;
 use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
+use App\Model\Location;
+use App\Data\Exception\PageDocumentNotLoadedException;
 use Sulu\Component\DocumentManager\PathBuilder;
 
 final readonly class MemeGeneratorImagesLoadHandler implements MemeGeneratorImagesLoadHandlerInterface
