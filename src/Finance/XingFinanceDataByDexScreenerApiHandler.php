@@ -35,19 +35,19 @@ final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinan
         $xingPriceInformation['priceChange'] = $priceChange['h24'] ?? 0.0;
         $financeDataCollection = new FinanceDataCollection(['finance' => $xingPriceInformation]);
         if ($xingPriceInformation['priceChange'] > -10.0 && $xingPriceInformation['priceChange'] < 10.0) {
-            return $this->xingNeutralModeGifUrlLoader->load($financeDataCollection, $location);
+            $financeDataCollection = $this->xingNeutralModeGifUrlLoader->load($financeDataCollection, $location);
         }
         if ($xingPriceInformation['priceChange'] <= -10.0 && $xingPriceInformation['priceChange'] > -30.0) {
-            return $this->xingUpsetModeGifUrlLoader->load($financeDataCollection, $location);
+            $financeDataCollection = $this->xingUpsetModeGifUrlLoader->load($financeDataCollection, $location);
         }
         if ($xingPriceInformation['priceChange'] <= -30.0) {
-            return $this->xingRageModeGifUrlLoader->load($financeDataCollection, $location);
+            $financeDataCollection = $this->xingRageModeGifUrlLoader->load($financeDataCollection, $location);
         }
         if ($xingPriceInformation['priceChange'] >= 10.0 && $xingPriceInformation['priceChange'] < 30.0) {
-            return $this->xingCalmModeGifUrlLoader->load($financeDataCollection, $location);
+            $financeDataCollection = $this->xingCalmModeGifUrlLoader->load($financeDataCollection, $location);
         }
         if ($xingPriceInformation['priceChange'] >= 30.0) {
-            return $this->xingHappyModeGifUrlLoader->load($financeDataCollection, $location);
+            $financeDataCollection = $this->xingHappyModeGifUrlLoader->load($financeDataCollection, $location);
         }
 
         return $financeDataCollection;
