@@ -4,17 +4,15 @@
 .xing_address-container {
   display: flex;
   flex: 1;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   text-align: center;
-  padding: 2rem 2rem;
+  padding: 1rem;
   background-color: $brown;
   border-bottom-style: solid;
   border-radius: 0.75rem;
   border-width: 0.3rem;
   border-color: $black;
   margin-bottom: 4rem;
-  gap: 1rem;
   box-shadow: 0 0 5px $brown;
   div {
     display: flex;
@@ -23,7 +21,6 @@
     cursor: pointer;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
     border-style: solid;
     border-radius: 0.75rem;
     border-width: 0.3rem;
@@ -49,20 +46,11 @@
       }
     }
   }
-  p {
+  h3 {
     display: flex;
-    padding: 1rem 1rem;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: $white;
-  }
-  @media (max-width: 768px) {
-    p {
-      font-size: 1rem;
-    }
-    div {
-      font-size: 1rem;
-    }
   }
 }
