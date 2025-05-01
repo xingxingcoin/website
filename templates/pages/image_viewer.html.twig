@@ -9,7 +9,7 @@
     {% set media = sulu_resolve_media(app.request.query.get('mediaId'), localizations['en']['locale']) %}
     {% set image %}
         <div class="image-viewer-inner-container">
-            {{ get_image(media|default, 'sulu-400x400') }}
+            {{ get_image(media|default, 'sulu-260x') }}
         </div>
     {% endset %}
 

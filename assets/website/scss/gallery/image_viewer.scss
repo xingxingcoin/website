@@ -14,23 +14,13 @@
   border-style: dashed;
   border-radius: 0.75rem;
   border-width: 0.2rem;
-  height: 400px;
-  width: 400px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  font-size: 0;
   &:hover, &:active {
     box-shadow: 0 0 5px $brown;
     user-select: none;
     transform: scale(1.1);
-  }
-  @media (max-width: 768px) {
-    img {
-      width: 200px;
-      height: 200px;
-    }
-
-    height: 200px;
-    width: 200px;
   }
 }
 
