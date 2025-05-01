@@ -31,6 +31,7 @@ Encore
     .addEntry('background-image', './assets/website/ts/src/background-image/main.ts')
     .addStyleEntry('styles', './assets/website/scss/main.scss')
     .addEntry('meme-generator-filter', './assets/website/ts/src/meme-generator-filter/main.ts')
+    .addEntry('xing-finance-data', './assets/website/ts/src/xing-finance-data/main.ts')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

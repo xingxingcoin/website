@@ -1,38 +1,21 @@
 {% set image %}
-    {% if xing['finance']['priceChange'] <= -30 %}
-        {{ get_image(content.xing_information_image_rage_mode|default, 'sulu-400x400') }}
-    {% elseif xing['finance']['priceChange'] <= -10 and xing['finance']['priceChange'] > -30 %}
-        {{ get_image(content.xing_information_image_upset|default, 'sulu-400x400') }}
-    {% elseif ((xing['finance']['priceChange'] <= 0 and xing['finance']['priceChange'] > -10) or
-        (xing['finance']['priceChange'] >= 0 and xing['finance']['priceChange'] < 10)) %}
-        {{ get_image(content.xing_information_image_neutral|default, 'sulu-400x400') }}
-    {% elseif xing['finance']['priceChange'] >= 10 and xing['finance']['priceChange'] < 30 %}
-        {{ get_image(content.xing_information_image_calm|default, 'sulu-400x400') }}
-    {% elseif xing['finance']['priceChange'] >= 30%}
-        {{ get_image(content.xing_information_image_happy|default, 'sulu-400x400') }}
-    {% endif %}
+    {{ get_image(content.xing_information_image_neutral|default, 'sulu-400x400') }}
 {% endset %}
 
 <div class="xing_information-main-container">
     <div class="xing_information-inner-container container-left-hidden">
-        <div><h3 class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.market_cap.title'|trans }}</h3>
-            {% set marketCap = xing['finance']['marketCap'] %}
-            {% set leftToBillion = 1000000000 - marketCap %}
-            <p class="xing_information-left-container-market-cap-text">{{ 'xing_information.market_cap'|trans }} ${{ marketCap|number_format(2) }}</p>
-            <p class="xing_information-left-container-market-cap-text">{{ 'xing_information.market_cap.left_to_billion'|trans }} ${{ leftToBillion|number_format(2) }}</p>
+        <div>
+            <h3 class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.market_cap.title'|trans }}</h3>
+            <p class="xing_information-left-container-market-cap-text">{{ 'xing_information.market_cap'|trans }} <span>$ 0</span></p>
+            <p class="xing_information-left-container-market-cap-text">{{ 'xing_information.market_cap.left_to_billion'|trans }} <span>$ 0</span></p>
         </div>
         {{ image }}
     </div>
 
     <div class="xing_information-inner-container container-bottom-hidden">
         <h3 class="xing_information-left-container-market-cap-info-text">{{ 'xing_information.price_change.title'|trans }}</h3>
-        {% if xing['finance']['priceChange'] > 0 %}
-            <p class="xing_information-right-container-price-change-positive-text">{{ 'xing_information.price_change'|trans }} +{{ xing['finance']['priceChange'] }}
-                % 🐵</p>
-        {% else %}
-            <p class="xing_information-right-container-price-change-negative-text">{{ 'xing_information.price_change'|trans }} {{ xing['finance']['priceChange'] }}
-                % 🙈</p>
-        {% endif %}
+        <p class="xing_information-right-container-price-change-positive-text">{{ 'xing_information.price_change'|trans }}
+            <span>0 % 🐵</span></p>
         <div class="xing_information-right-container-cookie-container">
             <a>Please enable cookies to view the chart.</a>
         </div>

@@ -2,18 +2,10 @@
     <div>
         {% for block in content.blocks %}
             <div>
-                {% if xing is defined %}
-                    {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
-                        content: block,
-                        view: view.blocks[loop.index0],
-                        xing: xing
-                    } only %}
-                {% else %}
-                    {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
-                        content: block,
-                        view: view.blocks[loop.index0]
-                    } only %}
-                {% endif %}
+                {% include 'includes/blocks/' ~ block.type ~ '.html.twig' with {
+                    content: block,
+                    view: view.blocks[loop.index0]
+                } only %}
             </div>
         {% endfor %}
     </div>

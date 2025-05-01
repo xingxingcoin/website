@@ -4,6 +4,7 @@
     {{ parent() }}
     {{ encore_entry_script_tags('xing-address') }}
     {{ encore_entry_script_tags('container-animation') }}
+    {{ encore_entry_script_tags('xing-finance-data') }}
 {% endblock %}
 
 {% block content %}
@@ -12,5 +13,5 @@
         <div class="description-container container-left-hidden">{{ content.description|raw }}</div>
     </div>
 
-    {% include 'includes/blocks.html.twig' with { xing: xing } %}
+    {% include 'includes/blocks.html.twig' %}
 {% endblock %}
