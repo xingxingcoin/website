@@ -21,11 +21,6 @@ www.xingxing-memes.com {
   root /var/www/xing-meme-tool/current/public
   php_server
 
-  @protected not path /build/* /admin/api/*
-  basicauth @protected {
-    xing $2a$14$tfyCd/ICF13V5QtBuywTDuy8Sw30scJ.P8oyask4pgoR/0qIghxNm
-  }
-
   header {
     Access-Control-Allow-Origin https://www.xingxing-memes.com/
     Access-Control-Allow-Credentials true
