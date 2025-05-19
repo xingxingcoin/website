@@ -33,6 +33,7 @@ www.xingxing-memes.com {
     X-Frame-Options SAMEORIGIN
     X-Content-Type-Options: nosniff
     -X-Powered-By
+    -X-Generator
     -Server
   }
   log {
