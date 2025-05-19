@@ -25,6 +25,11 @@ services:
             - '@twig'
         tags:
             - { name: 'controller.service_arguments' }
+    App\Controller\Impressum\LoadController:
+        arguments:
+            - '@twig'
+        tags:
+            - { name: 'controller.service_arguments' }
     App\Controller\Api\V1\Finance\XingGeneralDataLoadController:
         arguments:
             - '@App\Finance\XingFinanceDataByDexScreenerApiHandler'

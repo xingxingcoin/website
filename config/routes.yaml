@@ -25,6 +25,10 @@ App\Controller\PrivacyPolicy\LoadController:
     path: /privacy-policy
     controller: App\Controller\PrivacyPolicy\LoadController
     methods: GET
+App\Controller\Impressum\LoadController:
+    path: /impressum
+    controller: App\Controller\Impressum\LoadController
+    methods: GET
 
 #static:
 #    path: /static-route
