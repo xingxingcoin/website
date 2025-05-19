@@ -9,7 +9,7 @@
 {% block content %}
     <div>
         <h1 class="title">{{ content.title }}</h1>
-        <div class="description">{{ content.description|raw }}</div>
+        <div class="description-container container-left-hidden">{{ content.description|raw }}</div>
     </div>
     {% include 'includes/blocks.html.twig' %}
 {% endblock %}
