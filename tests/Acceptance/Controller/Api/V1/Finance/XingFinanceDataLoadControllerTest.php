@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Acceptance\Controller\Api\V1\Finance;
 
-use App\Controller\Api\V1\Finance\XingGeneralDataLoadController;
+use App\Controller\Api\V1\Finance\XingFinanceDataLoadController;
 use App\Tests\Acceptance\AbstractWebTestCase;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Group;
 
 #[Group('Acceptance')]
-#[CoversNothing(XingGeneralDataLoadController::class)]
-final class XingGeneralDataLoadControllerTest extends AbstractWebTestCase
+#[CoversNothing(XingFinanceDataLoadController::class)]
+final class XingFinanceDataLoadControllerTest extends AbstractWebTestCase
 {
     public function setUp(): void
     {

@@ -1,6 +1,6 @@
-App\Controller\Api\V1\Finance\XingGeneralDataLoadController:
+App\Controller\Api\V1\Finance\XingFinanceDataLoadController:
     path: /api/v1/finance/xing
-    controller: App\Controller\Api\V1\Finance\XingGeneralDataLoadController
+    controller: App\Controller\Api\V1\Finance\XingFinanceDataLoadController
     methods: GET
 
 App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController:

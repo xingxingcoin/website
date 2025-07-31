@@ -30,7 +30,7 @@ services:
             - '@twig'
         tags:
             - { name: 'controller.service_arguments' }
-    App\Controller\Api\V1\Finance\XingGeneralDataLoadController:
+    App\Controller\Api\V1\Finance\XingFinanceDataLoadController:
         arguments:
             - '@App\Finance\XingFinanceDataByDexScreenerApiHandler'
             - '@api.v1.finance.logger'
