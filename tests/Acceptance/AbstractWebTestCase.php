@@ -27,6 +27,65 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $this->purgeDatabase();
     }
 
+    protected function generateWebsiteHomepageTestDataSet(int $mediaId): void
+    {
+        $options = [
+            'locales' => ['en'],
+        ];
+        $manager = $this->getDocumentManager();
+        /** @var HomeDocument $document */
+        $document = $manager->find('/cmf/website/contents', 'en');
+        $document->getStructure()->bind([
+            'header' => [
+                'xing_music' => 'default-audio.mp3'
+            ],
+            'footer_social_media' => [
+                'footer_twitter_logo' => 'test_twitter_logo.png',
+                'footer_twitter_link' => 'x.com',
+                'footer_dexscreener_logo' => 'test_dexscreener_logo.png',
+                'footer_dexscreener_link' => 'dexscreener.com',
+                'footer_telegram_logo' => 'test_telegram_logo.png',
+                'footer_telegram_link' => 'telegram.com',
+                'footer_tiktok_logo' => 'test_tiktok_logo.png',
+                'footer_tiktok_link' => 'tiktok.com',
+            ],
+            'blocks' => [
+                [
+                    'type' => 'xing_information',
+                    'xing_information_image_rage_mode' => [
+                        'id' => $mediaId,
+                    ],
+                    'xing_information_image_upset' => [
+                        'id' => $mediaId,
+                    ],
+                    'xing_information_image_neutral' => [
+                        'id' => $mediaId,
+                    ],
+                    'xing_information_image_calm' => [
+                        'id' => $mediaId,
+                    ],
+                    'xing_information_image_happy' => [
+                        'id' => $mediaId,
+                    ],
+                ],
+                [
+                    'type' => 'xing_address',
+                    'xing_address_text' => '5JcdnWEwuHh1v3SAARq8zH9tEwDQGpaHzBrZ81m4pump',
+                ],
+            ]
+        ]);
+
+        foreach ($options['locales'] as $locale) {
+            $manager->persist($document, $locale, [
+                'path' => '/cmf/website/contents'
+            ]);
+            $manager->publish($document, $locale, [
+                'path' => '/cmf/website/contents'
+            ]);
+        }
+        $manager->flush();
+    }
+
     protected function generateGalleryDocumentTestDataSet(int $mediaId): void
     {
         $options = [
