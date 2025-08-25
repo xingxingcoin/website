@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\V1\Gallery;
 
-use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Exception\EmptyStringException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use Xingxingcoin\Core\Gallery\MemeGeneratorImagesLoadHandler;
 use Xingxingcoin\Core\Gallery\Model\ImageCounter;

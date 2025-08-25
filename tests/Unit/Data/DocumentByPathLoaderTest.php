@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace App\tests\Unit\Data;
 
-use App\Data\DefaultDocumentByPathLoader;
-use App\Data\Exception\PageDocumentNotLoadedException;
+use App\Database\DocumentByPathLoader;
 use App\Tests\Unit\Mocks\DocumentManagerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\Exception\DocumentManagerException;
+use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
 
-#[CoversClass(DefaultDocumentByPathLoader::class)]
+#[CoversClass(DocumentByPathLoader::class)]
 final class DocumentByPathLoaderTest extends TestCase
 {
     private DocumentManagerMock $documentManagerMock;
     private LoggerMock $loggerMock;
-    private DefaultDocumentByPathLoader $documentByPathLoader;
+    private DocumentByPathLoader $documentByPathLoader;
 
     protected function setUp(): void
     {
         $this->documentManagerMock = new DocumentManagerMock();
         $this->loggerMock = new LoggerMock();
-        $this->documentByPathLoader = new DefaultDocumentByPathLoader(
+        $this->documentByPathLoader = new DocumentByPathLoader(
             $this->documentManagerMock,
             $this->loggerMock
         );

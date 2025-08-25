@@ -145,7 +145,7 @@ services:
             - '@App\Data\DefaultDocumentByPathLoader'
             - '@App\Gallery\Components\MediaUrlCollectionByDocumentLoader'
             - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
-    App\Data\DefaultDocumentByPathLoader:
+    App\Data\DocumentByPathLoader:
         arguments:
             - '@sulu_document_manager.document_manager'
             - '@api.v1.gallery.logger'

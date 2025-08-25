@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Data;
+namespace Xingxingcoin\Core\Database;
 
-use App\Data\Exception\PageDocumentNotLoadedException;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
+use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
 
 interface DocumentByPathLoader
 {

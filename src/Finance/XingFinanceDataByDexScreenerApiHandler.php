@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Finance;
 
-use App\Data\Exception\PageDocumentNotLoadedException;
 use Xingxingcoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
 use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler as XingFinanceDataByDexScreenerApiHandlerInterface;
 use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;
 use Xingxingcoin\Core\Finance\XingGifUrlLoader;

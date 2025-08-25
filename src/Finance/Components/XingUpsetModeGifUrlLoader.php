@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Finance\Components;
 
-use App\Data\DocumentByPathLoader;
-use App\Data\Exception\PageDocumentNotLoadedException;
 use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Component\DocumentManager\PathBuilder;
 use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use Xingxingcoin\Core\Database\DocumentByPathLoader;
+use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use Xingxingcoin\Core\Finance\Exception\XingGifNotFoundException;
 use Xingxingcoin\Core\Finance\XingGifUrlLoader;
 use Xingxingcoin\Core\Model\Location;

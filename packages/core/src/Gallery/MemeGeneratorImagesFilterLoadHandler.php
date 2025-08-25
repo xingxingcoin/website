@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xingxingcoin\Core\Gallery;
 
-use App\Data\Exception\PageDocumentNotLoadedException;
+use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use Xingxingcoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use Xingxingcoin\Core\Gallery\Model\ImageCounter;
 use Xingxingcoin\Core\Gallery\Model\ImageFilter;
