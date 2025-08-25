@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xingxingcoin\Core\Database\Exception;
 
-use App\Exception\ValidationException;
+use Xingxingcoin\JsonValidator\Validation\Exception\ValidationException;
 
 /**
  * @codeCoverageIgnore

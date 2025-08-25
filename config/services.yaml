@@ -51,31 +51,31 @@ services:
     App\Finance\Components\XingHappyModeGifUrlLoader:
         arguments:
             - '@sulu_document_manager.path_builder'
-            - '@App\Data\DefaultDocumentByPathLoader'
+            - '@App\Database\DocumentByPathLoader'
             - '@sulu_media.media_manager'
             - '@api.v1.finance.logger'
     App\Finance\Components\XingCalmModeGifUrlLoader:
         arguments:
             - '@sulu_document_manager.path_builder'
-            - '@App\Data\DefaultDocumentByPathLoader'
+            - '@App\Database\DocumentByPathLoader'
             - '@sulu_media.media_manager'
             - '@api.v1.finance.logger'
     App\Finance\Components\XingNeutralModeGifUrlLoader:
         arguments:
             - '@sulu_document_manager.path_builder'
-            - '@App\Data\DefaultDocumentByPathLoader'
+            - '@App\Database\DocumentByPathLoader'
             - '@sulu_media.media_manager'
             - '@api.v1.finance.logger'
     App\Finance\Components\XingUpsetModeGifUrlLoader:
         arguments:
             - '@sulu_document_manager.path_builder'
-            - '@App\Data\DefaultDocumentByPathLoader'
+            - '@App\Database\DocumentByPathLoader'
             - '@sulu_media.media_manager'
             - '@api.v1.finance.logger'
     App\Finance\Components\XingRageModeGifUrlLoader:
         arguments:
             - '@sulu_document_manager.path_builder'
-            - '@App\Data\DefaultDocumentByPathLoader'
+            - '@App\Database\DocumentByPathLoader'
             - '@sulu_media.media_manager'
             - '@api.v1.finance.logger'
     api.v1.finance.logging-handler:
@@ -136,16 +136,16 @@ services:
     App\Gallery\MemeGeneratorImagesLoadHandler:
         arguments:
             - '@sulu_document_manager.path_builder'
-            - '@App\Data\DefaultDocumentByPathLoader'
+            - '@App\Database\DocumentByPathLoader'
             - '@App\Gallery\Components\MediaUrlCollectionByDocumentLoader'
             - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
     App\Gallery\GalleryImagesLoadHandler:
         arguments:
             - '@sulu_document_manager.path_builder'
-            - '@App\Data\DefaultDocumentByPathLoader'
+            - '@App\Database\DocumentByPathLoader'
             - '@App\Gallery\Components\MediaUrlCollectionByDocumentLoader'
             - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
-    App\Data\DocumentByPathLoader:
+    App\Database\DocumentByPathLoader:
         arguments:
             - '@sulu_document_manager.document_manager'
             - '@api.v1.gallery.logger'
@@ -176,7 +176,7 @@ services:
     App\Gallery\GalleryImagesFilterLoadHandler:
         arguments:
             - '@sulu_document_manager.path_builder'
-            - '@App\Data\DefaultDocumentByPathLoader'
+            - '@App\Database\DocumentByPathLoader'
             - '@App\Gallery\Components\GalleryMediaCollectionByDocumentLoader'
             - '@App\Gallery\Components\GalleryMediaUrlCollectionByFilterGenerateHandler'
             - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
@@ -201,7 +201,7 @@ services:
     App\Gallery\MemeGeneratorImagesFilterLoadHandler:
         arguments:
             - '@sulu_document_manager.path_builder'
-            - '@App\Data\DefaultDocumentByPathLoader'
+            - '@App\Database\DocumentByPathLoader'
             - '@App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader'
             - '@App\Gallery\Components\MemeGeneratorMediaUrlCollectionByFilterGenerateHandler'
             - '@App\Gallery\Components\MediaUrlCollectionRandomizer'

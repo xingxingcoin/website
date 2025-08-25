@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xingxingcoin\Core\Gallery\Model;
 
-use App\Exception\EmptyStringException;
+use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class ImageFilter
 {

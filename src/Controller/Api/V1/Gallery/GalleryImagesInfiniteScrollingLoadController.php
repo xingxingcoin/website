@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\V1\Gallery;
 
-use App\Exception\EmptyStringException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,6 +12,7 @@ use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use Xingxingcoin\Core\Gallery\GalleryImagesLoadHandler;
 use Xingxingcoin\Core\Gallery\Model\ImageCounter;
 use Xingxingcoin\Core\Model\Location;
+use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class GalleryImagesInfiniteScrollingLoadController
 {

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Xingxingcoin\Core\Tests\Gallery\Model;
 
-use App\Exception\EmptyStringException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Xingxingcoin\Core\Gallery\Model\SubNavigation;
+use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 #[CoversClass(SubNavigation::class)]
 final class SubNavigationTest extends TestCase

@@ -8,12 +8,12 @@ namespace Xingxingcoin\JsonValidator\Validation\Exception;
  * @codeCoverageIgnore
  * @infection-ignore-all
  */
-final class InvalidHttpJsonResponseSchema extends \App\Exception\ValidationException
+final class InvalidHttpJsonResponseSchema extends ValidationException
 {
     public static function schemaNotFound(string $url, string $method): InvalidHttpJsonResponseSchema
     {
         return new self(
-            \App\Exception\ValidationException::buildMessage(
+            ValidationException::buildMessage(
                 $url,
                 sprintf('Json response for url "%s" and method "%s" is not existing.', $url, $method)
             )
@@ -23,7 +23,7 @@ final class InvalidHttpJsonResponseSchema extends \App\Exception\ValidationExcep
     public static function jsonSchemaValidatorIsInvalid(string $identifier): InvalidHttpJsonResponseSchema
     {
         return new self(
-            \App\Exception\ValidationException::buildMessage(
+            ValidationException::buildMessage(
                 $identifier,
                 sprintf('Json schema validator component "%s" is not created successfully.', $identifier)
             )
@@ -33,7 +33,7 @@ final class InvalidHttpJsonResponseSchema extends \App\Exception\ValidationExcep
     public static function jsonSchemaIsInvalid(string $url, string $method): InvalidHttpJsonResponseSchema
     {
         return new self(
-            \App\Exception\ValidationException::buildMessage(
+            ValidationException::buildMessage(
                 $url,
                 sprintf('Json schema for url "%s" and method "%s" is invalid.', $url, $method)
             )

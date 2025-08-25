@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\tests\Unit\Data;
+namespace App\tests\Unit\Database;
 
 use App\Database\DocumentByPathLoader;
 use App\Tests\Unit\Mocks\DocumentManagerMock;

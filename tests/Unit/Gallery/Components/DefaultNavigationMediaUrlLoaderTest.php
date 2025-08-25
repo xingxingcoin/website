@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components;
 
-use App\Exception\EmptyStringException;
 use App\Gallery\Components\DefaultNavigationMediaUrlLoader;
 use App\Tests\Unit\Mocks\NavigationMapperMock;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -13,6 +12,7 @@ use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
 use Xingxingcoin\Core\Gallery\Model\RootNavigation;
 use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Model\Location;
+use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 #[CoversClass(DefaultNavigationMediaUrlLoader::class)]
 #[CoversClass(MediaNavigationUrl::class)]
