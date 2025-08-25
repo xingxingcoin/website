@@ -88,9 +88,9 @@
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\": "tests/",
-            "Xingxingcoin\\ApiAdapter\\Tests\\": "packages/api-adapter/tests/",
-            "Xingxingcoin\\Core\\Tests\\": "packages/core/tests/",
-            "Xingxingcoin\\JsonValidator\\Tests\\": "packages/json-validator/tests/"
+            "XingXingCoin\\ApiAdapter\\Tests\\": "packages/api-adapter/tests/",
+            "XingXingCoin\\Core\\Tests\\": "packages/core/tests/",
+            "XingXingCoin\\JsonValidator\\Tests\\": "packages/json-validator/tests/"
         }
     },
     "replace": {

@@ -17,12 +17,12 @@ use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
-use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
-use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
+use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(MediaUrlCollectionByDocumentLoader::class)]
 #[CoversClass(Location::class)]

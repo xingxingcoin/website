@@ -7,13 +7,13 @@ namespace App\Controller\Api\V1\Gallery;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use Xingxingcoin\Core\Gallery\Exception\MediaDataNotLoadedException;
-use Xingxingcoin\Core\Gallery\GalleryImagesFilterLoadHandler;
-use Xingxingcoin\Core\Gallery\Model\ImageCounter;
-use Xingxingcoin\Core\Gallery\Model\ImageFilter;
-use Xingxingcoin\Core\Model\Location;
-use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
+use XingXingCoin\Core\Gallery\GalleryImagesFilterLoadHandler;
+use XingXingCoin\Core\Gallery\Model\ImageCounter;
+use XingXingCoin\Core\Gallery\Model\ImageFilter;
+use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class GalleryImagesFilterLoadController
 {

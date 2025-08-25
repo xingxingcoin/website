@@ -6,8 +6,8 @@ use App\Gallery\Components\MediaUrlCollectionByMemeImageFilterGenerator;
 use App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Xingxingcoin\Core\Gallery\Model\MediaCollection;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\MediaCollection;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(MediaUrlCollectionByMemeImageFilterGenerator::class)]
 final class MediaUrlCollectionByMemeImageFilterGeneratorTest extends TestCase

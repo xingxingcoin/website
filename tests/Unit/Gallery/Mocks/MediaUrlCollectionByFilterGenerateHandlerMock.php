@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Mocks;
 
-use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerateHandler;
-use Xingxingcoin\Core\Gallery\Model\ImageFilter;
-use Xingxingcoin\Core\Gallery\Model\MediaCollection;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\MediaUrlCollectionByFilterGenerateHandler;
+use XingXingCoin\Core\Gallery\Model\ImageFilter;
+use XingXingCoin\Core\Gallery\Model\MediaCollection;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 final class MediaUrlCollectionByFilterGenerateHandlerMock implements MediaUrlCollectionByFilterGenerateHandler
 {

@@ -12147,17 +12147,17 @@
             "dist": {
                 "type": "path",
                 "url": "packages/api-adapter",
-                "reference": "3a02d33c256be4cb7affc5b72a672f9ee273a8c8"
+                "reference": "349fe6c2f90d9cf68de19031da29d3c91f676b4f"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Xingxingcoin\\ApiAdapter\\": "src/"
+                    "XingXingCoin\\ApiAdapter\\": "src/"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Xingxingcoin\\ApiAdapter\\Tests\\": "tests/"
+                    "XingXingCoin\\ApiAdapter\\Tests\\": "tests/"
                 }
             },
             "license": [
@@ -12180,17 +12180,17 @@
             "dist": {
                 "type": "path",
                 "url": "packages/core",
-                "reference": "45d7c88028664b33dc277d5abcc5c652b4ade243"
+                "reference": "b12809e3c13d6f6b0ca74a216257a94740ef567c"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Xingxingcoin\\Core\\": "src/"
+                    "XingXingCoin\\Core\\": "src/"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Xingxingcoin\\Core\\Tests": "tests/"
+                    "XingXingCoin\\Core\\Tests": "tests/"
                 }
             },
             "license": [
@@ -12213,7 +12213,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/json-validator",
-                "reference": "47afc713eb9cfffb9f66dde770606930351ead2e"
+                "reference": "9560df94ecbcb16febc0dc71d1de0232cafe3ed2"
             },
             "require": {
                 "opis/json-schema": "^2.4"
@@ -12221,12 +12221,12 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Xingxingcoin\\JsonValidator\\": "src/"
+                    "XingXingCoin\\JsonValidator\\": "src/"
                 }
             },
             "autoload-dev": {
                 "psr-4": {
-                    "Xingxingcoin\\JsonValidator\\Tests\\": "tests/"
+                    "XingXingCoin\\JsonValidator\\Tests\\": "tests/"
                 }
             },
             "license": [

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Database\Exception;
+namespace XingXingCoin\Core\Database\Exception;
 
-use Xingxingcoin\JsonValidator\Validation\Exception\ValidationException;
+use XingXingCoin\JsonValidator\Validation\Exception\ValidationException;
 
 /**
  * @codeCoverageIgnore

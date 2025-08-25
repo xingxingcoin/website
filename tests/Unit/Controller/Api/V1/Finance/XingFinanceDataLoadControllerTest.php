@@ -10,9 +10,9 @@ use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use Xingxingcoin\Core\Finance\Exception\XingGifNotFoundException;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
+use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(XingFinanceDataLoadController::class)]
 #[CoversClass(Location::class)]

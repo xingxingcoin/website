@@ -7,13 +7,13 @@ namespace App\Gallery\Components;
 use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
-use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
-use Xingxingcoin\Core\Gallery\MediaUrlCollectionByDocumentLoader as MediaUrlCollectionByDocumentLoaderInterface;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
+use XingXingCoin\Core\Gallery\MediaUrlCollectionByDocumentLoader as MediaUrlCollectionByDocumentLoaderInterface;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Gallery\NavigationMediaUrlLoader;
+use XingXingCoin\Core\Model\Location;
 
 final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlCollectionByDocumentLoaderInterface
 {

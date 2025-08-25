@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\ApiAdapter\Tests\Mocks;
+namespace XingXingCoin\ApiAdapter\Tests\Mocks;
 
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;

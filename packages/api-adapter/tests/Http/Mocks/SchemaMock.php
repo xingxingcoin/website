@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\ApiAdapter\Tests\Http\Mocks;
+namespace XingXingCoin\ApiAdapter\Tests\Http\Mocks;
 
 use Opis\JsonSchema\Errors\ValidationError;
 use Opis\JsonSchema\Info\SchemaInfo;

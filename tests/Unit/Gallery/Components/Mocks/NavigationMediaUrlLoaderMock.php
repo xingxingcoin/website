@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components\Mocks;
 
-use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Gallery\NavigationMediaUrlLoader;
+use XingXingCoin\Core\Model\Location;
 
 final class NavigationMediaUrlLoaderMock implements NavigationMediaUrlLoader
 {

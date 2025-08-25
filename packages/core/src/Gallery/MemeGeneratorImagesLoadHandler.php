@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Gallery;
+namespace XingXingCoin\Core\Gallery;
 
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
-use Xingxingcoin\Core\Gallery\Model\ImageCounter;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
+use XingXingCoin\Core\Gallery\Model\ImageCounter;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Model\Location;
 
 interface MemeGeneratorImagesLoadHandler
 {

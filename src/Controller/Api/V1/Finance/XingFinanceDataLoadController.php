@@ -8,8 +8,8 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler;
+use XingXingCoin\Core\Model\Location;
 
 final readonly class XingFinanceDataLoadController
 {

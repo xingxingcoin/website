@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Mocks;
 
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
-use Xingxingcoin\Core\Database\DocumentByPathLoader;
+use XingXingCoin\Core\Database\DocumentByPathLoader;
 
 final class DocumentByPathLoaderMock implements DocumentByPathLoader
 {

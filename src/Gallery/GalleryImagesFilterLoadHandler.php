@@ -5,17 +5,19 @@ declare(strict_types=1);
 namespace App\Gallery;
 
 use Sulu\Component\DocumentManager\PathBuilder;
-use Xingxingcoin\Core\Database\DocumentByPathLoader;
-use Xingxingcoin\Core\Gallery\GalleryImagesFilterLoadHandler as GalleryImagesFilterLoadHandlerInterface;
-use Xingxingcoin\Core\Gallery\MediaCollectionByDocumentLoader;
-use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerateHandler;
-use Xingxingcoin\Core\Gallery\MediaUrlCollectionRandomizer;
-use Xingxingcoin\Core\Gallery\Model\ImageCounter;
-use Xingxingcoin\Core\Gallery\Model\ImageFilter;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Database\DocumentByPathLoader;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
+use XingXingCoin\Core\Gallery\GalleryImagesFilterLoadHandler as GalleryImagesFilterLoadHandlerInterface;
+use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
+use XingXingCoin\Core\Gallery\MediaUrlCollectionByFilterGenerateHandler;
+use XingXingCoin\Core\Gallery\MediaUrlCollectionRandomizer;
+use XingXingCoin\Core\Gallery\Model\ImageCounter;
+use XingXingCoin\Core\Gallery\Model\ImageFilter;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\Location;
 
 final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilterLoadHandlerInterface
 {
@@ -34,8 +36,8 @@ final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilt
     ) {}
 
     /**
-     * @throws \Xingxingcoin\Core\Gallery\Exception\MediaDataNotLoadedException
-     * @throws \Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException
+     * @throws MediaDataNotLoadedException
+     * @throws PageDocumentNotLoadedException
      */
     #[\Override]
     public function handle(Location $location, ImageCounter $imageCounter, ImageFilter $imageFilter): MediaUrlCollection

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\ApiAdapter\Finance;
+namespace XingXingCoin\ApiAdapter\Finance;
 
-use Xingxingcoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
-use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader as XingFinanceDataByDexScreenerApiLoaderInterface;
+use XingXingCoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
+use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader as XingFinanceDataByDexScreenerApiLoaderInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 

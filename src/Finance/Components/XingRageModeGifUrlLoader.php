@@ -8,12 +8,12 @@ use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Component\DocumentManager\PathBuilder;
-use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use Xingxingcoin\Core\Database\DocumentByPathLoader;
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use Xingxingcoin\Core\Finance\Exception\XingGifNotFoundException;
-use Xingxingcoin\Core\Finance\XingGifUrlLoader;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use XingXingCoin\Core\Database\DocumentByPathLoader;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
+use XingXingCoin\Core\Finance\XingGifUrlLoader;
+use XingXingCoin\Core\Model\Location;
 
 final readonly class XingRageModeGifUrlLoader implements XingGifUrlLoader
 {

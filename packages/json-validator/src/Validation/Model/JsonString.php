@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\JsonValidator\Validation\Model;
+namespace XingXingCoin\JsonValidator\Validation\Model;
 
-use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class JsonString
 {

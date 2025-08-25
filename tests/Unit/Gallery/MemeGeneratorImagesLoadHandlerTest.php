@@ -13,11 +13,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\PathBuilder;
-use Xingxingcoin\Core\Gallery\Model\ImageCounter;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Gallery\Model\ImageCounter;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesLoadHandler::class)]
 #[CoversClass(Location::class)]

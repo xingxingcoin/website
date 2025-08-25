@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Gallery\Model;
+namespace XingXingCoin\Core\Gallery\Model;
 
-use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class RootNavigation
 {

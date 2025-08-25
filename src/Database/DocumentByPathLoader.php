@@ -8,8 +8,8 @@ use Psr\Log\LoggerInterface;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\DocumentManagerInterface;
 use Sulu\Component\DocumentManager\Exception\DocumentManagerException;
-use Xingxingcoin\Core\Database\DocumentByPathLoader as DocumentByPathLoaderInterface;
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Database\DocumentByPathLoader as DocumentByPathLoaderInterface;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 
 final readonly class DocumentByPathLoader implements DocumentByPathLoaderInterface
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\JsonValidator\Tests\Validation\Model;
+namespace XingXingCoin\JsonValidator\Tests\Validation\Model;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
-use Xingxingcoin\JsonValidator\Validation\Model\JsonString;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\JsonValidator\Validation\Model\JsonString;
 
 #[CoversClass(JsonString::class)]
 final class JsonStringTest extends TestCase

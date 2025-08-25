@@ -4,12 +4,12 @@
     "license": "mit",
     "autoload": {
         "psr-4": {
-            "Xingxingcoin\\ApiAdapter\\": "src/"
+            "XingXingCoin\\ApiAdapter\\": "src/"
         }
     },
     "autoload-dev": {
       "psr-4": {
-        "Xingxingcoin\\ApiAdapter\\Tests\\": "tests/"
+        "XingXingCoin\\ApiAdapter\\Tests\\": "tests/"
       }
     },
     "authors": [

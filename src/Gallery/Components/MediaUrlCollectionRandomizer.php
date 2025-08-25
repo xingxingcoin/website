@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
-use Xingxingcoin\Core\Gallery\MediaUrlCollectionRandomizer as MediaUrlCollectionRandomizerInterface;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\MediaUrlCollectionRandomizer as MediaUrlCollectionRandomizerInterface;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 /**
  * @codeCoverageIgnore

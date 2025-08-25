@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\ApiAdapter\Tests\Http\Mocks;
+namespace XingXingCoin\ApiAdapter\Tests\Http\Mocks;
 
 use Opis\JsonSchema\ValidationResult;
-use Xingxingcoin\JsonValidator\Validation\JsonValidator;
-use Xingxingcoin\JsonValidator\Validation\Model\JsonString;
-use Xingxingcoin\JsonValidator\Validation\Model\SchemaId;
-use Xingxingcoin\JsonValidator\Validation\Model\SchemaPath;
+use XingXingCoin\JsonValidator\Validation\JsonValidator;
+use XingXingCoin\JsonValidator\Validation\Model\JsonString;
+use XingXingCoin\JsonValidator\Validation\Model\SchemaId;
+use XingXingCoin\JsonValidator\Validation\Model\SchemaPath;
 
 final class JsonValidatorMock implements JsonValidator
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Gallery;
+namespace XingXingCoin\Core\Gallery;
 
-use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Model\Location;
-use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 interface NavigationMediaUrlLoader
 {

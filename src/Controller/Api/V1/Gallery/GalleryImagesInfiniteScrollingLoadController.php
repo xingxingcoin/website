@@ -7,12 +7,12 @@ namespace App\Controller\Api\V1\Gallery;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
-use Xingxingcoin\Core\Gallery\GalleryImagesLoadHandler;
-use Xingxingcoin\Core\Gallery\Model\ImageCounter;
-use Xingxingcoin\Core\Model\Location;
-use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
+use XingXingCoin\Core\Gallery\GalleryImagesLoadHandler;
+use XingXingCoin\Core\Gallery\Model\ImageCounter;
+use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class GalleryImagesInfiniteScrollingLoadController
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Gallery;
+namespace XingXingCoin\Core\Gallery;
 
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
-use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\Location;
 
 interface MediaUrlCollectionByDocumentLoader
 {

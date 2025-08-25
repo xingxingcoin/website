@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Finance;
+namespace XingXingCoin\Core\Finance;
 
-use Xingxingcoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
-use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use Xingxingcoin\Core\Finance\Exception\XingGifNotFoundException;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
+use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
+use XingXingCoin\Core\Model\Location;
 
 interface XingFinanceDataByDexScreenerApiHandler
 {

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Controller\Api\V1\Finance\Mocks;
 
-use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use Xingxingcoin\Core\Finance\Exception\XingGifNotFoundException;
-use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
+use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler;
+use XingXingCoin\Core\Model\Location;
 
 final class XingFinanceDataByDexScreenerApiHandlerMock implements XingFinanceDataByDexScreenerApiHandler
 {

@@ -9,8 +9,8 @@ use App\Gallery\Components\MediaUrlCollectionByAllImagesFilterGenerator;
 use App\Gallery\Components\MediaUrlCollectionByGifFilterGenerator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Xingxingcoin\Core\Gallery\Model\MediaCollection;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\MediaCollection;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(MediaUrlCollectionByGifFilterGenerator::class)]
 final class MediaUrlCollectionByGifFilterGeneratorTest extends TestCase

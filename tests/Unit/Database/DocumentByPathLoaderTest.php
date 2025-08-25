@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\Exception\DocumentManagerException;
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 
 #[CoversClass(DocumentByPathLoader::class)]
 final class DocumentByPathLoaderTest extends TestCase

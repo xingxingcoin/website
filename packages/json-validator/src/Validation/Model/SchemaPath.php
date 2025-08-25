@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\JsonValidator\Validation\Model;
+namespace XingXingCoin\JsonValidator\Validation\Model;
 
 /**
  * @codeCoverageIgnore

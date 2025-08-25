@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\ApiAdapter\Finance\Model;
+namespace XingXingCoin\ApiAdapter\Finance\Model;
 
 use ArrayIterator;
 use IteratorAggregate;

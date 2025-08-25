@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Gallery\Components;
 
 use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
-use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader as NavigationMediaUrlLoaderInterface;
-use Xingxingcoin\Core\Model\Location;
-use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Gallery\NavigationMediaUrlLoader as NavigationMediaUrlLoaderInterface;
+use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class NavigationMediaUrlLoader implements NavigationMediaUrlLoaderInterface
 {

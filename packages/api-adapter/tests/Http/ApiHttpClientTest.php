@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\ApiAdapter\Tests\Http;
+namespace XingXingCoin\ApiAdapter\Tests\Http;
 
 use App\Tests\Unit\Mocks\LoggerMock;
 use App\Tests\Unit\Mocks\ResponseMock;
@@ -11,12 +11,12 @@ use Opis\JsonSchema\Info\DataInfo;
 use Opis\JsonSchema\ValidationResult;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Xingxingcoin\ApiAdapter\Http\ApiHttpClient;
-use Xingxingcoin\ApiAdapter\Tests\Http\Mocks\JsonValidatorMock;
-use Xingxingcoin\ApiAdapter\Tests\Http\Mocks\SchemaMock;
-use Xingxingcoin\ApiAdapter\Tests\Mocks\HttpClientMock;
-use Xingxingcoin\JsonValidator\Validation\Exception\InvalidHttpJsonResponseSchema;
-use Xingxingcoin\JsonValidator\Validation\Model\JsonString;
+use XingXingCoin\ApiAdapter\Http\ApiHttpClient;
+use XingXingCoin\ApiAdapter\Tests\Http\Mocks\JsonValidatorMock;
+use XingXingCoin\ApiAdapter\Tests\Http\Mocks\SchemaMock;
+use XingXingCoin\ApiAdapter\Tests\Mocks\HttpClientMock;
+use XingXingCoin\JsonValidator\Validation\Exception\InvalidHttpJsonResponseSchema;
+use XingXingCoin\JsonValidator\Validation\Model\JsonString;
 
 #[CoversClass(ApiHttpClient::class)]
 #[CoversClass(JsonString::class)]

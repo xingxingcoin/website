@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Controller\Pages\Mocks;
 
 use App\Finance\Model\FinanceDataCollection;
-use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler;
+use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler;
 
 final class XingFinanceDataByDexScreenerApiHandlerMock implements XingFinanceDataByDexScreenerApiHandler
 {

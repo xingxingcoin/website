@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Xingxingcoin\ApiAdapter\Finance\Exception;
+namespace XingXingCoin\ApiAdapter\Finance\Exception;
 
 /**
  * @codeCoverageIgnore

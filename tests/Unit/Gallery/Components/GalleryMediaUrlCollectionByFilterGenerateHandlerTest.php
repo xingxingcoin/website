@@ -8,9 +8,9 @@ use App\Gallery\Components\GalleryMediaUrlCollectionByFilterGenerateHandler;
 use App\Tests\Unit\Gallery\Components\Mocks\MediaUrlCollectionByFilterGeneratorMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Xingxingcoin\Core\Gallery\Model\ImageFilter;
-use Xingxingcoin\Core\Gallery\Model\MediaCollection;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\ImageFilter;
+use XingXingCoin\Core\Gallery\Model\MediaCollection;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(GalleryMediaUrlCollectionByFilterGenerateHandler::class)]
 #[CoversClass(ImageFilter::class)]

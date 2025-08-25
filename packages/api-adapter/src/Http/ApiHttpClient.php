@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\ApiAdapter\Http;
+namespace XingXingCoin\ApiAdapter\Http;
 
 use Opis\JsonSchema\Errors\ValidationError;
 use Psr\Log\LoggerInterface;
@@ -13,12 +13,12 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Contracts\HttpClient\ResponseStreamInterface;
-use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
-use Xingxingcoin\JsonValidator\Validation\Exception\InvalidHttpJsonResponseSchema;
-use Xingxingcoin\JsonValidator\Validation\JsonValidator;
-use Xingxingcoin\JsonValidator\Validation\Model\JsonString;
-use Xingxingcoin\JsonValidator\Validation\Model\SchemaId;
-use Xingxingcoin\JsonValidator\Validation\Model\SchemaPath;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\JsonValidator\Validation\Exception\InvalidHttpJsonResponseSchema;
+use XingXingCoin\JsonValidator\Validation\JsonValidator;
+use XingXingCoin\JsonValidator\Validation\Model\JsonString;
+use XingXingCoin\JsonValidator\Validation\Model\SchemaId;
+use XingXingCoin\JsonValidator\Validation\Model\SchemaPath;
 
 final readonly class ApiHttpClient implements HttpClientInterface
 {

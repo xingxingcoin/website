@@ -20,12 +20,12 @@ use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
-use Xingxingcoin\Core\Gallery\Exception\MediaDataNotLoadedException;
-use Xingxingcoin\Core\Gallery\Model\MediaCollection;
-use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
+use XingXingCoin\Core\Gallery\Model\MediaCollection;
+use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(GalleryMediaCollectionByDocumentLoader::class)]
 #[CoversClass(Location::class)]

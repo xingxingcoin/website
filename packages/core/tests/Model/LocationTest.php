@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Tests\Model;
+namespace XingXingCoin\Core\Tests\Model;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Xingxingcoin\Core\Model\Location;
-use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 #[CoversClass(Location::class)]
 final class LocationTest extends TestCase

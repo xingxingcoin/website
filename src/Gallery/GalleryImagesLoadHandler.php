@@ -5,17 +5,17 @@ declare(strict_types=1);
 namespace App\Gallery;
 
 use Sulu\Component\DocumentManager\PathBuilder;
-use Xingxingcoin\Core\Database\DocumentByPathLoader;
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
-use Xingxingcoin\Core\Gallery\GalleryImagesLoadHandler as GalleryImagesLoadHandlerInterface;
-use Xingxingcoin\Core\Gallery\MediaUrlCollectionByDocumentLoader;
-use Xingxingcoin\Core\Gallery\MediaUrlCollectionRandomizer;
-use Xingxingcoin\Core\Gallery\Model\ImageCounter;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
-use Xingxingcoin\Core\Gallery\Model\RootNavigation;
-use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Database\DocumentByPathLoader;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
+use XingXingCoin\Core\Gallery\GalleryImagesLoadHandler as GalleryImagesLoadHandlerInterface;
+use XingXingCoin\Core\Gallery\MediaUrlCollectionByDocumentLoader;
+use XingXingCoin\Core\Gallery\MediaUrlCollectionRandomizer;
+use XingXingCoin\Core\Gallery\Model\ImageCounter;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\RootNavigation;
+use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\Location;
 
 final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandlerInterface
 {

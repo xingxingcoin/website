@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Gallery;
+namespace XingXingCoin\Core\Gallery;
 
-use Xingxingcoin\Core\Gallery\Model\MediaCollection;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\MediaCollection;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 interface MediaUrlCollectionByFilterGenerator
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Gallery\Exception;
+namespace XingXingCoin\Core\Gallery\Exception;
 
 /**
  * @codeCoverageIgnore

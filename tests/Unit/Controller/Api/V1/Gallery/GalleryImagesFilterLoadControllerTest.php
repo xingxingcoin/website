@@ -10,11 +10,11 @@ use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use Xingxingcoin\Core\Gallery\Exception\MediaDataNotLoadedException;
-use Xingxingcoin\Core\Gallery\Model\ImageFilter;
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
+use XingXingCoin\Core\Gallery\Model\ImageFilter;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(GalleryImagesFilterLoadController::class)]
 #[CoversClass(Location::class)]

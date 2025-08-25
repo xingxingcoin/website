@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Finance;
+namespace XingXingCoin\Core\Finance;
 
 
-use Xingxingcoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
-use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use XingXingCoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
+use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 
 interface XingFinanceDataByDexScreenerApiLoader
 {

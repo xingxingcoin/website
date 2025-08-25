@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Gallery;
+namespace XingXingCoin\Core\Gallery;
 
-use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 interface MediaUrlCollectionRandomizer
 {

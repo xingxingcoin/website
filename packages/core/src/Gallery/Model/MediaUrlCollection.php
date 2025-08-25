@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xingxingcoin\Core\Gallery\Model;
+namespace XingXingCoin\Core\Gallery\Model;
 
 use ArrayIterator;
 use IteratorAggregate;

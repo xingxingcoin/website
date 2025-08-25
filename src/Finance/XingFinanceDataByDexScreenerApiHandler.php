@@ -3,13 +3,14 @@ declare(strict_types=1);
 
 namespace App\Finance;
 
-use Xingxingcoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
-use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use Xingxingcoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler as XingFinanceDataByDexScreenerApiHandlerInterface;
-use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;
-use Xingxingcoin\Core\Finance\XingGifUrlLoader;
-use Xingxingcoin\Core\Model\Location;
+use XingXingCoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
+use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
+use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler as XingFinanceDataByDexScreenerApiHandlerInterface;
+use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;
+use XingXingCoin\Core\Finance\XingGifUrlLoader;
+use XingXingCoin\Core\Model\Location;
 
 final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinanceDataByDexScreenerApiHandlerInterface
 {
@@ -23,7 +24,7 @@ final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinan
     ) {}
 
     /**
-     * @throws \Xingxingcoin\Core\Finance\Exception\XingGifNotFoundException
+     * @throws XingGifNotFoundException
      * @throws XingFinanceDataNotLoadedException
      * @throws PageDocumentNotLoadedException
      */
