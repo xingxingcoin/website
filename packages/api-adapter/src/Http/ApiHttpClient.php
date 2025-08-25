@@ -44,7 +44,7 @@ final readonly class ApiHttpClient implements HttpClientInterface
 
         $fileName = str_replace(':', '', str_replace('/', '_', $url));
         if (!file_exists(__DIR__ . '/Schema/' . $fileName . '.json')) {
-            $this->logger->error('JSON schema for for url and method not found.', [
+            $this->logger->notice('JSON schema for for url and method not found.', [
                 'url' => $url,
                 'method' => $method
             ]);
@@ -59,7 +59,7 @@ final readonly class ApiHttpClient implements HttpClientInterface
         if ($validationResult->hasError()) {
             /** @var ValidationError $validationError */
             $validationError = $validationResult->error();
-            $this->logger->error('Could not validate input json.', [
+            $this->logger->notice('Could not validate input json.', [
                 'errorMessage' => $validationError->message()
             ]);
 

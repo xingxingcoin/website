@@ -89,7 +89,7 @@ final class ApiHttpClientTest extends TestCase
             );
         }
         self::assertEquals([
-            'error' => [
+            'notice' => [
                 [
                     'message' => 'JSON schema for for url and method not found.',
                     'context' => [
@@ -133,7 +133,7 @@ final class ApiHttpClientTest extends TestCase
             );
         }
         self::assertEquals([
-            'error' => [
+            'notice' => [
                 [
                     'message' => 'Could not validate input json.',
                     'context' => [
