@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components\Mocks;
 
-use App\Gallery\Components\NavigationMediaUrlLoader;
 use App\Gallery\Model\MediaNavigationUrl;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
+use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader;
 use Xingxingcoin\Core\Model\Location;
 
 final class NavigationMediaUrlLoaderMock implements NavigationMediaUrlLoader

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components\Mocks;
 
-use App\Gallery\Components\MediaUrlCollectionByFilterGenerator;
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerator;
 
 final class MediaUrlCollectionByFilterGeneratorMock implements MediaUrlCollectionByFilterGenerator
 {

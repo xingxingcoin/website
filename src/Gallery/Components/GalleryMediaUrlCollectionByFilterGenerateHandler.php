@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
-use App\Gallery\MediaUrlCollectionByFilterGenerateHandler;
 use App\Gallery\Model\ImageFilter;
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerateHandler;
+use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerator;
 
-final readonly class GalleryMediaUrlCollectionByFilterGenerateHandler implements
-    MediaUrlCollectionByFilterGenerateHandler
+final readonly class GalleryMediaUrlCollectionByFilterGenerateHandler implements MediaUrlCollectionByFilterGenerateHandler
 {
     public const string IMAGE_FILTER_GIF_VALUE = 'gif';
     public const string IMAGE_FILTER_IMAGE_VALUE = 'image';
@@ -18,8 +18,7 @@ final readonly class GalleryMediaUrlCollectionByFilterGenerateHandler implements
     public function __construct(
         private MediaUrlCollectionByFilterGenerator $mediaUrlCollectionByGifFilterGenerator,
         private MediaUrlCollectionByFilterGenerator $mediaUrlCollectionByAllImagesFilterGenerator,
-    ) {
-    }
+    ) {}
 
     #[\Override]
     public function handle(MediaCollection $mediaCollection, ImageFilter $imageFilter): MediaUrlCollection

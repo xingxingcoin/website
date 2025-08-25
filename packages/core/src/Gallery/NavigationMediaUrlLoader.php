@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Gallery\Components;
+namespace Xingxingcoin\Core\Gallery;
 
 use App\Gallery\Model\MediaNavigationUrl;
 use App\Gallery\Model\RootNavigation;

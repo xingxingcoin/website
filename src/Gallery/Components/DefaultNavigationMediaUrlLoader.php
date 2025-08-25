@@ -9,6 +9,7 @@ use App\Gallery\Model\MediaNavigationUrl;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
 use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
+use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader;
 use Xingxingcoin\Core\Model\Location;
 
 final readonly class DefaultNavigationMediaUrlLoader implements NavigationMediaUrlLoader

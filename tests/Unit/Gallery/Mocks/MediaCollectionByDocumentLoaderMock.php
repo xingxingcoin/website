@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Mocks;
 
-use App\Gallery\MediaCollectionByDocumentLoader;
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
+use Xingxingcoin\Core\Gallery\MediaCollectionByDocumentLoader;
 use Xingxingcoin\Core\Model\Location;
 
 final class MediaCollectionByDocumentLoaderMock implements MediaCollectionByDocumentLoader

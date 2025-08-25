@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Gallery\Components;
+namespace Xingxingcoin\Core\Gallery;
 
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\MediaUrlCollection;

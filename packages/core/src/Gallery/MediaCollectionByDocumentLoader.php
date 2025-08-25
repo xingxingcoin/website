@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Gallery;
+namespace Xingxingcoin\Core\Gallery;
 
 use App\Gallery\Exception\MediaDataNotLoadedException;
 use App\Gallery\Model\MediaCollection;

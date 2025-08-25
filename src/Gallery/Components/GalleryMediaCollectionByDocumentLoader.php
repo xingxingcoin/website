@@ -5,13 +5,14 @@ declare(strict_types=1);
 namespace App\Gallery\Components;
 
 use App\Gallery\Exception\MediaDataNotLoadedException;
-use App\Gallery\MediaCollectionByDocumentLoader;
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
 use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
+use Xingxingcoin\Core\Gallery\MediaCollectionByDocumentLoader;
+use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader;
 use Xingxingcoin\Core\Model\Location;
 
 final  readonly class GalleryMediaCollectionByDocumentLoader implements MediaCollectionByDocumentLoader

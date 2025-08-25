@@ -6,6 +6,7 @@ namespace App\Gallery\Components;
 
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerator;
 
 final readonly class MediaUrlCollectionByGifFilterGenerator implements MediaUrlCollectionByFilterGenerator
 {

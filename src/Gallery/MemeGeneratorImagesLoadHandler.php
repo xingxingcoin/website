@@ -13,6 +13,8 @@ use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\Core\Gallery\MediaUrlCollectionByDocumentLoader;
+use Xingxingcoin\Core\Gallery\MediaUrlCollectionRandomizer;
 use Xingxingcoin\Core\Model\Location;
 
 final readonly class MemeGeneratorImagesLoadHandler implements MemeGeneratorImagesLoadHandlerInterface

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Gallery;
+namespace Xingxingcoin\Core\Gallery;
 
 use App\Gallery\Model\ImageFilter;
 use App\Gallery\Model\MediaCollection;
