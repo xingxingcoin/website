@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
-use App\Exception\EmptyStringException;
 use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
 use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
 use Xingxingcoin\Core\Gallery\Model\RootNavigation;
 use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader;
 use Xingxingcoin\Core\Model\Location;
+use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class DefaultNavigationMediaUrlLoader implements NavigationMediaUrlLoader
 {
@@ -21,8 +21,7 @@ final readonly class DefaultNavigationMediaUrlLoader implements NavigationMediaU
 
     public function __construct(
         private NavigationMapperInterface $navigationMapper
-    ) {
-    }
+    ) {}
 
     /**
      * @throws EmptyStringException
