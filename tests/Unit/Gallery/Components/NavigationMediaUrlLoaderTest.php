@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components;
 
-use App\Gallery\Components\DefaultNavigationMediaUrlLoader;
+use App\Gallery\Components\NavigationMediaUrlLoader;
 use App\Tests\Unit\Mocks\NavigationMapperMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -14,20 +14,20 @@ use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Model\Location;
 use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
 
-#[CoversClass(DefaultNavigationMediaUrlLoader::class)]
+#[CoversClass(NavigationMediaUrlLoader::class)]
 #[CoversClass(MediaNavigationUrl::class)]
 #[CoversClass(RootNavigation::class)]
 #[CoversClass(SubNavigation::class)]
 #[CoversClass(Location::class)]
-final class DefaultNavigationMediaUrlLoaderTest extends TestCase
+final class NavigationMediaUrlLoaderTest extends TestCase
 {
     private NavigationMapperMock $navigationMapperMock;
-    private DefaultNavigationMediaUrlLoader $defaultNavigationMediaUrlLoader;
+    private NavigationMediaUrlLoader $navigationMediaUrlLoader;
 
     protected function setUp(): void
     {
         $this->navigationMapperMock = new NavigationMapperMock();
-        $this->defaultNavigationMediaUrlLoader = new DefaultNavigationMediaUrlLoader(
+        $this->navigationMediaUrlLoader = new NavigationMediaUrlLoader(
             $this->navigationMapperMock
         );
     }
@@ -39,28 +39,28 @@ final class DefaultNavigationMediaUrlLoaderTest extends TestCase
         $location = new Location('en');
         $expectedSubNavigation = [
             [
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate2',
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid2'
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate2',
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid2'
             ],
             [
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate',
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_URL_KEY => 'testUrl'
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate',
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_URL_KEY => 'testUrl'
             ]
         ];
         $this->navigationMapperMock->outputNavigationSubNavigation = $expectedSubNavigation;
         $expectedRootNavigation = [
             [
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate2',
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid2'
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate2',
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid2'
             ],
             [
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate',
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid'
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate',
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid'
             ]
         ];
         $this->navigationMapperMock->outputNavigationRootRootNavigation = $expectedRootNavigation;
 
-        $mediaNavigationUrl = $this->defaultNavigationMediaUrlLoader->load($rootNavigation, $subNavigation, $location);
+        $mediaNavigationUrl = $this->navigationMediaUrlLoader->load($rootNavigation, $subNavigation, $location);
 
         self::assertSame('testUrl', $mediaNavigationUrl->value);
         self::assertSame('testUuid', $this->navigationMapperMock->inputNavigationParent);
@@ -90,27 +90,27 @@ final class DefaultNavigationMediaUrlLoaderTest extends TestCase
 
         $expectedSubNavigation = [
             [
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid2'
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid2'
             ],
             [
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_URL_KEY => 'testUrl'
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_URL_KEY => 'testUrl'
             ]
         ];
         $this->navigationMapperMock->outputNavigationSubNavigation = $expectedSubNavigation;
         $expectedRootNavigation = [
             [
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate2',
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid2'
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate2',
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid2'
             ],
             [
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate',
-                DefaultNavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid'
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_TEMPLATE_KEY => 'testTemplate',
+                NavigationMediaUrlLoader::NAVIGATION_ITEM_UUID_KEY => 'testUuid'
             ]
         ];
         $this->navigationMapperMock->outputNavigationRootRootNavigation = $expectedRootNavigation;
 
         try {
-            $this->defaultNavigationMediaUrlLoader->load($rootNavigation, $subNavigation, $location);
+            $this->navigationMediaUrlLoader->load($rootNavigation, $subNavigation, $location);
             $this->fail('EmptyStringException was expected to be thrown.');
         } catch (EmptyStringException $exception) {
             self::assertSame(

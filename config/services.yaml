@@ -153,10 +153,10 @@ services:
     App\Gallery\Components\MediaUrlCollectionByDocumentLoader:
         arguments:
             - '@sulu_media.media_manager'
-            - '@App\Gallery\Components\DefaultNavigationMediaUrlLoader'
+            - '@App\Gallery\Components\NavigationMediaUrlLoader'
             - '@api.v1.gallery.logger'
 
-    App\Gallery\Components\DefaultNavigationMediaUrlLoader:
+    App\Gallery\Components\NavigationMediaUrlLoader:
         arguments:
             - '@sulu_website.navigation_mapper'
 
@@ -183,7 +183,7 @@ services:
     App\Gallery\Components\GalleryMediaCollectionByDocumentLoader:
         arguments:
             - '@sulu_media.media_manager'
-            - '@App\Gallery\Components\DefaultNavigationMediaUrlLoader'
+            - '@App\Gallery\Components\NavigationMediaUrlLoader'
             - '@api.v1.gallery.logger'
     App\Gallery\Components\GalleryMediaUrlCollectionByFilterGenerateHandler:
         arguments:
@@ -208,7 +208,7 @@ services:
     App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader:
         arguments:
             - '@sulu_media.media_manager'
-            - '@App\Gallery\Components\DefaultNavigationMediaUrlLoader'
+            - '@App\Gallery\Components\NavigationMediaUrlLoader'
             - '@api.v1.gallery.logger'
     App\Gallery\Components\MemeGeneratorMediaUrlCollectionByFilterGenerateHandler:
         arguments:

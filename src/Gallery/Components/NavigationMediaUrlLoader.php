@@ -8,11 +8,11 @@ use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
 use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
 use Xingxingcoin\Core\Gallery\Model\RootNavigation;
 use Xingxingcoin\Core\Gallery\Model\SubNavigation;
-use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader;
+use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader as NavigationMediaUrlLoaderInterface;
 use Xingxingcoin\Core\Model\Location;
 use Xingxingcoin\JsonValidator\Validation\Exception\EmptyStringException;
 
-final readonly class DefaultNavigationMediaUrlLoader implements NavigationMediaUrlLoader
+final readonly class NavigationMediaUrlLoader implements NavigationMediaUrlLoaderInterface
 {
     public const string NAVIGATION_ITEM_TEMPLATE_KEY = 'template';
     public const string NAVIGATION_ITEM_UUID_KEY = 'uuid';
