@@ -38,15 +38,15 @@ services:
             - { name: 'controller.service_arguments' }
     App\Finance\XingFinanceDataByDexScreenerApiHandler:
         arguments:
-            - '@App\Finance\Components\XingFinanceDataByDexScreenerApiLoader'
+            - '@Xingxingcoin\ApiAdapter\Finance\XingFinanceDataByDexScreenerApiLoader'
             - '@App\Finance\Components\XingHappyModeGifUrlLoader'
             - '@App\Finance\Components\XingCalmModeGifUrlLoader'
             - '@App\Finance\Components\XingNeutralModeGifUrlLoader'
             - '@App\Finance\Components\XingUpsetModeGifUrlLoader'
             - '@App\Finance\Components\XingRageModeGifUrlLoader'
-    App\Finance\Components\XingFinanceDataByDexScreenerApiLoader:
+    Xingxingcoin\ApiAdapter\Finance\XingFinanceDataByDexScreenerApiLoader:
         arguments:
-            - '@App\Http\ApiHttpClient'
+            - '@Xingxingcoin\ApiAdapter\Http\ApiHttpClient'
             - '@api.v1.finance.logger'
     App\Finance\Components\XingHappyModeGifUrlLoader:
         arguments:
@@ -160,12 +160,12 @@ services:
         arguments:
             - '@sulu_website.navigation_mapper'
 
-    App\Http\ApiHttpClient:
+    Xingxingcoin\ApiAdapter\Http\ApiHttpClient:
         arguments:
-            - '@App\Json\OpisJsonValidator'
+            - '@Xingxingcoin\JsonValidator\Validation\OpisJsonValidator'
             - '@http_client'
             - '@http.logger'
-    App\Json\OpisJsonValidator: ~
+    Xingxingcoin\JsonValidator\Validation\OpisJsonValidator: ~
 
     App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadController:
         arguments:

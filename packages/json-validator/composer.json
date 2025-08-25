@@ -1,0 +1,24 @@
+{
+    "name": "xingxingcoin/json-validator",
+    "description": "Json Validator package for Xing Xing Coin Meme Tool",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Xingxingcoin\\JsonValidator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Xingxingcoin\\JsonValidator\\Tests\\": "tests/"
+      }
+    },
+    "authors": [
+        {
+            "name": "Aria Gholami",
+            "email": "ariagholami@web.de"
+        }
+    ],
+    "require": {
+        "opis/json-schema": "^2.4"
+    }
+}

@@ -20,6 +20,20 @@
             "homepage": "https://github.com/xingxingcoin/website"
         }
     ],
+    "repositories": [
+      {
+        "type": "path",
+        "url": "packages/json-validator"
+      },
+      {
+        "type": "path",
+        "url": "packages/core"
+      },
+      {
+        "type": "path",
+        "url": "packages/api-adapter"
+      }
+    ],
     "require": {
         "php": "^8.4",
         "ext-ctype": "*",
@@ -29,7 +43,6 @@
         "friendsofsymfony/http-cache-bundle": "^3.0",
         "handcraftedinthealps/zendsearch": "^2.1",
         "jackalope/jackalope-doctrine-dbal": "^1.10 || ^2.0",
-        "opis/json-schema": "^2.4",
         "phpcr/phpcr-migrations-bundle": "^1.6",
         "phpcr/phpcr-shell": "^1.6",
         "scheb/2fa-bundle": "^7.2",
@@ -48,7 +61,10 @@
         "symfony/runtime": "^7.2",
         "symfony/security-bundle": "^7.2",
         "symfony/twig-bundle": "^7.2",
-        "symfony/webpack-encore-bundle": "^2.2"
+        "symfony/webpack-encore-bundle": "^2.2",
+        "xingxingcoin/api-adapter": "dev-main",
+        "xingxingcoin/core": "dev-main",
+        "xingxingcoin/json-validator": "dev-main"
     },
     "require-dev": {
         "php-cs-fixer/shim": "^3.58",

@@ -6,8 +6,8 @@ namespace App\Tests\Unit\Controller\Api\V1\Finance\Mocks;
 
 use App\Controller\Api\V1\Finance\XingFinanceDataByDexScreenerApiHandler;
 use App\Finance\Exception\XingGifNotFoundException;
-use App\Finance\Model\FinanceDataCollection;
 use App\Model\Location;
+use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 
 final class XingFinanceDataByDexScreenerApiHandlerMock implements XingFinanceDataByDexScreenerApiHandler
 {

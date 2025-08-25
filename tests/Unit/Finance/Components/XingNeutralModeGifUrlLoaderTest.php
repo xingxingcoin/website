@@ -6,7 +6,6 @@ namespace App\Tests\Unit\Finance\Components;
 
 use App\Finance\Components\XingNeutralModeGifUrlLoader;
 use App\Finance\Exception\XingGifNotFoundException;
-use App\Finance\Model\FinanceDataCollection;
 use App\Model\Location;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Mocks\DocumentByPathLoaderMock;
@@ -21,6 +20,7 @@ use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 
 #[CoversClass(XingNeutralModeGifUrlLoader::class)]
 #[CoversClass(Location::class)]
@@ -149,7 +149,10 @@ final class XingNeutralModeGifUrlLoaderTest extends CustomTestCase
 
             $this->fail('XingGifNotFoundException was expected to be thrown.');
         } catch (XingGifNotFoundException $exception) {
-            self::assertSame('Xing gif is not found with error: "Media with the ID test was not found".', $exception->getMessage());
+            self::assertSame(
+                'Xing gif is not found with error: "Media with the ID test was not found".',
+                $exception->getMessage()
+            );
         }
 
         self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);

@@ -1,12 +1,14 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
 namespace App\Finance;
 
 use App\Controller\Api\V1\Finance\XingFinanceDataByDexScreenerApiHandler as XingFinanceDataByDexScreenerApiHandlerInterface;
-use App\Finance\Exception\XingFinanceDataNotLoadedException;
-use App\Finance\Model\FinanceDataCollection;
-use App\Model\Location;
 use App\Data\Exception\PageDocumentNotLoadedException;
+use App\Model\Location;
+use Xingxingcoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
+use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;
 
 final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinanceDataByDexScreenerApiHandlerInterface
 {

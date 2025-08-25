@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Finance;
 
 use App\Finance\Exception\XingGifNotFoundException;
-use App\Finance\Model\FinanceDataCollection;
 use App\Model\Location;
 use App\Data\Exception\PageDocumentNotLoadedException;
+use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 
 interface XingGifUrlLoader
 {

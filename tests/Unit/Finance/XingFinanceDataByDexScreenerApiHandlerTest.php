@@ -1,17 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Unit\Finance;
 
 use App\Finance\XingFinanceDataByDexScreenerApiHandler;
-use App\Finance\Exception\XingFinanceDataNotLoadedException;
-use App\Finance\Model\FinanceDataCollection;
 use App\Model\Location;
 use App\Tests\Unit\Finance\Mocks\XingFinanceDataByDexScreenerApiLoaderMock;
 use App\Tests\Unit\Finance\Mocks\XingGifUrlLoaderMock;
-use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 
 #[CoversClass(XingFinanceDataByDexScreenerApiHandler::class)]
 #[CoversClass(Location::class)]

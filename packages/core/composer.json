@@ -1,0 +1,17 @@
+{
+    "name": "xingxingcoin/core",
+    "description": "Core package for Xing Xing Coin Meme Tool",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Xingxingcoin\\Core\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aria Gholami",
+            "email": "ariagholami@web.de"
+        }
+    ],
+    "require": {}
+}

@@ -6,7 +6,6 @@ namespace App\Finance\Components;
 
 use App\Data\DocumentByPathLoader;
 use App\Finance\Exception\XingGifNotFoundException;
-use App\Finance\Model\FinanceDataCollection;
 use App\Finance\XingGifUrlLoader;
 use App\Model\Location;
 use App\Data\Exception\PageDocumentNotLoadedException;
@@ -14,6 +13,7 @@ use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 
 final readonly class XingCalmModeGifUrlLoader implements XingGifUrlLoader
 {

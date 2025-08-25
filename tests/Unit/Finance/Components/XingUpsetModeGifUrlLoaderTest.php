@@ -6,7 +6,6 @@ namespace App\Tests\Unit\Finance\Components;
 
 use App\Finance\Components\XingUpsetModeGifUrlLoader;
 use App\Finance\Exception\XingGifNotFoundException;
-use App\Finance\Model\FinanceDataCollection;
 use App\Model\Location;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Mocks\DocumentByPathLoaderMock;
@@ -21,6 +20,7 @@ use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 
 #[CoversClass(XingUpsetModeGifUrlLoader::class)]
 #[CoversClass(Location::class)]

@@ -1,0 +1,22 @@
+{
+    "name": "xingxingcoin/api-adapter",
+    "description": "Api Adapter package for Xing Xing Coin Meme Tool",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Xingxingcoin\\ApiAdapter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Xingxingcoin\\ApiAdapter\\Tests\\": "tests/"
+      }
+    },
+    "authors": [
+        {
+            "name": "Aria Gholami",
+            "email": "ariagholami@web.de"
+        }
+    ],
+    "require": {}
+}
