@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Finance\Components;
 
 use App\Finance\Components\XingCalmModeGifUrlLoader;
-use App\Finance\Exception\XingGifNotFoundException;
-use App\Model\Location;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Mocks\DocumentByPathLoaderMock;
 use App\Tests\Unit\Mocks\LoggerMock;
@@ -21,6 +19,8 @@ use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
 use Sulu\Component\DocumentManager\PathBuilder;
 use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use Xingxingcoin\Core\Finance\Exception\XingGifNotFoundException;
+use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(XingCalmModeGifUrlLoader::class)]
 #[CoversClass(Location::class)]

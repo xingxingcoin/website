@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Controller\Api\V1\Gallery;
 
 use App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController;
+use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Gallery\Exception\MediaUrlNotLoadedException;
 use App\Gallery\Model\MediaUrlCollection;
-use App\Model\Location;
-use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Tests\Unit\Controller\Api\V1\Gallery\Mocks\GalleryImagesLoadHandlerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(GalleryImagesInfiniteScrollingLoadController::class)]
 #[CoversClass(Location::class)]

@@ -8,8 +8,8 @@ use App\Gallery\Exception\MediaDataNotLoadedException;
 use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
-use App\Model\Location;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
+use Xingxingcoin\Core\Model\Location;
 
 interface MediaCollectionByDocumentLoader
 {

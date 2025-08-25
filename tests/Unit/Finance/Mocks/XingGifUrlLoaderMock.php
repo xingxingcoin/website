@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Finance\Mocks;
 
-use App\Finance\XingGifUrlLoader;
-use App\Model\Location;
 use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use Xingxingcoin\Core\Finance\XingGifUrlLoader;
+use Xingxingcoin\Core\Model\Location;
 
 final class XingGifUrlLoaderMock implements XingGifUrlLoader
 {

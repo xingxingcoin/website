@@ -9,10 +9,10 @@ use App\Gallery\Components\DefaultNavigationMediaUrlLoader;
 use App\Gallery\Model\MediaNavigationUrl;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
-use App\Model\Location;
 use App\Tests\Unit\Mocks\NavigationMapperMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(DefaultNavigationMediaUrlLoader::class)]
 #[CoversClass(MediaNavigationUrl::class)]

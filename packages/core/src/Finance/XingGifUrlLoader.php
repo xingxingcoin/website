@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Finance;
+namespace Xingxingcoin\Core\Finance;
 
-use App\Finance\Exception\XingGifNotFoundException;
-use App\Model\Location;
 use App\Data\Exception\PageDocumentNotLoadedException;
 use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use Xingxingcoin\Core\Finance\Exception\XingGifNotFoundException;
+use Xingxingcoin\Core\Model\Location;
 
 interface XingGifUrlLoader
 {

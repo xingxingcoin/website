@@ -11,7 +11,6 @@ use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\MediaNavigationUrl;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
-use App\Model\Location;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Gallery\Components\Mocks\NavigationMediaUrlLoaderMock;
 use App\Tests\Unit\Mocks\LoggerMock;
@@ -26,6 +25,7 @@ use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
+use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(MemeGeneratorMediaCollectionByDocumentLoader::class)]
 #[CoversClass(Location::class)]

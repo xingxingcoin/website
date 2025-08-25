@@ -8,8 +8,8 @@ use App\Exception\EmptyStringException;
 use App\Gallery\Model\MediaNavigationUrl;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
-use App\Model\Location;
 use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
+use Xingxingcoin\Core\Model\Location;
 
 final readonly class DefaultNavigationMediaUrlLoader implements NavigationMediaUrlLoader
 {

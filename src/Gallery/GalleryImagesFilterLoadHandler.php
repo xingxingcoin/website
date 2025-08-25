@@ -11,8 +11,8 @@ use App\Gallery\Model\ImageFilter;
 use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
-use App\Model\Location;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\Core\Model\Location;
 
 final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilterLoadHandlerInterface
 {

@@ -8,8 +8,8 @@ use App\Gallery\MediaUrlCollectionByDocumentLoader;
 use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
-use App\Model\Location;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
+use Xingxingcoin\Core\Model\Location;
 
 final class MediaUrlCollectionByDocumentLoaderMock implements MediaUrlCollectionByDocumentLoader
 {

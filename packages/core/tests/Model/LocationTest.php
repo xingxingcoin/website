@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\tests\Unit\Model;
+namespace Xingxingcoin\Core\Tests\Model;
 
 use App\Exception\EmptyStringException;
-use App\Model\Location;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(Location::class)]
 final class LocationTest extends TestCase
@@ -25,7 +25,10 @@ final class LocationTest extends TestCase
         try {
             new Location($expectedLocationString);
         } catch (EmptyStringException $exception) {
-            self::assertSame('Validation failed for value "location" with error: "Value for "location" should not be empty."', $exception->getMessage());
+            self::assertSame(
+                'Validation failed for value "location" with error: "Value for "location" should not be empty."',
+                $exception->getMessage()
+            );
         }
     }
 }

@@ -5,10 +5,11 @@ namespace App\Finance;
 
 use App\Controller\Api\V1\Finance\XingFinanceDataByDexScreenerApiHandler as XingFinanceDataByDexScreenerApiHandlerInterface;
 use App\Data\Exception\PageDocumentNotLoadedException;
-use App\Model\Location;
 use Xingxingcoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
 use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use Xingxingcoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;
+use Xingxingcoin\Core\Finance\XingGifUrlLoader;
+use Xingxingcoin\Core\Model\Location;
 
 final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinanceDataByDexScreenerApiHandlerInterface
 {
@@ -22,7 +23,7 @@ final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinan
     ) {}
 
     /**
-     * @throws Exception\XingGifNotFoundException
+     * @throws \Xingxingcoin\Core\Finance\Exception\XingGifNotFoundException
      * @throws XingFinanceDataNotLoadedException
      * @throws PageDocumentNotLoadedException
      */

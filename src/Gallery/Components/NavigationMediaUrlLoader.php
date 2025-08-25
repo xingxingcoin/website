@@ -7,7 +7,7 @@ namespace App\Gallery\Components;
 use App\Gallery\Model\MediaNavigationUrl;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
-use App\Model\Location;
+use Xingxingcoin\Core\Model\Location;
 
 interface NavigationMediaUrlLoader
 {

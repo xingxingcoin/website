@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\V1\Finance;
 
-use App\Model\Location;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Xingxingcoin\Core\Model\Location;
 
 final readonly class XingFinanceDataLoadController
 {

@@ -11,7 +11,6 @@ use App\Gallery\Model\MediaCollection;
 use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
-use App\Model\Location;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Gallery\Mocks\MediaCollectionByDocumentLoaderMock;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionByFilterGenerateHandlerMock;
@@ -21,6 +20,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesFilterLoadHandler::class)]
 #[CoversClass(Location::class)]

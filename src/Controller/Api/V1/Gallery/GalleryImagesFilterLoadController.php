@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\V1\Gallery;
 
+use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Exception\EmptyStringException;
 use App\Gallery\Exception\MediaDataNotLoadedException;
 use App\Gallery\Model\ImageCounter;
 use App\Gallery\Model\ImageFilter;
-use App\Model\Location;
-use App\Data\Exception\PageDocumentNotLoadedException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Xingxingcoin\Core\Model\Location;
 
 final readonly class GalleryImagesFilterLoadController
 {

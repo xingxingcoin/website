@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Finance\Exception;
+namespace Xingxingcoin\Core\Finance\Exception;
 
 /**
  * @codeCoverageIgnore

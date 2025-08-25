@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Controller\Api\V1\Gallery\Mocks;
 
 use App\Controller\Api\V1\Gallery\MemeGeneratorImagesLoadHandler;
+use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Gallery\Exception\MediaUrlNotLoadedException;
 use App\Gallery\Model\ImageCounter;
 use App\Gallery\Model\MediaUrlCollection;
-use App\Model\Location;
-use App\Data\Exception\PageDocumentNotLoadedException;
+use Xingxingcoin\Core\Model\Location;
 
 final class MemeGeneratorImagesLoadHandlerMock implements MemeGeneratorImagesLoadHandler
 {

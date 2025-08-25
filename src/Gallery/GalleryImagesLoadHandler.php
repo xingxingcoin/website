@@ -6,14 +6,14 @@ namespace App\Gallery;
 
 use App\Controller\Api\V1\Gallery\GalleryImagesLoadHandler as GalleryImagesLoadHandlerInterface;
 use App\Data\DocumentByPathLoader;
+use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Gallery\Exception\MediaUrlNotLoadedException;
 use App\Gallery\Model\ImageCounter;
 use App\Gallery\Model\MediaUrlCollection;
 use App\Gallery\Model\RootNavigation;
 use App\Gallery\Model\SubNavigation;
-use App\Model\Location;
-use App\Data\Exception\PageDocumentNotLoadedException;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\Core\Model\Location;
 
 final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandlerInterface
 {

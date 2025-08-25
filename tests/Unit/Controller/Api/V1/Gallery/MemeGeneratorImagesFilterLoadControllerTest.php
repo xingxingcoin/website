@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Controller\Api\V1\Gallery;
 
 use App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadController;
+use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Gallery\Exception\MediaDataNotLoadedException;
 use App\Gallery\Model\ImageFilter;
 use App\Gallery\Model\MediaUrlCollection;
-use App\Model\Location;
-use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Tests\Unit\Controller\Api\V1\Gallery\Mocks\MemeGeneratorImagesFilterLoadHandlerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesFilterLoadController::class)]
 #[CoversClass(Location::class)]
