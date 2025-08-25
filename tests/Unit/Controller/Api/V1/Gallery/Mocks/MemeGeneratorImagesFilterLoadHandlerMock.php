@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Controller\Api\V1\Gallery\Mocks;
 
-use App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadHandler;
 use App\Data\Exception\PageDocumentNotLoadedException;
 use Xingxingcoin\Core\Gallery\Exception\MediaDataNotLoadedException;
+use Xingxingcoin\Core\Gallery\MemeGeneratorImagesFilterLoadHandler;
 use Xingxingcoin\Core\Gallery\Model\ImageCounter;
 use Xingxingcoin\Core\Gallery\Model\ImageFilter;
 use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;

@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Gallery;
 
-use App\Controller\Api\V1\Gallery\MemeGeneratorImagesFilterLoadHandler as MemeGeneratorImagesFilterLoadHandlerInterface;
 use App\Data\DocumentByPathLoader;
 use Sulu\Component\DocumentManager\PathBuilder;
 use Xingxingcoin\Core\Gallery\MediaCollectionByDocumentLoader;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerateHandler;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionRandomizer;
+use Xingxingcoin\Core\Gallery\MemeGeneratorImagesFilterLoadHandler as MemeGeneratorImagesFilterLoadHandlerInterface;
 use Xingxingcoin\Core\Gallery\Model\ImageCounter;
 use Xingxingcoin\Core\Gallery\Model\ImageFilter;
 use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;

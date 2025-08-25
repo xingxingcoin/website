@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Gallery;
 
-use App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadHandler as GalleryImagesFilterLoadHandlerInterface;
 use App\Data\DocumentByPathLoader;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\Core\Gallery\GalleryImagesFilterLoadHandler as GalleryImagesFilterLoadHandlerInterface;
 use Xingxingcoin\Core\Gallery\MediaCollectionByDocumentLoader;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerateHandler;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionRandomizer;

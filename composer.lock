@@ -12180,12 +12180,17 @@
             "dist": {
                 "type": "path",
                 "url": "packages/core",
-                "reference": "91503e01853adfad820a86302229a5b3fe1e9610"
+                "reference": "45d7c88028664b33dc277d5abcc5c652b4ade243"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Xingxingcoin\\Core\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Xingxingcoin\\Core\\Tests": "tests/"
                 }
             },
             "license": [

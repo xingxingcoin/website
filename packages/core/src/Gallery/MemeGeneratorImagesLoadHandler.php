@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Api\V1\Gallery;
+namespace Xingxingcoin\Core\Gallery;
 
 use App\Data\Exception\PageDocumentNotLoadedException;
 use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;

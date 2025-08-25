@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controller\Api\V1\Finance;
+namespace Xingxingcoin\Core\Finance;
 
 use App\Data\Exception\PageDocumentNotLoadedException;
 use Xingxingcoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;

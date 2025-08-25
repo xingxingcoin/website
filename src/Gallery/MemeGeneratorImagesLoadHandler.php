@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Gallery;
 
-use App\Controller\Api\V1\Gallery\MemeGeneratorImagesLoadHandler as MemeGeneratorImagesLoadHandlerInterface;
 use App\Data\DocumentByPathLoader;
 use App\Data\Exception\PageDocumentNotLoadedException;
 use Sulu\Component\DocumentManager\PathBuilder;
 use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionByDocumentLoader;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionRandomizer;
+use Xingxingcoin\Core\Gallery\MemeGeneratorImagesLoadHandler as MemeGeneratorImagesLoadHandlerInterface;
 use Xingxingcoin\Core\Gallery\Model\ImageCounter;
 use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 use Xingxingcoin\Core\Gallery\Model\RootNavigation;
