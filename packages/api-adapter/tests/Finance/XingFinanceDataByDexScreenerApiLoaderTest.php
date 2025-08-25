@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Xingxingcoin\ApiAdapter\Tests\Finance;
 
-use App\Tests\Unit\Mocks\HttpClientMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use App\Tests\Unit\Mocks\ResponseMock;
 use App\Tests\Unit\Mocks\TransportExceptionMock;
@@ -13,6 +12,7 @@ use PHPUnit\Framework\TestCase;
 use Xingxingcoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
 use Xingxingcoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use Xingxingcoin\ApiAdapter\Finance\XingFinanceDataByDexScreenerApiLoader;
+use Xingxingcoin\ApiAdapter\Tests\Mocks\HttpClientMock;
 
 #[CoversClass(XingFinanceDataByDexScreenerApiLoader::class)]
 final class XingFinanceDataByDexScreenerApiLoaderTest extends TestCase

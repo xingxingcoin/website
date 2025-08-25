@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Mocks;
+namespace Xingxingcoin\ApiAdapter\Tests\Mocks;
 
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -15,7 +16,6 @@ final class HttpClientMock implements HttpClientInterface
     public array $inputOptions;
     public ResponseInterface $outputResponse;
     public ?TransportExceptionInterface $throwTransportException = null;
-
 
     public iterable|ResponseInterface $inputResponses;
     public ?float $inputTimeout;

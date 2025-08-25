@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Xingxingcoin\ApiAdapter\Tests\Http;
 
-use App\Tests\Unit\Mocks\HttpClientMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use App\Tests\Unit\Mocks\ResponseMock;
 use Opis\JsonSchema\Errors\ValidationError;
@@ -15,6 +14,7 @@ use PHPUnit\Framework\TestCase;
 use Xingxingcoin\ApiAdapter\Http\ApiHttpClient;
 use Xingxingcoin\ApiAdapter\Tests\Http\Mocks\JsonValidatorMock;
 use Xingxingcoin\ApiAdapter\Tests\Http\Mocks\SchemaMock;
+use Xingxingcoin\ApiAdapter\Tests\Mocks\HttpClientMock;
 use Xingxingcoin\JsonValidator\Validation\Exception\InvalidHttpJsonResponseSchema;
 use Xingxingcoin\JsonValidator\Validation\Model\JsonString;
 
@@ -58,7 +58,7 @@ final class ApiHttpClientTest extends TestCase
         self::assertSame('test', $this->jsonValidatorMock->inputJsonString->value);
         self::assertSame('https://test-valid.com.json', $this->jsonValidatorMock->inputSchemaId->value);
         $expectedPath = __DIR__ . '/Schema/https__test-valid.com.json';
-        $expectedPath = str_replace('tests/Unit', 'src', $expectedPath);
+        $expectedPath = str_replace('tests', 'src', $expectedPath);
         self::assertSame(
             $expectedPath,
             $this->jsonValidatorMock->inputSchemaPath->value
