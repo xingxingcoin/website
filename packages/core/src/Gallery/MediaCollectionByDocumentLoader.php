@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Xingxingcoin\Core\Gallery;
 
-use App\Gallery\Exception\MediaDataNotLoadedException;
-use App\Gallery\Model\MediaCollection;
-use App\Gallery\Model\RootNavigation;
-use App\Gallery\Model\SubNavigation;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
+use Xingxingcoin\Core\Gallery\Exception\MediaDataNotLoadedException;
+use Xingxingcoin\Core\Gallery\Model\MediaCollection;
+use Xingxingcoin\Core\Gallery\Model\RootNavigation;
+use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Model\Location;
 
 interface MediaCollectionByDocumentLoader

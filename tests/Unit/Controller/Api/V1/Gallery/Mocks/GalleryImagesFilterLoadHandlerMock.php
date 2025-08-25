@@ -6,10 +6,10 @@ namespace App\Tests\Unit\Controller\Api\V1\Gallery\Mocks;
 
 use App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadHandler;
 use App\Data\Exception\PageDocumentNotLoadedException;
-use App\Gallery\Exception\MediaDataNotLoadedException;
-use App\Gallery\Model\ImageCounter;
-use App\Gallery\Model\ImageFilter;
-use App\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\Exception\MediaDataNotLoadedException;
+use Xingxingcoin\Core\Gallery\Model\ImageCounter;
+use Xingxingcoin\Core\Gallery\Model\ImageFilter;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 use Xingxingcoin\Core\Model\Location;
 
 final class GalleryImagesFilterLoadHandlerMock implements GalleryImagesFilterLoadHandler

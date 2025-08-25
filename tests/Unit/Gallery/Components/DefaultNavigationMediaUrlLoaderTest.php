@@ -6,12 +6,12 @@ namespace App\Tests\Unit\Gallery\Components;
 
 use App\Exception\EmptyStringException;
 use App\Gallery\Components\DefaultNavigationMediaUrlLoader;
-use App\Gallery\Model\MediaNavigationUrl;
-use App\Gallery\Model\RootNavigation;
-use App\Gallery\Model\SubNavigation;
 use App\Tests\Unit\Mocks\NavigationMapperMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
+use Xingxingcoin\Core\Gallery\Model\RootNavigation;
+use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(DefaultNavigationMediaUrlLoader::class)]

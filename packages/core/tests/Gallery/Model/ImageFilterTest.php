@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Gallery\Model;
+namespace Xingxingcoin\Core\Tests\Gallery\Model;
 
 use App\Exception\EmptyStringException;
-use App\Gallery\Model\ImageFilter;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Xingxingcoin\Core\Gallery\Model\ImageFilter;
 
 #[CoversClass(ImageFilter::class)]
 final class ImageFilterTest extends TestCase

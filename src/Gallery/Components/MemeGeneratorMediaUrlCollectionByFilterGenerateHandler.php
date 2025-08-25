@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
-use App\Gallery\Model\ImageFilter;
-use App\Gallery\Model\MediaCollection;
-use App\Gallery\Model\MediaUrlCollection;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerateHandler;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerator;
+use Xingxingcoin\Core\Gallery\Model\ImageFilter;
+use Xingxingcoin\Core\Gallery\Model\MediaCollection;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 
 final readonly class MemeGeneratorMediaUrlCollectionByFilterGenerateHandler implements
     MediaUrlCollectionByFilterGenerateHandler

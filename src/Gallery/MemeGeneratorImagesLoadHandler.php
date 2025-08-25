@@ -7,14 +7,14 @@ namespace App\Gallery;
 use App\Controller\Api\V1\Gallery\MemeGeneratorImagesLoadHandler as MemeGeneratorImagesLoadHandlerInterface;
 use App\Data\DocumentByPathLoader;
 use App\Data\Exception\PageDocumentNotLoadedException;
-use App\Gallery\Exception\MediaUrlNotLoadedException;
-use App\Gallery\Model\ImageCounter;
-use App\Gallery\Model\MediaUrlCollection;
-use App\Gallery\Model\RootNavigation;
-use App\Gallery\Model\SubNavigation;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionByDocumentLoader;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionRandomizer;
+use Xingxingcoin\Core\Gallery\Model\ImageCounter;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\Model\RootNavigation;
+use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Model\Location;
 
 final readonly class MemeGeneratorImagesLoadHandler implements MemeGeneratorImagesLoadHandlerInterface

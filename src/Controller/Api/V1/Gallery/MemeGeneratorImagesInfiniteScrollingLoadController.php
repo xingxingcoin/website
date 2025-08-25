@@ -6,11 +6,11 @@ namespace App\Controller\Api\V1\Gallery;
 
 use App\Data\Exception\PageDocumentNotLoadedException;
 use App\Exception\EmptyStringException;
-use App\Gallery\Exception\MediaUrlNotLoadedException;
-use App\Gallery\Model\ImageCounter;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
+use Xingxingcoin\Core\Gallery\Model\ImageCounter;
 use Xingxingcoin\Core\Model\Location;
 
 final readonly class MemeGeneratorImagesInfiniteScrollingLoadController

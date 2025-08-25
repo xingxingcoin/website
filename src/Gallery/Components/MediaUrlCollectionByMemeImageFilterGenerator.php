@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
-use App\Gallery\Model\MediaCollection;
-use App\Gallery\Model\MediaUrlCollection;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionByFilterGenerator;
+use Xingxingcoin\Core\Gallery\Model\MediaCollection;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 
 final readonly class MediaUrlCollectionByMemeImageFilterGenerator implements MediaUrlCollectionByFilterGenerator
 {

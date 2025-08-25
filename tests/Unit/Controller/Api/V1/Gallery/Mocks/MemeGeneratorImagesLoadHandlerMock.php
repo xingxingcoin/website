@@ -6,9 +6,9 @@ namespace App\Tests\Unit\Controller\Api\V1\Gallery\Mocks;
 
 use App\Controller\Api\V1\Gallery\MemeGeneratorImagesLoadHandler;
 use App\Data\Exception\PageDocumentNotLoadedException;
-use App\Gallery\Exception\MediaUrlNotLoadedException;
-use App\Gallery\Model\ImageCounter;
-use App\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
+use Xingxingcoin\Core\Gallery\Model\ImageCounter;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 use Xingxingcoin\Core\Model\Location;
 
 final class MemeGeneratorImagesLoadHandlerMock implements MemeGeneratorImagesLoadHandler

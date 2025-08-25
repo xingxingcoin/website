@@ -6,14 +6,14 @@ namespace App\Tests\Unit\Controller\Api\V1\Gallery;
 
 use App\Controller\Api\V1\Gallery\GalleryImagesFilterLoadController;
 use App\Data\Exception\PageDocumentNotLoadedException;
-use App\Gallery\Exception\MediaDataNotLoadedException;
-use App\Gallery\Model\ImageFilter;
-use App\Gallery\Model\MediaUrlCollection;
 use App\Tests\Unit\Controller\Api\V1\Gallery\Mocks\GalleryImagesFilterLoadHandlerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use Xingxingcoin\Core\Gallery\Exception\MediaDataNotLoadedException;
+use Xingxingcoin\Core\Gallery\Model\ImageFilter;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(GalleryImagesFilterLoadController::class)]

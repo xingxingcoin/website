@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Gallery\Components;
 
 use App\Gallery\Components\MemeGeneratorMediaUrlCollectionByFilterGenerateHandler;
-use App\Gallery\Model\ImageFilter;
-use App\Gallery\Model\MediaCollection;
-use App\Gallery\Model\MediaUrlCollection;
 use App\Tests\Unit\Gallery\Components\Mocks\MediaUrlCollectionByFilterGeneratorMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Xingxingcoin\Core\Gallery\Model\ImageFilter;
+use Xingxingcoin\Core\Gallery\Model\MediaCollection;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(MemeGeneratorMediaUrlCollectionByFilterGenerateHandler::class)]
 #[CoversClass(ImageFilter::class)]

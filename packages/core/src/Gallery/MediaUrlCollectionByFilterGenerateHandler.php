@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Xingxingcoin\Core\Gallery;
 
-use App\Gallery\Model\ImageFilter;
-use App\Gallery\Model\MediaCollection;
-use App\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\Model\ImageFilter;
+use Xingxingcoin\Core\Gallery\Model\MediaCollection;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 
 interface MediaUrlCollectionByFilterGenerateHandler
 {

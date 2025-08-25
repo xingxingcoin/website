@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components\Mocks;
 
-use App\Gallery\Model\MediaNavigationUrl;
-use App\Gallery\Model\RootNavigation;
-use App\Gallery\Model\SubNavigation;
+use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
+use Xingxingcoin\Core\Gallery\Model\RootNavigation;
+use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader;
 use Xingxingcoin\Core\Model\Location;
 

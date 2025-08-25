@@ -5,10 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Gallery;
 
 use App\Gallery\MemeGeneratorImagesLoadHandler;
-use App\Gallery\Model\ImageCounter;
-use App\Gallery\Model\MediaUrlCollection;
-use App\Gallery\Model\RootNavigation;
-use App\Gallery\Model\SubNavigation;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionByDocumentLoaderMock;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionRandomizerMock;
@@ -17,6 +13,10 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\PathBuilder;
+use Xingxingcoin\Core\Gallery\Model\ImageCounter;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\Model\RootNavigation;
+use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesLoadHandler::class)]

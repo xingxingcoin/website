@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Xingxingcoin\Core\Gallery;
 
-use App\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 
 interface MediaUrlCollectionRandomizer
 {

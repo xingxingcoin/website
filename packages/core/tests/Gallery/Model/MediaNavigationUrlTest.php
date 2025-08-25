@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Gallery\Model;
+namespace Xingxingcoin\Core\Tests\Gallery\Model;
 
 use App\Exception\EmptyStringException;
-use App\Gallery\Model\MediaNavigationUrl;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
 
 #[CoversClass(MediaNavigationUrl::class)]
 final class MediaNavigationUrlTest extends TestCase

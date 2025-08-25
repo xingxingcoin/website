@@ -5,12 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Gallery\Components;
 
 use App\Gallery\Components\MediaUrlCollectionByDocumentLoader;
-use App\Gallery\Exception\MediaUrlNotLoadedException;
 use App\Gallery\GalleryImagesLoadHandler;
-use App\Gallery\Model\MediaNavigationUrl;
-use App\Gallery\Model\MediaUrlCollection;
-use App\Gallery\Model\RootNavigation;
-use App\Gallery\Model\SubNavigation;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Gallery\Components\Mocks\NavigationMediaUrlLoaderMock;
 use App\Tests\Unit\Mocks\LoggerMock;
@@ -22,6 +17,11 @@ use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
+use Xingxingcoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
+use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
+use Xingxingcoin\Core\Gallery\Model\RootNavigation;
+use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Model\Location;
 
 #[CoversClass(MediaUrlCollectionByDocumentLoader::class)]

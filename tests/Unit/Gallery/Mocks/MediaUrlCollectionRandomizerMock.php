@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Mocks;
 
-use App\Gallery\Model\MediaUrlCollection;
 use Xingxingcoin\Core\Gallery\MediaUrlCollectionRandomizer;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 
 final class MediaUrlCollectionRandomizerMock implements MediaUrlCollectionRandomizer
 {

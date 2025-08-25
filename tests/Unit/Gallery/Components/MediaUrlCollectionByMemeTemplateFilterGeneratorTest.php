@@ -4,10 +4,10 @@ namespace App\Tests\Unit\Gallery\Components;
 
 use App\Gallery\Components\MediaUrlCollectionByMemeTemplateFilterGenerator;
 use App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader;
-use App\Gallery\Model\MediaCollection;
-use App\Gallery\Model\MediaUrlCollection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Xingxingcoin\Core\Gallery\Model\MediaCollection;
+use Xingxingcoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(MediaUrlCollectionByMemeTemplateFilterGenerator::class)]
 final class MediaUrlCollectionByMemeTemplateFilterGeneratorTest extends TestCase

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Gallery\Components;
 
 use App\Exception\EmptyStringException;
-use App\Gallery\Model\MediaNavigationUrl;
-use App\Gallery\Model\RootNavigation;
-use App\Gallery\Model\SubNavigation;
 use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
+use Xingxingcoin\Core\Gallery\Model\MediaNavigationUrl;
+use Xingxingcoin\Core\Gallery\Model\RootNavigation;
+use Xingxingcoin\Core\Gallery\Model\SubNavigation;
 use Xingxingcoin\Core\Gallery\NavigationMediaUrlLoader;
 use Xingxingcoin\Core\Model\Location;
 

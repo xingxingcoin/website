@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Gallery\Model;
+namespace Xingxingcoin\Core\Gallery\Model;
 
 use App\Exception\EmptyStringException;
 
-final readonly class MediaNavigationUrl
+final readonly class SubNavigation
 {
     /**
      * @throws EmptyStringException
@@ -15,7 +15,7 @@ final readonly class MediaNavigationUrl
         public string $value
     ) {
         if ($this->value === '') {
-            throw EmptyStringException::stringIsEmpty('mediaNavigationUrl');
+            throw EmptyStringException::stringIsEmpty('subNavigation');
         }
     }
 }
