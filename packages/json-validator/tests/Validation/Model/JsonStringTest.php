@@ -6,7 +6,7 @@ namespace XingXingCoin\JsonValidator\Tests\Validation\Model;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\JsonValidator\Validation\Model\JsonString;
 
 #[CoversClass(JsonString::class)]

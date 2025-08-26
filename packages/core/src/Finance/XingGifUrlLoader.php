@@ -8,7 +8,7 @@ use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 
 interface XingGifUrlLoader
 {

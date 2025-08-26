@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace XingXingCoin\Core\Gallery\Model;
 
-use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class RootNavigation
 {

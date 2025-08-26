@@ -13,7 +13,7 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Contracts\HttpClient\ResponseStreamInterface;
-use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\JsonValidator\Validation\Exception\InvalidHttpJsonResponseSchema;
 use XingXingCoin\JsonValidator\Validation\JsonValidator;
 use XingXingCoin\JsonValidator\Validation\Model\JsonString;

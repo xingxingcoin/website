@@ -12,7 +12,7 @@ use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 
 #[CoversClass(NavigationMediaUrlLoader::class)]
 #[CoversClass(MediaNavigationUrl::class)]

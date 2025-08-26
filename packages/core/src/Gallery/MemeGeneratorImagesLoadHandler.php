@@ -9,7 +9,7 @@ use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 
 interface MemeGeneratorImagesLoadHandler
 {

@@ -7,7 +7,7 @@ namespace XingXingCoin\Core\Tests\Model;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use XingXingCoin\Core\Model\DocumentPath;
-use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 
 #[CoversClass(DocumentPath::class)]
 final class DocumentPathTest extends TestCase

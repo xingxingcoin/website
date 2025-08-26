@@ -11,7 +11,7 @@ use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler as XingFina
 use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinanceDataByDexScreenerApiHandlerInterface
 {

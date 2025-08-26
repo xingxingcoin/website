@@ -15,7 +15,7 @@ use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
 use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class XingUpsetModeGifUrlLoader implements XingGifUrlLoader
 {
