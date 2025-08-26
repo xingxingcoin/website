@@ -6,11 +6,12 @@ namespace XingXingCoin\Core\Database;
 
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Model\DocumentPath;
 
 interface DocumentByPathLoader
 {
     /**
      * @throws PageDocumentNotLoadedException
      */
-    public function load(string $path): BasePageDocument;
+    public function load(DocumentPath $documentPath): BasePageDocument;
 }

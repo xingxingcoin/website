@@ -15,7 +15,9 @@ use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandlerInterface
 {
@@ -34,14 +36,15 @@ final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandle
     }
 
     /**
-     * @throws PageDocumentNotLoadedException
      * @throws MediaUrlNotLoadedException
+     * @throws PageDocumentNotLoadedException
+     * @throws EmptyStringException
      */
     #[\Override]
     public function handle(Location $location, ImageCounter $imageCounter): MediaUrlCollection
     {
         $path = $this->pathBuilder->build(['%base%', 'website', '%content%', self::PATH]);
-        $document = $this->documentByPathLoader->load($path);
+        $document = $this->documentByPathLoader->load(new DocumentPath($path));
         $mediaUrlCollection = $this->mediaUrlCollectionByDocumentLoader->load(
             $document,
             $location,

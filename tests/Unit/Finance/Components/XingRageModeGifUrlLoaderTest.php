@@ -20,10 +20,12 @@ use Sulu\Component\Content\Document\Structure\PropertyValue;
 use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
+use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(XingRageModeGifUrlLoader::class)]
 #[CoversClass(Location::class)]
+#[CoversClass(DocumentPath::class)]
 final class XingRageModeGifUrlLoaderTest extends CustomTestCase
 {
     private MockObject $pathBuilderMock;
@@ -48,11 +50,11 @@ final class XingRageModeGifUrlLoaderTest extends CustomTestCase
 
     public function testLoad_is_valid(): void
     {
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%'])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
 
         $expectedMediaBlock = [
             XingRageModeGifUrlLoader::MEDIA_IMAGE_KEY => [
@@ -86,7 +88,7 @@ final class XingRageModeGifUrlLoaderTest extends CustomTestCase
             'test' => 'test',
             'url' => 'testUrl'
         ], $newFinanceDataCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertEquals(1, $this->mediaManagerMock->inputId);
         self::assertEquals('en', $this->mediaManagerMock->inputLocale);
         self::assertEquals([
@@ -108,11 +110,11 @@ final class XingRageModeGifUrlLoaderTest extends CustomTestCase
 
     public function testLoad_with_MediaNotFoundException(): void
     {
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%'])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
 
         $expectedMediaBlock = [
             XingRageModeGifUrlLoader::MEDIA_IMAGE_KEY => [
@@ -152,7 +154,7 @@ final class XingRageModeGifUrlLoaderTest extends CustomTestCase
             self::assertSame('Xing gif is not found with error: "Media with the ID test was not found".', $exception->getMessage());
         }
 
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertEquals(1, $this->mediaManagerMock->inputId);
         self::assertEquals('en', $this->mediaManagerMock->inputLocale);
         self::assertEquals([

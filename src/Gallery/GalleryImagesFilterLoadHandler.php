@@ -17,7 +17,9 @@ use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilterLoadHandlerInterface
 {
@@ -38,12 +40,13 @@ final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilt
     /**
      * @throws MediaDataNotLoadedException
      * @throws PageDocumentNotLoadedException
+     * @throws EmptyStringException
      */
     #[\Override]
     public function handle(Location $location, ImageCounter $imageCounter, ImageFilter $imageFilter): MediaUrlCollection
     {
         $path = $this->pathBuilder->build(['%base%', 'website', '%content%', self::PATH]);
-        $document = $this->documentByPathLoader->load($path);
+        $document = $this->documentByPathLoader->load(new DocumentPath($path));
         $mediaUrlCollection = $this->mediaCollectionByDocumentLoader->load(
             $document,
             $location,

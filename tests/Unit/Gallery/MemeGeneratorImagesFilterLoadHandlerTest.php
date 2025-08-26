@@ -20,6 +20,7 @@ use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesFilterLoadHandler::class)]
@@ -27,6 +28,7 @@ use XingXingCoin\Core\Model\Location;
 #[CoversClass(RootNavigation::class)]
 #[CoversClass(SubNavigation::class)]
 #[CoversClass(ImageFilter::class)]
+#[CoversClass(DocumentPath::class)]
 final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
 {
     private MockObject $pathBuilderMock;
@@ -57,11 +59,11 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         $expectedLocation = new Location('en');
         $expectedImageCounter = new ImageCounter(0);
         $expectedImageFilter = new ImageFilter('image');
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%', MemeGeneratorImagesFilterLoadHandler::PATH])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaGroups = [
@@ -108,7 +110,7 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         );
 
         self::assertEquals($expectedMediaUrlCollection->data, $mediaUrlCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame($expectedPageDocument, $this->mediaCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaCollectionByDocumentLoaderMock->inputLocation);
         self::assertEquals(
@@ -130,11 +132,11 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         $expectedLocation = new Location('en');
         $expectedImageCounter = new ImageCounter(0);
         $expectedImageFilter = new ImageFilter('image');
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%', MemeGeneratorImagesFilterLoadHandler::PATH])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaGroups = [
@@ -215,7 +217,7 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         );
 
         self::assertEquals($expectedMediaGroups, $mediaUrlCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame($expectedPageDocument, $this->mediaCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaCollectionByDocumentLoaderMock->inputLocation);
         self::assertEquals(
@@ -237,11 +239,11 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         $expectedLocation = new Location('en');
         $expectedImageCounter = new ImageCounter(-1);
         $expectedImageFilter = new ImageFilter('image');
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%', MemeGeneratorImagesFilterLoadHandler::PATH])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaCollection = new MediaCollection([]);
@@ -257,7 +259,7 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         );
 
         self::assertEquals($expectedMediaCollection->data, $mediaUrlCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame($expectedPageDocument, $this->mediaCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaCollectionByDocumentLoaderMock->inputLocation);
         self::assertEquals(
@@ -279,11 +281,11 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
         $expectedLocation = new Location('en');
         $expectedImageCounter = new ImageCounter(0);
         $expectedImageFilter = new ImageFilter('image');
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%', MemeGeneratorImagesFilterLoadHandler::PATH])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaGroups = [
@@ -305,7 +307,7 @@ final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
 
         $expectedMediaUrlGroups = [];
         self::assertEquals($expectedMediaUrlGroups, $mediaUrlCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame($expectedPageDocument, $this->mediaCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaCollectionByDocumentLoaderMock->inputLocation);
         self::assertEquals(

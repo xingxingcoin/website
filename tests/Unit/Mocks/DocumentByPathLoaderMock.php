@@ -6,15 +6,16 @@ namespace App\Tests\Unit\Mocks;
 
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use XingXingCoin\Core\Database\DocumentByPathLoader;
+use XingXingCoin\Core\Model\DocumentPath;
 
 final class DocumentByPathLoaderMock implements DocumentByPathLoader
 {
-    public string $inputPath;
+    public DocumentPath $inputDocumentPath;
     public BasePageDocument $outputBasePageDocument;
 
-    public function load(string $path): BasePageDocument
+    public function load(DocumentPath $documentPath): BasePageDocument
     {
-        $this->inputPath = $path;
+        $this->inputDocumentPath = $documentPath;
 
         return $this->outputBasePageDocument;
     }

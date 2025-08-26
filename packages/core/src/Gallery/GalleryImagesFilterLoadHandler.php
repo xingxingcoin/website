@@ -10,12 +10,14 @@ use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 interface GalleryImagesFilterLoadHandler
 {
     /**
      * @throws MediaDataNotLoadedException
      * @throws PageDocumentNotLoadedException
+     * @throws EmptyStringException
      */
     public function handle(Location $location, ImageCounter $imageCounter, ImageFilter $imageFilter): MediaUrlCollection;
 }

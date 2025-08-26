@@ -17,12 +17,14 @@ use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(GalleryImagesLoadHandler::class)]
 #[CoversClass(Location::class)]
 #[CoversClass(RootNavigation::class)]
 #[CoversClass(SubNavigation::class)]
+#[CoversClass(DocumentPath::class)]
 final class GalleryImagesLoadHandlerTest extends CustomTestCase
 {
     private MockObject $pathBuilderMock;
@@ -49,11 +51,11 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
     {
         $expectedLocation = new Location('en');
         $expectedImageCounter = new ImageCounter(0);
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaUrlCollection = new MediaUrlCollection(['testUrl', 'testUrl']);
@@ -63,7 +65,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
         self::assertEquals($expectedMediaUrlCollection->data, $mediaUrlCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
         self::assertEquals(
@@ -76,11 +78,11 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
     {
         $expectedLocation = new Location('en');
         $expectedImageCounter = new ImageCounter(0);
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaUrlGroups = [
@@ -122,7 +124,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
         self::assertEquals($expectedMediaUrlCollection->data, $mediaUrlCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
         self::assertEquals(
@@ -135,11 +137,11 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
     {
         $expectedLocation = new Location('en');
         $expectedImageCounter = new ImageCounter(0);
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaUrlGroups = [
@@ -214,7 +216,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
         self::assertEquals($expectedMediaUrlGroups, $mediaUrlCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
         self::assertEquals(
@@ -227,11 +229,11 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
     {
         $expectedLocation = new Location('en');
         $expectedImageCounter = new ImageCounter(-1);
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaUrlCollection = new MediaUrlCollection([]);
@@ -241,7 +243,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
         self::assertEquals($expectedMediaUrlCollection->data, $mediaUrlCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
         self::assertEquals(
@@ -254,11 +256,11 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
     {
         $expectedLocation = new Location('en');
         $expectedImageCounter = new ImageCounter(0);
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
             ->method('build')
             ->with(['%base%', 'website', '%content%', GalleryImagesLoadHandler::PATH])
-            ->willReturn($expectedPath);
+            ->willReturn($expectedDocumentPath->value);
         $expectedPageDocument = new BasePageDocument();
         $this->documentByPathLoaderMock->outputBasePageDocument = $expectedPageDocument;
         $expectedMediaUrlGroups = [
@@ -274,7 +276,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
 
         $expectedMediaUrlGroups = [];
         self::assertEquals($expectedMediaUrlGroups, $mediaUrlCollection->data);
-        self::assertSame($expectedPath, $this->documentByPathLoaderMock->inputPath);
+        self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame($expectedPageDocument, $this->mediaUrlCollectionByDocumentLoaderMock->inputDocument);
         self::assertSame($expectedLocation, $this->mediaUrlCollectionByDocumentLoaderMock->inputLocation);
         self::assertEquals(

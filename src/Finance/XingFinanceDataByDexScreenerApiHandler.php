@@ -11,6 +11,7 @@ use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler as XingFina
 use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
 use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinanceDataByDexScreenerApiHandlerInterface
 {
@@ -24,9 +25,10 @@ final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinan
     ) {}
 
     /**
-     * @throws XingGifNotFoundException
-     * @throws XingFinanceDataNotLoadedException
      * @throws PageDocumentNotLoadedException
+     * @throws XingFinanceDataNotLoadedException
+     * @throws XingGifNotFoundException
+     * @throws EmptyStringException
      */
     #[\Override]
     public function handleAndGet(Location $location): FinanceDataCollection

@@ -12,8 +12,10 @@ use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\Exception\DocumentManagerException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Model\DocumentPath;
 
 #[CoversClass(DocumentByPathLoader::class)]
+#[CoversClass(DocumentPath::class)]
 final class DocumentByPathLoaderTest extends TestCase
 {
     private DocumentManagerMock $documentManagerMock;
@@ -32,14 +34,14 @@ final class DocumentByPathLoaderTest extends TestCase
 
     public function testLoad_is_valid(): void
     {
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $expectedDocument = new BasePageDocument();
         $this->documentManagerMock->outputFind = $expectedDocument;
 
-        $document = $this->documentByPathLoader->load($expectedPath);
+        $document = $this->documentByPathLoader->load($expectedDocumentPath);
 
         self::assertEquals($expectedDocument, $document);
-        self::assertSame($expectedPath, $this->documentManagerMock->inputIdentifier);
+        self::assertSame($expectedDocumentPath->value, $this->documentManagerMock->inputIdentifier);
         self::assertNull($this->documentManagerMock->inputLocale);
         self::assertEmpty($this->documentManagerMock->inputOptions);
         self::assertEquals([
@@ -60,18 +62,18 @@ final class DocumentByPathLoaderTest extends TestCase
 
     public function testLoad_with_invalid_object_found(): void
     {
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $expectedDocument = new LoggerMock();
         $this->documentManagerMock->outputFind = $expectedDocument;
 
         try {
-            $this->documentByPathLoader->load($expectedPath);
+            $this->documentByPathLoader->load($expectedDocumentPath);
             $this->fail('PageDocumentNotLoadedException was expected to be thrown.');
         } catch (PageDocumentNotLoadedException $exception) {
             self::assertSame('Path "testPath" for gallery is invalid.', $exception->getMessage());
         }
 
-        self::assertSame($expectedPath, $this->documentManagerMock->inputIdentifier);
+        self::assertSame($expectedDocumentPath->value, $this->documentManagerMock->inputIdentifier);
         self::assertNull($this->documentManagerMock->inputLocale);
         self::assertEmpty($this->documentManagerMock->inputOptions);
         self::assertEquals([
@@ -102,17 +104,17 @@ final class DocumentByPathLoaderTest extends TestCase
 
     public function testLoad_with_document_manager_exception(): void
     {
-        $expectedPath = 'testPath';
+        $expectedDocumentPath = new DocumentPath('testPath');
         $this->documentManagerMock->throwDocumentManagerException = new DocumentManagerException('test');
 
         try {
-            $this->documentByPathLoader->load($expectedPath);
+            $this->documentByPathLoader->load($expectedDocumentPath);
             $this->fail('PageDocumentNotLoadedException was expected to be thrown.');
         } catch (PageDocumentNotLoadedException $exception) {
             self::assertSame('Document with path "testPath" could not be loaded with error: "test"', $exception->getMessage());
         }
 
-        self::assertSame($expectedPath, $this->documentManagerMock->inputIdentifier);
+        self::assertSame($expectedDocumentPath->value, $this->documentManagerMock->inputIdentifier);
         self::assertNull($this->documentManagerMock->inputLocale);
         self::assertEmpty($this->documentManagerMock->inputOptions);
         self::assertEquals([

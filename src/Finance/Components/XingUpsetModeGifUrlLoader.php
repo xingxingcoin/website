@@ -13,7 +13,9 @@ use XingXingCoin\Core\Database\DocumentByPathLoader;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
+use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 final readonly class XingUpsetModeGifUrlLoader implements XingGifUrlLoader
 {
@@ -30,6 +32,7 @@ final readonly class XingUpsetModeGifUrlLoader implements XingGifUrlLoader
     /**
      * @throws PageDocumentNotLoadedException
      * @throws XingGifNotFoundException
+     * @throws EmptyStringException
      */
     #[\Override]
     public function load(FinanceDataCollection $financeDataCollection, Location $location): FinanceDataCollection
@@ -37,7 +40,7 @@ final readonly class XingUpsetModeGifUrlLoader implements XingGifUrlLoader
         try {
             $this->logger->info('Start loading xing upset mode gif url.');
             $path = $this->pathBuilder->build(['%base%', 'website', '%content%']);
-            $document = $this->documentByPathLoader->load($path);
+            $document = $this->documentByPathLoader->load(new DocumentPath($path));
             $blocks = $document->getStructure()->getProperty('blocks')->offsetGet(0);
             $mediaId = $blocks[self::MEDIA_IMAGE_KEY]['id'];
             $media = $this->mediaManager->getById($mediaId, $location->value);

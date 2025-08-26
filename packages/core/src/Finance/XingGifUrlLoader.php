@@ -8,12 +8,14 @@ use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Model\Location;
+use XingXingCoin\JsonValidator\Validation\Exception\EmptyStringException;
 
 interface XingGifUrlLoader
 {
     /**
      * @throws PageDocumentNotLoadedException
      * @throws XingGifNotFoundException
+     * @throws EmptyStringException
      */
     public function load(FinanceDataCollection $financeDataCollection, Location $location): FinanceDataCollection;
 }
