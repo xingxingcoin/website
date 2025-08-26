@@ -12,13 +12,13 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\PathBuilder;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(GalleryImagesFilterLoadHandler::class)]
@@ -207,7 +207,9 @@ final class GalleryImagesFilterLoadHandlerTest extends CustomTestCase
             'testUrl',
             'testUrl'
         ];
-        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection($expectedMediaGroups);
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection(
+            $expectedMediaGroups
+        );
 
         $mediaUrlCollection = $this->galleryImagesFilterLoadHandler->handle(
             $expectedLocation,
@@ -296,7 +298,7 @@ final class GalleryImagesFilterLoadHandlerTest extends CustomTestCase
         $this->mediaCollectionByDocumentLoaderMock->outputMediaCollection = $expectedMediaCollection;
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaGroups);
         $this->mediaUrlCollectionByFilterGenerateHandlerMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
-        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection =  new MediaUrlCollection([]);
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection([]);
 
         $mediaUrlCollection = $this->galleryImagesFilterLoadHandler->handle(
             $expectedLocation,

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Model;
+namespace XingXingCoin\Core\Database\Model;
 
 /**
  * @codeCoverageIgnore

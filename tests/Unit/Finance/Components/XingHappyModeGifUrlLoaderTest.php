@@ -19,8 +19,8 @@ use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
 use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
-use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(XingHappyModeGifUrlLoader::class)]
@@ -151,7 +151,10 @@ final class XingHappyModeGifUrlLoaderTest extends CustomTestCase
 
             $this->fail('XingGifNotFoundException was expected to be thrown.');
         } catch (XingGifNotFoundException $exception) {
-            self::assertSame('Xing gif is not found with error: "Media with the ID test was not found".', $exception->getMessage());
+            self::assertSame(
+                'Xing gif is not found with error: "Media with the ID test was not found".',
+                $exception->getMessage()
+            );
         }
 
         self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);

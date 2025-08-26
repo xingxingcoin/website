@@ -17,7 +17,7 @@ use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\DocumentPath;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(GalleryImagesLoadHandler::class)]

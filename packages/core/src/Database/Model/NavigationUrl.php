@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Model;
+namespace XingXingCoin\Core\Database\Model;
 
 use XingXingCoin\Core\Exception\EmptyStringException;
 
-final readonly class DocumentPath
+final readonly class NavigationUrl
 {
     /**
      * @throws EmptyStringException
@@ -15,7 +15,7 @@ final readonly class DocumentPath
         public string $value
     ) {
         if ($this->value === '') {
-            throw EmptyStringException::stringIsEmpty('documentPath');
+            throw EmptyStringException::stringIsEmpty('mediaNavigationUrl');
         }
     }
 }

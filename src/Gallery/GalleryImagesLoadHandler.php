@@ -8,6 +8,8 @@ use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\Core\Database\DocumentByPathLoader;
 use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Database\Model\DocumentPath;
+use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\GalleryImagesLoadHandler as GalleryImagesLoadHandlerInterface;
 use XingXingCoin\Core\Gallery\MediaUrlCollectionByDocumentLoader;
@@ -16,9 +18,7 @@ use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandlerInterface
 {

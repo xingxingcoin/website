@@ -13,7 +13,7 @@ use XingXingCoin\Core\Database\DocumentByPathLoader;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
-use XingXingCoin\Core\Model\DocumentPath;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 use XingXingCoin\Core\Exception\EmptyStringException;
 

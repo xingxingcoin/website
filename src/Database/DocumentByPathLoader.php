@@ -10,7 +10,7 @@ use Sulu\Component\DocumentManager\DocumentManagerInterface;
 use Sulu\Component\DocumentManager\Exception\DocumentManagerException;
 use XingXingCoin\Core\Database\DocumentByPathLoader as DocumentByPathLoaderInterface;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use XingXingCoin\Core\Model\DocumentPath;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 
 final readonly class DocumentByPathLoader implements DocumentByPathLoaderInterface
 {

@@ -6,7 +6,7 @@ namespace App\Tests\Unit\Mocks;
 
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use XingXingCoin\Core\Database\DocumentByPathLoader;
-use XingXingCoin\Core\Model\DocumentPath;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 
 final class DocumentByPathLoaderMock implements DocumentByPathLoader
 {

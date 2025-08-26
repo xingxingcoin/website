@@ -19,8 +19,8 @@ use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
 use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
-use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(XingNeutralModeGifUrlLoader::class)]

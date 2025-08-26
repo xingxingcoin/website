@@ -172,9 +172,9 @@ services:
     App\Gallery\Components\MediaUrlCollectionByDocumentLoader:
         arguments:
             - '@App\Database\MediaByMediaIdLoader'
-            - '@App\Gallery\Components\NavigationMediaUrlLoader'
+            - '@App\Database\NavigationUrlLoader'
 
-    App\Gallery\Components\NavigationMediaUrlLoader:
+    App\Database\NavigationUrlLoader:
         arguments:
             - '@sulu_website.navigation_mapper'
 
@@ -201,7 +201,7 @@ services:
     App\Gallery\Components\GalleryMediaCollectionByDocumentLoader:
         arguments:
             - '@App\Database\MediaByMediaIdLoader'
-            - '@App\Gallery\Components\NavigationMediaUrlLoader'
+            - '@App\Database\NavigationUrlLoader'
     App\Gallery\Components\GalleryMediaUrlCollectionByFilterGenerateHandler:
         arguments:
             - '@App\Gallery\Components\MediaUrlCollectionByGifFilterGenerator'
@@ -225,7 +225,7 @@ services:
     App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader:
         arguments:
             - '@App\Database\MediaByMediaIdLoader'
-            - '@App\Gallery\Components\NavigationMediaUrlLoader'
+            - '@App\Database\NavigationUrlLoader'
     App\Gallery\Components\MemeGeneratorMediaUrlCollectionByFilterGenerateHandler:
         arguments:
             - '@App\Gallery\Components\MediaUrlCollectionByMemeTemplateFilterGenerator'

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Tests\Model;
+namespace XingXingCoin\Core\Tests\Database\Model;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Exception\EmptyStringException;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 
 #[CoversClass(DocumentPath::class)]
 final class DocumentPathTest extends TestCase

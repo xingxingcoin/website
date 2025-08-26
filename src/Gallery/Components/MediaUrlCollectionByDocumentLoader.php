@@ -7,21 +7,21 @@ namespace App\Gallery\Components;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\MediaByMediaIdLoader;
+use XingXingCoin\Core\Database\Model\MediaId;
+use XingXingCoin\Core\Database\NavigationUrlLoader;
 use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaUrlCollectionByDocumentLoader as MediaUrlCollectionByDocumentLoaderInterface;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Gallery\NavigationMediaUrlLoader;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\Core\Model\MediaId;
 
 final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlCollectionByDocumentLoaderInterface
 {
     public function __construct(
         private MediaByMediaIdLoader $mediaByMediaIdLoader,
-        private NavigationMediaUrlLoader $navigationMediaUrlLoader
+        private NavigationUrlLoader $navigationUrlLoader
     ) {
     }
 
@@ -38,7 +38,7 @@ final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlColle
         SubNavigation $subNavigation
     ): MediaUrlCollection {
         $mediaUrls = [];
-        $mediaNavigationUrl = $this->navigationMediaUrlLoader->load(
+        $mediaNavigationUrl = $this->navigationUrlLoader->load(
             $rootNavigation,
             $subNavigation,
             $location

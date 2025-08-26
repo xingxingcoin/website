@@ -13,11 +13,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\PathBuilder;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesLoadHandler::class)]
@@ -211,7 +211,9 @@ final class MemeGeneratorImagesLoadHandlerTest extends CustomTestCase
             'testUrl',
             'testUrl'
         ];
-        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection(
+            $expectedMediaUrlGroups
+        );
 
         $mediaUrlCollection = $this->memeGeneratorImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 

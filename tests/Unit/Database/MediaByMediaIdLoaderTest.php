@@ -12,8 +12,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
+use XingXingCoin\Core\Database\Model\MediaId;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\Core\Model\MediaId;
 
 #[CoversClass(MediaByMediaIdLoader::class)]
 #[CoversClass(Location::class)]
@@ -78,7 +78,10 @@ final class MediaByMediaIdLoaderTest extends TestCase
             $this->mediaByMediaIdLoader->load($mediaId, $location);
             $this->fail('MediaNotFoundException was expected to be thrown.');
         } catch (\XingXingCoin\Core\Database\Exception\MediaNotFoundException $exception) {
-            self::assertSame('Validation failed for value "1" with error: "Media with id "1" could not be loaded."', $exception->getMessage());
+            self::assertSame(
+                'Validation failed for value "1" with error: "Media with id "1" could not be loaded."',
+                $exception->getMessage()
+            );
         }
 
         self::assertEquals([

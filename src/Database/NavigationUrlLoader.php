@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Gallery\Components;
+namespace App\Database;
 
 use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
-use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
+use XingXingCoin\Core\Database\Model\NavigationUrl;
+use XingXingCoin\Core\Database\NavigationUrlLoader as NavigationMediaUrlLoaderInterface;
+use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Gallery\NavigationMediaUrlLoader as NavigationMediaUrlLoaderInterface;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\Core\Exception\EmptyStringException;
 
-final readonly class NavigationMediaUrlLoader implements NavigationMediaUrlLoaderInterface
+final readonly class NavigationUrlLoader implements NavigationMediaUrlLoaderInterface
 {
     public const string NAVIGATION_ITEM_TEMPLATE_KEY = 'template';
     public const string NAVIGATION_ITEM_UUID_KEY = 'uuid';
@@ -21,7 +21,8 @@ final readonly class NavigationMediaUrlLoader implements NavigationMediaUrlLoade
 
     public function __construct(
         private NavigationMapperInterface $navigationMapper
-    ) {}
+    ) {
+    }
 
     /**
      * @throws EmptyStringException
@@ -31,7 +32,7 @@ final readonly class NavigationMediaUrlLoader implements NavigationMediaUrlLoade
         RootNavigation $rootNavigation,
         SubNavigation $subNavigation,
         Location $location
-    ): MediaNavigationUrl {
+    ): NavigationUrl {
         /** @var array<string, array<string, string>> $rootNavigationFromMapper */
         $rootNavigationFromMapper = $this->navigationMapper->getRootNavigation(
             self::WEBSPACE_KEY,
@@ -58,6 +59,6 @@ final readonly class NavigationMediaUrlLoader implements NavigationMediaUrlLoade
             }
         }
 
-        return new MediaNavigationUrl($subNavigationItem[self::NAVIGATION_ITEM_URL_KEY] ?? '');
+        return new NavigationUrl($subNavigationItem[self::NAVIGATION_ITEM_URL_KEY] ?? '');
     }
 }

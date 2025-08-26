@@ -7,18 +7,19 @@ namespace App\Database;
 use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
-use XingXingCoin\Core\Database\Exception\MediaNotFoundException as MediaByMediaIdNotFoundException;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException as MediaByMediaIdNotFoundException;
 use XingXingCoin\Core\Database\MediaByMediaIdLoader as MediaByMediaIdLoaderInterface;
+use XingXingCoin\Core\Database\Model\MediaId;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\Core\Model\MediaId;
 
 final readonly class MediaByMediaIdLoader implements MediaByMediaIdLoaderInterface
 {
     public function __construct(
         private MediaManagerInterface $mediaManager,
         private LoggerInterface $logger
-    ) {}
+    ) {
+    }
 
     /**
      * @throws MediaByMediaIdNotFoundException

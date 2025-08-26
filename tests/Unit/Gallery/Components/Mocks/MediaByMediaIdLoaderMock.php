@@ -7,8 +7,8 @@ namespace App\Tests\Unit\Gallery\Components\Mocks;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\MediaByMediaIdLoader;
+use XingXingCoin\Core\Database\Model\MediaId;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\Core\Model\MediaId;
 
 final class MediaByMediaIdLoaderMock implements MediaByMediaIdLoader
 {

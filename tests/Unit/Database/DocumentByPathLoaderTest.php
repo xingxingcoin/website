@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\tests\Unit\Database;
+namespace App\Tests\Unit\Database;
 
 use App\Database\DocumentByPathLoader;
 use App\Tests\Unit\Database\Mocks\DocumentManagerMock;
@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\Exception\DocumentManagerException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use XingXingCoin\Core\Model\DocumentPath;
+use XingXingCoin\Core\Database\Model\DocumentPath;
 
 #[CoversClass(DocumentByPathLoader::class)]
 #[CoversClass(DocumentPath::class)]

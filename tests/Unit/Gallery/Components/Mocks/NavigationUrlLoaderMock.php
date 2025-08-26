@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components\Mocks;
 
-use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
+use XingXingCoin\Core\Database\Model\NavigationUrl;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Gallery\NavigationMediaUrlLoader;
+use XingXingCoin\Core\Database\NavigationUrlLoader;
 use XingXingCoin\Core\Model\Location;
 
-final class NavigationMediaUrlLoaderMock implements NavigationMediaUrlLoader
+final class NavigationUrlLoaderMock implements NavigationUrlLoader
 {
     public RootNavigation $inputRootNavigation;
     public SubNavigation $inputSubNavigation;
     public Location $inputLocation;
-    public MediaNavigationUrl $outputMediaNavigationUrl;
+    public NavigationUrl $outputNavigationUrl;
 
-    public function load(RootNavigation $rootNavigation, SubNavigation $subNavigation, Location $location): MediaNavigationUrl
+    public function load(RootNavigation $rootNavigation, SubNavigation $subNavigation, Location $location): NavigationUrl
     {
         $this->inputRootNavigation = $rootNavigation;
         $this->inputSubNavigation = $subNavigation;
         $this->inputLocation = $location;
 
-        return $this->outputMediaNavigationUrl;
+        return $this->outputNavigationUrl;
     }
 }

@@ -7,15 +7,15 @@ namespace App\Gallery\Components;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\MediaByMediaIdLoader;
+use XingXingCoin\Core\Database\Model\MediaId;
+use XingXingCoin\Core\Database\NavigationUrlLoader;
 use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Gallery\NavigationMediaUrlLoader;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\Core\Model\MediaId;
 
 final readonly class MemeGeneratorMediaCollectionByDocumentLoader implements MediaCollectionByDocumentLoader
 {
@@ -25,7 +25,7 @@ final readonly class MemeGeneratorMediaCollectionByDocumentLoader implements Med
 
     public function __construct(
         private MediaByMediaIdLoader $mediaByMediaIdLoader,
-        private NavigationMediaUrlLoader $navigationMediaUrlLoader
+        private NavigationUrlLoader $navigationUrlLoader
     ) {
     }
 
@@ -42,7 +42,7 @@ final readonly class MemeGeneratorMediaCollectionByDocumentLoader implements Med
         SubNavigation $subNavigation
     ): MediaCollection {
         $mediaData = [];
-        $mediaNavigationUrl = $this->navigationMediaUrlLoader->load(
+        $mediaNavigationUrl = $this->navigationUrlLoader->load(
             $rootNavigation,
             $subNavigation,
             $location

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Mocks;
+namespace App\Tests\Unit\Database\Mocks;
 
 use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
 

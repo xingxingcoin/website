@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Gallery;
+namespace XingXingCoin\Core\Database;
 
-use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
+use XingXingCoin\Core\Database\Model\NavigationUrl;
+use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
 use XingXingCoin\Core\Model\Location;
-use XingXingCoin\Core\Exception\EmptyStringException;
 
-interface NavigationMediaUrlLoader
+interface NavigationUrlLoader
 {
     /**
      * @throws EmptyStringException
@@ -19,5 +19,5 @@ interface NavigationMediaUrlLoader
         RootNavigation $rootNavigation,
         SubNavigation $subNavigation,
         Location $location
-    ): MediaNavigationUrl;
+    ): NavigationUrl;
 }
