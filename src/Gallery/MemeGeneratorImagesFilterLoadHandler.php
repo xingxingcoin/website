@@ -6,6 +6,7 @@ namespace App\Gallery;
 
 use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\Core\Database\DocumentByPathLoader;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
@@ -39,9 +40,10 @@ final readonly class MemeGeneratorImagesFilterLoadHandler implements MemeGenerat
     }
 
     /**
+     * @throws EmptyStringException
      * @throws MediaDataNotLoadedException
      * @throws PageDocumentNotLoadedException
-     * @throws EmptyStringException
+     * @throws MediaNotFoundException
      */
     #[\Override]
     public function handle(Location $location, ImageCounter $imageCounter, ImageFilter $imageFilter): MediaUrlCollection

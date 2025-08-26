@@ -10,6 +10,7 @@ use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
@@ -100,6 +101,36 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
         $request->setLocale('en');
         $request->query->set(GalleryImagesInfiniteScrollingLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
         $this->galleryImagesLoadHandlerMock->throwMediaUrlNotLoadedException = new MediaUrlNotLoadedException('test');
+
+        $jsonResponse = $this->galleryImagesInfiniteScrollingLoadController->__invoke($request);
+        self::assertSame(500, $jsonResponse->getStatusCode());
+        self::assertEquals('{"message":"Internal server error."}', $jsonResponse->getContent());
+        self::assertSame('en', $this->galleryImagesLoadHandlerMock->inputLocation->value);
+        self::assertSame(2, $this->galleryImagesLoadHandlerMock->inputImageCounter->value);
+        self::assertEquals([
+            'notice' => [
+                [
+                    'message' => 'Media urls could not be loaded.',
+                    'context' => []
+                ]
+            ],
+            'debug' => [
+                [
+                    'message' => 'Media urls could not be loaded.',
+                    'context' => [
+                        'exceptionMessage' => 'test'
+                    ]
+                ]
+            ]
+        ], $this->loggerMock->logs);
+    }
+
+    public function testLoadGalleryImages_with_media_not_found(): void
+    {
+        $request = new Request();
+        $request->setLocale('en');
+        $request->query->set(GalleryImagesInfiniteScrollingLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
+        $this->galleryImagesLoadHandlerMock->throwMediaNotFoundException = new MediaNotFoundException('test');
 
         $jsonResponse = $this->galleryImagesInfiniteScrollingLoadController->__invoke($request);
         self::assertSame(500, $jsonResponse->getStatusCode());

@@ -6,6 +6,7 @@ namespace App\Gallery;
 
 use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\Core\Database\DocumentByPathLoader;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\GalleryImagesLoadHandler as GalleryImagesLoadHandlerInterface;
@@ -36,9 +37,10 @@ final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandle
     }
 
     /**
+     * @throws EmptyStringException
      * @throws MediaUrlNotLoadedException
      * @throws PageDocumentNotLoadedException
-     * @throws EmptyStringException
+     * @throws MediaNotFoundException
      */
     #[\Override]
     public function handle(Location $location, ImageCounter $imageCounter): MediaUrlCollection

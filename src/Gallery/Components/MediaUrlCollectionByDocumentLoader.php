@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
-use Psr\Log\LoggerInterface;
-use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
+use XingXingCoin\Core\Database\MediaByMediaIdLoader;
+use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaUrlCollectionByDocumentLoader as MediaUrlCollectionByDocumentLoaderInterface;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
@@ -14,18 +15,20 @@ use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
 use XingXingCoin\Core\Gallery\NavigationMediaUrlLoader;
 use XingXingCoin\Core\Model\Location;
+use XingXingCoin\Core\Model\MediaId;
 
 final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlCollectionByDocumentLoaderInterface
 {
     public function __construct(
-        private MediaManagerInterface $mediaManager,
-        private NavigationMediaUrlLoader $navigationMediaUrlLoader,
-        private LoggerInterface $logger
+        private MediaByMediaIdLoader $mediaByMediaIdLoader,
+        private NavigationMediaUrlLoader $navigationMediaUrlLoader
     ) {
     }
 
     /**
      * @throws MediaUrlNotLoadedException
+     * @throws MediaNotFoundException
+     * @throws EmptyStringException
      */
     #[\Override]
     public function load(
@@ -34,31 +37,21 @@ final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlColle
         RootNavigation $rootNavigation,
         SubNavigation $subNavigation
     ): MediaUrlCollection {
-        try {
-            $this->logger->info('Start loading mediaUrls with mediaIds and location.');
-            $mediaUrls = [];
-            $mediaNavigationUrl = $this->navigationMediaUrlLoader->load(
-                $rootNavigation,
-                $subNavigation,
-                $location
-            );
-            foreach ($this->getMediaIds($document) as $mediaId) {
-                $media = $this->mediaManager->getById($mediaId, $location->value);
-                $mediaUrls[] = [
-                    'imageViewerUrl' => $mediaNavigationUrl->value . '?mediaId=' . $mediaId,
-                    'mediaUrl' => $media->getUrl()
-                ];
-            }
-            $this->logger->info('MediaUrls are successfully loaded.');
-
-            return new MediaUrlCollection($mediaUrls);
-        } catch (\Throwable $exception) {
-            $this->logger->notice('Error by loading mediaUrls with mediaIds and location.');
-            $this->logger->debug('Error by loading mediaUrls with mediaIds and location.', [
-                'exceptionMessage' => $exception->getMessage()
-            ]);
-            throw MediaUrlNotLoadedException::mediaNotFound($exception->getMessage());
+        $mediaUrls = [];
+        $mediaNavigationUrl = $this->navigationMediaUrlLoader->load(
+            $rootNavigation,
+            $subNavigation,
+            $location
+        );
+        foreach ($this->getMediaIds($document) as $mediaId) {
+            $media = $this->mediaByMediaIdLoader->load(new MediaId($mediaId), $location);
+            $mediaUrls[] = [
+                'imageViewerUrl' => $mediaNavigationUrl->value . '?mediaId=' . $mediaId,
+                'mediaUrl' => $media->getUrl()
+            ];
         }
+
+        return new MediaUrlCollection($mediaUrls);
     }
 
     /**

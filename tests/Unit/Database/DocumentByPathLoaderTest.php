@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\tests\Unit\Database;
 
 use App\Database\DocumentByPathLoader;
-use App\Tests\Unit\Mocks\DocumentManagerMock;
+use App\Tests\Unit\Database\Mocks\DocumentManagerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

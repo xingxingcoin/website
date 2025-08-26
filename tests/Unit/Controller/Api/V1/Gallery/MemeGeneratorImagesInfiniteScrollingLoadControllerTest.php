@@ -10,6 +10,7 @@ use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
@@ -102,6 +103,38 @@ final class MemeGeneratorImagesInfiniteScrollingLoadControllerTest extends TestC
         $request->setLocale('en');
         $request->query->set(MemeGeneratorImagesInfiniteScrollingLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
         $this->memeGeneratorImagesLoadHandlerMock->throwMediaUrlNotLoadedException = new MediaUrlNotLoadedException(
+            'test'
+        );
+
+        $jsonResponse = $this->memeGeneratorImagesInfiniteScrollingLoadController->__invoke($request);
+        self::assertSame(500, $jsonResponse->getStatusCode());
+        self::assertEquals('{"message":"Internal server error."}', $jsonResponse->getContent());
+        self::assertSame('en', $this->memeGeneratorImagesLoadHandlerMock->inputLocation->value);
+        self::assertSame(2, $this->memeGeneratorImagesLoadHandlerMock->inputImageCounter->value);
+        self::assertEquals([
+            'notice' => [
+                [
+                    'message' => 'Media urls could not be loaded.',
+                    'context' => []
+                ]
+            ],
+            'debug' => [
+                [
+                    'message' => 'Media urls could not be loaded.',
+                    'context' => [
+                        'exceptionMessage' => 'test'
+                    ]
+                ]
+            ]
+        ], $this->loggerMock->logs);
+    }
+
+    public function testLoadMemeGeneratorImages_with_media_not_found(): void
+    {
+        $request = new Request();
+        $request->setLocale('en');
+        $request->query->set(MemeGeneratorImagesInfiniteScrollingLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
+        $this->memeGeneratorImagesLoadHandlerMock->throwMediaNotFoundException = new MediaNotFoundException(
             'test'
         );
 

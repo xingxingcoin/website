@@ -120,6 +120,20 @@ services:
             - 'http'
         calls:
             - [ pushHandler, [ '@http.logging-handler' ] ]
+    database.logging-handler:
+      class: Monolog\Handler\RotatingFileHandler
+      arguments:
+        - '%kernel.logs_dir%/database_%kernel.environment%.log'
+        - 14
+        - '%log_level%'
+        - true
+        - 436
+    database.logger:
+      class: Monolog\Logger
+      arguments:
+        - 'database'
+      calls:
+        - [ pushHandler, [ '@database.logging-handler' ] ]
 
     App\Controller\Api\V1\Gallery\GalleryImagesInfiniteScrollingLoadController:
         arguments:
@@ -145,16 +159,20 @@ services:
             - '@App\Database\DocumentByPathLoader'
             - '@App\Gallery\Components\MediaUrlCollectionByDocumentLoader'
             - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
+
     App\Database\DocumentByPathLoader:
         arguments:
             - '@sulu_document_manager.document_manager'
             - '@api.v1.gallery.logger'
+    App\Database\MediaByMediaIdLoader:
+      arguments:
+        - '@sulu_media.media_manager'
+        - '@database.logger'
 
     App\Gallery\Components\MediaUrlCollectionByDocumentLoader:
         arguments:
-            - '@sulu_media.media_manager'
+            - '@App\Database\MediaByMediaIdLoader'
             - '@App\Gallery\Components\NavigationMediaUrlLoader'
-            - '@api.v1.gallery.logger'
 
     App\Gallery\Components\NavigationMediaUrlLoader:
         arguments:
@@ -182,9 +200,8 @@ services:
             - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
     App\Gallery\Components\GalleryMediaCollectionByDocumentLoader:
         arguments:
-            - '@sulu_media.media_manager'
+            - '@App\Database\MediaByMediaIdLoader'
             - '@App\Gallery\Components\NavigationMediaUrlLoader'
-            - '@api.v1.gallery.logger'
     App\Gallery\Components\GalleryMediaUrlCollectionByFilterGenerateHandler:
         arguments:
             - '@App\Gallery\Components\MediaUrlCollectionByGifFilterGenerator'
@@ -207,9 +224,8 @@ services:
             - '@App\Gallery\Components\MediaUrlCollectionRandomizer'
     App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader:
         arguments:
-            - '@sulu_media.media_manager'
+            - '@App\Database\MediaByMediaIdLoader'
             - '@App\Gallery\Components\NavigationMediaUrlLoader'
-            - '@api.v1.gallery.logger'
     App\Gallery\Components\MemeGeneratorMediaUrlCollectionByFilterGenerateHandler:
         arguments:
             - '@App\Gallery\Components\MediaUrlCollectionByMemeTemplateFilterGenerator'

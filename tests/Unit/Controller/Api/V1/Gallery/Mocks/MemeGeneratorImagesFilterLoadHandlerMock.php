@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Controller\Api\V1\Gallery\Mocks;
 
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MemeGeneratorImagesFilterLoadHandler;
@@ -19,9 +20,11 @@ final class MemeGeneratorImagesFilterLoadHandlerMock implements MemeGeneratorIma
     public MediaUrlCollection $outputMediaUrlCollection;
     public ?PageDocumentNotLoadedException $throwPageDocumentNotLoadedException = null;
     public ?MediaDataNotLoadedException $throwMediaDataNotLoadedException = null;
+    public ?MediaNotFoundException $throwMediaNotFoundException = null;
 
     /**
      * @throws MediaDataNotLoadedException
+     * @throws MediaNotFoundException
      * @throws PageDocumentNotLoadedException
      */
     public function handle(Location $location, ImageCounter $imageCounter, ImageFilter $imageFilter): MediaUrlCollection
@@ -33,6 +36,9 @@ final class MemeGeneratorImagesFilterLoadHandlerMock implements MemeGeneratorIma
         }
         if ($this->throwMediaDataNotLoadedException instanceof MediaDataNotLoadedException) {
             throw $this->throwMediaDataNotLoadedException;
+        }
+        if ($this->throwMediaNotFoundException instanceof MediaNotFoundException) {
+            throw $this->throwMediaNotFoundException;
         }
 
         return $this->outputMediaUrlCollection;

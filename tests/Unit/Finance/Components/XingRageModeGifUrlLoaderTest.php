@@ -6,9 +6,9 @@ namespace App\Tests\Unit\Finance\Components;
 
 use App\Finance\Components\XingRageModeGifUrlLoader;
 use App\Tests\Unit\CustomTestCase;
+use App\Tests\Unit\Database\Mocks\MediaManagerMock;
 use App\Tests\Unit\Mocks\DocumentByPathLoaderMock;
 use App\Tests\Unit\Mocks\LoggerMock;
-use App\Tests\Unit\Mocks\MediaManagerMock;
 use App\Tests\Unit\Mocks\MediaMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;

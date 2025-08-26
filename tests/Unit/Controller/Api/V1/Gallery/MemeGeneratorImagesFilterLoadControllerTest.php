@@ -10,6 +10,7 @@ use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
@@ -137,6 +138,39 @@ final class MemeGeneratorImagesFilterLoadControllerTest extends TestCase
         $request->query->set(MemeGeneratorImagesFilterLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
         $request->query->set(MemeGeneratorImagesFilterLoadController::REQUEST_IMAGE_FILTER_KEY, 'image');
         $this->memeGeneratorImagesFilterLoadHandlerMock->throwMediaDataNotLoadedException = new MediaDataNotLoadedException(
+            'test'
+        );
+
+        $jsonResponse = $this->memeGeneratorImagesFilterLoadController->__invoke($request);
+        self::assertSame(500, $jsonResponse->getStatusCode());
+        self::assertEquals('{"message":"Internal server error."}', $jsonResponse->getContent());
+        self::assertSame('en', $this->memeGeneratorImagesFilterLoadHandlerMock->inputLocation->value);
+        self::assertSame(2, $this->memeGeneratorImagesFilterLoadHandlerMock->inputImageCounter->value);
+        self::assertEquals([
+            'notice' => [
+                [
+                    'message' => 'Media urls could not be loaded.',
+                    'context' => []
+                ]
+            ],
+            'debug' => [
+                [
+                    'message' => 'Media urls could not be loaded.',
+                    'context' => [
+                        'exceptionMessage' => 'test'
+                    ]
+                ]
+            ]
+        ], $this->loggerMock->logs);
+    }
+
+    public function testLoadMemeGeneratorImages_with_media_not_found(): void
+    {
+        $request = new Request();
+        $request->setLocale('en');
+        $request->query->set(MemeGeneratorImagesFilterLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
+        $request->query->set(MemeGeneratorImagesFilterLoadController::REQUEST_IMAGE_FILTER_KEY, 'image');
+        $this->memeGeneratorImagesFilterLoadHandlerMock->throwMediaNotFoundException = new MediaNotFoundException(
             'test'
         );
 

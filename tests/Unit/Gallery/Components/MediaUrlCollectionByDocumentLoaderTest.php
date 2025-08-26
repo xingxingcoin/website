@@ -7,16 +7,15 @@ namespace App\Tests\Unit\Gallery\Components;
 use App\Gallery\Components\MediaUrlCollectionByDocumentLoader;
 use App\Gallery\GalleryImagesLoadHandler;
 use App\Tests\Unit\CustomTestCase;
+use App\Tests\Unit\Gallery\Components\Mocks\MediaByMediaIdLoaderMock;
 use App\Tests\Unit\Gallery\Components\Mocks\NavigationMediaUrlLoaderMock;
-use App\Tests\Unit\Mocks\LoggerMock;
-use App\Tests\Unit\Mocks\MediaManagerMock;
 use App\Tests\Unit\Mocks\MediaMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Sulu\Bundle\MediaBundle\Api\Media;
-use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaNavigationUrl;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
@@ -31,20 +30,17 @@ use XingXingCoin\Core\Model\Location;
 #[CoversClass(RootNavigation::class)]
 final class MediaUrlCollectionByDocumentLoaderTest extends CustomTestCase
 {
-    private MediaManagerMock $mediaManagerMock;
+    private MediaByMediaIdLoaderMock $mediaByMediaIdLoaderMock;
     private NavigationMediaUrlLoaderMock $navigationMediaUrlLoaderMock;
-    private LoggerMock $loggerMock;
     private MediaUrlCollectionByDocumentLoader $mediaUrlCollectionByDocumentLoader;
 
     protected function setUp(): void
     {
-        $this->mediaManagerMock = new MediaManagerMock();
+        $this->mediaByMediaIdLoaderMock = new MediaByMediaIdLoaderMock();
         $this->navigationMediaUrlLoaderMock = new NavigationMediaUrlLoaderMock();
-        $this->loggerMock = new LoggerMock();
         $this->mediaUrlCollectionByDocumentLoader = new MediaUrlCollectionByDocumentLoader(
-            $this->mediaManagerMock,
-            $this->navigationMediaUrlLoaderMock,
-            $this->loggerMock
+            $this->mediaByMediaIdLoaderMock,
+            $this->navigationMediaUrlLoaderMock
         );
     }
 
@@ -53,7 +49,8 @@ final class MediaUrlCollectionByDocumentLoaderTest extends CustomTestCase
         $expectedMediaBlock = [
             'media' => [
                 'ids' => [
-                    1, 2
+                    1,
+                    2
                 ]
             ]
         ];
@@ -74,10 +71,15 @@ final class MediaUrlCollectionByDocumentLoaderTest extends CustomTestCase
         $expectedLocation = new Location('en');
         $expectedMedia = new Media(new MediaMock(), $expectedLocation->value);
         $expectedMedia->setUrl('testUrl');
-        $this->mediaManagerMock->outputMedia = $expectedMedia;
+        $this->mediaByMediaIdLoaderMock->outputMedia = $expectedMedia;
         $mediaNavigationUrl = new MediaNavigationUrl('testUrl');
         $this->navigationMediaUrlLoaderMock->outputMediaNavigationUrl = $mediaNavigationUrl;
-        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentLoader->load($expectedDocument, $expectedLocation, new RootNavigation(GalleryImagesLoadHandler::ROOT_NAVIGATION), new SubNavigation(GalleryImagesLoadHandler::SUB_NAVIGATION));
+        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentLoader->load(
+            $expectedDocument,
+            $expectedLocation,
+            new RootNavigation(GalleryImagesLoadHandler::ROOT_NAVIGATION),
+            new SubNavigation(GalleryImagesLoadHandler::SUB_NAVIGATION)
+        );
 
         $expectedMediaUrlCollection = new MediaUrlCollection([
             [
@@ -90,22 +92,16 @@ final class MediaUrlCollectionByDocumentLoaderTest extends CustomTestCase
             ]
         ]);
         self::assertEquals($expectedMediaUrlCollection->data, $mediaUrlCollection->data);
-        self::assertSame(2, $this->mediaManagerMock->inputId);
-        self::assertSame($expectedLocation->value, $this->mediaManagerMock->inputLocale);
-        self::assertSame(GalleryImagesLoadHandler::ROOT_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputRootNavigation->value);
-        self::assertSame(GalleryImagesLoadHandler::SUB_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputSubNavigation->value);
-        self::assertSame([
-            'info' => [
-                [
-                    'message' => 'Start loading mediaUrls with mediaIds and location.',
-                    'context' => []
-                ],
-                [
-                    'message' => 'MediaUrls are successfully loaded.',
-                    'context' => []
-                ]
-            ]
-        ], $this->loggerMock->logs);
+        self::assertSame(2, $this->mediaByMediaIdLoaderMock->inputMediaId->value);
+        self::assertSame($expectedLocation->value, $this->mediaByMediaIdLoaderMock->inputLocation->value);
+        self::assertSame(
+            GalleryImagesLoadHandler::ROOT_NAVIGATION,
+            $this->navigationMediaUrlLoaderMock->inputRootNavigation->value
+        );
+        self::assertSame(
+            GalleryImagesLoadHandler::SUB_NAVIGATION,
+            $this->navigationMediaUrlLoaderMock->inputSubNavigation->value
+        );
     }
 
     public function testLoad_with_empty_media_ids(): void
@@ -133,27 +129,20 @@ final class MediaUrlCollectionByDocumentLoaderTest extends CustomTestCase
         $expectedLocation = new Location('en');
         $expectedMedia = new Media(new MediaMock(), $expectedLocation->value);
         $expectedMedia->setUrl('testUrl');
-        $this->mediaManagerMock->outputMedia = $expectedMedia;
+        $this->mediaByMediaIdLoaderMock->outputMedia = $expectedMedia;
         $mediaNavigationUrl = new MediaNavigationUrl('testUrl');
         $this->navigationMediaUrlLoaderMock->outputMediaNavigationUrl = $mediaNavigationUrl;
-        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentLoader->load($expectedDocument, $expectedLocation, new RootNavigation(GalleryImagesLoadHandler::ROOT_NAVIGATION), new SubNavigation(GalleryImagesLoadHandler::SUB_NAVIGATION));
+        $mediaUrlCollection = $this->mediaUrlCollectionByDocumentLoader->load(
+            $expectedDocument,
+            $expectedLocation,
+            new RootNavigation(GalleryImagesLoadHandler::ROOT_NAVIGATION),
+            new SubNavigation(GalleryImagesLoadHandler::SUB_NAVIGATION)
+        );
 
         $expectedMediaUrlCollection = new MediaUrlCollection([]);
         self::assertEquals($expectedMediaUrlCollection->data, $mediaUrlCollection->data);
         self::assertSame(GalleryImagesLoadHandler::ROOT_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputRootNavigation->value);
         self::assertSame(GalleryImagesLoadHandler::SUB_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputSubNavigation->value);
-        self::assertSame([
-            'info' => [
-                [
-                    'message' => 'Start loading mediaUrls with mediaIds and location.',
-                    'context' => []
-                ],
-                [
-                    'message' => 'MediaUrls are successfully loaded.',
-                    'context' => []
-                ]
-            ]
-        ], $this->loggerMock->logs);
     }
 
     public function testLoad_with_ids_equals_null(): void
@@ -178,40 +167,18 @@ final class MediaUrlCollectionByDocumentLoaderTest extends CustomTestCase
         $expectedLocation = new Location('en');
         $expectedMedia = new Media(new MediaMock(), $expectedLocation->value);
         $expectedMedia->setUrl('testUrl');
-        $this->mediaManagerMock->outputMedia = $expectedMedia;
+        $this->mediaByMediaIdLoaderMock->outputMedia = $expectedMedia;
         $mediaNavigationUrl = new MediaNavigationUrl('testUrl');
         $this->navigationMediaUrlLoaderMock->outputMediaNavigationUrl = $mediaNavigationUrl;
         try {
             $this->mediaUrlCollectionByDocumentLoader->load($expectedDocument, $expectedLocation, new RootNavigation(GalleryImagesLoadHandler::ROOT_NAVIGATION), new SubNavigation(GalleryImagesLoadHandler::SUB_NAVIGATION));
             $this->fail('MediaUrlNotLoadedException was expected to be thrown.');
         } catch (MediaUrlNotLoadedException $exception) {
-            self::assertSame('Media with mediaId is not found with error: "Media id not found.".', $exception->getMessage());
+            self::assertSame('Media id not found.', $exception->getMessage());
         }
 
         self::assertSame(GalleryImagesLoadHandler::ROOT_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputRootNavigation->value);
         self::assertSame(GalleryImagesLoadHandler::SUB_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputSubNavigation->value);
-        self::assertSame([
-            'info' => [
-                [
-                    'message' => 'Start loading mediaUrls with mediaIds and location.',
-                    'context' => []
-                ]
-            ],
-            'notice' => [
-                [
-                    'message' => 'Error by loading mediaUrls with mediaIds and location.',
-                    'context' => []
-                ]
-            ],
-            'debug' => [
-                [
-                    'message' => 'Error by loading mediaUrls with mediaIds and location.',
-                    'context' => [
-                        'exceptionMessage' => 'Media id not found.'
-                    ]
-                ]
-            ]
-        ], $this->loggerMock->logs);
     }
 
     public function testLoad_with_media_equals_null(): void
@@ -234,40 +201,18 @@ final class MediaUrlCollectionByDocumentLoaderTest extends CustomTestCase
         $expectedLocation = new Location('en');
         $expectedMedia = new Media(new MediaMock(), $expectedLocation->value);
         $expectedMedia->setUrl('testUrl');
-        $this->mediaManagerMock->outputMedia = $expectedMedia;
+        $this->mediaByMediaIdLoaderMock->outputMedia = $expectedMedia;
         $mediaNavigationUrl = new MediaNavigationUrl('testUrl');
         $this->navigationMediaUrlLoaderMock->outputMediaNavigationUrl = $mediaNavigationUrl;
         try {
             $this->mediaUrlCollectionByDocumentLoader->load($expectedDocument, $expectedLocation, new RootNavigation(GalleryImagesLoadHandler::ROOT_NAVIGATION), new SubNavigation(GalleryImagesLoadHandler::SUB_NAVIGATION));
             $this->fail('MediaUrlNotLoadedException was expected to be thrown.');
         } catch (MediaUrlNotLoadedException $exception) {
-            self::assertSame('Media with mediaId is not found with error: "Media id not found.".', $exception->getMessage());
+            self::assertSame('Media id not found.', $exception->getMessage());
         }
 
         self::assertSame(GalleryImagesLoadHandler::ROOT_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputRootNavigation->value);
         self::assertSame(GalleryImagesLoadHandler::SUB_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputSubNavigation->value);
-        self::assertSame([
-            'info' => [
-                [
-                    'message' => 'Start loading mediaUrls with mediaIds and location.',
-                    'context' => []
-                ]
-            ],
-            'notice' => [
-                [
-                    'message' => 'Error by loading mediaUrls with mediaIds and location.',
-                    'context' => []
-                ]
-            ],
-            'debug' => [
-                [
-                    'message' => 'Error by loading mediaUrls with mediaIds and location.',
-                    'context' => [
-                        'exceptionMessage' => 'Media id not found.'
-                    ]
-                ]
-            ]
-        ], $this->loggerMock->logs);
     }
 
     public function testLoad_with_media_manager_not_found(): void
@@ -296,41 +241,19 @@ final class MediaUrlCollectionByDocumentLoaderTest extends CustomTestCase
         $expectedLocation = new Location('en');
         $expectedMedia = new Media(new MediaMock(), $expectedLocation->value);
         $expectedMedia->setUrl('testUrl');
-        $this->mediaManagerMock->throwMediaNotFoundException = new MediaNotFoundException('test');
+        $this->mediaByMediaIdLoaderMock->throwMediaNotFoundException = new MediaNotFoundException('test');
         $mediaNavigationUrl = new MediaNavigationUrl('testUrl');
         $this->navigationMediaUrlLoaderMock->outputMediaNavigationUrl = $mediaNavigationUrl;
         try {
             $this->mediaUrlCollectionByDocumentLoader->load($expectedDocument, $expectedLocation, new RootNavigation(GalleryImagesLoadHandler::ROOT_NAVIGATION), new SubNavigation(GalleryImagesLoadHandler::SUB_NAVIGATION));
-            $this->fail('MediaUrlNotLoadedException was expected to be thrown.');
-        } catch (MediaUrlNotLoadedException $exception) {
-            self::assertSame('Media with mediaId is not found with error: "Media with the ID test was not found".', $exception->getMessage());
+            $this->fail('MediaNotFoundException was expected to be thrown.');
+        } catch (MediaNotFoundException $exception) {
+            self::assertSame('test', $exception->getMessage());
         }
 
         self::assertSame(GalleryImagesLoadHandler::ROOT_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputRootNavigation->value);
         self::assertSame(GalleryImagesLoadHandler::SUB_NAVIGATION, $this->navigationMediaUrlLoaderMock->inputSubNavigation->value);
-        self::assertSame(1, $this->mediaManagerMock->inputId);
-        self::assertSame($expectedLocation->value, $this->mediaManagerMock->inputLocale);
-        self::assertSame([
-            'info' => [
-                [
-                    'message' => 'Start loading mediaUrls with mediaIds and location.',
-                    'context' => []
-                ]
-            ],
-            'notice' => [
-                [
-                    'message' => 'Error by loading mediaUrls with mediaIds and location.',
-                    'context' => []
-                ]
-            ],
-            'debug' => [
-                [
-                    'message' => 'Error by loading mediaUrls with mediaIds and location.',
-                    'context' => [
-                        'exceptionMessage' => 'Media with the ID test was not found'
-                    ]
-                ]
-            ]
-        ], $this->loggerMock->logs);
+        self::assertSame(1, $this->mediaByMediaIdLoaderMock->inputMediaId->value);
+        self::assertSame($expectedLocation->value, $this->mediaByMediaIdLoaderMock->inputLocation->value);
     }
 }

@@ -7,6 +7,7 @@ namespace App\Controller\Api\V1\Gallery;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MemeGeneratorImagesFilterLoadHandler;
@@ -47,7 +48,7 @@ final readonly class MemeGeneratorImagesFilterLoadController
                 'exceptionMessage' => $exception->getMessage()
             ]);
             return new JsonResponse(['message' => 'Bad request.'], 400);
-        } catch (MediaDataNotLoadedException $exception) {
+        } catch (MediaDataNotLoadedException|MediaNotFoundException $exception) {
             $this->logger->notice('Media urls could not be loaded.');
             $this->logger->debug('Media urls could not be loaded.', [
                 'exceptionMessage' => $exception->getMessage()

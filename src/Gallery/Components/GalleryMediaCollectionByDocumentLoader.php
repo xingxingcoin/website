@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
-use Psr\Log\LoggerInterface;
-use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
+use XingXingCoin\Core\Database\MediaByMediaIdLoader;
+use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
@@ -14,6 +15,7 @@ use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
 use XingXingCoin\Core\Gallery\NavigationMediaUrlLoader;
 use XingXingCoin\Core\Model\Location;
+use XingXingCoin\Core\Model\MediaId;
 
 final  readonly class GalleryMediaCollectionByDocumentLoader implements MediaCollectionByDocumentLoader
 {
@@ -22,14 +24,14 @@ final  readonly class GalleryMediaCollectionByDocumentLoader implements MediaCol
     public const string MEDIA_FILE_EXTENSION = 'mediaFileExtension';
 
     public function __construct(
-        private MediaManagerInterface $mediaManager,
-        private NavigationMediaUrlLoader $navigationMediaUrlLoader,
-        private LoggerInterface $logger
-    ) {
-    }
+        private MediaByMediaIdLoader $mediaByMediaIdLoader,
+        private NavigationMediaUrlLoader $navigationMediaUrlLoader
+    ) {}
 
     /**
      * @throws MediaDataNotLoadedException
+     * @throws MediaNotFoundException
+     * @throws EmptyStringException
      */
     #[\Override]
     public function load(
@@ -38,32 +40,22 @@ final  readonly class GalleryMediaCollectionByDocumentLoader implements MediaCol
         RootNavigation $rootNavigation,
         SubNavigation $subNavigation
     ): MediaCollection {
-        try {
-            $this->logger->info('Start loading media data with mediaIds and location.');
-            $mediaData = [];
-            $mediaNavigationUrl = $this->navigationMediaUrlLoader->load(
-                $rootNavigation,
-                $subNavigation,
-                $location
-            );
-            foreach ($this->getMediaIds($document) as $mediaId) {
-                $media = $this->mediaManager->getById($mediaId, $location->value);
-                $mediaData[] = [
-                    self::IMAGE_VIEWER_URL_KEY => $mediaNavigationUrl->value . '?mediaId=' . $mediaId,
-                    self::MEDIA_URL_KEY => $media->getUrl(),
-                    self::MEDIA_FILE_EXTENSION => $media->getExtension()
-                ];
-            }
-            $this->logger->info('Media data are successfully loaded.');
-
-            return new MediaCollection($mediaData);
-        } catch (\Throwable $exception) {
-            $this->logger->notice('Error by loading media data with mediaIds and location.');
-            $this->logger->debug('Error by loading media data with mediaIds and location.', [
-                'exceptionMessage' => $exception->getMessage()
-            ]);
-            throw MediaDataNotLoadedException::mediaNotFound($exception->getMessage());
+        $mediaData = [];
+        $mediaNavigationUrl = $this->navigationMediaUrlLoader->load(
+            $rootNavigation,
+            $subNavigation,
+            $location
+        );
+        foreach ($this->getMediaIds($document) as $mediaId) {
+            $media = $this->mediaByMediaIdLoader->load(new MediaId($mediaId), $location);
+            $mediaData[] = [
+                self::IMAGE_VIEWER_URL_KEY => $mediaNavigationUrl->value . '?mediaId=' . $mediaId,
+                self::MEDIA_URL_KEY => $media->getUrl(),
+                self::MEDIA_FILE_EXTENSION => $media->getExtension()
+            ];
         }
+
+        return new MediaCollection($mediaData);
     }
 
     /**

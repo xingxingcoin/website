@@ -10,6 +10,7 @@ use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
+use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
@@ -139,6 +140,37 @@ final class GalleryImagesFilterLoadControllerTest extends TestCase
         $this->galleryImagesFilterLoadHandlerMock->throwMediaDataNotLoadedException = new MediaDataNotLoadedException(
             'test'
         );
+
+        $jsonResponse = $this->galleryImagesFilterLoadController->__invoke($request);
+        self::assertSame(500, $jsonResponse->getStatusCode());
+        self::assertEquals('{"message":"Internal server error."}', $jsonResponse->getContent());
+        self::assertSame('en', $this->galleryImagesFilterLoadHandlerMock->inputLocation->value);
+        self::assertSame(2, $this->galleryImagesFilterLoadHandlerMock->inputImageCounter->value);
+        self::assertEquals([
+            'notice' => [
+                [
+                    'message' => 'Media urls could not be loaded.',
+                    'context' => []
+                ]
+            ],
+            'debug' => [
+                [
+                    'message' => 'Media urls could not be loaded.',
+                    'context' => [
+                        'exceptionMessage' => 'test'
+                    ]
+                ]
+            ]
+        ], $this->loggerMock->logs);
+    }
+
+    public function testLoadMemeGeneratorImages_with_media_not_found(): void
+    {
+        $request = new Request();
+        $request->setLocale('en');
+        $request->query->set(GalleryImagesFilterLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
+        $request->query->set(GalleryImagesFilterLoadController::REQUEST_IMAGE_FILTER_KEY, 'image');
+        $this->galleryImagesFilterLoadHandlerMock->throwMediaNotFoundException = new MediaNotFoundException('test');
 
         $jsonResponse = $this->galleryImagesFilterLoadController->__invoke($request);
         self::assertSame(500, $jsonResponse->getStatusCode());
