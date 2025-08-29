@@ -82,6 +82,58 @@ final class XingFinanceDataByDexScreenerApiLoaderTest extends TestCase
                     'message' => 'Start loading xing finance data.',
                     'context' => []
                 ]
+            ],
+            'notice' => [
+                [
+                    'message' => 'Failed loading xing finance data.',
+                    'context' => [
+                        'exceptionMessage' => 'test'
+                    ]
+                ]
+            ]
+        ], $this->loggerMock->logs);
+    }
+
+    public function testLoad_with_invalid_response_code(): void
+    {
+        $expectedBodyAsArray = [['testBody']];
+        $responseMock = new ResponseMock();
+        $responseMock->outputStatusCode = 500;
+        $responseMock->outputContent = 'testBody';
+        $responseMock->outputResponseAsArray = $expectedBodyAsArray;
+        $this->httpClientMock->outputResponse = $responseMock;
+
+        try {
+            $this->xingFinanceDataByDexScreenerApiLoader->load();
+            $this->fail('XingFinanceDataNotLoadedException was expected to be thrown.');
+        } catch (XingFinanceDataNotLoadedException $exception) {
+            self::assertSame('Response code is not 200.', $exception->getMessage());
+        }
+
+        self::assertSame(XingFinanceDataByDexScreenerApiLoader::METHOD, $this->httpClientMock->inputMethod);
+        self::assertSame(XingFinanceDataByDexScreenerApiLoader::URL, $this->httpClientMock->inputUrl);
+        self::assertEquals([], $this->httpClientMock->inputOptions);
+
+        self::assertEquals([
+            'info' => [
+                [
+                    'message' => 'Start loading xing finance data.',
+                    'context' => []
+                ]
+            ],
+            'notice' => [
+                [
+                    'message' => 'Loading xing finance data has no response code 200.',
+                    'context' => [
+                        'statusCode' => 500
+                    ]
+                ],
+                [
+                    'message' => 'Failed loading xing finance data.',
+                    'context' => [
+                        'exceptionMessage' => 'Response code is not 200.'
+                    ]
+                ]
             ]
         ], $this->loggerMock->logs);
     }

@@ -29,10 +29,19 @@ final readonly class XingFinanceDataByDexScreenerApiLoader implements XingFinanc
         try {
             $this->logger->info('Start loading xing finance data.');
             $response = $this->client->request(self::METHOD, self::URL);
+            if ($response->getStatusCode() !== 200) {
+                $this->logger->notice('Loading xing finance data has no response code 200.', [
+                    'statusCode' => $response->getStatusCode()
+                ]);
+                throw new XingFinanceDataNotLoadedException('Response code is not 200.');
+            }
             $this->logger->info('Xing finance data is loaded successfully.');
 
             return new FinanceDataCollection($response->toArray()[0]);
         } catch (\Throwable $exception) {
+            $this->logger->notice('Failed loading xing finance data.', [
+                'exceptionMessage' => $exception->getMessage()
+            ]);
             throw new XingFinanceDataNotLoadedException($exception->getMessage());
         }
     }
