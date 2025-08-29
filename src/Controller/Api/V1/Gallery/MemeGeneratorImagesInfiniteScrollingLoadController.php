@@ -28,7 +28,7 @@ final readonly class MemeGeneratorImagesInfiniteScrollingLoadController
     {
         try {
             $location = new Location($request->getLocale());
-            $imageCounterAsInt = $request->query->getInt(self::REQUEST_IMAGE_COUNTER_KEY, 0);
+            $imageCounterAsInt = $request->query->getInt(self::REQUEST_IMAGE_COUNTER_KEY);
             $imageCounter = new ImageCounter($imageCounterAsInt);
             $mediaUrlCollection = $this->memeGeneratorImagesLoadHandler->handle($location, $imageCounter);
 
