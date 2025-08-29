@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Tests\Gallery\Model;
+namespace App\Tests\Unit\Database\Model;
 
+use App\Database\Model\RootNavigation;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Exception\EmptyStringException;
 
 #[CoversClass(RootNavigation::class)]
@@ -24,7 +24,10 @@ final class RootNavigationTest extends TestCase
             new RootNavigation('');
             $this->fail('EmptyStringException was expected to be thrown.');
         } catch (EmptyStringException $exception) {
-            self::assertSame('Validation failed for value "rootNavigation" with error: "Value for "rootNavigation" should not be empty."', $exception->getMessage());
+            self::assertSame(
+                'Validation failed for value "rootNavigation" with error: "Value for "rootNavigation" should not be empty."',
+                $exception->getMessage()
+            );
         }
     }
 }

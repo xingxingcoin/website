@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Model;
+namespace App\Tests\Unit\Database\Model;
 
-use App\Model\Location;
+use App\Database\Model\Location;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use XingXingCoin\Core\Exception\EmptyStringException;

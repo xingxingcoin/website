@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Database;
 
 use App\Database\DefaultNavigationUrlLoader;
+use App\Database\Model\Location;
+use App\Database\Model\NavigationUrl;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
 use App\Tests\Unit\Database\Mocks\NavigationMapperMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use App\Database\Model\NavigationUrl;
 use XingXingCoin\Core\Exception\EmptyStringException;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use App\Model\Location;
 
 #[CoversClass(DefaultNavigationUrlLoader::class)]
 #[CoversClass(NavigationUrl::class)]

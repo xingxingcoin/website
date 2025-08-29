@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components\Mocks;
 
+use App\Database\Model\Location;
 use App\Database\Model\NavigationUrl;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
 use App\Database\NavigationUrlLoader;
-use App\Model\Location;
 
 final class NavigationUrlLoaderMock implements NavigationUrlLoader
 {

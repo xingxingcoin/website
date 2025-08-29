@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Gallery;
 
 use App\Database\Model\DocumentPath;
+use App\Database\Model\Location;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
 use App\Gallery\MemeGeneratorImagesFilterLoadHandler;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Gallery\Mocks\MediaCollectionByDocumentLoaderMock;
@@ -19,9 +22,6 @@ use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use App\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesFilterLoadHandler::class)]
 #[CoversClass(Location::class)]

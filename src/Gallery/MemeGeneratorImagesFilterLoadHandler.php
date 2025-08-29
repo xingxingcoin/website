@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Gallery;
 
-use Sulu\Component\DocumentManager\PathBuilder;
 use App\Database\DocumentByPathLoader;
 use App\Database\Exception\MediaNotFoundException;
 use App\Database\Exception\PageDocumentNotLoadedException;
 use App\Database\Model\DocumentPath;
+use App\Database\Model\Location;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
+use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
@@ -18,9 +21,6 @@ use XingXingCoin\Core\Gallery\MemeGeneratorImagesFilterLoadHandler as MemeGenera
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use App\Model\Location;
 
 final readonly class MemeGeneratorImagesFilterLoadHandler implements MemeGeneratorImagesFilterLoadHandlerInterface
 {

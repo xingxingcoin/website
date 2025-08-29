@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Finance\Components;
 
+use App\Database\DocumentByPathLoader;
+use App\Database\Exception\PageDocumentNotLoadedException;
+use App\Database\Model\DocumentPath;
+use App\Database\Model\Location;
 use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use App\Database\DocumentByPathLoader;
-use App\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
-use App\Database\Model\DocumentPath;
-use App\Model\Location;
-use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class XingHappyModeGifUrlLoader implements XingGifUrlLoader
 {

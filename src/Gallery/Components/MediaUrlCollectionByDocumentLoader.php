@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
-use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use App\Database\Exception\MediaNotFoundException;
 use App\Database\MediaByMediaIdLoader;
+use App\Database\Model\Location;
 use App\Database\Model\MediaId;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
 use App\Database\NavigationUrlLoader;
+use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaUrlCollectionByDocumentLoader as MediaUrlCollectionByDocumentLoaderInterface;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use App\Model\Location;
 
 final readonly class MediaUrlCollectionByDocumentLoader implements MediaUrlCollectionByDocumentLoaderInterface
 {

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Finance;
 
+use App\Database\Model\Location;
 use App\Finance\XingFinanceDataByDexScreenerApiHandler;
 use App\Tests\Unit\Finance\Mocks\XingFinanceDataByDexScreenerApiLoaderMock;
 use App\Tests\Unit\Finance\Mocks\XingGifUrlLoaderMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use App\Model\Location;
 
 #[CoversClass(XingFinanceDataByDexScreenerApiHandler::class)]
 #[CoversClass(Location::class)]

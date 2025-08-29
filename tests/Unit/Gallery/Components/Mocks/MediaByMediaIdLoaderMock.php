@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components\Mocks;
 
-use Sulu\Bundle\MediaBundle\Api\Media;
 use App\Database\Exception\MediaNotFoundException;
 use App\Database\MediaByMediaIdLoader;
+use App\Database\Model\Location;
 use App\Database\Model\MediaId;
-use App\Model\Location;
+use Sulu\Bundle\MediaBundle\Api\Media;
 
 final class MediaByMediaIdLoaderMock implements MediaByMediaIdLoader
 {

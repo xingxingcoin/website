@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Gallery\Model;
+namespace App\Database\Model;
 
 use XingXingCoin\Core\Exception\EmptyStringException;
 
-final readonly class RootNavigation
+final readonly class Location
 {
     /**
      * @throws EmptyStringException
@@ -15,7 +15,7 @@ final readonly class RootNavigation
         public string $value
     ) {
         if ($this->value === '') {
-            throw EmptyStringException::stringIsEmpty('rootNavigation');
+            throw EmptyStringException::stringIsEmpty('location');
         }
     }
 }

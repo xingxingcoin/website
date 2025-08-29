@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Database;
 
 use App\Database\DefaultMediaByMediaIdLoader;
+use App\Database\Model\Location;
+use App\Database\Model\MediaId;
 use App\Tests\Unit\Database\Mocks\MediaManagerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use App\Tests\Unit\Mocks\MediaMock;
@@ -12,8 +14,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
-use App\Database\Model\MediaId;
-use App\Model\Location;
 
 #[CoversClass(DefaultMediaByMediaIdLoader::class)]
 #[CoversClass(Location::class)]

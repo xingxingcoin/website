@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Database;
 
-use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
+use App\Database\Model\Location;
 use App\Database\Model\NavigationUrl;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
+use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
 use XingXingCoin\Core\Exception\EmptyStringException;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use App\Model\Location;
 
 final readonly class DefaultNavigationUrlLoader implements NavigationUrlLoader
 {

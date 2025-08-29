@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Controller\Api\V1\Gallery;
 
 use App\Controller\Api\V1\Gallery\MemeGeneratorImagesInfiniteScrollingLoadController;
+use App\Database\Exception\MediaNotFoundException;
+use App\Database\Exception\PageDocumentNotLoadedException;
+use App\Database\Model\Location;
 use App\Tests\Unit\Controller\Api\V1\Gallery\Mocks\MemeGeneratorImagesLoadHandlerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use App\Database\Exception\MediaNotFoundException;
-use App\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use App\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesInfiniteScrollingLoadController::class)]
 #[CoversClass(Location::class)]

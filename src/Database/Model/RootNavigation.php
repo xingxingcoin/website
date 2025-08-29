@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Gallery\Model;
+namespace App\Database\Model;
 
 use XingXingCoin\Core\Exception\EmptyStringException;
 
-final readonly class SubNavigation
+final readonly class RootNavigation
 {
     /**
      * @throws EmptyStringException
@@ -15,7 +15,7 @@ final readonly class SubNavigation
         public string $value
     ) {
         if ($this->value === '') {
-            throw EmptyStringException::stringIsEmpty('subNavigation');
+            throw EmptyStringException::stringIsEmpty('rootNavigation');
         }
     }
 }

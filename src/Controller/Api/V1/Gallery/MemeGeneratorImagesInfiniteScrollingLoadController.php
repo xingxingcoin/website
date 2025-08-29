@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\V1\Gallery;
 
+use App\Database\Exception\MediaNotFoundException;
+use App\Database\Exception\PageDocumentNotLoadedException;
+use App\Database\Model\Location;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use App\Database\Exception\MediaNotFoundException;
-use App\Database\Exception\PageDocumentNotLoadedException;
+use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\MemeGeneratorImagesLoadHandler;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
-use App\Model\Location;
-use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class MemeGeneratorImagesInfiniteScrollingLoadController
 {

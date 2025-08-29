@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components;
 
+use App\Database\Exception\MediaNotFoundException;
+use App\Database\Model\Location;
+use App\Database\Model\NavigationUrl;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
 use App\Gallery\Components\MediaUrlCollectionByDocumentLoader;
 use App\Gallery\GalleryImagesLoadHandler;
 use App\Tests\Unit\CustomTestCase;
@@ -15,13 +20,8 @@ use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
-use App\Database\Exception\MediaNotFoundException;
-use App\Database\Model\NavigationUrl;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use App\Model\Location;
 
 #[CoversClass(MediaUrlCollectionByDocumentLoader::class)]
 #[CoversClass(Location::class)]

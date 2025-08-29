@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components;
 
+use App\Database\Model\Location;
+use App\Database\Model\NavigationUrl;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
 use App\Gallery\Components\MemeGeneratorMediaCollectionByDocumentLoader;
 use App\Gallery\MemeGeneratorImagesLoadHandler;
 use App\Tests\Unit\CustomTestCase;
@@ -18,12 +22,8 @@ use Sulu\Bundle\MediaBundle\Entity\FileVersion;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
-use App\Database\Model\NavigationUrl;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use App\Model\Location;
 
 #[CoversClass(MemeGeneratorMediaCollectionByDocumentLoader::class)]
 #[CoversClass(Location::class)]

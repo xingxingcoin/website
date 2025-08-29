@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Gallery;
 
 use App\Database\Model\DocumentPath;
+use App\Database\Model\Location;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
 use App\Gallery\GalleryImagesLoadHandler;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionByDocumentLoaderMock;
@@ -16,9 +19,6 @@ use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use App\Model\Location;
 
 #[CoversClass(GalleryImagesLoadHandler::class)]
 #[CoversClass(Location::class)]

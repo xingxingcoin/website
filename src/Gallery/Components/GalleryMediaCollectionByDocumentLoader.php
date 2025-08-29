@@ -6,16 +6,16 @@ namespace App\Gallery\Components;
 
 use App\Database\Exception\MediaNotFoundException;
 use App\Database\MediaByMediaIdLoader;
+use App\Database\Model\Location;
 use App\Database\Model\MediaId;
+use App\Database\Model\RootNavigation;
+use App\Database\Model\SubNavigation;
 use App\Database\NavigationUrlLoader;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
-use XingXingCoin\Core\Gallery\Model\RootNavigation;
-use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use App\Model\Location;
 
 final  readonly class GalleryMediaCollectionByDocumentLoader implements MediaCollectionByDocumentLoader
 {
