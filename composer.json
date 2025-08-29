@@ -72,8 +72,7 @@
         "symfony/css-selector": "^7.2",
         "symfony/debug-bundle": "^7.2",
         "symfony/error-handler": "^7.2",
-        "symfony/web-profiler-bundle": "^7.2",
-        "vincentlanglet/twig-cs-fixer": "^3.0"
+        "symfony/web-profiler-bundle": "^7.2"
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -141,8 +140,6 @@
         "lint": [
             "@lint-php-cs",
             "@lint-rector",
-            "@lint-twig",
-            "@lint-twig-cs",
             "@lint-yaml",
             "@lint-xliff",
             "@lint-translations",
@@ -151,18 +148,14 @@
             "@lint-doctrine"
         ],
         "fix": [
-            "@php-cs-fix",
-            "@twig-cs-fix"
+            "@php-cs-fix"
         ],
         "lint-rector": [
             "@php bin/websiteconsole cache:warmup --env=dev"
         ],
         "php-cs-fix": "@php vendor/bin/php-cs-fixer fix",
         "lint-php-cs": "@php vendor/bin/php-cs-fixer fix --verbose --diff --dry-run",
-        "twig-cs-fix": "@php vendor/bin/twig-cs-fixer lint --fix",
-        "lint-twig-cs": "@php vendor/bin/twig-cs-fixer lint",
         "lint-composer": "@composer validate --no-check-publish --strict",
-        "lint-twig": "@php bin/console lint:twig templates/",
         "lint-xliff": "@php bin/console lint:xliff translations/",
         "lint-translations": [
             "@php bin/console debug:translation en --only-missing"
