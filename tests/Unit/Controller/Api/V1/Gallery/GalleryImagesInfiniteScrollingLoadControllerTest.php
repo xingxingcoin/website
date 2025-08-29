@@ -11,13 +11,14 @@ use App\Database\Model\Location;
 use App\Tests\Unit\Controller\Api\V1\Gallery\Mocks\GalleryImagesLoadHandlerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(GalleryImagesInfiniteScrollingLoadController::class)]
-#[CoversClass(Location::class)]
+#[UsesClass(Location::class)]
 final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
 {
     private GalleryImagesLoadHandlerMock $galleryImagesLoadHandlerMock;

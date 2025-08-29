@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace XingXingCoin\JsonValidator\Tests\Validation;
 
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use XingXingCoin\JsonValidator\Validation\Exception\InvalidHttpJsonResponseSchema;
 use XingXingCoin\JsonValidator\Validation\Model\JsonString;
@@ -13,7 +14,7 @@ use XingXingCoin\JsonValidator\Validation\Model\SchemaPath;
 use XingXingCoin\JsonValidator\Validation\OpisJsonValidator;
 
 #[CoversClass(OpisJsonValidator::class)]
-#[CoversClass(JsonString::class)]
+#[UsesClass(JsonString::class)]
 final class OpisJsonValidatorTest extends TestCase
 {
     private OpisJsonValidator $opisJsonValidator;

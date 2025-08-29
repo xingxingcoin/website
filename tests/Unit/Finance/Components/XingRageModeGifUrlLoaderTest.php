@@ -13,6 +13,7 @@ use App\Tests\Unit\Mocks\DocumentByPathLoaderMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use App\Tests\Unit\Mocks\MediaMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
@@ -24,8 +25,8 @@ use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 
 #[CoversClass(XingRageModeGifUrlLoader::class)]
-#[CoversClass(Location::class)]
-#[CoversClass(DocumentPath::class)]
+#[UsesClass(Location::class)]
+#[UsesClass(DocumentPath::class)]
 final class XingRageModeGifUrlLoaderTest extends CustomTestCase
 {
     private MockObject $pathBuilderMock;

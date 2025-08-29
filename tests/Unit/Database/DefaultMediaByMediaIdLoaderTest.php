@@ -11,12 +11,13 @@ use App\Tests\Unit\Database\Mocks\MediaManagerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use App\Tests\Unit\Mocks\MediaMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 
 #[CoversClass(DefaultMediaByMediaIdLoader::class)]
-#[CoversClass(Location::class)]
+#[UsesClass(Location::class)]
 final class DefaultMediaByMediaIdLoaderTest extends TestCase
 {
     private MediaManagerMock $mediaManagerMock;

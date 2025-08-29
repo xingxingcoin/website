@@ -16,6 +16,7 @@ use App\Tests\Unit\Gallery\Components\Mocks\MediaByMediaIdLoaderMock;
 use App\Tests\Unit\Gallery\Components\Mocks\NavigationUrlLoaderMock;
 use App\Tests\Unit\Mocks\MediaMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
@@ -24,10 +25,10 @@ use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(MediaUrlCollectionByDocumentLoader::class)]
-#[CoversClass(Location::class)]
-#[CoversClass(NavigationUrl::class)]
-#[CoversClass(SubNavigation::class)]
-#[CoversClass(RootNavigation::class)]
+#[UsesClass(Location::class)]
+#[UsesClass(NavigationUrl::class)]
+#[UsesClass(SubNavigation::class)]
+#[UsesClass(RootNavigation::class)]
 final class MediaUrlCollectionByDocumentLoaderTest extends CustomTestCase
 {
     private MediaByMediaIdLoaderMock $mediaByMediaIdLoaderMock;

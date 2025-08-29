@@ -16,6 +16,7 @@ use App\Tests\Unit\Gallery\Components\Mocks\NavigationUrlLoaderMock;
 use App\Tests\Unit\Mocks\MediaMock;
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\MediaBundle\Entity\File;
 use Sulu\Bundle\MediaBundle\Entity\FileVersion;
@@ -26,10 +27,10 @@ use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 
 #[CoversClass(MemeGeneratorMediaCollectionByDocumentLoader::class)]
-#[CoversClass(Location::class)]
-#[CoversClass(NavigationUrl::class)]
-#[CoversClass(SubNavigation::class)]
-#[CoversClass(RootNavigation::class)]
+#[UsesClass(Location::class)]
+#[UsesClass(NavigationUrl::class)]
+#[UsesClass(SubNavigation::class)]
+#[UsesClass(RootNavigation::class)]
 final class MemeGeneratorMediaCollectionByDocumentLoaderTest extends CustomTestCase
 {
     private MediaByMediaIdLoaderMock $mediaByMediaIdLoaderMock;

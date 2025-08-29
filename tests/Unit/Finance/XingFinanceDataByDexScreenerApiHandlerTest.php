@@ -9,11 +9,12 @@ use App\Finance\XingFinanceDataByDexScreenerApiHandler;
 use App\Tests\Unit\Finance\Mocks\XingFinanceDataByDexScreenerApiLoaderMock;
 use App\Tests\Unit\Finance\Mocks\XingGifUrlLoaderMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 
 #[CoversClass(XingFinanceDataByDexScreenerApiHandler::class)]
-#[CoversClass(Location::class)]
+#[UsesClass(Location::class)]
 final class XingFinanceDataByDexScreenerApiHandlerTest extends TestCase
 {
     private XingFinanceDataByDexScreenerApiLoaderMock $xingFinanceDataByDexScreenerApiLoaderMock;

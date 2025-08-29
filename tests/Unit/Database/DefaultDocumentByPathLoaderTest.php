@@ -8,6 +8,7 @@ use App\Database\DefaultDocumentByPathLoader;
 use App\Tests\Unit\Database\Mocks\DocumentManagerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\Exception\DocumentManagerException;
@@ -15,7 +16,7 @@ use App\Database\Exception\PageDocumentNotLoadedException;
 use App\Database\Model\DocumentPath;
 
 #[CoversClass(DefaultDocumentByPathLoader::class)]
-#[CoversClass(DocumentPath::class)]
+#[UsesClass(DocumentPath::class)]
 final class DefaultDocumentByPathLoaderTest extends TestCase
 {
     private DocumentManagerMock $documentManagerMock;

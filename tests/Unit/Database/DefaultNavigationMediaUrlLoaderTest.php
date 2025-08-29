@@ -11,14 +11,15 @@ use App\Database\Model\RootNavigation;
 use App\Database\Model\SubNavigation;
 use App\Tests\Unit\Database\Mocks\NavigationMapperMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use App\Exception\EmptyStringException;
 
 #[CoversClass(DefaultNavigationUrlLoader::class)]
-#[CoversClass(NavigationUrl::class)]
-#[CoversClass(RootNavigation::class)]
-#[CoversClass(SubNavigation::class)]
-#[CoversClass(Location::class)]
+#[UsesClass(NavigationUrl::class)]
+#[UsesClass(RootNavigation::class)]
+#[UsesClass(SubNavigation::class)]
+#[UsesClass(Location::class)]
 final class DefaultNavigationMediaUrlLoaderTest extends TestCase
 {
     private NavigationMapperMock $navigationMapperMock;

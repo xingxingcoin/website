@@ -15,6 +15,7 @@ use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionByFilterGenerateHandlerMock;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionRandomizerMock;
 use App\Tests\Unit\Mocks\DocumentByPathLoaderMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\PathBuilder;
@@ -24,11 +25,11 @@ use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(MemeGeneratorImagesFilterLoadHandler::class)]
-#[CoversClass(Location::class)]
-#[CoversClass(RootNavigation::class)]
-#[CoversClass(SubNavigation::class)]
-#[CoversClass(ImageFilter::class)]
-#[CoversClass(DocumentPath::class)]
+#[UsesClass(Location::class)]
+#[UsesClass(RootNavigation::class)]
+#[UsesClass(SubNavigation::class)]
+#[UsesClass(ImageFilter::class)]
+#[UsesClass(DocumentPath::class)]
 final class MemeGeneratorImagesFilterLoadHandlerTest extends CustomTestCase
 {
     private MockObject $pathBuilderMock;

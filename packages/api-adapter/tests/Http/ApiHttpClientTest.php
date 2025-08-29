@@ -10,6 +10,7 @@ use Opis\JsonSchema\Errors\ValidationError;
 use Opis\JsonSchema\Info\DataInfo;
 use Opis\JsonSchema\ValidationResult;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use XingXingCoin\ApiAdapter\Http\ApiHttpClient;
 use XingXingCoin\ApiAdapter\Tests\Http\Mocks\JsonValidatorMock;
@@ -19,7 +20,7 @@ use XingXingCoin\JsonValidator\Validation\Exception\InvalidHttpJsonResponseSchem
 use XingXingCoin\JsonValidator\Validation\Model\JsonString;
 
 #[CoversClass(ApiHttpClient::class)]
-#[CoversClass(JsonString::class)]
+#[UsesClass(JsonString::class)]
 final class ApiHttpClientTest extends TestCase
 {
     private JsonValidatorMock $jsonValidatorMock;

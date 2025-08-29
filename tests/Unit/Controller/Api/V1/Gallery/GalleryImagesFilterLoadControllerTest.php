@@ -11,6 +11,7 @@ use App\Database\Model\Location;
 use App\Tests\Unit\Controller\Api\V1\Gallery\Mocks\GalleryImagesFilterLoadHandlerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
@@ -18,8 +19,8 @@ use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(GalleryImagesFilterLoadController::class)]
-#[CoversClass(Location::class)]
-#[CoversClass(ImageFilter::class)]
+#[UsesClass(Location::class)]
+#[UsesClass(ImageFilter::class)]
 final class GalleryImagesFilterLoadControllerTest extends TestCase
 {
     private GalleryImagesFilterLoadHandlerMock $galleryImagesFilterLoadHandlerMock;

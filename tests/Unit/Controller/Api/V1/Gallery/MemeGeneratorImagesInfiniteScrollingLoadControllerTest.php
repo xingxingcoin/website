@@ -11,13 +11,14 @@ use App\Database\Model\Location;
 use App\Tests\Unit\Controller\Api\V1\Gallery\Mocks\MemeGeneratorImagesLoadHandlerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(MemeGeneratorImagesInfiniteScrollingLoadController::class)]
-#[CoversClass(Location::class)]
+#[UsesClass(Location::class)]
 final class MemeGeneratorImagesInfiniteScrollingLoadControllerTest extends TestCase
 {
     private MemeGeneratorImagesLoadHandlerMock $memeGeneratorImagesLoadHandlerMock;

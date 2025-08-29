@@ -7,13 +7,14 @@ namespace App\Tests\Unit\Gallery\Components;
 use App\Gallery\Components\GalleryMediaUrlCollectionByFilterGenerateHandler;
 use App\Tests\Unit\Gallery\Components\Mocks\MediaUrlCollectionByFilterGeneratorMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 #[CoversClass(GalleryMediaUrlCollectionByFilterGenerateHandler::class)]
-#[CoversClass(ImageFilter::class)]
+#[UsesClass(ImageFilter::class)]
 final class GalleryMediaUrlCollectionByFilterGenerateHandlerTest extends TestCase
 {
     private MediaUrlCollectionByFilterGeneratorMock $mediaUrlCollectionByAllImagesFilterGeneratorMock;

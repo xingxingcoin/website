@@ -9,13 +9,14 @@ use App\Database\Model\Location;
 use App\Tests\Unit\Controller\Api\V1\Finance\Mocks\XingFinanceDataByDexScreenerApiHandlerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 
 #[CoversClass(XingFinanceDataLoadController::class)]
-#[CoversClass(Location::class)]
+#[UsesClass(Location::class)]
 final class XingFinanceDataLoadControllerTest extends TestCase
 {
     private XingFinanceDataByDexScreenerApiHandlerMock $xingFinanceDataByDexScreenerApiHandlerMock;
