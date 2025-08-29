@@ -10,7 +10,7 @@ use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use App\Database\Exception\MediaNotFoundException as MediaByMediaIdNotFoundException;
 use App\Database\Model\MediaId;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 final readonly class DefaultMediaByMediaIdLoader implements MediaByMediaIdLoader
 {

@@ -21,7 +21,7 @@ use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use App\Database\Model\DocumentPath;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 #[CoversClass(XingRageModeGifUrlLoader::class)]
 #[CoversClass(Location::class)]

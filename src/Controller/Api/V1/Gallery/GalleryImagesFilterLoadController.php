@@ -13,7 +13,7 @@ use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\GalleryImagesFilterLoadHandler;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class GalleryImagesFilterLoadController

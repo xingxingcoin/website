@@ -15,7 +15,7 @@ use App\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesFilterLoadController::class)]
 #[CoversClass(Location::class)]

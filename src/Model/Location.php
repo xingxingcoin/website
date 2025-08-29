@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Model;
+namespace App\Model;
 
 use XingXingCoin\Core\Exception\EmptyStringException;
 

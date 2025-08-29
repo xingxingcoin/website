@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Tests\Model;
+namespace App\Tests\Unit\Model;
 
+use App\Model\Location;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use XingXingCoin\Core\Model\Location;
 use XingXingCoin\Core\Exception\EmptyStringException;
 
 #[CoversClass(Location::class)]

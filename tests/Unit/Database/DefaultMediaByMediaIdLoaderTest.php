@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use App\Database\Model\MediaId;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 #[CoversClass(DefaultMediaByMediaIdLoader::class)]
 #[CoversClass(Location::class)]

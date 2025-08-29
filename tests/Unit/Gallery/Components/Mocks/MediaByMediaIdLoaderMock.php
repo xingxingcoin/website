@@ -8,7 +8,7 @@ use Sulu\Bundle\MediaBundle\Api\Media;
 use App\Database\Exception\MediaNotFoundException;
 use App\Database\MediaByMediaIdLoader;
 use App\Database\Model\MediaId;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 final class MediaByMediaIdLoaderMock implements MediaByMediaIdLoader
 {

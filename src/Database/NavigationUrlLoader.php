@@ -8,7 +8,7 @@ use App\Database\Model\NavigationUrl;
 use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 interface NavigationUrlLoader
 {

@@ -6,7 +6,7 @@ namespace App\Database;
 
 use Sulu\Bundle\MediaBundle\Api\Media;
 use App\Database\Exception\MediaNotFoundException;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 use App\Database\Model\MediaId;
 
 interface MediaByMediaIdLoader

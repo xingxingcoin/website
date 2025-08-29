@@ -10,7 +10,7 @@ use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler as XingFinanceDataByDexScreenerApiHandlerInterface;
 use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinanceDataByDexScreenerApiHandlerInterface

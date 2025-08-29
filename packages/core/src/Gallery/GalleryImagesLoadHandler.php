@@ -8,7 +8,7 @@ use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 use XingXingCoin\Core\Exception\EmptyStringException;
 
 interface GalleryImagesLoadHandler

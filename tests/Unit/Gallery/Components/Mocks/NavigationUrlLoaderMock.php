@@ -8,7 +8,7 @@ use App\Database\Model\NavigationUrl;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
 use App\Database\NavigationUrlLoader;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 final class NavigationUrlLoaderMock implements NavigationUrlLoader
 {

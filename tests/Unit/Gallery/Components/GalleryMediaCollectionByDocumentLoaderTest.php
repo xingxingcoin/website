@@ -24,7 +24,7 @@ use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 #[CoversClass(GalleryMediaCollectionByDocumentLoader::class)]
 #[CoversClass(Location::class)]

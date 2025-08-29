@@ -15,7 +15,7 @@ use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 final readonly class MemeGeneratorMediaCollectionByDocumentLoader implements MediaCollectionByDocumentLoader
 {

@@ -14,7 +14,7 @@ use App\Database\Exception\MediaNotFoundException;
 use App\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 #[CoversClass(GalleryImagesInfiniteScrollingLoadController::class)]
 #[CoversClass(Location::class)]

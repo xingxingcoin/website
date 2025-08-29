@@ -21,7 +21,7 @@ use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 #[CoversClass(MemeGeneratorImagesFilterLoadHandler::class)]
 #[CoversClass(Location::class)]

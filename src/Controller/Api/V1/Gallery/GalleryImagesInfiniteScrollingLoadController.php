@@ -12,7 +12,7 @@ use App\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\GalleryImagesLoadHandler;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class GalleryImagesInfiniteScrollingLoadController

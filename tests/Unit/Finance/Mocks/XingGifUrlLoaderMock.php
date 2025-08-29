@@ -6,7 +6,7 @@ namespace App\Tests\Unit\Finance\Mocks;
 
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 final class XingGifUrlLoaderMock implements XingGifUrlLoader
 {

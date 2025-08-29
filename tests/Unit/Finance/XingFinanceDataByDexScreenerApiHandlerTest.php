@@ -10,7 +10,7 @@ use App\Tests\Unit\Finance\Mocks\XingGifUrlLoaderMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 #[CoversClass(XingFinanceDataByDexScreenerApiHandler::class)]
 #[CoversClass(Location::class)]

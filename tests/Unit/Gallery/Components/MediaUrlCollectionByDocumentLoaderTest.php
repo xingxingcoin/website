@@ -21,7 +21,7 @@ use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 #[CoversClass(MediaUrlCollectionByDocumentLoader::class)]
 #[CoversClass(Location::class)]

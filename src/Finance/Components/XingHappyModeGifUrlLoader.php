@@ -14,7 +14,7 @@ use App\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
 use App\Database\Model\DocumentPath;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 use XingXingCoin\Core\Exception\EmptyStringException;
 
 final readonly class XingHappyModeGifUrlLoader implements XingGifUrlLoader

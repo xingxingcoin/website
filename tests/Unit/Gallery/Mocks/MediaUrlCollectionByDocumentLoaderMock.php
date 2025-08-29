@@ -9,7 +9,7 @@ use XingXingCoin\Core\Gallery\MediaUrlCollectionByDocumentLoader;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 final class MediaUrlCollectionByDocumentLoaderMock implements MediaUrlCollectionByDocumentLoader
 {

@@ -11,7 +11,7 @@ use XingXingCoin\Core\Gallery\GalleryImagesFilterLoadHandler;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
-use XingXingCoin\Core\Model\Location;
+use App\Model\Location;
 
 final class GalleryImagesFilterLoadHandlerMock implements GalleryImagesFilterLoadHandler
 {
