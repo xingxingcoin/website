@@ -7,7 +7,7 @@ namespace App\Tests\Unit\Database\Model;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use App\Database\Model\NavigationUrl;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 
 #[CoversClass(NavigationUrl::class)]
 final class NavigationUrlTest extends TestCase

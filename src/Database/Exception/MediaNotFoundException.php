@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Database\Exception;
 
-use XingXingCoin\Core\Exception\ValidationException;
+use App\Exception\ValidationException;
 
 /**
  * @codeCoverageIgnore

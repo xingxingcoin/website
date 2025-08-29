@@ -9,7 +9,7 @@ use App\Database\Model\NavigationUrl;
 use App\Database\Model\RootNavigation;
 use App\Database\Model\SubNavigation;
 use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 
 final readonly class DefaultNavigationUrlLoader implements NavigationUrlLoader
 {

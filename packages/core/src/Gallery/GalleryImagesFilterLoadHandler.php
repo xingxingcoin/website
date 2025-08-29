@@ -7,7 +7,7 @@ namespace XingXingCoin\Core\Gallery;
 use App\Database\Exception\MediaNotFoundException;
 use App\Database\Exception\PageDocumentNotLoadedException;
 use App\Database\Model\Location;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;

@@ -7,7 +7,7 @@ namespace App\Tests\Unit\Database\Model;
 use App\Database\Model\RootNavigation;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 
 #[CoversClass(RootNavigation::class)]
 final class RootNavigationTest extends TestCase

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Database\Model;
 
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 
 final readonly class DocumentPath
 {

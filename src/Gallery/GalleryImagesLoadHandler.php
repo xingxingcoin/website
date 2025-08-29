@@ -12,7 +12,7 @@ use App\Database\Model\Location;
 use App\Database\Model\RootNavigation;
 use App\Database\Model\SubNavigation;
 use Sulu\Component\DocumentManager\PathBuilder;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\GalleryImagesLoadHandler as GalleryImagesLoadHandlerInterface;
 use XingXingCoin\Core\Gallery\MediaUrlCollectionByDocumentLoader;

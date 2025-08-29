@@ -7,7 +7,7 @@ namespace App\Tests\Unit\Database\Model;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use App\Database\Model\DocumentPath;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 
 #[CoversClass(DocumentPath::class)]
 final class DocumentPathTest extends TestCase

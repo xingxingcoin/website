@@ -12,7 +12,7 @@ use App\Database\Model\SubNavigation;
 use App\Tests\Unit\Database\Mocks\NavigationMapperMock;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 
 #[CoversClass(DefaultNavigationUrlLoader::class)]
 #[CoversClass(NavigationUrl::class)]

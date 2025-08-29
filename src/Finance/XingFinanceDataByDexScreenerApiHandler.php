@@ -7,7 +7,7 @@ use App\Database\Exception\PageDocumentNotLoadedException;
 use App\Database\Model\Location;
 use XingXingCoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler as XingFinanceDataByDexScreenerApiHandlerInterface;
 use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;

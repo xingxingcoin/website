@@ -12,7 +12,7 @@ use App\Database\Model\RootNavigation;
 use App\Database\Model\SubNavigation;
 use App\Database\NavigationUrlLoader;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;

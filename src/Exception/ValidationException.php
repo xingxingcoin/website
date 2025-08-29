@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Exception;
+namespace App\Exception;
 
 /**
  * @codeCoverageIgnore

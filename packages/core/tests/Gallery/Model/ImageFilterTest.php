@@ -7,7 +7,7 @@ namespace XingXingCoin\Core\Tests\Gallery\Model;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use XingXingCoin\Core\Gallery\Model\ImageFilter;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 
 #[CoversClass(ImageFilter::class)]
 final class ImageFilterTest extends TestCase

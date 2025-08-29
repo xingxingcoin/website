@@ -10,7 +10,7 @@ use App\Database\Model\Location;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use XingXingCoin\Core\Exception\EmptyStringException;
+use App\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\MemeGeneratorImagesLoadHandler;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
