@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Gallery;
 
 use Sulu\Component\DocumentManager\PathBuilder;
-use XingXingCoin\Core\Database\DocumentByPathLoader;
-use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
-use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
-use XingXingCoin\Core\Database\Model\DocumentPath;
+use App\Database\DocumentByPathLoader;
+use App\Database\Exception\MediaNotFoundException;
+use App\Database\Exception\PageDocumentNotLoadedException;
+use App\Database\Model\DocumentPath;
 use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\GalleryImagesLoadHandler as GalleryImagesLoadHandlerInterface;

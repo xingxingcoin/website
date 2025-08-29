@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Gallery\Components;
 
+use App\Database\Exception\MediaNotFoundException;
+use App\Database\MediaByMediaIdLoader;
+use App\Database\Model\MediaId;
+use App\Database\NavigationUrlLoader;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
-use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
-use XingXingCoin\Core\Database\MediaByMediaIdLoader;
-use XingXingCoin\Core\Database\Model\MediaId;
-use XingXingCoin\Core\Database\NavigationUrlLoader;
 use XingXingCoin\Core\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Tests\Database\Model;
+namespace App\Tests\Unit\Database\Model;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use XingXingCoin\Core\Database\Model\NavigationUrl;
+use App\Database\Model\NavigationUrl;
 use XingXingCoin\Core\Exception\EmptyStringException;
 
 #[CoversClass(NavigationUrl::class)]

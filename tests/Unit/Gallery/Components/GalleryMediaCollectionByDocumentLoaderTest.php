@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components;
 
+use App\Database\Exception\MediaNotFoundException;
+use App\Database\Model\NavigationUrl;
 use App\Gallery\Components\GalleryMediaCollectionByDocumentLoader;
 use App\Gallery\GalleryImagesLoadHandler;
 use App\Tests\Unit\CustomTestCase;
@@ -18,8 +20,6 @@ use Sulu\Bundle\MediaBundle\Entity\FileVersion;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\Content\Compat\StructureInterface;
 use Sulu\Component\Content\Document\Structure\PropertyValue;
-use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
-use XingXingCoin\Core\Database\Model\NavigationUrl;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;

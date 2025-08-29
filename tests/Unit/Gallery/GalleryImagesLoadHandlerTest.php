@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery;
 
+use App\Database\Model\DocumentPath;
 use App\Gallery\GalleryImagesLoadHandler;
 use App\Tests\Unit\CustomTestCase;
 use App\Tests\Unit\Gallery\Mocks\MediaUrlCollectionByDocumentLoaderMock;
@@ -17,7 +18,6 @@ use XingXingCoin\Core\Gallery\Model\ImageCounter;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Database\Model\DocumentPath;
 use XingXingCoin\Core\Model\Location;
 
 #[CoversClass(GalleryImagesLoadHandler::class)]
@@ -211,7 +211,9 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
             'testUrl',
             'testUrl'
         ];
-        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection(
+            $expectedMediaUrlGroups
+        );
 
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 
@@ -270,7 +272,7 @@ final class GalleryImagesLoadHandlerTest extends CustomTestCase
         ];
         $expectedMediaUrlCollection = new MediaUrlCollection($expectedMediaUrlGroups);
         $this->mediaUrlCollectionByDocumentLoaderMock->outputMediaUrlCollection = $expectedMediaUrlCollection;
-        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection =  new MediaUrlCollection([]);
+        $this->mediaUrlCollectionRandomizerMock->outputMediaUrlCollection = new MediaUrlCollection([]);
 
         $mediaUrlCollection = $this->galleryImagesLoadHandler->handle($expectedLocation, $expectedImageCounter);
 

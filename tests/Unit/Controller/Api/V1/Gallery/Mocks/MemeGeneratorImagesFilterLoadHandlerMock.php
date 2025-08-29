@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Controller\Api\V1\Gallery\Mocks;
 
-use XingXingCoin\Core\Database\Exception\MediaNotFoundException;
-use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use App\Database\Exception\MediaNotFoundException;
+use App\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MemeGeneratorImagesFilterLoadHandler;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;

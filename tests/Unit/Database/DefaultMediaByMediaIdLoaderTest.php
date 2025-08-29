@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Database;
 
-use App\Database\MediaByMediaIdLoader;
+use App\Database\DefaultMediaByMediaIdLoader;
 use App\Tests\Unit\Database\Mocks\MediaManagerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use App\Tests\Unit\Mocks\MediaMock;
@@ -12,22 +12,22 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\MediaBundle\Api\Media;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
-use XingXingCoin\Core\Database\Model\MediaId;
+use App\Database\Model\MediaId;
 use XingXingCoin\Core\Model\Location;
 
-#[CoversClass(MediaByMediaIdLoader::class)]
+#[CoversClass(DefaultMediaByMediaIdLoader::class)]
 #[CoversClass(Location::class)]
-final class MediaByMediaIdLoaderTest extends TestCase
+final class DefaultMediaByMediaIdLoaderTest extends TestCase
 {
     private MediaManagerMock $mediaManagerMock;
     private LoggerMock $loggerMock;
-    private MediaByMediaIdLoader $mediaByMediaIdLoader;
+    private DefaultMediaByMediaIdLoader $defaultMediaByMediaIdLoader;
 
     protected function setUp(): void
     {
         $this->mediaManagerMock = new MediaManagerMock();
         $this->loggerMock = new LoggerMock();
-        $this->mediaByMediaIdLoader = new MediaByMediaIdLoader(
+        $this->defaultMediaByMediaIdLoader = new DefaultMediaByMediaIdLoader(
             $this->mediaManagerMock,
             $this->loggerMock
         );
@@ -40,7 +40,7 @@ final class MediaByMediaIdLoaderTest extends TestCase
         $expectedMedia = new Media(new MediaMock(), $location->value);
         $this->mediaManagerMock->outputMedia = $expectedMedia;
 
-        $media = $this->mediaByMediaIdLoader->load($mediaId, $location);
+        $media = $this->defaultMediaByMediaIdLoader->load($mediaId, $location);
 
         self::assertEquals($expectedMedia, $media);
         self::assertSame($mediaId->value, $this->mediaManagerMock->inputId);
@@ -75,9 +75,9 @@ final class MediaByMediaIdLoaderTest extends TestCase
         $this->mediaManagerMock->throwMediaNotFoundException = new MediaNotFoundException('test');
 
         try {
-            $this->mediaByMediaIdLoader->load($mediaId, $location);
+            $this->defaultMediaByMediaIdLoader->load($mediaId, $location);
             $this->fail('MediaNotFoundException was expected to be thrown.');
-        } catch (\XingXingCoin\Core\Database\Exception\MediaNotFoundException $exception) {
+        } catch (\App\Database\Exception\MediaNotFoundException $exception) {
             self::assertSame(
                 'Validation failed for value "1" with error: "Media with id "1" could not be loaded."',
                 $exception->getMessage()

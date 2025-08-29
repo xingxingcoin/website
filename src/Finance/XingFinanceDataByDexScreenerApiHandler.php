@@ -5,7 +5,7 @@ namespace App\Finance;
 
 use XingXingCoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use XingXingCoin\Core\Database\Exception\PageDocumentNotLoadedException;
+use App\Database\Exception\PageDocumentNotLoadedException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiHandler as XingFinanceDataByDexScreenerApiHandlerInterface;
 use XingXingCoin\Core\Finance\XingFinanceDataByDexScreenerApiLoader;

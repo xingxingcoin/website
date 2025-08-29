@@ -4,46 +4,15 @@ declare(strict_types=1);
 
 namespace App\Database;
 
-use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Api\Media;
-use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
-use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
-use XingXingCoin\Core\Database\Exception\MediaNotFoundException as MediaByMediaIdNotFoundException;
-use XingXingCoin\Core\Database\MediaByMediaIdLoader as MediaByMediaIdLoaderInterface;
-use XingXingCoin\Core\Database\Model\MediaId;
+use App\Database\Exception\MediaNotFoundException;
 use XingXingCoin\Core\Model\Location;
+use App\Database\Model\MediaId;
 
-final readonly class MediaByMediaIdLoader implements MediaByMediaIdLoaderInterface
+interface MediaByMediaIdLoader
 {
-    public function __construct(
-        private MediaManagerInterface $mediaManager,
-        private LoggerInterface $logger
-    ) {
-    }
-
     /**
-     * @throws MediaByMediaIdNotFoundException
+     * @throws MediaNotFoundException
      */
-    #[\Override]
-    public function load(MediaId $mediaId, Location $location): Media
-    {
-        try {
-            $this->logger->info('Start loading media with mediaId and location.');
-            $this->logger->debug('Start loading media with mediaId and location.', [
-                'mediaId' => $mediaId->value,
-                'location' => $location->value
-            ]);
-            $media = $this->mediaManager->getById($mediaId->value, $location->value);
-            $this->logger->info('Media by mediaId and location is successfully loaded.');
-
-            return $media;
-        } catch (MediaNotFoundException $exception) {
-            $this->logger->notice('Error by loading media with mediaId and location.');
-            $this->logger->debug('Error by loading media with mediaId and location.', [
-                'exceptionMessage' => $exception->getMessage()
-            ]);
-
-            throw MediaByMediaIdNotFoundException::mediaIsInvalid((string)$mediaId->value);
-        }
-    }
+    public function load(MediaId $mediaId, Location $location): Media;
 }

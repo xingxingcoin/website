@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace XingXingCoin\Core\Database\Exception;
+namespace App\Database\Exception;
 
 use XingXingCoin\Core\Exception\ValidationException;
 

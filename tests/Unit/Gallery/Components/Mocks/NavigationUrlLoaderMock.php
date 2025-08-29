@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Gallery\Components\Mocks;
 
-use XingXingCoin\Core\Database\Model\NavigationUrl;
+use App\Database\Model\NavigationUrl;
 use XingXingCoin\Core\Gallery\Model\RootNavigation;
 use XingXingCoin\Core\Gallery\Model\SubNavigation;
-use XingXingCoin\Core\Database\NavigationUrlLoader;
+use App\Database\NavigationUrlLoader;
 use XingXingCoin\Core\Model\Location;
 
 final class NavigationUrlLoaderMock implements NavigationUrlLoader
