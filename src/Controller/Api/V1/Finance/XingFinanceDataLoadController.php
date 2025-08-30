@@ -15,8 +15,9 @@ final readonly class XingFinanceDataLoadController
 {
     public function __construct(
         private XingFinanceDataByDexScreenerApiHandler $xingFinanceDataByDexScreenerApiHandler,
-        private LoggerInterface $logger
-    ) {}
+        private LoggerInterface $logger,
+    ) {
+    }
 
     public function __invoke(Request $request): Response
     {
@@ -31,7 +32,7 @@ final readonly class XingFinanceDataLoadController
         } catch (\Throwable $exception) {
             $this->logger->notice('Xing finance data is not loaded.');
             $this->logger->debug('Xing finance data is not loaded.', [
-                'exceptionMessage' => $exception->getMessage()
+                'exceptionMessage' => $exception->getMessage(),
             ]);
 
             return new JsonResponse(['message' => 'Internal server error.'], 500);

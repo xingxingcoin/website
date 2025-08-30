@@ -17,13 +17,13 @@ final readonly class MediaUrlCollectionByMemeImageFilterGenerator implements Med
     {
         $mediaUrlData = [];
         foreach ($mediaCollection as $mediaData) {
-            if (str_contains(
+            if (\str_contains(
                 $mediaData[MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_NAME_KEY],
-                self::FILE_NAME_IMAGE
+                self::FILE_NAME_IMAGE,
             )) {
                 $mediaUrlData[] = [
                     MemeGeneratorMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[MemeGeneratorMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
-                    MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_URL_KEY]
+                    MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_URL_KEY],
                 ];
             }
         }

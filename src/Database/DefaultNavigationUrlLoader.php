@@ -8,8 +8,8 @@ use App\Database\Model\Location;
 use App\Database\Model\NavigationUrl;
 use App\Database\Model\RootNavigation;
 use App\Database\Model\SubNavigation;
-use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
 use App\Exception\EmptyStringException;
+use Sulu\Bundle\WebsiteBundle\Navigation\NavigationMapperInterface;
 
 final readonly class DefaultNavigationUrlLoader implements NavigationUrlLoader
 {
@@ -19,8 +19,9 @@ final readonly class DefaultNavigationUrlLoader implements NavigationUrlLoader
     public const string WEBSPACE_KEY = 'website';
 
     public function __construct(
-        private NavigationMapperInterface $navigationMapper
-    ) {}
+        private NavigationMapperInterface $navigationMapper,
+    ) {
+    }
 
     /**
      * @throws EmptyStringException
@@ -29,12 +30,12 @@ final readonly class DefaultNavigationUrlLoader implements NavigationUrlLoader
     public function load(
         RootNavigation $rootNavigation,
         SubNavigation $subNavigation,
-        Location $location
+        Location $location,
     ): NavigationUrl {
         /** @var array<string, array<string, string>> $rootNavigationFromMapper */
         $rootNavigationFromMapper = $this->navigationMapper->getRootNavigation(
             self::WEBSPACE_KEY,
-            $location->value
+            $location->value,
         );
         $rootNavigationItem = [];
         foreach ($rootNavigationFromMapper as $navigationItem) {
@@ -47,7 +48,7 @@ final readonly class DefaultNavigationUrlLoader implements NavigationUrlLoader
         $subNavigationFromMapper = $this->navigationMapper->getNavigation(
             $rootNavigationItem[self::NAVIGATION_ITEM_UUID_KEY] ?? '',
             self::WEBSPACE_KEY,
-            $location->value
+            $location->value,
         );
         $subNavigationItem = [];
         foreach ($subNavigationFromMapper as $navigationItem) {

@@ -8,12 +8,12 @@ use App\Database\DocumentByPathLoader;
 use App\Database\Exception\PageDocumentNotLoadedException;
 use App\Database\Model\DocumentPath;
 use App\Database\Model\Location;
+use App\Exception\EmptyStringException;
 use Psr\Log\LoggerInterface;
 use Sulu\Bundle\MediaBundle\Media\Exception\MediaNotFoundException;
 use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use App\Exception\EmptyStringException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 use XingXingCoin\Core\Finance\XingGifUrlLoader;
 
@@ -25,9 +25,9 @@ final readonly class XingHappyModeGifUrlLoader implements XingGifUrlLoader
         private PathBuilder $pathBuilder,
         private DocumentByPathLoader $documentByPathLoader,
         private MediaManagerInterface $mediaManager,
-        private LoggerInterface $logger
-    ) {}
-
+        private LoggerInterface $logger,
+    ) {
+    }
 
     /**
      * @throws PageDocumentNotLoadedException
@@ -44,15 +44,15 @@ final readonly class XingHappyModeGifUrlLoader implements XingGifUrlLoader
             $blocks = $document->getStructure()->getProperty('blocks')->offsetGet(0);
             $mediaId = $blocks[self::MEDIA_IMAGE_KEY]['id'];
             $media = $this->mediaManager->getById($mediaId, $location->value);
-            $financeData = array_merge($financeDataCollection->data, ['url' => $media->getFormats()['sulu-400x400']]);
+            $financeData = \array_merge($financeDataCollection->data, ['url' => $media->getFormats()['sulu-400x400']]);
             $this->logger->info('Xing happy mode gif url is loaded successfully.', [
                 'mediaId' => $mediaId,
-                'url' => $media->getFormats()['sulu-400x400']
+                'url' => $media->getFormats()['sulu-400x400'],
             ]);
         } catch (MediaNotFoundException $exception) {
             $this->logger->notice('Xing happy mode gif url is not loaded.');
             $this->logger->debug('Xing happy mode gif url is not loaded.', [
-                'exceptionMessage' => $exception->getMessage()
+                'exceptionMessage' => $exception->getMessage(),
             ]);
 
             throw XingGifNotFoundException::gifNotFound($exception->getMessage());

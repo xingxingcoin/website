@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Unit\Mocks;
@@ -20,6 +21,7 @@ final class ResponseMock implements ResponseInterface
 
     public ?string $inputType;
     public mixed $outputInfo;
+
     public function getStatusCode(): int
     {
         return $this->outputStatusCode;

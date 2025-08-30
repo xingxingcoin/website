@@ -39,466 +39,466 @@ final class XingFinanceDataByDexScreenerApiHandlerTest extends TestCase
             $this->xingCalmModeGifUrlLoaderMock,
             $this->xingNeutralModeGifUrlLoaderMock,
             $this->xingUpsetModeGifUrlLoaderMock,
-            $this->xingRageModeGifUrlLoaderMock
+            $this->xingRageModeGifUrlLoaderMock,
         );
     }
 
-    public function testHandleAndGet_with_happy_xing_gif_url(): void
+    public function testHandleAndGetWithHappyXingGifUrl(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => 31.0
-            ]
+                'h24' => 31.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => 31.0
-                ]
+                    'h24' => 31.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingHappyModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => 31.0
-            ]
+                'priceChange' => 31.0,
+            ],
         ], $this->xingHappyModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingHappyModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_happy_xing_gif_url_2(): void
+    public function testHandleAndGetWithHappyXingGifUrl2(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => 30.0
-            ]
+                'h24' => 30.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => 30.0
-                ]
+                    'h24' => 30.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingHappyModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => 30.0
-            ]
+                'priceChange' => 30.0,
+            ],
         ], $this->xingHappyModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingHappyModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_calm_xing_gif_url(): void
+    public function testHandleAndGetWithCalmXingGifUrl(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => 20.0
-            ]
+                'h24' => 20.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => 20.0
-                ]
+                    'h24' => 20.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingCalmModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => 20.0
-            ]
+                'priceChange' => 20.0,
+            ],
         ], $this->xingCalmModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingCalmModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_calm_xing_gif_url_2(): void
+    public function testHandleAndGetWithCalmXingGifUrl2(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => 10.0
-            ]
+                'h24' => 10.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => 10.0
-                ]
+                    'h24' => 10.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingCalmModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => 10.0
-            ]
+                'priceChange' => 10.0,
+            ],
         ], $this->xingCalmModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingCalmModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_neutral_xing_gif_url(): void
+    public function testHandleAndGetWithNeutralXingGifUrl(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => 5.0
-            ]
+                'h24' => 5.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => 5.0
-                ]
+                    'h24' => 5.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingNeutralModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => 5.0
-            ]
+                'priceChange' => 5.0,
+            ],
         ], $this->xingNeutralModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingNeutralModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_neutral_xing_gif_url_2(): void
+    public function testHandleAndGetWithNeutralXingGifUrl2(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => 0.0
-            ]
+                'h24' => 0.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => 0.0
-                ]
+                    'h24' => 0.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingNeutralModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => 0.0
-            ]
+                'priceChange' => 0.0,
+            ],
         ], $this->xingNeutralModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingNeutralModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_neutral_xing_gif_url_and_negative_priceChange(): void
+    public function testHandleAndGetWithNeutralXingGifUrlAndNegativePriceChange(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => -5.0
-            ]
+                'h24' => -5.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => -5.0
-                ]
+                    'h24' => -5.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingNeutralModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => -5.0
-            ]
+                'priceChange' => -5.0,
+            ],
         ], $this->xingNeutralModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingNeutralModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_upset_xing_gif_url(): void
+    public function testHandleAndGetWithUpsetXingGifUrl(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => -20.0
-            ]
+                'h24' => -20.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => -20.0
-                ]
+                    'h24' => -20.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingUpsetModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => -20.0
-            ]
+                'priceChange' => -20.0,
+            ],
         ], $this->xingUpsetModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingUpsetModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_upset_xing_gif_url_2(): void
+    public function testHandleAndGetWithUpsetXingGifUrl2(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => -10.0
-            ]
+                'h24' => -10.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => -10.0
-                ]
+                    'h24' => -10.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingUpsetModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => -10.0
-            ]
+                'priceChange' => -10.0,
+            ],
         ], $this->xingUpsetModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingUpsetModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_rage_xing_gif_url(): void
+    public function testHandleAndGetWithRageXingGifUrl(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => -35.0
-            ]
+                'h24' => -35.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => -35.0
-                ]
+                    'h24' => -35.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingRageModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => -35.0
-            ]
+                'priceChange' => -35.0,
+            ],
         ], $this->xingRageModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingRageModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_rage_xing_gif_url_2(): void
+    public function testHandleAndGetWithRageXingGifUrl2(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 12,
             'priceChange' => [
-                'h24' => -30.0
-            ]
+                'h24' => -30.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 12,
                 'priceChange' => [
-                    'h24' => -30.0
-                ]
+                    'h24' => -30.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingRageModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 12,
-                'priceChange' => -30.0
-            ]
+                'priceChange' => -30.0,
+            ],
         ], $this->xingRageModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingRageModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_invalid_marketcap(): void
+    public function testHandleAndGetWithInvalidMarketcap(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => null,
             'priceChange' => [
-                'h24' => 31.0
-            ]
+                'h24' => 31.0,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 0,
                 'priceChange' => [
-                    'h24' => 31.0
-                ]
+                    'h24' => 31.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingHappyModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 0,
-                'priceChange' => 31.0
-            ]
+                'priceChange' => 31.0,
+            ],
         ], $this->xingHappyModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingHappyModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_invalid_priceChange(): void
+    public function testHandleAndGetWithInvalidPriceChange(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 10,
-            'priceChange' => null
+            'priceChange' => null,
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 10,
                 'priceChange' => [
-                    'h24' => 0.0
-                ]
+                    'h24' => 0.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingNeutralModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 10,
-                'priceChange' => 0.0
-            ]
+                'priceChange' => 0.0,
+            ],
         ], $this->xingNeutralModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingNeutralModeGifUrlLoaderMock->inputLocation->value);
     }
 
-    public function testHandleAndGet_with_invalid_priceChange_h24(): void
+    public function testHandleAndGetWithInvalidPriceChangeH24(): void
     {
         $location = new Location('en');
         $inputFinanceDataCollection = new FinanceDataCollection([
             'marketCap' => 10,
             'priceChange' => [
-                'h24' => null
-            ]
+                'h24' => null,
+            ],
         ]);
         $this->xingFinanceDataByDexScreenerApiLoaderMock->outputFinanceDataCollection = $inputFinanceDataCollection;
         $expectedFinanceDataCollection = new FinanceDataCollection([
             'finance' => [
                 'marketCap' => 10,
                 'priceChange' => [
-                    'h24' => 0.0
-                ]
+                    'h24' => 0.0,
+                ],
             ],
-            'url' => 'https://example.com'
+            'url' => 'https://example.com',
         ]);
         $this->xingNeutralModeGifUrlLoaderMock->outputFinanceDataCollection = $expectedFinanceDataCollection;
 
         $financeDataCollection = $this->defaultXingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
-        self::assertEquals($expectedFinanceDataCollection, $financeDataCollection);
-        self::assertEquals([
+        self::assertSame($expectedFinanceDataCollection, $financeDataCollection);
+        self::assertSame([
             'finance' => [
                 'marketCap' => 10,
-                'priceChange' => 0.0
-            ]
+                'priceChange' => 0.0,
+            ],
         ], $this->xingNeutralModeGifUrlLoaderMock->inputFinanceDataCollection->data);
         self::assertSame($location->value, $this->xingNeutralModeGifUrlLoaderMock->inputLocation->value);
     }

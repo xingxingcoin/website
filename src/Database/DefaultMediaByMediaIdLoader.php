@@ -16,7 +16,7 @@ final readonly class DefaultMediaByMediaIdLoader implements MediaByMediaIdLoader
 {
     public function __construct(
         private MediaManagerInterface $mediaManager,
-        private LoggerInterface $logger
+        private LoggerInterface $logger,
     ) {
     }
 
@@ -30,7 +30,7 @@ final readonly class DefaultMediaByMediaIdLoader implements MediaByMediaIdLoader
             $this->logger->info('Start loading media with mediaId and location.');
             $this->logger->debug('Start loading media with mediaId and location.', [
                 'mediaId' => $mediaId->value,
-                'location' => $location->value
+                'location' => $location->value,
             ]);
             $media = $this->mediaManager->getById($mediaId->value, $location->value);
             $this->logger->info('Media by mediaId and location is successfully loaded.');
@@ -39,10 +39,10 @@ final readonly class DefaultMediaByMediaIdLoader implements MediaByMediaIdLoader
         } catch (MediaNotFoundException $exception) {
             $this->logger->notice('Error by loading media with mediaId and location.');
             $this->logger->debug('Error by loading media with mediaId and location.', [
-                'exceptionMessage' => $exception->getMessage()
+                'exceptionMessage' => $exception->getMessage(),
             ]);
 
-            throw MediaByMediaIdNotFoundException::mediaIsInvalid((string)$mediaId->value);
+            throw MediaByMediaIdNotFoundException::mediaIsInvalid((string) $mediaId->value);
         }
     }
 }

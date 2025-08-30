@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Unit\Mocks;
@@ -13,7 +14,7 @@ final class LoggerMock implements LoggerInterface
     {
         $this->logs['emergence'][] = [
             'message' => $message,
-            'context' => $context
+            'context' => $context,
         ];
     }
 
@@ -21,7 +22,7 @@ final class LoggerMock implements LoggerInterface
     {
         $this->logs['alert'][] = [
             'message' => $message,
-            'context' => $context
+            'context' => $context,
         ];
     }
 
@@ -29,7 +30,7 @@ final class LoggerMock implements LoggerInterface
     {
         $this->logs['critical'][] = [
             'message' => $message,
-            'context' => $context
+            'context' => $context,
         ];
     }
 
@@ -37,7 +38,7 @@ final class LoggerMock implements LoggerInterface
     {
         $this->logs['error'][] = [
             'message' => $message,
-            'context' => $context
+            'context' => $context,
         ];
     }
 
@@ -45,7 +46,7 @@ final class LoggerMock implements LoggerInterface
     {
         $this->logs['warning'][] = [
             'message' => $message,
-            'context' => $context
+            'context' => $context,
         ];
     }
 
@@ -53,7 +54,7 @@ final class LoggerMock implements LoggerInterface
     {
         $this->logs['notice'][] = [
             'message' => $message,
-            'context' => $context
+            'context' => $context,
         ];
     }
 
@@ -61,7 +62,7 @@ final class LoggerMock implements LoggerInterface
     {
         $this->logs['info'][] = [
             'message' => $message,
-            'context' => $context
+            'context' => $context,
         ];
     }
 
@@ -69,7 +70,7 @@ final class LoggerMock implements LoggerInterface
     {
         $this->logs['debug'][] = [
             'message' => $message,
-            'context' => $context
+            'context' => $context,
         ];
     }
 
@@ -77,7 +78,7 @@ final class LoggerMock implements LoggerInterface
     {
         $this->logs[$level][] = [
             'message' => $message,
-            'context' => $context
+            'context' => $context,
         ];
     }
 }

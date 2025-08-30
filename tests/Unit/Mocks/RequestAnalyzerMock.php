@@ -13,6 +13,7 @@ final class RequestAnalyzerMock implements RequestAnalyzerInterface
 {
     public Webspace $outputWebspace;
     public Localization $outputLocalization;
+
     public function analyze(Request $request)
     {
         // TODO: Implement analyze() method.

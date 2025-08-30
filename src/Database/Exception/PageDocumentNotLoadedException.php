@@ -8,6 +8,7 @@ use App\Exception\ValidationException;
 
 /**
  * @codeCoverageIgnore
+ *
  * @infection-ignore-all
  */
 final class PageDocumentNotLoadedException extends ValidationException
@@ -15,13 +16,13 @@ final class PageDocumentNotLoadedException extends ValidationException
     public const string PATH_EXCEPTION_MESSAGE = 'Path "%s" for gallery is invalid.';
     public const string DOCUMENT_NOT_LOADED_EXCEPTION_MESSAGE = 'Document with path "%s" could not be loaded with error: "%s"';
 
-    public static function pathIsInvalid(string $path): PageDocumentNotLoadedException
+    public static function pathIsInvalid(string $path): self
     {
-        return new self(sprintf(self::PATH_EXCEPTION_MESSAGE, $path));
+        return new self(\sprintf(self::PATH_EXCEPTION_MESSAGE, $path));
     }
 
-    public static function documentNotLoaded(string $path, string $error): PageDocumentNotLoadedException
+    public static function documentNotLoaded(string $path, string $error): self
     {
-        return new self(sprintf(self::DOCUMENT_NOT_LOADED_EXCEPTION_MESSAGE, $path, $error));
+        return new self(\sprintf(self::DOCUMENT_NOT_LOADED_EXCEPTION_MESSAGE, $path, $error));
     }
 }

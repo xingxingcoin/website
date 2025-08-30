@@ -45,11 +45,11 @@ final class XingCalmModeGifUrlLoaderTest extends CustomTestCase
             $this->pathBuilderMock,
             $this->documentByPathLoaderMock,
             $this->mediaManagerMock,
-            $this->loggerMock
+            $this->loggerMock,
         );
     }
 
-    public function testLoad_is_valid(): void
+    public function testLoadIsValid(): void
     {
         $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
@@ -59,8 +59,8 @@ final class XingCalmModeGifUrlLoaderTest extends CustomTestCase
 
         $expectedMediaBlock = [
             XingCalmModeGifUrlLoader::MEDIA_IMAGE_KEY => [
-                'id' => 1
-            ]
+                'id' => 1,
+            ],
         ];
         $expectedPropertyValue = $this->getMock(PropertyValue::class);
         $expectedPropertyValue->expects(self::once())
@@ -87,11 +87,11 @@ final class XingCalmModeGifUrlLoaderTest extends CustomTestCase
 
         self::assertEquals([
             'test' => 'test',
-            'url' => 'testUrl'
+            'url' => 'testUrl',
         ], $newFinanceDataCollection->data);
         self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
-        self::assertEquals(1, $this->mediaManagerMock->inputId);
-        self::assertEquals('en', $this->mediaManagerMock->inputLocale);
+        self::assertSame(1, $this->mediaManagerMock->inputId);
+        self::assertSame('en', $this->mediaManagerMock->inputLocale);
         self::assertEquals([
             'info' => [
                 [
@@ -102,14 +102,14 @@ final class XingCalmModeGifUrlLoaderTest extends CustomTestCase
                     'message' => 'Xing calm mode gif url is loaded successfully.',
                     'context' => [
                         'mediaId' => 1,
-                        'url' => 'testUrl'
+                        'url' => 'testUrl',
                     ],
-                ]
-            ]
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoad_with_MediaNotFoundException(): void
+    public function testLoadWithMediaNotFoundException(): void
     {
         $expectedDocumentPath = new DocumentPath('testPath');
         $this->pathBuilderMock->expects(self::once())
@@ -119,8 +119,8 @@ final class XingCalmModeGifUrlLoaderTest extends CustomTestCase
 
         $expectedMediaBlock = [
             XingCalmModeGifUrlLoader::MEDIA_IMAGE_KEY => [
-                'id' => 1
-            ]
+                'id' => 1,
+            ],
         ];
         $expectedPropertyValue = $this->getMock(PropertyValue::class);
         $expectedPropertyValue->expects(self::once())
@@ -147,41 +147,41 @@ final class XingCalmModeGifUrlLoaderTest extends CustomTestCase
         try {
             $this->xingCalmModeGifUrlLoader->load(
                 $financeDataCollection,
-                $expectedLocation
+                $expectedLocation,
             );
 
             $this->fail('XingGifNotFoundException was expected to be thrown.');
         } catch (XingGifNotFoundException $exception) {
             self::assertSame(
                 'Xing gif is not found with error: "Media with the ID test was not found".',
-                $exception->getMessage()
+                $exception->getMessage(),
             );
         }
 
         self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
-        self::assertEquals(1, $this->mediaManagerMock->inputId);
-        self::assertEquals('en', $this->mediaManagerMock->inputLocale);
+        self::assertSame(1, $this->mediaManagerMock->inputId);
+        self::assertSame('en', $this->mediaManagerMock->inputLocale);
         self::assertEquals([
             'info' => [
                 [
                     'message' => 'Start loading xing calm mode gif url.',
                     'context' => [],
-                ]
+                ],
             ],
             'notice' => [
                 [
                     'message' => 'Xing calm mode gif url is not loaded.',
                     'context' => [],
-                ]
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Xing calm mode gif url is not loaded.',
                     'context' => [
-                        'exceptionMessage' => 'Media with the ID test was not found'
+                        'exceptionMessage' => 'Media with the ID test was not found',
                     ],
-                ]
-            ]
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 }

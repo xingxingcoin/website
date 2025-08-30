@@ -24,7 +24,7 @@ final class OpisJsonValidatorTest extends TestCase
         $this->opisJsonValidator = new OpisJsonValidator();
     }
 
-    public function testValidate_is_valid(): void
+    public function testValidateIsValid(): void
     {
         $jsonString = new JsonString('{"test":"bar"}');
         $schemaPath = new SchemaPath(__DIR__ . '/Schema/test.json');
@@ -35,7 +35,7 @@ final class OpisJsonValidatorTest extends TestCase
         self::assertTrue($validationResult->isValid());
     }
 
-    public function testValidate_with_invalid_json_respone(): void
+    public function testValidateWithInvalidJsonResponse(): void
     {
         $jsonString = new JsonString('{"test":"bar}');
         $schemaPath = new SchemaPath(__DIR__ . '/Schema/test.json');
@@ -47,7 +47,7 @@ final class OpisJsonValidatorTest extends TestCase
         } catch (InvalidHttpJsonResponseSchema $exception) {
             self::assertSame(
                 'Validation failed for value "jsonString" with error: "Json schema validator component "jsonString" is not created successfully."',
-                $exception->getMessage()
+                $exception->getMessage(),
             );
         }
     }

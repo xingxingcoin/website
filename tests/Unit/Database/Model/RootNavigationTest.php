@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Database\Model;
 
 use App\Database\Model\RootNavigation;
+use App\Exception\EmptyStringException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use App\Exception\EmptyStringException;
 
 #[CoversClass(RootNavigation::class)]
 final class RootNavigationTest extends TestCase
 {
-    public function testRootNavigationTest_is_valid(): void
+    public function testRootNavigationTestIsValid(): void
     {
         $rootNavigation = new RootNavigation('test');
         self::assertSame('test', $rootNavigation->value);
     }
 
-    public function testRootNavigationTest_with_empty_string(): void
+    public function testRootNavigationTestWithEmptyString(): void
     {
         try {
             new RootNavigation('');
@@ -26,7 +26,7 @@ final class RootNavigationTest extends TestCase
         } catch (EmptyStringException $exception) {
             self::assertSame(
                 'Validation failed for value "rootNavigation" with error: "Value for "rootNavigation" should not be empty."',
-                $exception->getMessage()
+                $exception->getMessage(),
             );
         }
     }

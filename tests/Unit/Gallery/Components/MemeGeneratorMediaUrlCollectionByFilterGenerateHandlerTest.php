@@ -27,11 +27,11 @@ final class MemeGeneratorMediaUrlCollectionByFilterGenerateHandlerTest extends T
         $this->mediaUrlCollectionByGifFilterGeneratorMock = new MediaUrlCollectionByFilterGeneratorMock();
         $this->mediaUrlCollectionByFilterGenerateHandler = new MemeGeneratorMediaUrlCollectionByFilterGenerateHandler(
             $this->mediaUrlCollectionByGifFilterGeneratorMock,
-            $this->mediaUrlCollectionByAllImagesFilterGeneratorMock
+            $this->mediaUrlCollectionByAllImagesFilterGeneratorMock,
         );
     }
 
-    public function testHandle_with_meme_template(): void
+    public function testHandleWithMemeTemplate(): void
     {
         $mediaCollection = new MediaCollection([]);
         $imageFilter = new ImageFilter(MemeGeneratorMediaUrlCollectionByFilterGenerateHandler::IMAGE_FILTER_TEMPLATE_VALUE);
@@ -46,7 +46,7 @@ final class MemeGeneratorMediaUrlCollectionByFilterGenerateHandlerTest extends T
         self::assertEquals($mediaCollection, $this->mediaUrlCollectionByGifFilterGeneratorMock->inputMediaCollection);
     }
 
-    public function testHandle_with_meme_image(): void
+    public function testHandleWithMemeImage(): void
     {
         $mediaCollection = new MediaCollection([]);
         $imageFilter = new ImageFilter(MemeGeneratorMediaUrlCollectionByFilterGenerateHandler::IMAGE_FILTER_IMAGE_VALUE);
@@ -61,7 +61,7 @@ final class MemeGeneratorMediaUrlCollectionByFilterGenerateHandlerTest extends T
         self::assertEquals($mediaCollection, $this->mediaUrlCollectionByAllImagesFilterGeneratorMock->inputMediaCollection);
     }
 
-    public function testHandle_with_invalid_image_filter(): void
+    public function testHandleWithInvalidImageFilter(): void
     {
         $mediaCollection = new MediaCollection([]);
         $imageFilter = new ImageFilter('invalid');

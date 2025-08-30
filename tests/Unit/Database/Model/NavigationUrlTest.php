@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Database\Model;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\TestCase;
 use App\Database\Model\NavigationUrl;
 use App\Exception\EmptyStringException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
 
 #[CoversClass(NavigationUrl::class)]
 final class NavigationUrlTest extends TestCase
 {
-    public function testLMediaNavigationUrl_is_valid(): void
+    public function testLMediaNavigationUrlIsValid(): void
     {
         $expectedMediaNavigationUrlAsString = 'testLocation';
         $mediaNavigationUrl = new NavigationUrl($expectedMediaNavigationUrlAsString);
         self::assertSame($expectedMediaNavigationUrlAsString, $mediaNavigationUrl->value);
     }
 
-    public function testLocation_with_empty_string(): void
+    public function testLocationWithEmptyString(): void
     {
         $expectedMediaNavigationUrlAsString = '';
         try {
@@ -27,7 +27,7 @@ final class NavigationUrlTest extends TestCase
         } catch (EmptyStringException $exception) {
             self::assertSame(
                 'Validation failed for value "mediaNavigationUrl" with error: "Value for "mediaNavigationUrl" should not be empty."',
-                $exception->getMessage()
+                $exception->getMessage(),
             );
         }
     }

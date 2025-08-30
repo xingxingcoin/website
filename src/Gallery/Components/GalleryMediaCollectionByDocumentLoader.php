@@ -11,13 +11,13 @@ use App\Database\Model\MediaId;
 use App\Database\Model\RootNavigation;
 use App\Database\Model\SubNavigation;
 use App\Database\NavigationUrlLoader;
-use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use App\Exception\EmptyStringException;
+use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 
-final  readonly class GalleryMediaCollectionByDocumentLoader implements MediaCollectionByDocumentLoader
+final readonly class GalleryMediaCollectionByDocumentLoader implements MediaCollectionByDocumentLoader
 {
     public const string IMAGE_VIEWER_URL_KEY = 'imageViewerUrl';
     public const string MEDIA_URL_KEY = 'mediaUrl';
@@ -25,7 +25,7 @@ final  readonly class GalleryMediaCollectionByDocumentLoader implements MediaCol
 
     public function __construct(
         private MediaByMediaIdLoader $mediaByMediaIdLoader,
-        private NavigationUrlLoader $navigationUrlLoader
+        private NavigationUrlLoader $navigationUrlLoader,
     ) {
     }
 
@@ -39,20 +39,20 @@ final  readonly class GalleryMediaCollectionByDocumentLoader implements MediaCol
         BasePageDocument $document,
         Location $location,
         RootNavigation $rootNavigation,
-        SubNavigation $subNavigation
+        SubNavigation $subNavigation,
     ): MediaCollection {
         $mediaData = [];
         $mediaNavigationUrl = $this->navigationUrlLoader->load(
             $rootNavigation,
             $subNavigation,
-            $location
+            $location,
         );
         foreach ($this->getMediaIds($document) as $mediaId) {
             $media = $this->mediaByMediaIdLoader->load(new MediaId($mediaId), $location);
             $mediaData[] = [
                 self::IMAGE_VIEWER_URL_KEY => $mediaNavigationUrl->value . '?mediaId=' . $mediaId,
                 self::MEDIA_URL_KEY => $media->getUrl(),
-                self::MEDIA_FILE_EXTENSION => $media->getExtension()
+                self::MEDIA_FILE_EXTENSION => $media->getExtension(),
             ];
         }
 
@@ -66,10 +66,10 @@ final  readonly class GalleryMediaCollectionByDocumentLoader implements MediaCol
     {
         /** @var array<string, array<string, int>>|null $mediaBlock */
         $mediaBlock = $document->getStructure()->getProperty('blocks')->offsetGet(0) ?? [];
-        if (!is_array($mediaBlock) || !array_key_exists('media', $mediaBlock) || !array_key_exists(
-                'ids',
-                $mediaBlock['media']
-            )) {
+        if (!\is_array($mediaBlock) || !\array_key_exists('media', $mediaBlock) || !\array_key_exists(
+            'ids',
+            $mediaBlock['media'],
+        )) {
             throw MediaDataNotLoadedException::mediaIdNotFound();
         }
 

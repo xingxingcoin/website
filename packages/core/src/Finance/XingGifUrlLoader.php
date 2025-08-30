@@ -6,8 +6,8 @@ namespace XingXingCoin\Core\Finance;
 
 use App\Database\Exception\PageDocumentNotLoadedException;
 use App\Database\Model\Location;
-use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use App\Exception\EmptyStringException;
+use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 
 interface XingGifUrlLoader

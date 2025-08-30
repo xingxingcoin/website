@@ -31,7 +31,7 @@ final class XingFinanceDataByDexScreenerApiLoaderTest extends TestCase
         );
     }
 
-    public function testLoad_is_valid(): void
+    public function testLoadIsValid(): void
     {
         $expectedBodyAsArray = [['testBody']];
         $expectedBody = 'testBody';
@@ -52,17 +52,17 @@ final class XingFinanceDataByDexScreenerApiLoaderTest extends TestCase
             'info' => [
                 [
                     'message' => 'Start loading xing finance data.',
-                    'context' => []
+                    'context' => [],
                 ],
                 [
                     'message' => 'Xing finance data is loaded successfully.',
-                    'context' => []
-                ]
-            ]
+                    'context' => [],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoad_with_http_client_exception(): void
+    public function testLoadWithHttpClientException(): void
     {
         $this->httpClientMock->throwTransportException = new TransportExceptionMock('test');
         try {
@@ -80,21 +80,21 @@ final class XingFinanceDataByDexScreenerApiLoaderTest extends TestCase
             'info' => [
                 [
                     'message' => 'Start loading xing finance data.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'notice' => [
                 [
                     'message' => 'Failed loading xing finance data.',
                     'context' => [
-                        'exceptionMessage' => 'test'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'test',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoad_with_invalid_response_code(): void
+    public function testLoadWithInvalidResponseCode(): void
     {
         $expectedBodyAsArray = [['testBody']];
         $responseMock = new ResponseMock();
@@ -118,23 +118,23 @@ final class XingFinanceDataByDexScreenerApiLoaderTest extends TestCase
             'info' => [
                 [
                     'message' => 'Start loading xing finance data.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'notice' => [
                 [
                     'message' => 'Loading xing finance data has no response code 200.',
                     'context' => [
-                        'statusCode' => 500
-                    ]
+                        'statusCode' => 500,
+                    ],
                 ],
                 [
                     'message' => 'Failed loading xing finance data.',
                     'context' => [
-                        'exceptionMessage' => 'Response code is not 200.'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'Response code is not 200.',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 }

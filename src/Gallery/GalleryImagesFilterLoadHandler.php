@@ -11,8 +11,8 @@ use App\Database\Model\DocumentPath;
 use App\Database\Model\Location;
 use App\Database\Model\RootNavigation;
 use App\Database\Model\SubNavigation;
-use Sulu\Component\DocumentManager\PathBuilder;
 use App\Exception\EmptyStringException;
+use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\Core\Gallery\Exception\MediaDataNotLoadedException;
 use XingXingCoin\Core\Gallery\GalleryImagesFilterLoadHandler as GalleryImagesFilterLoadHandlerInterface;
 use XingXingCoin\Core\Gallery\MediaCollectionByDocumentLoader;
@@ -35,7 +35,7 @@ final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilt
         private DocumentByPathLoader $documentByPathLoader,
         private MediaCollectionByDocumentLoader $mediaCollectionByDocumentLoader,
         private MediaUrlCollectionByFilterGenerateHandler $mediaUrlCollectionByFilterGenerateHandler,
-        private MediaUrlCollectionRandomizer $mediaUrlCollectionRandomizer
+        private MediaUrlCollectionRandomizer $mediaUrlCollectionRandomizer,
     ) {
     }
 
@@ -54,15 +54,15 @@ final readonly class GalleryImagesFilterLoadHandler implements GalleryImagesFilt
             $document,
             $location,
             new RootNavigation(self::ROOT_NAVIGATION),
-            new SubNavigation(self::SUB_NAVIGATION)
+            new SubNavigation(self::SUB_NAVIGATION),
         );
         $mediaUrlCollection = $this->mediaUrlCollectionByFilterGenerateHandler->handle(
             $mediaUrlCollection,
-            $imageFilter
+            $imageFilter,
         );
         $mediaUrlCollectionForCounter = [];
         $nextImageIndex = ($imageCounter->value + self::NEXT_IMAGE_COUNTER) * self::NUMBER_OF_PROVIDED_IMAGES;
-        for ($currentImageIndex = $imageCounter->value * self::NUMBER_OF_PROVIDED_IMAGES; $currentImageIndex < $nextImageIndex; $currentImageIndex++) {
+        for ($currentImageIndex = $imageCounter->value * self::NUMBER_OF_PROVIDED_IMAGES; $currentImageIndex < $nextImageIndex; ++$currentImageIndex) {
             if (!$mediaUrlCollection->contains($currentImageIndex)) {
                 break;
             }

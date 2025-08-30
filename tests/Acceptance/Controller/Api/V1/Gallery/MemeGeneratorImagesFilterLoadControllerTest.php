@@ -13,63 +13,63 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing(MemeGeneratorImagesFilterLoadController::class)]
 final class MemeGeneratorImagesFilterLoadControllerTest extends AbstractWebTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->initPhpcr();
 
         parent::setUp();
     }
 
-    public function testLoadMemeGeneratorImagesByFilterForInfiniteScrolling_is_valid(): void
+    public function testLoadMemeGeneratorImagesByFilterForInfiniteScrollingIsValid(): void
     {
         $this->generateMediaTestDataSet();
         $this->generateMemeGeneratorDocumentTestDataSet($this->media->getId());
         $this->client->request(
             'GET',
-            '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image'
+            '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image',
         );
 
         $response = $this->client->getResponse();
 
-        self::assertEquals(json_encode([
+        self::assertSame(\json_encode([
             'urls' => [
                 [
                     'imageViewerUrl' => '/meme-generator/new-meme?mediaId=' . $this->media->getId(),
-                    'mediaUrl' => '/media/' . $this->media->getId() . '/download/test-image.jpg?v=1'
-                ]
-            ]
+                    'mediaUrl' => '/media/' . $this->media->getId() . '/download/test-image.jpg?v=1',
+                ],
+            ],
         ]), $response->getContent());
         self::assertSame(200, $response->getStatusCode());
     }
 
-    public function testLoadMemeGeneratorImagesByFilterForInfiniteScrolling_with_bad_request(): void
+    public function testLoadMemeGeneratorImagesByFilterForInfiniteScrollingWithBadRequest(): void
     {
         $this->client->request(
             'GET',
-            '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image'
+            '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image',
         );
 
         $response = $this->client->getResponse();
 
-        self::assertEquals(json_encode([
-            'message' => 'Bad request.'
+        self::assertSame(\json_encode([
+            'message' => 'Bad request.',
         ]), $response->getContent());
         self::assertSame(400, $response->getStatusCode());
     }
 
-    public function testLoadMemeGeneratorImagesByFilterForInfiniteScrolling_with_internal_server_error(): void
+    public function testLoadMemeGeneratorImagesByFilterForInfiniteScrollingWithInternalServerError(): void
     {
         $mediaId = 0;
         $this->generateMemeGeneratorDocumentTestDataSet($mediaId);
         $this->client->request(
             'GET',
-            '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image'
+            '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image',
         );
 
         $response = $this->client->getResponse();
 
-        self::assertEquals(json_encode([
-            'message' => 'Internal server error.'
+        self::assertSame(\json_encode([
+            'message' => 'Internal server error.',
         ]), $response->getContent());
         self::assertSame(500, $response->getStatusCode());
     }

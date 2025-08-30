@@ -10,8 +10,7 @@ use XingXingCoin\Core\Gallery\Model\ImageFilter;
 use XingXingCoin\Core\Gallery\Model\MediaCollection;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
-final readonly class MemeGeneratorMediaUrlCollectionByFilterGenerateHandler implements
-    MediaUrlCollectionByFilterGenerateHandler
+final readonly class MemeGeneratorMediaUrlCollectionByFilterGenerateHandler implements MediaUrlCollectionByFilterGenerateHandler
 {
     public const string IMAGE_FILTER_TEMPLATE_VALUE = 'meme_template';
     public const string IMAGE_FILTER_IMAGE_VALUE = 'meme_image';
@@ -25,10 +24,10 @@ final readonly class MemeGeneratorMediaUrlCollectionByFilterGenerateHandler impl
     #[\Override]
     public function handle(MediaCollection $mediaCollection, ImageFilter $imageFilter): MediaUrlCollection
     {
-        if ($imageFilter->value === self::IMAGE_FILTER_TEMPLATE_VALUE) {
+        if (self::IMAGE_FILTER_TEMPLATE_VALUE === $imageFilter->value) {
             return $this->mediaUrlCollectionByMemeTemplateFilterGenerator->generate($mediaCollection);
         }
-        if ($imageFilter->value === self::IMAGE_FILTER_IMAGE_VALUE) {
+        if (self::IMAGE_FILTER_IMAGE_VALUE === $imageFilter->value) {
             return $this->mediaUrlCollectionByMemeImageFilterGenerator->generate($mediaCollection);
         }
 

@@ -11,8 +11,8 @@ use App\Database\Model\DocumentPath;
 use App\Database\Model\Location;
 use App\Database\Model\RootNavigation;
 use App\Database\Model\SubNavigation;
-use Sulu\Component\DocumentManager\PathBuilder;
 use App\Exception\EmptyStringException;
+use Sulu\Component\DocumentManager\PathBuilder;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\GalleryImagesLoadHandler as GalleryImagesLoadHandlerInterface;
 use XingXingCoin\Core\Gallery\MediaUrlCollectionByDocumentLoader;
@@ -32,7 +32,7 @@ final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandle
         private PathBuilder $pathBuilder,
         private DocumentByPathLoader $documentByPathLoader,
         private MediaUrlCollectionByDocumentLoader $mediaUrlCollectionByDocumentLoader,
-        private MediaUrlCollectionRandomizer $mediaUrlCollectionRandomizer
+        private MediaUrlCollectionRandomizer $mediaUrlCollectionRandomizer,
     ) {
     }
 
@@ -51,11 +51,11 @@ final readonly class GalleryImagesLoadHandler implements GalleryImagesLoadHandle
             $document,
             $location,
             new RootNavigation(self::ROOT_NAVIGATION),
-            new SubNavigation(self::SUB_NAVIGATION)
+            new SubNavigation(self::SUB_NAVIGATION),
         );
         $mediaUrlCollectionForCounter = [];
         $nextImageIndex = ($imageCounter->value + self::NEXT_IMAGE_COUNTER) * self::NUMBER_OF_PROVIDED_IMAGES;
-        for ($currentImageIndex = $imageCounter->value * self::NUMBER_OF_PROVIDED_IMAGES; $currentImageIndex < $nextImageIndex; $currentImageIndex++) {
+        for ($currentImageIndex = $imageCounter->value * self::NUMBER_OF_PROVIDED_IMAGES; $currentImageIndex < $nextImageIndex; ++$currentImageIndex) {
             if (!$mediaUrlCollection->contains($currentImageIndex)) {
                 break;
             }

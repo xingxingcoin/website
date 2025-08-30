@@ -6,11 +6,13 @@ namespace App\Database\Model;
 
 /**
  * @codeCoverageIgnore
+ *
  * @infection-ignore-all
  */
 final readonly class MediaId
 {
     public function __construct(
-        public int $value
-    ) {}
+        public int $value,
+    ) {
+    }
 }

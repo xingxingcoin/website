@@ -29,65 +29,65 @@ final class XingFinanceDataLoadControllerTest extends TestCase
         $this->loggerMock = new LoggerMock();
         $this->xingFinanceDataLoadController = new XingFinanceDataLoadController(
             $this->xingFinanceDataByDexScreenerApiHandlerMock,
-            $this->loggerMock
+            $this->loggerMock,
         );
     }
 
-    public function testLoadXingFinanceData_is_valid(): void
+    public function testLoadXingFinanceDataIsValid(): void
     {
         $request = new Request();
         $request->setLocale('en');
 
         $financeData = [
             'finance' => [
-                'test' => 'test'
+                'test' => 'test',
             ],
-            'url' => 'test'
+            'url' => 'test',
         ];
         $this->xingFinanceDataByDexScreenerApiHandlerMock->outputFinanceDataCollection = new FinanceDataCollection(
-            $financeData
+            $financeData,
         );
 
         $response = $this->xingFinanceDataLoadController->__invoke($request);
-        self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('{"finance":{"test":"test"},"url":"test"}', $response->getContent());
+        self::assertSame(200, $response->getStatusCode());
+        self::assertSame('{"finance":{"test":"test"},"url":"test"}', $response->getContent());
         self::assertSame('en', $this->xingFinanceDataByDexScreenerApiHandlerMock->inputLocation->value);
-        self::assertEquals([], $this->loggerMock->logs);
+        self::assertSame([], $this->loggerMock->logs);
     }
 
-    public function testLoadXingFinanceData_with_XingGifNotFoundException(): void
+    public function testLoadXingFinanceDataWithXingGifNotFoundException(): void
     {
         $request = new Request();
         $request->setLocale('en');
 
         $financeData = [
             'finance' => [
-                'test' => 'test'
+                'test' => 'test',
             ],
-            'url' => 'test'
+            'url' => 'test',
         ];
         $this->xingFinanceDataByDexScreenerApiHandlerMock->outputFinanceDataCollection = new FinanceDataCollection($financeData);
         $this->xingFinanceDataByDexScreenerApiHandlerMock->throwXingGifNotFoundException = new XingGifNotFoundException('test');
 
         $response = $this->xingFinanceDataLoadController->__invoke($request);
-        self::assertEquals(500, $response->getStatusCode());
-        self::assertEquals('{"message":"Internal server error."}', $response->getContent());
+        self::assertSame(500, $response->getStatusCode());
+        self::assertSame('{"message":"Internal server error."}', $response->getContent());
         self::assertSame('en', $this->xingFinanceDataByDexScreenerApiHandlerMock->inputLocation->value);
-        self::assertEquals([
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Xing finance data is not loaded.',
                     'context' => [],
-                ]
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Xing finance data is not loaded.',
                     'context' => [
-                        'exceptionMessage' => 'test'
+                        'exceptionMessage' => 'test',
                     ],
-                ]
-            ]
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 }

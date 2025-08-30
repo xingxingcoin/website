@@ -35,7 +35,7 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
         );
     }
 
-    public function testLoadGalleryImages_is_valid(): void
+    public function testLoadGalleryImagesIsValid(): void
     {
         $request = new Request();
         $request->setLocale('en');
@@ -45,13 +45,13 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesInfiniteScrollingLoadController->__invoke($request);
         self::assertSame(200, $jsonResponse->getStatusCode());
-        self::assertEquals('{"urls":[]}', $jsonResponse->getContent());
+        self::assertSame('{"urls":[]}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesLoadHandlerMock->inputLocation->value);
         self::assertSame(2, $this->galleryImagesLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([], $this->loggerMock->logs);
+        self::assertSame([], $this->loggerMock->logs);
     }
 
-    public function testLoadGalleryImages_with_invalid_image_counter(): void
+    public function testLoadGalleryImagesWithInvalidImageCounter(): void
     {
         $request = new Request();
         $request->setLocale('en');
@@ -60,13 +60,13 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesInfiniteScrollingLoadController->__invoke($request);
         self::assertSame(200, $jsonResponse->getStatusCode());
-        self::assertEquals('{"urls":[]}', $jsonResponse->getContent());
+        self::assertSame('{"urls":[]}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesLoadHandlerMock->inputLocation->value);
         self::assertSame(0, $this->galleryImagesLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([], $this->loggerMock->logs);
+        self::assertSame([], $this->loggerMock->logs);
     }
 
-    public function testLoadGalleryImages_with_page_document_not_loaded(): void
+    public function testLoadGalleryImagesWithPageDocumentNotLoaded(): void
     {
         $request = new Request();
         $request->setLocale('en');
@@ -75,28 +75,28 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesInfiniteScrollingLoadController->__invoke($request);
         self::assertSame(400, $jsonResponse->getStatusCode());
-        self::assertEquals('{"message":"Bad request."}', $jsonResponse->getContent());
+        self::assertSame('{"message":"Bad request."}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesLoadHandlerMock->inputLocation->value);
         self::assertSame(2, $this->galleryImagesLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Page document could not be loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Page document could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'test'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'test',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoadGalleryImages_with_media_url_not_loaded(): void
+    public function testLoadGalleryImagesWithMediaUrlNotLoaded(): void
     {
         $request = new Request();
         $request->setLocale('en');
@@ -105,28 +105,28 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesInfiniteScrollingLoadController->__invoke($request);
         self::assertSame(500, $jsonResponse->getStatusCode());
-        self::assertEquals('{"message":"Internal server error."}', $jsonResponse->getContent());
+        self::assertSame('{"message":"Internal server error."}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesLoadHandlerMock->inputLocation->value);
         self::assertSame(2, $this->galleryImagesLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Media urls could not be loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Media urls could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'test'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'test',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoadGalleryImages_with_media_not_found(): void
+    public function testLoadGalleryImagesWithMediaNotFound(): void
     {
         $request = new Request();
         $request->setLocale('en');
@@ -135,28 +135,28 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesInfiniteScrollingLoadController->__invoke($request);
         self::assertSame(500, $jsonResponse->getStatusCode());
-        self::assertEquals('{"message":"Internal server error."}', $jsonResponse->getContent());
+        self::assertSame('{"message":"Internal server error."}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesLoadHandlerMock->inputLocation->value);
         self::assertSame(2, $this->galleryImagesLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Media urls could not be loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Media urls could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'test'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'test',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoadGalleryImages_with_empty_locale(): void
+    public function testLoadGalleryImagesWithEmptyLocale(): void
     {
         $request = new Request();
         $request->setLocale('');
@@ -165,22 +165,22 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesInfiniteScrollingLoadController->__invoke($request);
         self::assertSame(400, $jsonResponse->getStatusCode());
-        self::assertEquals('{"message":"Bad request."}', $jsonResponse->getContent());
-        self::assertEquals([
+        self::assertSame('{"message":"Bad request."}', $jsonResponse->getContent());
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Page document could not be loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Page document could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'Validation failed for value "location" with error: "Value for "location" should not be empty."'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'Validation failed for value "location" with error: "Value for "location" should not be empty."',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 }

@@ -27,11 +27,11 @@ final class GalleryMediaUrlCollectionByFilterGenerateHandlerTest extends TestCas
         $this->mediaUrlCollectionByGifFilterGeneratorMock = new MediaUrlCollectionByFilterGeneratorMock();
         $this->mediaUrlCollectionByFilterGenerateHandler = new GalleryMediaUrlCollectionByFilterGenerateHandler(
             $this->mediaUrlCollectionByGifFilterGeneratorMock,
-            $this->mediaUrlCollectionByAllImagesFilterGeneratorMock
+            $this->mediaUrlCollectionByAllImagesFilterGeneratorMock,
         );
     }
 
-    public function testHandle_with_gif(): void
+    public function testHandleWithGif(): void
     {
         $mediaCollection = new MediaCollection([]);
         $imageFilter = new ImageFilter(GalleryMediaUrlCollectionByFilterGenerateHandler::IMAGE_FILTER_GIF_VALUE);
@@ -46,7 +46,7 @@ final class GalleryMediaUrlCollectionByFilterGenerateHandlerTest extends TestCas
         self::assertEquals($mediaCollection, $this->mediaUrlCollectionByGifFilterGeneratorMock->inputMediaCollection);
     }
 
-    public function testHandle_with_image(): void
+    public function testHandleWithImage(): void
     {
         $mediaCollection = new MediaCollection([]);
         $imageFilter = new ImageFilter(GalleryMediaUrlCollectionByFilterGenerateHandler::IMAGE_FILTER_IMAGE_VALUE);
@@ -60,11 +60,11 @@ final class GalleryMediaUrlCollectionByFilterGenerateHandlerTest extends TestCas
         self::assertEquals($mediaAllImagesUrlCollection, $mediaUrlCollection);
         self::assertEquals(
             $mediaCollection,
-            $this->mediaUrlCollectionByAllImagesFilterGeneratorMock->inputMediaCollection
+            $this->mediaUrlCollectionByAllImagesFilterGeneratorMock->inputMediaCollection,
         );
     }
 
-    public function testHandle_with_invalid_image_filter(): void
+    public function testHandleWithInvalidImageFilter(): void
     {
         $mediaCollection = new MediaCollection([]);
         $imageFilter = new ImageFilter('invalid');

@@ -13,34 +13,34 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing(XingFinanceDataLoadController::class)]
 final class XingFinanceDataLoadControllerTest extends AbstractWebTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->initPhpcr();
         parent::setUp();
     }
 
-    public function testLoadXingGeneralData_is_valid(): void
+    public function testLoadXingGeneralDataIsValid(): void
     {
         $this->generateMediaTestDataSet();
         $this->generateGalleryDocumentTestDataSet($this->media->getId());
         $this->generateWebsiteHomepageTestDataSet($this->media->getId());
         $this->client->request(
             'GET',
-            '/api/v1/finance/xing'
+            '/api/v1/finance/xing',
         );
         $response = $this->client->getResponse();
 
         self::assertSame(200, $response->getStatusCode());
     }
 
-    public function testLoadXingGeneralData_with_XingGifNotFoundException(): void
+    public function testLoadXingGeneralDataWithXingGifNotFoundException(): void
     {
         $this->generateMediaTestDataSet();
         $this->generateGalleryDocumentTestDataSet($this->media->getId());
         $this->generateWebsiteHomepageTestDataSet(123456789);
         $this->client->request(
             'GET',
-            '/api/v1/finance/xing'
+            '/api/v1/finance/xing',
         );
         $response = $this->client->getResponse();
 

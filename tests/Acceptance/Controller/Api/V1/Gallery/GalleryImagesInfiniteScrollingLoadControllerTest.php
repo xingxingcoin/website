@@ -13,63 +13,63 @@ use PHPUnit\Framework\Attributes\Group;
 #[CoversNothing(GalleryImagesInfiniteScrollingLoadController::class)]
 final class GalleryImagesInfiniteScrollingLoadControllerTest extends AbstractWebTestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->initPhpcr();
 
         parent::setUp();
     }
 
-    public function testLoadGalleryImagesForInfiniteScrolling_is_valid(): void
+    public function testLoadGalleryImagesForInfiniteScrollingIsValid(): void
     {
         $this->generateMediaTestDataSet();
         $this->generateGalleryDocumentTestDataSet($this->media->getId());
         $this->client->request(
             'GET',
-            '/api/v1/gallery/images?counter=0'
+            '/api/v1/gallery/images?counter=0',
         );
 
         $response = $this->client->getResponse();
 
-        self::assertEquals(json_encode([
+        self::assertSame(\json_encode([
             'urls' => [
                 [
                     'imageViewerUrl' => '/xing-xing-on-camera/image-viewer?mediaId=' . $this->media->getId(),
-                    'mediaUrl' => '/media/' . $this->media->getId() . '/download/test-image.jpg?v=1'
-                ]
-            ]
+                    'mediaUrl' => '/media/' . $this->media->getId() . '/download/test-image.jpg?v=1',
+                ],
+            ],
         ]), $response->getContent());
         self::assertSame(200, $response->getStatusCode());
     }
 
-    public function testLoadGalleryImagesForInfiniteScrolling_with_bad_request(): void
+    public function testLoadGalleryImagesForInfiniteScrollingWithBadRequest(): void
     {
         $this->client->request(
             'GET',
-            '/api/v1/gallery/images?counter=0'
+            '/api/v1/gallery/images?counter=0',
         );
 
         $response = $this->client->getResponse();
 
-        self::assertEquals(json_encode([
-            'message' => 'Bad request.'
+        self::assertSame(\json_encode([
+            'message' => 'Bad request.',
         ]), $response->getContent());
         self::assertSame(400, $response->getStatusCode());
     }
 
-    public function testLoadGalleryImagesForInfiniteScrolling_with_internal_server_error(): void
+    public function testLoadGalleryImagesForInfiniteScrollingWithInternalServerError(): void
     {
         $mediaId = 0;
         $this->generateGalleryDocumentTestDataSet($mediaId);
         $this->client->request(
             'GET',
-            '/api/v1/gallery/images?counter=0'
+            '/api/v1/gallery/images?counter=0',
         );
 
         $response = $this->client->getResponse();
 
-        self::assertEquals(json_encode([
-            'message' => 'Internal server error.'
+        self::assertSame(\json_encode([
+            'message' => 'Internal server error.',
         ]), $response->getContent());
         self::assertSame(500, $response->getStatusCode());
     }

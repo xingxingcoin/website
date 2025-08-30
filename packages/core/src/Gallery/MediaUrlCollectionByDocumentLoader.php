@@ -8,8 +8,8 @@ use App\Database\Exception\MediaNotFoundException;
 use App\Database\Model\Location;
 use App\Database\Model\RootNavigation;
 use App\Database\Model\SubNavigation;
-use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use App\Exception\EmptyStringException;
+use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Mocks;
 
-use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use App\Database\DocumentByPathLoader;
 use App\Database\Model\DocumentPath;
+use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 
 final class DocumentByPathLoaderMock implements DocumentByPathLoader
 {

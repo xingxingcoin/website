@@ -18,15 +18,16 @@ final readonly class GalleryMediaUrlCollectionByFilterGenerateHandler implements
     public function __construct(
         private MediaUrlCollectionByFilterGenerator $mediaUrlCollectionByGifFilterGenerator,
         private MediaUrlCollectionByFilterGenerator $mediaUrlCollectionByAllImagesFilterGenerator,
-    ) {}
+    ) {
+    }
 
     #[\Override]
     public function handle(MediaCollection $mediaCollection, ImageFilter $imageFilter): MediaUrlCollection
     {
-        if ($imageFilter->value === self::IMAGE_FILTER_GIF_VALUE) {
+        if (self::IMAGE_FILTER_GIF_VALUE === $imageFilter->value) {
             return $this->mediaUrlCollectionByGifFilterGenerator->generate($mediaCollection);
         }
-        if ($imageFilter->value === self::IMAGE_FILTER_IMAGE_VALUE) {
+        if (self::IMAGE_FILTER_IMAGE_VALUE === $imageFilter->value) {
             return $this->mediaUrlCollectionByAllImagesFilterGenerator->generate($mediaCollection);
         }
 

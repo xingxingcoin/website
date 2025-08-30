@@ -34,7 +34,7 @@ final class NavigationMapperMock implements NavigationMapperInterface
         $flat = false,
         $context = null,
         $loadExcerpt = false,
-        $segmentKey = null
+        $segmentKey = null,
     ): array {
         $this->inputNavigationParent = $parent;
         $this->inputNavigationWebspaceKey = $webspaceKey;
@@ -55,7 +55,7 @@ final class NavigationMapperMock implements NavigationMapperInterface
         $flat = false,
         $context = null,
         $loadExcerpt = false,
-        $segmentKey = null
+        $segmentKey = null,
     ): array {
         $this->inputNavigationRootWebspaceKey = $webspaceKey;
         $this->inputNavigationRootLocale = $locale;

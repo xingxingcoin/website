@@ -9,6 +9,7 @@ use XingXingCoin\Core\Gallery\Model\MediaUrlCollection;
 
 /**
  * @codeCoverageIgnore
+ *
  * @infection-ignore-all
  */
 final readonly class MediaUrlCollectionRandomizer implements MediaUrlCollectionRandomizerInterface
@@ -16,7 +17,8 @@ final readonly class MediaUrlCollectionRandomizer implements MediaUrlCollectionR
     #[\Override]
     public function randomize(array $mediaUrlData): MediaUrlCollection
     {
-        shuffle($mediaUrlData);
+        \shuffle($mediaUrlData);
+
         return new MediaUrlCollection($mediaUrlData);
     }
 }

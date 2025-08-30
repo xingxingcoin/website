@@ -25,12 +25,12 @@ final readonly class OpisJsonValidator implements JsonValidator
         $resolver = $validator->resolver();
         $resolver->registerFile(
             $schemaId->value,
-            $schemaPath->value
+            $schemaPath->value,
         );
-        if (!json_validate($jsonString->value)) {
+        if (!\json_validate($jsonString->value)) {
             throw InvalidHttpJsonResponseSchema::jsonSchemaValidatorIsInvalid('jsonString');
         }
-        $jsonDecodedAsArray = json_decode($jsonString->value);
+        $jsonDecodedAsArray = \json_decode($jsonString->value);
 
         return $validator->validate($jsonDecodedAsArray, $schemaId->value);
     }

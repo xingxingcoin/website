@@ -36,7 +36,7 @@ final class ApiHttpClientTest extends TestCase
         $this->apiHttpClient = new ApiHttpClient($this->jsonValidatorMock, $this->httpClientMock, $this->loggerMock);
     }
 
-    public function testRequest_is_valid(): void
+    public function testRequestIsValid(): void
     {
         $method = 'GET';
         $url = 'https://test-valid.com';
@@ -59,15 +59,15 @@ final class ApiHttpClientTest extends TestCase
         self::assertSame('test', $this->jsonValidatorMock->inputJsonString->value);
         self::assertSame('https://test-valid.com.json', $this->jsonValidatorMock->inputSchemaId->value);
         $expectedPath = __DIR__ . '/Schema/https__test-valid.com.json';
-        $expectedPath = str_replace('tests', 'src', $expectedPath);
+        $expectedPath = \str_replace('tests', 'src', $expectedPath);
         self::assertSame(
             $expectedPath,
-            $this->jsonValidatorMock->inputSchemaPath->value
+            $this->jsonValidatorMock->inputSchemaPath->value,
         );
-        self::assertEquals([], $this->loggerMock->logs);
+        self::assertSame([], $this->loggerMock->logs);
     }
 
-    public function testRequest_without_existing_json_schema_file(): void
+    public function testRequestWithoutExistingJsonSchemaFile(): void
     {
         $method = 'GET';
         $url = 'test-valid2.com';
@@ -86,23 +86,23 @@ final class ApiHttpClientTest extends TestCase
         } catch (InvalidHttpJsonResponseSchema $exception) {
             self::assertSame(
                 'Validation failed for value "test-valid2.com" with error: "Json response for url "test-valid2.com" and method "GET" is not existing."',
-                $exception->getMessage()
+                $exception->getMessage(),
             );
         }
-        self::assertEquals([
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'JSON schema for for url and method not found.',
                     'context' => [
                         'url' => 'test-valid2.com',
-                        'method' => 'GET'
-                    ]
-                ]
-            ]
+                        'method' => 'GET',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testRequest_with_errors_in_validation_result(): void
+    public function testRequestWithErrorsInValidationResult(): void
     {
         $method = 'GET';
         $url = 'https://test-valid.com';
@@ -119,7 +119,7 @@ final class ApiHttpClientTest extends TestCase
             'test',
             $schemaMock,
             $dataInfo,
-            $message
+            $message,
         );
         $expectedValidatorResult = new ValidationResult($validationError);
         $this->jsonValidatorMock->outputValidationResult = $expectedValidatorResult;
@@ -130,18 +130,18 @@ final class ApiHttpClientTest extends TestCase
         } catch (InvalidHttpJsonResponseSchema $exception) {
             self::assertSame(
                 'Validation failed for value "https://test-valid.com" with error: "Json schema for url "https://test-valid.com" and method "GET" is invalid."',
-                $exception->getMessage()
+                $exception->getMessage(),
             );
         }
-        self::assertEquals([
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Could not validate input json.',
                     'context' => [
-                        'errorMessage' => $message
-                    ]
-                ]
-            ]
+                        'errorMessage' => $message,
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 }

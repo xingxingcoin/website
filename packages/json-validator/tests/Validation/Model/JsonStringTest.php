@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace XingXingCoin\JsonValidator\Tests\Validation\Model;
 
+use App\Exception\EmptyStringException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use App\Exception\EmptyStringException;
 use XingXingCoin\JsonValidator\Validation\Model\JsonString;
 
 #[CoversClass(JsonString::class)]
 final class JsonStringTest extends TestCase
 {
-    public function testJsonString_is_valid(): void
+    public function testJsonStringIsValid(): void
     {
         $jsonString = new JsonString('valid');
         self::assertSame('valid', $jsonString->value);
     }
 
-    public function testJsonString_with_empty_string(): void
+    public function testJsonStringWithEmptyString(): void
     {
         try {
             new JsonString('');

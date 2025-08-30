@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Database;
 
 use App\Database\DefaultDocumentByPathLoader;
+use App\Database\Exception\PageDocumentNotLoadedException;
+use App\Database\Model\DocumentPath;
 use App\Tests\Unit\Database\Mocks\DocumentManagerMock;
 use App\Tests\Unit\Mocks\LoggerMock;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -12,8 +14,6 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 use Sulu\Bundle\PageBundle\Document\BasePageDocument;
 use Sulu\Component\DocumentManager\Exception\DocumentManagerException;
-use App\Database\Exception\PageDocumentNotLoadedException;
-use App\Database\Model\DocumentPath;
 
 #[CoversClass(DefaultDocumentByPathLoader::class)]
 #[UsesClass(DocumentPath::class)]
@@ -29,11 +29,11 @@ final class DefaultDocumentByPathLoaderTest extends TestCase
         $this->loggerMock = new LoggerMock();
         $this->defaultDocumentByPathLoader = new DefaultDocumentByPathLoader(
             $this->documentManagerMock,
-            $this->loggerMock
+            $this->loggerMock,
         );
     }
 
-    public function testLoad_is_valid(): void
+    public function testLoadIsValid(): void
     {
         $expectedDocumentPath = new DocumentPath('testPath');
         $expectedDocument = new BasePageDocument();
@@ -41,27 +41,27 @@ final class DefaultDocumentByPathLoaderTest extends TestCase
 
         $document = $this->defaultDocumentByPathLoader->load($expectedDocumentPath);
 
-        self::assertEquals($expectedDocument, $document);
+        self::assertSame($expectedDocument, $document);
         self::assertSame($expectedDocumentPath->value, $this->documentManagerMock->inputIdentifier);
         self::assertNull($this->documentManagerMock->inputLocale);
         self::assertEmpty($this->documentManagerMock->inputOptions);
-        self::assertEquals([
+        self::assertSame([
             'info' => [
                 [
                     'message' => 'Start loading document with path.',
-                     'context' => [
-                         'path' => 'testPath'
-                     ]
+                    'context' => [
+                        'path' => 'testPath',
+                    ],
                 ],
                 [
                     'message' => 'Document is successfully loaded.',
-                    'context' => []
-                ]
-            ]
+                    'context' => [],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoad_with_invalid_object_found(): void
+    public function testLoadWithInvalidObjectFound(): void
     {
         $expectedDocumentPath = new DocumentPath('testPath');
         $expectedDocument = new LoggerMock();
@@ -77,33 +77,33 @@ final class DefaultDocumentByPathLoaderTest extends TestCase
         self::assertSame($expectedDocumentPath->value, $this->documentManagerMock->inputIdentifier);
         self::assertNull($this->documentManagerMock->inputLocale);
         self::assertEmpty($this->documentManagerMock->inputOptions);
-        self::assertEquals([
+        self::assertSame([
             'info' => [
                 [
                     'message' => 'Start loading document with path.',
                     'context' => [
-                        'path' => 'testPath'
-                    ]
-                ]
+                        'path' => 'testPath',
+                    ],
+                ],
             ],
             'notice' => [
                 [
                     'message' => 'Error by validating loaded object.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Error by validating loaded object.',
                     'context' => [
-                        'className' => 'App\Tests\Unit\Mocks\LoggerMock'
-                    ]
-                ]
-            ]
+                        'className' => 'App\Tests\Unit\Mocks\LoggerMock',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoad_with_document_manager_exception(): void
+    public function testLoadWithDocumentManagerException(): void
     {
         $expectedDocumentPath = new DocumentPath('testPath');
         $this->documentManagerMock->throwDocumentManagerException = new DocumentManagerException('test');
@@ -118,29 +118,29 @@ final class DefaultDocumentByPathLoaderTest extends TestCase
         self::assertSame($expectedDocumentPath->value, $this->documentManagerMock->inputIdentifier);
         self::assertNull($this->documentManagerMock->inputLocale);
         self::assertEmpty($this->documentManagerMock->inputOptions);
-        self::assertEquals([
+        self::assertSame([
             'info' => [
                 [
                     'message' => 'Start loading document with path.',
                     'context' => [
-                        'path' => 'testPath'
-                    ]
-                ]
+                        'path' => 'testPath',
+                    ],
+                ],
             ],
             'notice' => [
                 [
                     'message' => 'Error by loading document with path.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Error by loading document with path.',
                     'context' => [
-                        'exceptionMessage' => 'test'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'test',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 }

@@ -6,9 +6,9 @@ namespace XingXingCoin\Core\Finance;
 
 use App\Database\Exception\PageDocumentNotLoadedException;
 use App\Database\Model\Location;
+use App\Exception\EmptyStringException;
 use XingXingCoin\ApiAdapter\Finance\Exception\XingFinanceDataNotLoadedException;
 use XingXingCoin\ApiAdapter\Finance\Model\FinanceDataCollection;
-use App\Exception\EmptyStringException;
 use XingXingCoin\Core\Finance\Exception\XingGifNotFoundException;
 
 interface XingFinanceDataByDexScreenerApiHandler

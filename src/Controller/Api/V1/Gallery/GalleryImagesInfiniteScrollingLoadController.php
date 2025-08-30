@@ -7,10 +7,10 @@ namespace App\Controller\Api\V1\Gallery;
 use App\Database\Exception\MediaNotFoundException;
 use App\Database\Exception\PageDocumentNotLoadedException;
 use App\Database\Model\Location;
+use App\Exception\EmptyStringException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use App\Exception\EmptyStringException;
 use XingXingCoin\Core\Gallery\Exception\MediaUrlNotLoadedException;
 use XingXingCoin\Core\Gallery\GalleryImagesLoadHandler;
 use XingXingCoin\Core\Gallery\Model\ImageCounter;
@@ -21,8 +21,9 @@ final readonly class GalleryImagesInfiniteScrollingLoadController
 
     public function __construct(
         private GalleryImagesLoadHandler $galleryImagesLoadHandler,
-        private LoggerInterface $logger
-    ) {}
+        private LoggerInterface $logger,
+    ) {
+    }
 
     public function __invoke(Request $request): JsonResponse
     {
@@ -36,14 +37,16 @@ final readonly class GalleryImagesInfiniteScrollingLoadController
         } catch (PageDocumentNotLoadedException|EmptyStringException $exception) {
             $this->logger->notice('Page document could not be loaded.');
             $this->logger->debug('Page document could not be loaded.', [
-                'exceptionMessage' => $exception->getMessage()
+                'exceptionMessage' => $exception->getMessage(),
             ]);
+
             return new JsonResponse(['message' => 'Bad request.'], 400);
         } catch (MediaUrlNotLoadedException|MediaNotFoundException $exception) {
             $this->logger->notice('Media urls could not be loaded.');
             $this->logger->debug('Media urls could not be loaded.', [
-                'exceptionMessage' => $exception->getMessage()
+                'exceptionMessage' => $exception->getMessage(),
             ]);
+
             return new JsonResponse(['message' => 'Internal server error.'], 500);
         }
     }

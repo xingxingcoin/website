@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace XingXingCoin\ApiAdapter\Http;
 
+use App\Exception\EmptyStringException;
 use Opis\JsonSchema\Errors\ValidationError;
 use Psr\Log\LoggerInterface;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
@@ -13,7 +14,6 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 use Symfony\Contracts\HttpClient\ResponseStreamInterface;
-use App\Exception\EmptyStringException;
 use XingXingCoin\JsonValidator\Validation\Exception\InvalidHttpJsonResponseSchema;
 use XingXingCoin\JsonValidator\Validation\JsonValidator;
 use XingXingCoin\JsonValidator\Validation\Model\JsonString;
@@ -25,7 +25,7 @@ final readonly class ApiHttpClient implements HttpClientInterface
     public function __construct(
         private JsonValidator $jsonValidator,
         private HttpClientInterface $httpClient,
-        private LoggerInterface $logger
+        private LoggerInterface $logger,
     ) {
     }
 
@@ -42,11 +42,11 @@ final readonly class ApiHttpClient implements HttpClientInterface
     {
         $response = $this->httpClient->request($method, $url, $options);
 
-        $fileName = str_replace(':', '', str_replace('/', '_', $url));
-        if (!file_exists(__DIR__ . '/Schema/' . $fileName . '.json')) {
+        $fileName = \str_replace(':', '', \str_replace('/', '_', $url));
+        if (!\file_exists(__DIR__ . '/Schema/' . $fileName . '.json')) {
             $this->logger->notice('JSON schema for for url and method not found.', [
                 'url' => $url,
-                'method' => $method
+                'method' => $method,
             ]);
             throw InvalidHttpJsonResponseSchema::schemaNotFound($url, $method);
         }
@@ -54,13 +54,13 @@ final readonly class ApiHttpClient implements HttpClientInterface
         $validationResult = $this->jsonValidator->validate(
             new JsonString($response->getContent()),
             new SchemaPath(__DIR__ . '/Schema/' . $fileName . '.json'),
-            new SchemaId($url . '.json')
+            new SchemaId($url . '.json'),
         );
         if ($validationResult->hasError()) {
             /** @var ValidationError $validationError */
             $validationError = $validationResult->error();
             $this->logger->notice('Could not validate input json.', [
-                'errorMessage' => $validationError->message()
+                'errorMessage' => $validationError->message(),
             ]);
 
             throw InvalidHttpJsonResponseSchema::jsonSchemaIsInvalid($url, $method);
@@ -71,6 +71,7 @@ final readonly class ApiHttpClient implements HttpClientInterface
 
     /**
      * @codeCoverageIgnore
+     *
      * @infection-ignore-all
      */
     #[\Override]
@@ -81,6 +82,7 @@ final readonly class ApiHttpClient implements HttpClientInterface
 
     /**
      * @codeCoverageIgnore
+     *
      * @infection-ignore-all
      */
     #[\Override]

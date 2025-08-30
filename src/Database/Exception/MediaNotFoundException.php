@@ -8,20 +8,23 @@ use App\Exception\ValidationException;
 
 /**
  * @codeCoverageIgnore
+ *
  * @infection-ignore-all
  */
 final class MediaNotFoundException extends ValidationException
 {
     public const string MEDIA_NOT_LOADED_EXCEPTION_MESSAGE = 'Media with id "%s" could not be loaded.';
 
-    public static function mediaIsInvalid(string $mediaId): MediaNotFoundException
+    public static function mediaIsInvalid(string $mediaId): self
     {
         return new self(
             ValidationException::buildMessage(
                 $mediaId,
-                sprintf(self::MEDIA_NOT_LOADED_EXCEPTION_MESSAGE, $mediaId
-                )
-            )
+                \sprintf(
+                    self::MEDIA_NOT_LOADED_EXCEPTION_MESSAGE,
+                    $mediaId,
+                ),
+            ),
         );
     }
 }

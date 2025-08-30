@@ -23,7 +23,7 @@ final class MediaCollectionByDocumentLoaderMock implements MediaCollectionByDocu
         BasePageDocument $document,
         Location $location,
         RootNavigation $rootNavigation,
-        SubNavigation $subNavigation
+        SubNavigation $subNavigation,
     ): MediaCollection {
         $this->inputDocument = $document;
         $this->inputLocation = $location;

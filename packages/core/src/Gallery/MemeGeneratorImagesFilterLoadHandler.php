@@ -24,6 +24,6 @@ interface MemeGeneratorImagesFilterLoadHandler
     public function handle(
         Location $location,
         ImageCounter $imageCounter,
-        ImageFilter $imageFilter
+        ImageFilter $imageFilter,
     ): MediaUrlCollection;
 }

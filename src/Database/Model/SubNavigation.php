@@ -12,9 +12,9 @@ final readonly class SubNavigation
      * @throws EmptyStringException
      */
     public function __construct(
-        public string $value
+        public string $value,
     ) {
-        if ($this->value === '') {
+        if ('' === $this->value) {
             throw EmptyStringException::stringIsEmpty('subNavigation');
         }
     }

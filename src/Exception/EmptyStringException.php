@@ -6,17 +6,18 @@ namespace App\Exception;
 
 /**
  * @codeCoverageIgnore
+ *
  * @infection-ignore-all
  */
 final class EmptyStringException extends ValidationException
 {
-    public static function stringIsEmpty(string $identifier): EmptyStringException
+    public static function stringIsEmpty(string $identifier): self
     {
         return new self(
             parent::buildMessage(
                 $identifier,
-                sprintf('Value for "%s" should not be empty.', $identifier)
-            )
+                \sprintf('Value for "%s" should not be empty.', $identifier),
+            ),
         );
     }
 }

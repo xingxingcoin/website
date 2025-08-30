@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Unit\Gallery\Components;
 
 use App\Gallery\Components\MediaUrlCollectionByMemeTemplateFilterGenerator;
@@ -19,7 +21,7 @@ final class MediaUrlCollectionByMemeTemplateFilterGeneratorTest extends TestCase
         $this->mediaUrlCollectionByMemeTemplateFilterGenerator = new MediaUrlCollectionByMemeTemplateFilterGenerator();
     }
 
-    public function testGenerate_is_valid(): void
+    public function testGenerateIsValid(): void
     {
         $mediaCollection = new MediaCollection([
             [
@@ -44,17 +46,17 @@ final class MediaUrlCollectionByMemeTemplateFilterGeneratorTest extends TestCase
         $expectedMediaUrlCollection = new MediaUrlCollection([
             [
                 MemeGeneratorMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl',
-                MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl'
+                MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl',
             ],
             [
                 MemeGeneratorMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl3',
-                MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3'
-            ]
+                MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3',
+            ],
         ]);
         self::assertEquals($expectedMediaUrlCollection, $mediaUrlCollection);
     }
 
-    public function testGenerate_is_empty(): void
+    public function testGenerateIsEmpty(): void
     {
         $mediaCollection = new MediaCollection([]);
         $mediaUrlCollection = $this->mediaUrlCollectionByMemeTemplateFilterGenerator->generate($mediaCollection);

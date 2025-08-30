@@ -37,7 +37,7 @@ final class GalleryImagesFilterLoadControllerTest extends TestCase
         );
     }
 
-    public function testLoadMemeGeneratorImages_is_valid(): void
+    public function testLoadMemeGeneratorImagesIsValid(): void
     {
         $request = new Request();
         $request->setLocale('en');
@@ -48,13 +48,13 @@ final class GalleryImagesFilterLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesFilterLoadController->__invoke($request);
         self::assertSame(200, $jsonResponse->getStatusCode());
-        self::assertEquals('{"urls":[]}', $jsonResponse->getContent());
+        self::assertSame('{"urls":[]}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesFilterLoadHandlerMock->inputLocation->value);
         self::assertSame(2, $this->galleryImagesFilterLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([], $this->loggerMock->logs);
+        self::assertSame([], $this->loggerMock->logs);
     }
 
-    public function testLoadMemeGeneratorImages_with_invalid_image_counter(): void
+    public function testLoadMemeGeneratorImagesWithInvalidImageCounter(): void
     {
         $request = new Request();
         $request->setLocale('en');
@@ -64,13 +64,13 @@ final class GalleryImagesFilterLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesFilterLoadController->__invoke($request);
         self::assertSame(200, $jsonResponse->getStatusCode());
-        self::assertEquals('{"urls":[]}', $jsonResponse->getContent());
+        self::assertSame('{"urls":[]}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesFilterLoadHandlerMock->inputLocation->value);
         self::assertSame(0, $this->galleryImagesFilterLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([], $this->loggerMock->logs);
+        self::assertSame([], $this->loggerMock->logs);
     }
 
-    public function testLoadMemeGeneratorImages_with_invalid_image_filter(): void
+    public function testLoadMemeGeneratorImagesWithInvalidImageFilter(): void
     {
         $request = new Request();
         $request->setLocale('en');
@@ -80,92 +80,92 @@ final class GalleryImagesFilterLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesFilterLoadController->__invoke($request);
         self::assertSame(400, $jsonResponse->getStatusCode());
-        self::assertEquals('{"message":"Bad request."}', $jsonResponse->getContent());
-        self::assertEquals([
+        self::assertSame('{"message":"Bad request."}', $jsonResponse->getContent());
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Page document could not be loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Page document could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'Validation failed for value "filter" with error: "Value for "filter" should not be empty."'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'Validation failed for value "filter" with error: "Value for "filter" should not be empty."',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoadMemeGeneratorImages_with_page_document_not_loaded(): void
+    public function testLoadMemeGeneratorImagesWithPageDocumentNotLoaded(): void
     {
         $request = new Request();
         $request->setLocale('en');
         $request->query->set(GalleryImagesFilterLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
         $request->query->set(GalleryImagesFilterLoadController::REQUEST_IMAGE_FILTER_KEY, 'image');
         $this->galleryImagesFilterLoadHandlerMock->throwPageDocumentNotLoadedException = new PageDocumentNotLoadedException(
-            'test'
+            'test',
         );
 
         $jsonResponse = $this->galleryImagesFilterLoadController->__invoke($request);
         self::assertSame(400, $jsonResponse->getStatusCode());
-        self::assertEquals('{"message":"Bad request."}', $jsonResponse->getContent());
+        self::assertSame('{"message":"Bad request."}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesFilterLoadHandlerMock->inputLocation->value);
         self::assertSame(2, $this->galleryImagesFilterLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Page document could not be loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Page document could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'test'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'test',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoadMemeGeneratorImages_with_media_url_not_loaded(): void
+    public function testLoadMemeGeneratorImagesWithMediaUrlNotLoaded(): void
     {
         $request = new Request();
         $request->setLocale('en');
         $request->query->set(GalleryImagesFilterLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
         $request->query->set(GalleryImagesFilterLoadController::REQUEST_IMAGE_FILTER_KEY, 'image');
         $this->galleryImagesFilterLoadHandlerMock->throwMediaDataNotLoadedException = new MediaDataNotLoadedException(
-            'test'
+            'test',
         );
 
         $jsonResponse = $this->galleryImagesFilterLoadController->__invoke($request);
         self::assertSame(500, $jsonResponse->getStatusCode());
-        self::assertEquals('{"message":"Internal server error."}', $jsonResponse->getContent());
+        self::assertSame('{"message":"Internal server error."}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesFilterLoadHandlerMock->inputLocation->value);
         self::assertSame(2, $this->galleryImagesFilterLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Media urls could not be loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Media urls could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'test'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'test',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoadMemeGeneratorImages_with_media_not_found(): void
+    public function testLoadMemeGeneratorImagesWithMediaNotFound(): void
     {
         $request = new Request();
         $request->setLocale('en');
@@ -175,55 +175,55 @@ final class GalleryImagesFilterLoadControllerTest extends TestCase
 
         $jsonResponse = $this->galleryImagesFilterLoadController->__invoke($request);
         self::assertSame(500, $jsonResponse->getStatusCode());
-        self::assertEquals('{"message":"Internal server error."}', $jsonResponse->getContent());
+        self::assertSame('{"message":"Internal server error."}', $jsonResponse->getContent());
         self::assertSame('en', $this->galleryImagesFilterLoadHandlerMock->inputLocation->value);
         self::assertSame(2, $this->galleryImagesFilterLoadHandlerMock->inputImageCounter->value);
-        self::assertEquals([
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Media urls could not be loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Media urls could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'test'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'test',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoadMemeGeneratorImages_with_empty_locale(): void
+    public function testLoadMemeGeneratorImagesWithEmptyLocale(): void
     {
         $request = new Request();
         $request->setLocale('');
         $request->query->set(GalleryImagesFilterLoadController::REQUEST_IMAGE_COUNTER_KEY, 2);
         $request->query->set(GalleryImagesFilterLoadController::REQUEST_IMAGE_FILTER_KEY, 'image');
         $this->galleryImagesFilterLoadHandlerMock->throwMediaDataNotLoadedException = new MediaDataNotLoadedException(
-            'test'
+            'test',
         );
 
         $jsonResponse = $this->galleryImagesFilterLoadController->__invoke($request);
         self::assertSame(400, $jsonResponse->getStatusCode());
-        self::assertEquals('{"message":"Bad request."}', $jsonResponse->getContent());
-        self::assertEquals([
+        self::assertSame('{"message":"Bad request."}', $jsonResponse->getContent());
+        self::assertSame([
             'notice' => [
                 [
                     'message' => 'Page document could not be loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Page document could not be loaded.',
                     'context' => [
-                        'exceptionMessage' => 'Validation failed for value "location" with error: "Value for "location" should not be empty."'
-                    ]
-                ]
-            ]
+                        'exceptionMessage' => 'Validation failed for value "location" with error: "Value for "location" should not be empty."',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 }

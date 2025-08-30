@@ -22,7 +22,7 @@ final class MediaUrlCollectionByAllImagesFilterGeneratorTest extends TestCase
         $this->mediaUrlCollectionByAllImagesFilterGenerator = new MediaUrlCollectionByAllImagesFilterGenerator();
     }
 
-    public function testGenerate_with_png(): void
+    public function testGenerateWithPng(): void
     {
         $mediaCollection = new MediaCollection([
             [
@@ -47,17 +47,17 @@ final class MediaUrlCollectionByAllImagesFilterGeneratorTest extends TestCase
         $expectedMediaUrlCollection = new MediaUrlCollection([
             [
                 GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl',
-                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl'
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl',
             ],
             [
                 GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl3',
-                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3'
-            ]
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3',
+            ],
         ]);
         self::assertEquals($expectedMediaUrlCollection, $mediaUrlCollection);
     }
 
-    public function testGenerate_with_webp(): void
+    public function testGenerateWithWebp(): void
     {
         $mediaCollection = new MediaCollection([
             [
@@ -82,17 +82,17 @@ final class MediaUrlCollectionByAllImagesFilterGeneratorTest extends TestCase
         $expectedMediaUrlCollection = new MediaUrlCollection([
             [
                 GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl',
-                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl'
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl',
             ],
             [
                 GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl3',
-                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3'
-            ]
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3',
+            ],
         ]);
         self::assertEquals($expectedMediaUrlCollection, $mediaUrlCollection);
     }
 
-    public function testGenerate_with_jpg(): void
+    public function testGenerateWithJpg(): void
     {
         $mediaCollection = new MediaCollection([
             [
@@ -117,17 +117,17 @@ final class MediaUrlCollectionByAllImagesFilterGeneratorTest extends TestCase
         $expectedMediaUrlCollection = new MediaUrlCollection([
             [
                 GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl',
-                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl'
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl',
             ],
             [
                 GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl3',
-                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3'
-            ]
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3',
+            ],
         ]);
         self::assertEquals($expectedMediaUrlCollection, $mediaUrlCollection);
     }
 
-    public function testGenerate_is_empty(): void
+    public function testGenerateIsEmpty(): void
     {
         $mediaCollection = new MediaCollection([]);
         $mediaUrlCollection = $this->mediaUrlCollectionByAllImagesFilterGenerator->generate($mediaCollection);

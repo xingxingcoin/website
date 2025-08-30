@@ -20,7 +20,7 @@ final class ParameterResolverMock implements ParameterResolverInterface
         array $parameter,
         ?RequestAnalyzerInterface $requestAnalyzer = null,
         ?StructureInterface $structure = null,
-        $preview = false
+        $preview = false,
     ): array {
         $this->inputParameter = $parameter;
         $this->inputRequestAnalyzer = $requestAnalyzer;

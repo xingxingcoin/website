@@ -18,6 +18,6 @@ interface NavigationUrlLoader
     public function load(
         RootNavigation $rootNavigation,
         SubNavigation $subNavigation,
-        Location $location
+        Location $location,
     ): NavigationUrl;
 }

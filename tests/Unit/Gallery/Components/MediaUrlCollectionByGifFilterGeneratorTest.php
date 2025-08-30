@@ -22,7 +22,7 @@ final class MediaUrlCollectionByGifFilterGeneratorTest extends TestCase
         $this->mediaUrlCollectionByGifFilterGenerator = new MediaUrlCollectionByGifFilterGenerator();
     }
 
-    public function testGenerate_is_valid(): void
+    public function testGenerateIsValid(): void
     {
         $mediaCollection = new MediaCollection([
             [
@@ -47,17 +47,17 @@ final class MediaUrlCollectionByGifFilterGeneratorTest extends TestCase
         $expectedMediaUrlCollection = new MediaUrlCollection([
             [
                 GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl',
-                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl'
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl',
             ],
             [
                 GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testImageViewerUrl3',
-                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3'
-            ]
+                GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testMediaUrl3',
+            ],
         ]);
         self::assertEquals($expectedMediaUrlCollection, $mediaUrlCollection);
     }
 
-    public function testGenerate_is_empty(): void
+    public function testGenerateIsEmpty(): void
     {
         $mediaCollection = new MediaCollection([]);
         $mediaUrlCollection = $this->mediaUrlCollectionByGifFilterGenerator->generate($mediaCollection);

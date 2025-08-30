@@ -37,7 +37,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document = $manager->find('/cmf/website/contents', 'en');
         $document->getStructure()->bind([
             'header' => [
-                'xing_music' => 'default-audio.mp3'
+                'xing_music' => 'default-audio.mp3',
             ],
             'footer_social_media' => [
                 'footer_twitter_logo' => 'test_twitter_logo.png',
@@ -72,15 +72,15 @@ abstract class AbstractWebTestCase extends SuluTestCase
                     'type' => 'xing_address',
                     'xing_address_text' => '5JcdnWEwuHh1v3SAARq8zH9tEwDQGpaHzBrZ81m4pump',
                 ],
-            ]
+            ],
         ]);
 
         foreach ($options['locales'] as $locale) {
             $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents'
+                'path' => '/cmf/website/contents',
             ]);
             $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents'
+                'path' => '/cmf/website/contents',
             ]);
         }
         $manager->flush();
@@ -101,7 +101,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setLocale('en');
         $document->getStructure()->bind([
             'header' => [
-                'xing_music' => 'default-audio.mp3'
+                'xing_music' => 'default-audio.mp3',
             ],
             'footer_social_media' => [
                 'footer_twitter_logo' => 'test_twitter_logo.png',
@@ -118,27 +118,27 @@ abstract class AbstractWebTestCase extends SuluTestCase
                     'type' => 'xing_media',
                     'media' => [
                         'ids' => [
-                            $mediaId
-                        ]
-                    ]
+                            $mediaId,
+                        ],
+                    ],
                 ],
                 [
                     'type' => 'xing_media',
                     'media' => [
                         'ids' => [
-                            $mediaId
-                        ]
-                    ]
-                ]
-            ]
+                            $mediaId,
+                        ],
+                    ],
+                ],
+            ],
         ]);
 
         foreach ($options['locales'] as $locale) {
             $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents/xing-xing-on-camera'
+                'path' => '/cmf/website/contents/xing-xing-on-camera',
             ]);
             $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents/xing-xing-on-camera'
+                'path' => '/cmf/website/contents/xing-xing-on-camera',
             ]);
         }
 
@@ -152,7 +152,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setLocale('en');
         $document->getStructure()->bind([
             'header' => [
-                'xing_music' => 'default-audio.mp3'
+                'xing_music' => 'default-audio.mp3',
             ],
             'footer_social_media' => [
                 'footer_twitter_logo' => 'test_twitter_logo.png',
@@ -168,10 +168,10 @@ abstract class AbstractWebTestCase extends SuluTestCase
 
         foreach ($options['locales'] as $locale) {
             $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer'
+                'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer',
             ]);
             $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer'
+                'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer',
             ]);
         }
 
@@ -193,7 +193,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setLocale('en');
         $document->getStructure()->bind([
             'header' => [
-                'xing_music' => 'default-audio.mp3'
+                'xing_music' => 'default-audio.mp3',
             ],
             'footer_social_media' => [
                 'footer_twitter_logo' => 'test_twitter_logo.png',
@@ -210,27 +210,27 @@ abstract class AbstractWebTestCase extends SuluTestCase
                     'type' => 'xing_meme_generator',
                     'media' => [
                         'ids' => [
-                            $mediaId
-                        ]
-                    ]
+                            $mediaId,
+                        ],
+                    ],
                 ],
                 [
                     'type' => 'xing_meme_generator',
                     'media' => [
                         'ids' => [
-                            $mediaId
-                        ]
-                    ]
-                ]
-            ]
+                            $mediaId,
+                        ],
+                    ],
+                ],
+            ],
         ]);
 
         foreach ($options['locales'] as $locale) {
             $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents/meme-generator'
+                'path' => '/cmf/website/contents/meme-generator',
             ]);
             $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents/meme-generator'
+                'path' => '/cmf/website/contents/meme-generator',
             ]);
         }
 
@@ -244,7 +244,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $document->setLocale('en');
         $document->getStructure()->bind([
             'header' => [
-                'xing_music' => 'default-audio.mp3'
+                'xing_music' => 'default-audio.mp3',
             ],
             'footer_social_media' => [
                 'footer_twitter_logo' => 'test_twitter_logo.png',
@@ -260,10 +260,10 @@ abstract class AbstractWebTestCase extends SuluTestCase
 
         foreach ($options['locales'] as $locale) {
             $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents/meme-generator/new-meme'
+                'path' => '/cmf/website/contents/meme-generator/new-meme',
             ]);
             $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents/meme-generator/new-meme'
+                'path' => '/cmf/website/contents/meme-generator/new-meme',
             ]);
         }
 
@@ -289,7 +289,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
             'test-image.jpg',
             'image/jpeg',
             null,
-            true
+            true,
         );
 
         $mediaTypes = new MediaType();
@@ -303,7 +303,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
             'collection' => $collection->getId(),
             'locale' => 'en',
             'title' => 'Test Image',
-            'description' => 'Test image description'
+            'description' => 'Test image description',
         ], 'en');
     }
 

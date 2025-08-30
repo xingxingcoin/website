@@ -6,6 +6,7 @@ namespace App\Exception;
 
 /**
  * @codeCoverageIgnore
+ *
  * @infection-ignore-all
  */
 class ValidationException extends \Exception
@@ -14,6 +15,6 @@ class ValidationException extends \Exception
 
     protected static function buildMessage(string $value, string $error): string
     {
-        return sprintf(self::MESSAGE_TEMPLATE, $value, $error);
+        return \sprintf(self::MESSAGE_TEMPLATE, $value, $error);
     }
 }

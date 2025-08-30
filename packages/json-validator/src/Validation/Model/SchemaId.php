@@ -6,11 +6,13 @@ namespace XingXingCoin\JsonValidator\Validation\Model;
 
 /**
  * @codeCoverageIgnore
+ *
  * @infection-ignore-all
  */
 final readonly class SchemaId
 {
     public function __construct(
-        public string $value
-    ) {}
+        public string $value,
+    ) {
+    }
 }

@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Tests\Unit\Controller\Pages\Mocks;
 
-use DateTime;
 use Sulu\Component\Localization\Localization;
 use Sulu\Component\Webspace\Analyzer\RequestAnalyzerInterface;
 use Sulu\Component\Webspace\Portal;
@@ -16,7 +16,7 @@ final class RequestAnalyzerMock implements RequestAnalyzerInterface
 {
     public Request $inputRequest;
     public int $outputMatchType;
-    public DateTime $outputDateTime;
+    public \DateTime $outputDateTime;
     public Webspace $outputWebspace;
     public Portal $outputPortal;
     public Segment $outputSegment;
@@ -46,7 +46,7 @@ final class RequestAnalyzerMock implements RequestAnalyzerInterface
         return $this->outputMatchType;
     }
 
-    public function getDateTime(): DateTime
+    public function getDateTime(): \DateTime
     {
         return $this->outputDateTime;
     }

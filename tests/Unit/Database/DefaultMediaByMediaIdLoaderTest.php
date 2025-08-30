@@ -30,11 +30,11 @@ final class DefaultMediaByMediaIdLoaderTest extends TestCase
         $this->loggerMock = new LoggerMock();
         $this->defaultMediaByMediaIdLoader = new DefaultMediaByMediaIdLoader(
             $this->mediaManagerMock,
-            $this->loggerMock
+            $this->loggerMock,
         );
     }
 
-    public function testLoad_is_valid(): void
+    public function testLoadIsValid(): void
     {
         $mediaId = new MediaId(1);
         $location = new Location('en');
@@ -43,33 +43,33 @@ final class DefaultMediaByMediaIdLoaderTest extends TestCase
 
         $media = $this->defaultMediaByMediaIdLoader->load($mediaId, $location);
 
-        self::assertEquals($expectedMedia, $media);
+        self::assertSame($expectedMedia, $media);
         self::assertSame($mediaId->value, $this->mediaManagerMock->inputId);
         self::assertSame($location->value, $this->mediaManagerMock->inputLocale);
-        self::assertEquals([
+        self::assertSame([
             'info' => [
                 [
                     'message' => 'Start loading media with mediaId and location.',
-                    'context' => []
+                    'context' => [],
                 ],
                 [
                     'message' => 'Media by mediaId and location is successfully loaded.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Start loading media with mediaId and location.',
                     'context' => [
                         'mediaId' => 1,
-                        'location' => 'en'
-                    ]
-                ]
-            ]
+                        'location' => 'en',
+                    ],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 
-    public function testLoad_with_MediaNotFoundException(): void
+    public function testLoadWithMediaNotFoundException(): void
     {
         $mediaId = new MediaId(1);
         $location = new Location('en');
@@ -81,38 +81,38 @@ final class DefaultMediaByMediaIdLoaderTest extends TestCase
         } catch (\App\Database\Exception\MediaNotFoundException $exception) {
             self::assertSame(
                 'Validation failed for value "1" with error: "Media with id "1" could not be loaded."',
-                $exception->getMessage()
+                $exception->getMessage(),
             );
         }
 
-        self::assertEquals([
+        self::assertSame([
             'info' => [
                 [
                     'message' => 'Start loading media with mediaId and location.',
-                    'context' => []
-                ]
+                    'context' => [],
+                ],
             ],
             'debug' => [
                 [
                     'message' => 'Start loading media with mediaId and location.',
                     'context' => [
                         'mediaId' => 1,
-                        'location' => 'en'
-                    ]
+                        'location' => 'en',
+                    ],
                 ],
                 [
                     'message' => 'Error by loading media with mediaId and location.',
                     'context' => [
-                        'exceptionMessage' => 'Media with the ID test was not found'
-                    ]
-                ]
+                        'exceptionMessage' => 'Media with the ID test was not found',
+                    ],
+                ],
             ],
             'notice' => [
                 [
                     'message' => 'Error by loading media with mediaId and location.',
-                    'context' => []
-                ]
-            ]
+                    'context' => [],
+                ],
+            ],
         ], $this->loggerMock->logs);
     }
 }

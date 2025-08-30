@@ -19,22 +19,22 @@ final readonly class MediaUrlCollectionByAllImagesFilterGenerator implements Med
     {
         $mediaUrlData = [];
         foreach ($mediaCollection as $mediaData) {
-            if ($mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_JPG) {
+            if (self::FILE_EXTENSION_JPG === $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION]) {
                 $mediaUrlData[] = [
                     GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
-                    GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY]
+                    GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY],
                 ];
             }
-            if ($mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_WEBP) {
+            if (self::FILE_EXTENSION_WEBP === $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION]) {
                 $mediaUrlData[] = [
                     GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
-                    GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY]
+                    GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY],
                 ];
             }
-            if ($mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION] === self::FILE_EXTENSION_PNG) {
+            if (self::FILE_EXTENSION_PNG === $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_FILE_EXTENSION]) {
                 $mediaUrlData[] = [
                     GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY],
-                    GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY]
+                    GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY => $mediaData[GalleryMediaCollectionByDocumentLoader::MEDIA_URL_KEY],
                 ];
             }
         }

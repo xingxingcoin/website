@@ -14,6 +14,7 @@ final class SchemaMock implements Schema
     public SchemaInfo $outputSchemaInfo;
     public ValidationContext $inputValidationContext;
     public ?ValidationError $outputValidationError = null;
+
     public function info(): SchemaInfo
     {
         return $this->outputSchemaInfo;

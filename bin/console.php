@@ -14,7 +14,7 @@ declare(strict_types=1);
 use App\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 
-umask(002);
+\umask(002);
 
 if (!\is_dir(\dirname(__DIR__) . '/vendor')) {
     throw new \LogicException('Dependencies are missing. Try running "composer install".');

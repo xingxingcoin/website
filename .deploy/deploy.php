@@ -11,11 +11,11 @@ import(__DIR__ . '/hosts.yaml');
 
 set('shared_files', [
     '.env',
-    'public/robots.txt'
+    'public/robots.txt',
 ]);
 add('shared_dirs', []);
 add('writable_dirs', [
-    'var'
+    'var',
 ]);
 set('do_not_deploy', [
     '.git',
@@ -23,21 +23,29 @@ set('do_not_deploy', [
     '.deploy',
     'docs',
     'tests',
+    'assets',
     '.gitignore',
     '.env.dev',
     'LICENSE',
     'phpunit.xml',
     'psalm.xml',
     'infection.json5',
+    'webpack.config.js',
+    'tsconfig.json',
+    'jest.config.ts',
     'README.md',
-    'jest.config.ts'
+    'jest.config.ts',
+    '.php-cs-fixer.dist.php',
+    'package.json',
+    'package-lock.json',
+    '.gitignore',
 ]);
 
 task('local:create:working:dir', static function (): void {
-   if (is_dir(__DIR__ . '/build')) {
-       runLocally('rm -rf build');
-   }
-   runLocally('mkdir build');
+    if (\is_dir(__DIR__ . '/build')) {
+        runLocally('rm -rf build');
+    }
+    runLocally('mkdir build');
 });
 task('local:checkout', static function (): void {
     runLocally('git clone --depth=1 {{repository}} build');
@@ -58,12 +66,12 @@ task('deploy:do_not_deploy', static function () {
     }
 });
 task('deploy:update_code', static function (): void {
-   upload('build/.', '{{release_path}}');
+    upload('build/.', '{{release_path}}');
 });
 task('deploy:opcache:clear', static function (): void {
-   if (get('cachetool_args') !== '') {
-       invoke('cachetool:clear:opcache');
-   }
+    if ('' !== get('cachetool_args')) {
+        invoke('cachetool:clear:opcache');
+    }
 });
 after('deploy:symlink', 'deploy:opcache:clear');
 
@@ -87,7 +95,7 @@ task('deploy', [
     'deploy:publish',
     'deploy:cleanup',
     'deploy:cache:clear',
-    'phpcr:migrate'
+    'phpcr:migrate',
 ]);
 
 after('deploy:failed', 'deploy:unlock');

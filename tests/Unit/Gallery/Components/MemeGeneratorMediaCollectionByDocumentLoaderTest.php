@@ -43,19 +43,19 @@ final class MemeGeneratorMediaCollectionByDocumentLoaderTest extends CustomTestC
         $this->navigationUrlLoaderMock = new NavigationUrlLoaderMock();
         $this->memeGeneratorMediaCollectionByDocumentLoader = new MemeGeneratorMediaCollectionByDocumentLoader(
             $this->mediaByMediaIdLoaderMock,
-            $this->navigationUrlLoaderMock
+            $this->navigationUrlLoaderMock,
         );
     }
 
-    public function testLoad_is_valid(): void
+    public function testLoadIsValid(): void
     {
         $expectedMediaBlock = [
             'media' => [
                 'ids' => [
                     1,
-                    2
-                ]
-            ]
+                    2,
+                ],
+            ],
         ];
         $expectedPropertyValue = $this->getMock(PropertyValue::class);
         $expectedPropertyValue->expects(self::once())
@@ -90,7 +90,7 @@ final class MemeGeneratorMediaCollectionByDocumentLoaderTest extends CustomTestC
             $expectedDocument,
             $expectedLocation,
             new RootNavigation(MemeGeneratorImagesLoadHandler::ROOT_NAVIGATION),
-            new SubNavigation(MemeGeneratorImagesLoadHandler::SUB_NAVIGATION)
+            new SubNavigation(MemeGeneratorImagesLoadHandler::SUB_NAVIGATION),
         );
 
         $expectedMediaCollection = new MediaCollection([
@@ -102,29 +102,29 @@ final class MemeGeneratorMediaCollectionByDocumentLoaderTest extends CustomTestC
             [
                 MemeGeneratorMediaCollectionByDocumentLoader::IMAGE_VIEWER_URL_KEY => 'testUrl?mediaId=2',
                 MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_URL_KEY => 'testUrl',
-                MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_NAME_KEY => 'testImage'
-            ]
+                MemeGeneratorMediaCollectionByDocumentLoader::MEDIA_NAME_KEY => 'testImage',
+            ],
         ]);
-        self::assertEquals($expectedMediaCollection->data, $mediaCollection->data);
+        self::assertSame($expectedMediaCollection->data, $mediaCollection->data);
         self::assertSame(2, $this->mediaByMediaIdLoaderMock->inputMediaId->value);
         self::assertSame($expectedLocation->value, $this->mediaByMediaIdLoaderMock->inputLocation->value);
         self::assertSame(
             MemeGeneratorImagesLoadHandler::ROOT_NAVIGATION,
-            $this->navigationUrlLoaderMock->inputRootNavigation->value
+            $this->navigationUrlLoaderMock->inputRootNavigation->value,
         );
         self::assertSame(
             MemeGeneratorImagesLoadHandler::SUB_NAVIGATION,
-            $this->navigationUrlLoaderMock->inputSubNavigation->value
+            $this->navigationUrlLoaderMock->inputSubNavigation->value,
         );
     }
 
-    public function testLoad_with_empty_media_ids(): void
+    public function testLoadWithEmptyMediaIds(): void
     {
         $expectedMediaBlock = [
             'media' => [
                 'ids' => [
-                ]
-            ]
+                ],
+            ],
         ];
         $expectedPropertyValue = $this->getMock(PropertyValue::class);
         $expectedPropertyValue->expects(self::once())
@@ -150,25 +150,25 @@ final class MemeGeneratorMediaCollectionByDocumentLoaderTest extends CustomTestC
             $expectedDocument,
             $expectedLocation,
             new RootNavigation(MemeGeneratorImagesLoadHandler::ROOT_NAVIGATION),
-            new SubNavigation(MemeGeneratorImagesLoadHandler::SUB_NAVIGATION)
+            new SubNavigation(MemeGeneratorImagesLoadHandler::SUB_NAVIGATION),
         );
 
         $expectedMediaCollection = new MediaCollection([]);
-        self::assertEquals($expectedMediaCollection->data, $mediaCollection->data);
+        self::assertSame($expectedMediaCollection->data, $mediaCollection->data);
         self::assertSame(
             MemeGeneratorImagesLoadHandler::ROOT_NAVIGATION,
-            $this->navigationUrlLoaderMock->inputRootNavigation->value
+            $this->navigationUrlLoaderMock->inputRootNavigation->value,
         );
         self::assertSame(
             MemeGeneratorImagesLoadHandler::SUB_NAVIGATION,
-            $this->navigationUrlLoaderMock->inputSubNavigation->value
+            $this->navigationUrlLoaderMock->inputSubNavigation->value,
         );
     }
 
-    public function testLoad_with_ids_equals_null(): void
+    public function testLoadWithIdsEqualsNull(): void
     {
         $expectedMediaBlock = [
-            'media' => []
+            'media' => [],
         ];
         $expectedPropertyValue = $this->getMock(PropertyValue::class);
         $expectedPropertyValue->expects(self::once())
@@ -195,27 +195,27 @@ final class MemeGeneratorMediaCollectionByDocumentLoaderTest extends CustomTestC
                 $expectedDocument,
                 $expectedLocation,
                 new RootNavigation(MemeGeneratorImagesLoadHandler::ROOT_NAVIGATION),
-                new SubNavigation(MemeGeneratorImagesLoadHandler::SUB_NAVIGATION)
+                new SubNavigation(MemeGeneratorImagesLoadHandler::SUB_NAVIGATION),
             );
             $this->fail('MediaUrlNotLoadedException was expected to be thrown.');
         } catch (MediaDataNotLoadedException $exception) {
             self::assertSame(
                 'Media id not found.',
-                $exception->getMessage()
+                $exception->getMessage(),
             );
         }
 
         self::assertSame(
             MemeGeneratorImagesLoadHandler::ROOT_NAVIGATION,
-            $this->navigationUrlLoaderMock->inputRootNavigation->value
+            $this->navigationUrlLoaderMock->inputRootNavigation->value,
         );
         self::assertSame(
             MemeGeneratorImagesLoadHandler::SUB_NAVIGATION,
-            $this->navigationUrlLoaderMock->inputSubNavigation->value
+            $this->navigationUrlLoaderMock->inputSubNavigation->value,
         );
     }
 
-    public function testLoad_with_media_equals_null(): void
+    public function testLoadWithMediaEqualsNull(): void
     {
         $expectedMediaBlock = [];
         $expectedPropertyValue = $this->getMock(PropertyValue::class);
@@ -243,23 +243,23 @@ final class MemeGeneratorMediaCollectionByDocumentLoaderTest extends CustomTestC
                 $expectedDocument,
                 $expectedLocation,
                 new RootNavigation(MemeGeneratorImagesLoadHandler::ROOT_NAVIGATION),
-                new SubNavigation(MemeGeneratorImagesLoadHandler::SUB_NAVIGATION)
+                new SubNavigation(MemeGeneratorImagesLoadHandler::SUB_NAVIGATION),
             );
             $this->fail('MediaDataNotLoadedException was expected to be thrown.');
         } catch (MediaDataNotLoadedException $exception) {
             self::assertSame(
                 'Media id not found.',
-                $exception->getMessage()
+                $exception->getMessage(),
             );
         }
 
         self::assertSame(
             MemeGeneratorImagesLoadHandler::ROOT_NAVIGATION,
-            $this->navigationUrlLoaderMock->inputRootNavigation->value
+            $this->navigationUrlLoaderMock->inputRootNavigation->value,
         );
         self::assertSame(
             MemeGeneratorImagesLoadHandler::SUB_NAVIGATION,
-            $this->navigationUrlLoaderMock->inputSubNavigation->value
+            $this->navigationUrlLoaderMock->inputSubNavigation->value,
         );
     }
 }

@@ -9,13 +9,15 @@ use Twig\Environment as Twig;
 
 /**
  * @codeCoverageIgnore
+ *
  * @infection-ignore-all
  */
 final readonly class LoadController
 {
     public function __construct(
         private Twig $twig,
-    ) {}
+    ) {
+    }
 
     public function __invoke(): Response
     {
