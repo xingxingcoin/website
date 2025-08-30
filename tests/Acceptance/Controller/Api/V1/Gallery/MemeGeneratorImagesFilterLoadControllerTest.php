@@ -22,8 +22,8 @@ final class MemeGeneratorImagesFilterLoadControllerTest extends AbstractWebTestC
 
     public function testLoadMemeGeneratorImagesByFilterForInfiniteScrollingIsValid(): void
     {
-        $this->generateMediaTestDataSet();
-        $this->generateMemeGeneratorDocumentTestDataSet($this->media->getId());
+        $media = $this->generateMediaTestDataSet();
+        $this->generateMemeGeneratorDocumentTestDataSet($media->getId());
         $this->client->request(
             'GET',
             '/api/v1/meme-generator/images/filter?counter=0&filter=meme_image',
@@ -34,8 +34,8 @@ final class MemeGeneratorImagesFilterLoadControllerTest extends AbstractWebTestC
         self::assertSame(\json_encode([
             'urls' => [
                 [
-                    'imageViewerUrl' => '/meme-generator/new-meme?mediaId=' . $this->media->getId(),
-                    'mediaUrl' => '/media/' . $this->media->getId() . '/download/test-image.jpg?v=1',
+                    'imageViewerUrl' => '/meme-generator/new-meme?mediaId=' . $media->getId(),
+                    'mediaUrl' => '/media/' . $media->getId() . '/download/test-image.jpg?v=1',
                 ],
             ],
         ]), $response->getContent());

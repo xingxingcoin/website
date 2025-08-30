@@ -21,9 +21,8 @@ final class XingFinanceDataLoadControllerTest extends AbstractWebTestCase
 
     public function testLoadXingGeneralDataIsValid(): void
     {
-        $this->generateMediaTestDataSet();
-        $this->generateGalleryDocumentTestDataSet($this->media->getId());
-        $this->generateWebsiteHomepageTestDataSet($this->media->getId());
+        $media = $this->generateMediaTestDataSet();
+        $this->generateWebsiteHomepageTestDataSet($media->getId());
         $this->client->request(
             'GET',
             '/api/v1/finance/xing',
@@ -36,7 +35,6 @@ final class XingFinanceDataLoadControllerTest extends AbstractWebTestCase
     public function testLoadXingGeneralDataWithXingGifNotFoundException(): void
     {
         $this->generateMediaTestDataSet();
-        $this->generateGalleryDocumentTestDataSet($this->media->getId());
         $this->generateWebsiteHomepageTestDataSet(123456789);
         $this->client->request(
             'GET',

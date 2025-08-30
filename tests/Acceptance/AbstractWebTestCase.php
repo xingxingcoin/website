@@ -18,7 +18,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 abstract class AbstractWebTestCase extends SuluTestCase
 {
     public KernelBrowser $client;
-    public Media $media;
 
     protected function setUp(): void
     {
@@ -270,7 +269,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $manager->flush();
     }
 
-    protected function generateMediaTestDataSet(): void
+    protected function generateMediaTestDataSet(): Media
     {
         $mediaManager = $this->getMediaManager();
 
@@ -297,7 +296,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
         $this->getEntityManager()->persist($mediaTypes);
         $this->getEntityManager()->flush();
 
-        $this->media = $mediaManager->save($uploadedFile, [
+        return $mediaManager->save($uploadedFile, [
             'id' => null,
             'type' => 'image',
             'collection' => $collection->getId(),

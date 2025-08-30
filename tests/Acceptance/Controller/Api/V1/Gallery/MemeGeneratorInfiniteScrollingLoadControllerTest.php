@@ -22,8 +22,8 @@ final class MemeGeneratorInfiniteScrollingLoadControllerTest extends AbstractWeb
 
     public function testLoadMemeGeneratorImagesForInfiniteScrollingIsValid(): void
     {
-        $this->generateMediaTestDataSet();
-        $this->generateMemeGeneratorDocumentTestDataSet($this->media->getId());
+        $media = $this->generateMediaTestDataSet();
+        $this->generateMemeGeneratorDocumentTestDataSet($media->getId());
         $this->client->request(
             'GET',
             '/api/v1/meme-generator/images?counter=0',
@@ -34,8 +34,8 @@ final class MemeGeneratorInfiniteScrollingLoadControllerTest extends AbstractWeb
         self::assertSame(\json_encode([
             'urls' => [
                 [
-                    'imageViewerUrl' => '/meme-generator/new-meme?mediaId=' . $this->media->getId(),
-                    'mediaUrl' => '/media/' . $this->media->getId() . '/download/test-image.jpg?v=1',
+                    'imageViewerUrl' => '/meme-generator/new-meme?mediaId=' . $media->getId(),
+                    'mediaUrl' => '/media/' . $media->getId() . '/download/test-image.jpg?v=1',
                 ],
             ],
         ]), $response->getContent());

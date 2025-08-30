@@ -22,8 +22,8 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends AbstractWeb
 
     public function testLoadGalleryImagesForInfiniteScrollingIsValid(): void
     {
-        $this->generateMediaTestDataSet();
-        $this->generateGalleryDocumentTestDataSet($this->media->getId());
+        $media = $this->generateMediaTestDataSet();
+        $this->generateGalleryDocumentTestDataSet($media->getId());
         $this->client->request(
             'GET',
             '/api/v1/gallery/images?counter=0',
@@ -34,8 +34,8 @@ final class GalleryImagesInfiniteScrollingLoadControllerTest extends AbstractWeb
         self::assertSame(\json_encode([
             'urls' => [
                 [
-                    'imageViewerUrl' => '/xing-xing-on-camera/image-viewer?mediaId=' . $this->media->getId(),
-                    'mediaUrl' => '/media/' . $this->media->getId() . '/download/test-image.jpg?v=1',
+                    'imageViewerUrl' => '/xing-xing-on-camera/image-viewer?mediaId=' . $media->getId(),
+                    'mediaUrl' => '/media/' . $media->getId() . '/download/test-image.jpg?v=1',
                 ],
             ],
         ]), $response->getContent());
