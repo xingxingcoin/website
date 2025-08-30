@@ -28,9 +28,7 @@ abstract class AbstractWebTestCase extends SuluTestCase
 
     protected function generateWebsiteHomepageTestDataSet(int $mediaId): void
     {
-        $options = [
-            'locales' => ['en'],
-        ];
+        $locale = 'en';
         $manager = $this->getDocumentManager();
         /** @var HomeDocument $document */
         $document = $manager->find('/cmf/website/contents', 'en');
@@ -74,23 +72,18 @@ abstract class AbstractWebTestCase extends SuluTestCase
             ],
         ]);
 
-        foreach ($options['locales'] as $locale) {
-            $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents',
-            ]);
-            $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents',
-            ]);
-        }
+        $manager->persist($document, $locale, [
+            'path' => '/cmf/website/contents',
+        ]);
+        $manager->publish($document, $locale, [
+            'path' => '/cmf/website/contents',
+        ]);
         $manager->flush();
     }
 
     protected function generateGalleryDocumentTestDataSet(int $mediaId): void
     {
-        $options = [
-            'locales' => ['en'],
-        ];
-
+        $locale = 'en';
         $manager = $this->getDocumentManager();
         /** @var HomeDocument $document */
         $document = $manager->create('page');
@@ -132,15 +125,12 @@ abstract class AbstractWebTestCase extends SuluTestCase
             ],
         ]);
 
-        foreach ($options['locales'] as $locale) {
-            $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents/xing-xing-on-camera',
-            ]);
-            $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents/xing-xing-on-camera',
-            ]);
-        }
-
+        $manager->persist($document, $locale, [
+            'path' => '/cmf/website/contents/xing-xing-on-camera',
+        ]);
+        $manager->publish($document, $locale, [
+            'path' => '/cmf/website/contents/xing-xing-on-camera',
+        ]);
         $manager->flush();
 
         /** @var HomeDocument $document */
@@ -165,24 +155,18 @@ abstract class AbstractWebTestCase extends SuluTestCase
             ],
         ]);
 
-        foreach ($options['locales'] as $locale) {
-            $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer',
-            ]);
-            $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer',
-            ]);
-        }
-
+        $manager->persist($document, $locale, [
+            'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer',
+        ]);
+        $manager->publish($document, $locale, [
+            'path' => '/cmf/website/contents/xing-xing-on-camera/image-viewer',
+        ]);
         $manager->flush();
     }
 
     protected function generateMemeGeneratorDocumentTestDataSet(int $mediaId): void
     {
-        $options = [
-            'locales' => ['en'],
-        ];
-
+        $locale = 'en';
         $manager = $this->getDocumentManager();
         /** @var HomeDocument $document */
         $document = $manager->create('page');
@@ -224,15 +208,12 @@ abstract class AbstractWebTestCase extends SuluTestCase
             ],
         ]);
 
-        foreach ($options['locales'] as $locale) {
-            $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents/meme-generator',
-            ]);
-            $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents/meme-generator',
-            ]);
-        }
-
+        $manager->persist($document, $locale, [
+            'path' => '/cmf/website/contents/meme-generator',
+        ]);
+        $manager->publish($document, $locale, [
+            'path' => '/cmf/website/contents/meme-generator',
+        ]);
         $manager->flush();
 
         /** @var HomeDocument $document */
@@ -257,15 +238,12 @@ abstract class AbstractWebTestCase extends SuluTestCase
             ],
         ]);
 
-        foreach ($options['locales'] as $locale) {
-            $manager->persist($document, $locale, [
-                'path' => '/cmf/website/contents/meme-generator/new-meme',
-            ]);
-            $manager->publish($document, $locale, [
-                'path' => '/cmf/website/contents/meme-generator/new-meme',
-            ]);
-        }
-
+        $manager->persist($document, $locale, [
+            'path' => '/cmf/website/contents/meme-generator/new-meme',
+        ]);
+        $manager->publish($document, $locale, [
+            'path' => '/cmf/website/contents/meme-generator/new-meme',
+        ]);
         $manager->flush();
     }
 
