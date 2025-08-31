@@ -28,8 +28,8 @@
     "watch": "encore dev --watch",
     "build": "encore production --no-color ",
     "test": "jest --coverage",
-    "prettier:check": "prettier --check assets/website/ts/*",
-    "prettier:write": "prettier --write assets/website/ts/*"
+    "prettier:check": "prettier --check assets/website/*",
+    "prettier:write": "prettier --write assets/website/*"
   },
   "dependencies": {
     "cropperjs": "^1.6.2",
