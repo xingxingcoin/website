@@ -1,7 +1,7 @@
 import Cropper from 'cropperjs';
 import MemeCanvasCreater from './MemeCanvasCreater';
-import BackgroundImageFileInputRemover from "./BackgroundImageFileInputRemover";
-import MemeCanvasWithoutBackgroundCreater from "./MemeCanvasWithoutBackgroundCreater";
+import BackgroundImageFileInputRemover from './BackgroundImageFileInputRemover';
+import MemeCanvasWithoutBackgroundCreater from './MemeCanvasWithoutBackgroundCreater';
 
 export default class BackgroundImageCropperCreater {
     private readonly downloadButton: HTMLLabelElement | null;

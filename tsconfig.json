@@ -1,17 +1,24 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "module": "nodenext",
-    "noImplicitAny": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "isolatedModules": true,
-    "sourceMap": true
+    "useDefineForClassFields": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": [
     "assets/website/ts/src/**/*.ts",
     "assets/website/ts/__tests__/**/*.ts"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }
