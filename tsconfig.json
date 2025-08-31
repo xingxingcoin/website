@@ -6,7 +6,6 @@
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "isolatedModules": true,
     "useDefineForClassFields": true,
     "exactOptionalPropertyTypes": true,
