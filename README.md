@@ -51,3 +51,15 @@ ddev xdebug on
 ```
 ddev infection
 ```
+
+## 🧪 PHPCS:
+1. run PHPCS:
+```
+ddev phpcs
+```
+
+## 🧪 Prettier:
+1. run Prettier:
+```
+ddev prettier
+```
