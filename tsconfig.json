@@ -19,6 +19,5 @@
   "include": [
     "assets/website/ts/src/**/*.ts",
     "assets/website/ts/__tests__/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+  ]
 }
