@@ -1,6 +1,8 @@
 import {describe, expect, test} from '@jest/globals';
 import MemeTextCreater from '../../src/new-meme/MemeTextCreater';
 import interact from 'interactjs';
+import _default_23 from "@interactjs/modifiers/all";
+import any = jasmine.any;
 
 let interactjsEvent: any;
 jest.mock('interactjs', (): any => {
@@ -27,7 +29,7 @@ jest.mock('interactjs', (): any => {
 
 interact.modifiers = {
     restrictRect: jest.fn()
-}
+} as any;
 
 describe('create meme text', (): void => {
     let inputMemeText: HTMLInputElement;

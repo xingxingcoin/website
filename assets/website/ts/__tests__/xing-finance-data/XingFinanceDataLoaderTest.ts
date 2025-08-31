@@ -41,8 +41,8 @@ describe('Xing finance data is loaded.', (): void => {
         const sourceElement = document.querySelector('.xing_information-inner-container picture source');
         const imgElement = document.querySelector('.xing_information-inner-container picture img');
         const performanceTextElement = document.querySelector('.xing_information-right-container-price-change-positive-text span');
-        expect(capSpans[0].textContent).toBe('$ 100,000');
-        expect(capSpans[1].textContent).toBe('$ 999,900,000');
+        expect((capSpans[0] as Element).textContent).toBe('$ 100,000');
+        expect((capSpans[1] as Element).textContent).toBe('$ 999,900,000');
         const expectedResponse = {
             finance: {
                 marketCap: 355976,
@@ -84,8 +84,8 @@ describe('Xing finance data is loaded.', (): void => {
         const sourceElement = document.querySelector('.xing_information-inner-container picture source');
         const imgElement = document.querySelector('.xing_information-inner-container picture img');
         const performanceTextElement = document.querySelector('.xing_information-right-container-price-change-negative-text span');
-        expect(capSpans[0].textContent).toBe('$ 100,000');
-        expect(capSpans[1].textContent).toBe('$ 999,900,000');
+        expect((capSpans[0] as Element).textContent).toBe('$ 100,000');
+        expect((capSpans[1] as Element).textContent).toBe('$ 999,900,000');
         const expectedResponse = {
             finance: {
                 marketCap: 355976,
@@ -126,8 +126,8 @@ describe('Xing finance data is loaded.', (): void => {
         const sourceElement = document.querySelector('.xing_information-inner-container picture source');
         const imgElement = document.querySelector('.xing_information-inner-container picture img');
         const performanceTextElement = document.querySelector('.xing_information-right-container-price-change-positive-text span');
-        expect(capSpans[0].textContent).toBe('$ 0');
-        expect(capSpans[1].textContent).toBe('$ 0');
+        expect((capSpans[0] as Element).textContent).toBe('$ 0');
+        expect((capSpans[1] as Element).textContent).toBe('$ 0');
 
         expect(sourceElement?.getAttribute('srcset')).toBe('/default.webp');
         expect(imgElement?.getAttribute('src')).toBe('/default.gif');
@@ -161,8 +161,8 @@ describe('Xing finance data is loaded.', (): void => {
         const sourceElement = document.querySelector('.xing_information-inner-container picture source');
         const imgElement = document.querySelector('.xing_information-inner-container picture img');
         const performanceTextElement = document.querySelector('.xing_information-right-container-price-change-positive-text span');
-        expect(capSpans[0].textContent).toBe('$ 0');
-        expect(capSpans[1].textContent).toBe('$ 0');
+        expect((capSpans[0] as Element).textContent).toBe('$ 0');
+        expect((capSpans[1] as Element).textContent).toBe('$ 0');
 
         expect(sourceElement?.getAttribute('srcset')).toBe('/default.webp');
         expect(imgElement?.getAttribute('src')).toBe('/default.gif');
