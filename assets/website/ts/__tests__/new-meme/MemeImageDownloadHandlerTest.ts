@@ -1,6 +1,5 @@
-import {describe, expect, test} from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import MemeImageDownloadHandler from '../../src/new-meme/MemeImageDownloadHandler';
-
 
 describe('handle meme image for download', (): void => {
     let downloadButton: HTMLInputElement;
@@ -14,7 +13,9 @@ describe('handle meme image for download', (): void => {
         </div>`;
 
         downloadButton = document.getElementById('new-meme-download-button') as HTMLInputElement;
-        memeImageCanvas = document.querySelector('#meme-preview-container div canvas') as HTMLCanvasElement;
+        memeImageCanvas = document.querySelector(
+            '#meme-preview-container div canvas',
+        ) as HTMLCanvasElement;
     });
 
     test('handle meme image for download is successful', (): void => {
@@ -22,35 +23,41 @@ describe('handle meme image for download', (): void => {
             value: jest.fn((): any => ({
                 drawImage: jest.fn(),
                 fillText: jest.fn(),
-                strokeText: jest.fn()
+                strokeText: jest.fn(),
             })),
         });
 
-        const memeCanvasContainer: HTMLDivElement = document.querySelector('#meme-preview-container div') as HTMLDivElement;
+        const memeCanvasContainer: HTMLDivElement = document.querySelector(
+            '#meme-preview-container div',
+        ) as HTMLDivElement;
         const memeCanvasContainerRect = {
             width: 400,
             height: 400,
             x: 100,
-            y: 100
+            y: 100,
         } as DOMRect;
-        jest.spyOn(memeCanvasContainer, 'getBoundingClientRect').mockReturnValue(memeCanvasContainerRect);
-        const memeText: HTMLParagraphElement = document.querySelector('#meme-preview-container div p') as HTMLParagraphElement;
+        jest.spyOn(memeCanvasContainer, 'getBoundingClientRect').mockReturnValue(
+            memeCanvasContainerRect,
+        );
+        const memeText: HTMLParagraphElement = document.querySelector(
+            '#meme-preview-container div p',
+        ) as HTMLParagraphElement;
         const memeTextRect = {
             width: 400,
             height: 400,
             x: 100,
-            y: 100
+            y: 100,
         } as DOMRect;
         jest.spyOn(memeText, 'getBoundingClientRect').mockReturnValue(memeTextRect);
 
         const memeFileDownloaderMock: any = {
-            download: jest.fn()
+            download: jest.fn(),
         };
         new MemeImageDownloadHandler(
             memeFileDownloaderMock,
             'new-meme-download-button',
             '.new-meme-input-color-picker',
-            '.new-meme-input-font-size-number'
+            '.new-meme-input-font-size-number',
         );
 
         downloadButton.click();
@@ -65,31 +72,37 @@ describe('handle meme image for download', (): void => {
             value: jest.fn((): any => null),
         });
 
-        const memeCanvasContainer: HTMLDivElement = document.querySelector('#meme-preview-container div') as HTMLDivElement;
+        const memeCanvasContainer: HTMLDivElement = document.querySelector(
+            '#meme-preview-container div',
+        ) as HTMLDivElement;
         const memeCanvasContainerRect = {
             width: 400,
             height: 400,
             x: 100,
-            y: 100
+            y: 100,
         } as DOMRect;
-        jest.spyOn(memeCanvasContainer, 'getBoundingClientRect').mockReturnValue(memeCanvasContainerRect);
-        const memeText: HTMLParagraphElement = document.querySelector('#meme-preview-container div p') as HTMLParagraphElement;
+        jest.spyOn(memeCanvasContainer, 'getBoundingClientRect').mockReturnValue(
+            memeCanvasContainerRect,
+        );
+        const memeText: HTMLParagraphElement = document.querySelector(
+            '#meme-preview-container div p',
+        ) as HTMLParagraphElement;
         const memeTextRect = {
             width: 400,
             height: 400,
             x: 100,
-            y: 100
+            y: 100,
         } as DOMRect;
         jest.spyOn(memeText, 'getBoundingClientRect').mockReturnValue(memeTextRect);
 
         const memeFileDownloaderMock: any = {
-            download: jest.fn()
+            download: jest.fn(),
         };
         new MemeImageDownloadHandler(
             memeFileDownloaderMock,
             'new-meme-download-button',
             '.new-meme-input-color-picker',
-            '.new-meme-input-font-size-number'
+            '.new-meme-input-font-size-number',
         );
 
         downloadButton.click();
@@ -101,14 +114,14 @@ describe('handle meme image for download', (): void => {
 
     test('download button equals null', (): void => {
         const memeFileDownloaderMock: any = {
-            download: jest.fn()
+            download: jest.fn(),
         };
         try {
             new MemeImageDownloadHandler(
                 memeFileDownloaderMock,
                 'new-meme-download-button-wrong',
                 '.new-meme-input-color-picker',
-                '.new-meme-input-font-size-number'
+                '.new-meme-input-font-size-number',
             );
         } catch (error: any) {
             expect(error.message).toBe('Meme image image could not be downloaded.');
@@ -116,14 +129,14 @@ describe('handle meme image for download', (): void => {
     });
     test('input color picker equals null', (): void => {
         const memeFileDownloaderMock: any = {
-            download: jest.fn()
+            download: jest.fn(),
         };
         try {
             new MemeImageDownloadHandler(
                 memeFileDownloaderMock,
                 'new-meme-download-button',
                 '.new-meme-input-color-picker-wrong',
-                '.new-meme-input-font-size-number'
+                '.new-meme-input-font-size-number',
             );
         } catch (error: any) {
             expect(error.message).toBe('Meme image image could not be downloaded.');
@@ -131,14 +144,14 @@ describe('handle meme image for download', (): void => {
     });
     test('input font size number equals null', (): void => {
         const memeFileDownloaderMock: any = {
-            download: jest.fn()
+            download: jest.fn(),
         };
         try {
             new MemeImageDownloadHandler(
                 memeFileDownloaderMock,
                 'new-meme-download-button',
                 '.new-meme-input-color-picker',
-                '.new-meme-input-font-size-number-wrong'
+                '.new-meme-input-font-size-number-wrong',
             );
         } catch (error: any) {
             expect(error.message).toBe('Meme image image could not be downloaded.');
@@ -149,21 +162,23 @@ describe('handle meme image for download', (): void => {
             value: jest.fn((): any => ({
                 drawImage: jest.fn(),
                 fillText: jest.fn(),
-                strokeText: jest.fn()
+                strokeText: jest.fn(),
             })),
         });
 
-        const memeCanvasContainer: HTMLDivElement = document.querySelector('#meme-preview-container div') as HTMLDivElement;
+        const memeCanvasContainer: HTMLDivElement = document.querySelector(
+            '#meme-preview-container div',
+        ) as HTMLDivElement;
         memeCanvasContainer.remove();
 
         const memeFileDownloaderMock: any = {
-            download: jest.fn()
+            download: jest.fn(),
         };
         new MemeImageDownloadHandler(
             memeFileDownloaderMock,
             'new-meme-download-button',
             '.new-meme-input-color-picker',
-            '.new-meme-input-font-size-number'
+            '.new-meme-input-font-size-number',
         );
 
         downloadButton.click();

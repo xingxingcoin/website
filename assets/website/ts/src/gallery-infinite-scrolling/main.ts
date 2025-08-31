@@ -7,12 +7,12 @@ new GalleryInitialImagesLoader(
     new GalleryImagesManipulator('.xing-media-container'),
     new ContainerAnimationInitializer(),
     '.lds-dual-ring',
-    '.xing-media-filter-button-disabled'
+    '.xing-media-filter-button-disabled',
 );
 new GalleryInfiniteScrollingImageLoader(
     new GalleryImagesManipulator('.xing-media-container'),
     new ContainerAnimationInitializer(),
     'xing-media-images-filter-button',
     'xing-media-gifs-filter-button',
-    'footer'
+    'footer',
 );

@@ -16,7 +16,7 @@ export default class GalleryInitialImagesLoader {
         private readonly galleryImagesManipulator: GalleryImagesManipulator,
         private readonly containerAnimationInitializer: ContainerAnimationInitializer,
         loadingIndicatorClass: string,
-        filterButtonsClass: string
+        filterButtonsClass: string,
     ) {
         this.loadingIndicator = document.querySelector(loadingIndicatorClass);
         this.filterButtons = document.querySelectorAll(filterButtonsClass);
@@ -31,10 +31,16 @@ export default class GalleryInitialImagesLoader {
         this.displayLoadingIndicator();
         document.addEventListener('DOMContentLoaded', (): void => {
             let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
-            ajaxHttpClient.open(GalleryInitialImagesLoader.METHOD, GalleryInitialImagesLoader.URL, true);
+            ajaxHttpClient.open(
+                GalleryInitialImagesLoader.METHOD,
+                GalleryInitialImagesLoader.URL,
+                true,
+            );
             ajaxHttpClient.onreadystatechange = (): void => {
                 if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
-                    const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
+                    const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(
+                        ajaxHttpClient.response,
+                    );
                     this.galleryImagesManipulator.displayImagesInGallery(jsonResponse.urls);
                     this.hideLoadingIndicator();
                     this.enableFilterButtons();

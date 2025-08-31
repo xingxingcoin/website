@@ -12,13 +12,13 @@ export default class MemeGeneratorImagesByMemeImageFilterLoadHandler {
         private readonly memeGeneratorImagesByMemeImageFilterLoader: MemeGeneratorImagesByMemeImageFilterLoader,
         private readonly memeGeneratorImagesByNoFilterLoader: MemeGeneratorImagesByNoFilterLoader,
         memeImageFilterButtonId: string,
-        memeGeneratorContainerClass: string
+        memeGeneratorContainerClass: string,
     ) {
-        this.memeImageFilterButton = document.getElementById(memeImageFilterButtonId) as HTMLAnchorElement | null;
+        this.memeImageFilterButton = document.getElementById(
+            memeImageFilterButtonId,
+        ) as HTMLAnchorElement | null;
         this.memeGeneratorContainer = document.querySelector(memeGeneratorContainerClass);
-        if (this.memeImageFilterButton === null ||
-            this.memeGeneratorContainer === null
-        ) {
+        if (this.memeImageFilterButton === null || this.memeGeneratorContainer === null) {
             throw new Error('Meme generator images by meme image filter not loaded.');
         }
 
@@ -27,25 +27,35 @@ export default class MemeGeneratorImagesByMemeImageFilterLoadHandler {
 
     private initEventListener(): void {
         (this.memeImageFilterButton as HTMLAnchorElement).addEventListener('click', (): void => {
-            if ((this.memeImageFilterButton as HTMLAnchorElement).classList.contains('xing-media-filter-button-disabled')) {
+            if (
+                (this.memeImageFilterButton as HTMLAnchorElement).classList.contains(
+                    'xing-media-filter-button-disabled',
+                )
+            ) {
                 return;
             }
 
-            if ((this.memeImageFilterButton as HTMLAnchorElement).classList.contains('xing-media-filter-button')) {
+            if (
+                (this.memeImageFilterButton as HTMLAnchorElement).classList.contains(
+                    'xing-media-filter-button',
+                )
+            ) {
                 this.deleteAllImageHtmlElements();
                 this.memeGeneratorImagesByMemeImageFilterLoader.load();
             } else {
                 this.deleteAllImageHtmlElements();
                 this.memeGeneratorImagesByNoFilterLoader.load();
             }
-        })
+        });
     }
 
     private deleteAllImageHtmlElements(): void {
-        Array.from((this.memeGeneratorContainer as Element).children).forEach((child: any): void => {
-            if (!child.classList.contains('lds-dual-ring')) {
-                (this.memeGeneratorContainer as Element).removeChild(child);
-            }
-        });
+        Array.from((this.memeGeneratorContainer as Element).children).forEach(
+            (child: any): void => {
+                if (!child.classList.contains('lds-dual-ring')) {
+                    (this.memeGeneratorContainer as Element).removeChild(child);
+                }
+            },
+        );
     }
 }

@@ -13,8 +13,7 @@ export default class GalleryImagesManipulator {
         }
     }
 
-    public displayImagesInGallery(jsonResponse: MediaUrl[]): void
-    {
+    public displayImagesInGallery(jsonResponse: MediaUrl[]): void {
         jsonResponse.forEach((mediaUrl: MediaUrl): void => {
             const anchor: HTMLAnchorElement = document.createElement('a');
             anchor.classList.add('container-bottom-hidden');

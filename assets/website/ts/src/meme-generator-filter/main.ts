@@ -12,17 +12,17 @@ new MemeGeneratorImagesByMemeImageFilterLoadHandler(
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-meme-image-filter-button',
-        'xing-media-meme-template-filter-button'
+        'xing-media-meme-template-filter-button',
     ),
     new MemeGeneratorImagesByNoFilterLoader(
         new GalleryImagesManipulator('.xing-media-container'),
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-meme-image-filter-button',
-        'xing-media-meme-template-filter-button'
+        'xing-media-meme-template-filter-button',
     ),
     'xing-media-meme-image-filter-button',
-    '.xing-media-container'
+    '.xing-media-container',
 );
 new MemeGeneratorImagesByMemeTemplateFilterLoadHandler(
     new MemeGeneratorImagesByMemeTemplateFilterLoader(
@@ -30,15 +30,15 @@ new MemeGeneratorImagesByMemeTemplateFilterLoadHandler(
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-meme-image-filter-button',
-        'xing-media-meme-template-filter-button'
+        'xing-media-meme-template-filter-button',
     ),
     new MemeGeneratorImagesByNoFilterLoader(
         new GalleryImagesManipulator('.xing-media-container'),
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-meme-image-filter-button',
-        'xing-media-meme-template-filter-button'
+        'xing-media-meme-template-filter-button',
     ),
     'xing-media-meme-template-filter-button',
-    '.xing-media-container'
+    '.xing-media-container',
 );

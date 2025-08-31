@@ -1,4 +1,4 @@
-import {describe, expect, test} from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import CookieConsentHandler from '../../src/cookie-consent/CookieConsentHandler';
 import * as CookieConsent from 'vanilla-cookieconsent';
 
@@ -9,7 +9,7 @@ jest.mock('vanilla-cookieconsent', (): any => ({
 
 describe('handle cookie consent', (): void => {
     beforeEach((): void => {
-       document.body.innerHTML = `<div class="xing_information-right-container-cookie-container">
+        document.body.innerHTML = `<div class="xing_information-right-container-cookie-container">
             <a>Test</a>
             <div class="xing_information-main-container">
                 <div class="xing_information-inner-container"></div>
@@ -21,7 +21,10 @@ describe('handle cookie consent', (): void => {
         </div>`;
     });
     test('handle cookie consent is successful', (): void => {
-        new CookieConsentHandler('.xing_information-right-container-cookie-container a', '.footer-information-container a');
+        new CookieConsentHandler(
+            '.xing_information-right-container-cookie-container a',
+            '.footer-information-container a',
+        );
 
         document.dispatchEvent(new Event('DOMContentLoaded'));
 
@@ -30,8 +33,13 @@ describe('handle cookie consent', (): void => {
     });
 
     test('cookiePreferenceShowButton is clicked', (): void => {
-        let cookiePreferenceShowButton: HTMLElement = document.querySelector('.xing_information-right-container-cookie-container a') as HTMLElement;
-        new CookieConsentHandler('.xing_information-right-container-cookie-container a', '.footer-information-container a');
+        let cookiePreferenceShowButton: HTMLElement = document.querySelector(
+            '.xing_information-right-container-cookie-container a',
+        ) as HTMLElement;
+        new CookieConsentHandler(
+            '.xing_information-right-container-cookie-container a',
+            '.footer-information-container a',
+        );
 
         document.dispatchEvent(new Event('DOMContentLoaded'));
         cookiePreferenceShowButton.click();
@@ -40,15 +48,23 @@ describe('handle cookie consent', (): void => {
         expect(CookieConsent.showPreferences).toHaveBeenCalled();
     });
     test('cookiePreferenceShowButton is not found', (): void => {
-        new CookieConsentHandler('.xing_information-right-container-cookie-container-wrong a', '.footer-information-container a');
+        new CookieConsentHandler(
+            '.xing_information-right-container-cookie-container-wrong a',
+            '.footer-information-container a',
+        );
         document.dispatchEvent(new Event('DOMContentLoaded'));
 
         expect(CookieConsent.showPreferences).not.toHaveBeenCalled();
         expect(CookieConsent.run).toHaveBeenCalled();
     });
     test('cookieFooterPreferenceShowButton is clicked', (): void => {
-        let cookieFooterPreferenceShowButton: HTMLElement = document.querySelector('.footer-information-container a') as HTMLElement;
-        new CookieConsentHandler('.xing_information-right-container-cookie-container a', '.footer-information-container a');
+        let cookieFooterPreferenceShowButton: HTMLElement = document.querySelector(
+            '.footer-information-container a',
+        ) as HTMLElement;
+        new CookieConsentHandler(
+            '.xing_information-right-container-cookie-container a',
+            '.footer-information-container a',
+        );
 
         document.dispatchEvent(new Event('DOMContentLoaded'));
         cookieFooterPreferenceShowButton.click();
@@ -57,7 +73,10 @@ describe('handle cookie consent', (): void => {
         expect(CookieConsent.showPreferences).toHaveBeenCalled();
     });
     test('cookieFooterPreferenceShowButton is not found', (): void => {
-        new CookieConsentHandler('.xing_information-right-container-cookie-container a', '.footer-information-container-wrong a');
+        new CookieConsentHandler(
+            '.xing_information-right-container-cookie-container a',
+            '.footer-information-container-wrong a',
+        );
         document.dispatchEvent(new Event('DOMContentLoaded'));
 
         expect(CookieConsent.showPreferences).not.toHaveBeenCalled();

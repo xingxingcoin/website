@@ -1,7 +1,8 @@
 export default class ContainerAnimationInitializer {
-    public init(): void
-    {
-        const hiddenContainerCollection: NodeList = document.querySelectorAll('.container-left-hidden, .container-bottom-hidden');
+    public init(): void {
+        const hiddenContainerCollection: NodeList = document.querySelectorAll(
+            '.container-left-hidden, .container-bottom-hidden',
+        );
         Array.from(hiddenContainerCollection).forEach((hiddenContainer: any): void => {
             this.changeClass(hiddenContainer);
             window.addEventListener('scroll', (): void => {
@@ -10,8 +11,7 @@ export default class ContainerAnimationInitializer {
         });
     }
 
-    private changeClass(hiddenContainer: any): void
-    {
+    private changeClass(hiddenContainer: any): void {
         const rect: DOMRect = hiddenContainer.getBoundingClientRect();
         if (rect.top < window.innerHeight * 0.9) {
             hiddenContainer.classList.add('container-show');

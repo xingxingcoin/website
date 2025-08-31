@@ -1,4 +1,4 @@
-import {describe, expect, test} from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import MemeCanvasCreater from '../../src/new-meme/MemeCanvasCreater';
 
 describe('create meme canvas', (): void => {
@@ -24,7 +24,7 @@ describe('create meme canvas', (): void => {
     test('create meme canvas is successful', (): void => {
         Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
             value: jest.fn((): any => ({
-                drawImage: jest.fn()
+                drawImage: jest.fn(),
             })),
         });
 
@@ -32,14 +32,18 @@ describe('create meme canvas', (): void => {
             cropperMock,
             backgroundImageMock,
             memeTemplateImageMock,
-            'meme-preview'
+            'meme-preview',
         );
 
         memeCanvasGenerator.create();
 
-        const expectedMemePreviewContainerCanvasDiv: HTMLDivElement = document.querySelector('#meme-preview div') as HTMLDivElement;
+        const expectedMemePreviewContainerCanvasDiv: HTMLDivElement = document.querySelector(
+            '#meme-preview div',
+        ) as HTMLDivElement;
         expect(expectedMemePreviewContainerCanvasDiv).toBeInstanceOf(HTMLDivElement);
-        const expectedMemePreviewContainerCanvas: HTMLCanvasElement = document.querySelector('#meme-preview div canvas') as HTMLCanvasElement;
+        const expectedMemePreviewContainerCanvas: HTMLCanvasElement = document.querySelector(
+            '#meme-preview div canvas',
+        ) as HTMLCanvasElement;
         expect(expectedMemePreviewContainerCanvas).toBeInstanceOf(HTMLCanvasElement);
         expect(memePreviewContainer.querySelector('canvas').width).toBe(500);
         expect(memePreviewContainer.querySelector('canvas').height).toBe(500);
@@ -55,7 +59,7 @@ describe('create meme canvas', (): void => {
                 cropperMock,
                 backgroundImageMock,
                 memeTemplateImageMock,
-                'meme-preview'
+                'meme-preview',
             );
             memeCanvasCreater.create();
         } catch (error: any) {
@@ -68,7 +72,7 @@ describe('create meme canvas', (): void => {
     test('meme preview container equals null', (): void => {
         Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
             value: jest.fn((): any => ({
-                drawImage: jest.fn()
+                drawImage: jest.fn(),
             })),
         });
 
@@ -77,7 +81,7 @@ describe('create meme canvas', (): void => {
                 cropperMock,
                 backgroundImageMock,
                 memeTemplateImageMock,
-                'meme-preview-wrong'
+                'meme-preview-wrong',
             );
             memeCanvasCreater.create();
         } catch (error: any) {

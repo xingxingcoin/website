@@ -12,11 +12,12 @@ export default class MemeGeneratorInitialImagesLoader {
     /**
      * @exception Error
      */
-    constructor(private readonly memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator,
-                private readonly containerAnimationInitializer: ContainerAnimationInitializer,
-                loadingIndicatorClass: string,
-                filterButtonsClass: string
-                ) {
+    constructor(
+        private readonly memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator,
+        private readonly containerAnimationInitializer: ContainerAnimationInitializer,
+        loadingIndicatorClass: string,
+        filterButtonsClass: string,
+    ) {
         this.loadingIndicator = document.querySelector(loadingIndicatorClass);
         this.filterButtons = document.querySelectorAll(filterButtonsClass);
         if (this.loadingIndicator === null || this.filterButtons.length === 0) {
@@ -29,11 +30,19 @@ export default class MemeGeneratorInitialImagesLoader {
     private initEventListener(): void {
         document.addEventListener('DOMContentLoaded', (): void => {
             let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
-            ajaxHttpClient.open(MemeGeneratorInitialImagesLoader.METHOD, MemeGeneratorInitialImagesLoader.URL, true);
+            ajaxHttpClient.open(
+                MemeGeneratorInitialImagesLoader.METHOD,
+                MemeGeneratorInitialImagesLoader.URL,
+                true,
+            );
             ajaxHttpClient.onreadystatechange = (): void => {
                 if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
-                    const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
-                    this.memeGeneratorImagesManipulator.displayImagesInMemeGenerator(jsonResponse.urls);
+                    const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(
+                        ajaxHttpClient.response,
+                    );
+                    this.memeGeneratorImagesManipulator.displayImagesInMemeGenerator(
+                        jsonResponse.urls,
+                    );
                     this.hideLoadingIndicator();
                     this.enableFilterButtons();
                     this.containerAnimationInitializer.init();

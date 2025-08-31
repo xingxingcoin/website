@@ -11,7 +11,8 @@ export default class MemeGeneratorInfiniteScrollingImageLoader {
 
     constructor(
         private readonly memeGeneratorImagesManipulator: MemeGeneratorImagesManipulator,
-        private readonly containerAnimationInitializer: ContainerAnimationInitializer) {
+        private readonly containerAnimationInitializer: ContainerAnimationInitializer,
+    ) {
         this.imageCounter = 1;
         this.isLoading = false;
         this.initEventListener();
@@ -20,7 +21,9 @@ export default class MemeGeneratorInfiniteScrollingImageLoader {
     private initEventListener(): void {
         document.addEventListener('DOMContentLoaded', (): void => {
             window.addEventListener('scroll', (): void => {
-                const footer: HTMLElement | null = document.querySelector('footer') as HTMLElement | null;
+                const footer: HTMLElement | null = document.querySelector(
+                    'footer',
+                ) as HTMLElement | null;
                 if (!footer || this.isLoading) {
                     return;
                 }
@@ -38,10 +41,16 @@ export default class MemeGeneratorInfiniteScrollingImageLoader {
     private loadImages(): void {
         this.isLoading = true;
         let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
-        ajaxHttpClient.open(MemeGeneratorInfiniteScrollingImageLoader.METHOD, MemeGeneratorInfiniteScrollingImageLoader.URL + this.imageCounter, true);
+        ajaxHttpClient.open(
+            MemeGeneratorInfiniteScrollingImageLoader.METHOD,
+            MemeGeneratorInfiniteScrollingImageLoader.URL + this.imageCounter,
+            true,
+        );
         ajaxHttpClient.onreadystatechange = (): void => {
             if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
-                const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
+                const jsonResponse: MemeGeneratorInitialLoadImagesResponse = JSON.parse(
+                    ajaxHttpClient.response,
+                );
                 this.memeGeneratorImagesManipulator.displayImagesInMemeGenerator(jsonResponse.urls);
                 this.containerAnimationInitializer.init();
                 if (jsonResponse.urls.length > 0) {

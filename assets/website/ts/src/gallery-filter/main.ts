@@ -12,17 +12,17 @@ new GalleryImagesByGifFilterLoadHandler(
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-gifs-filter-button',
-        'xing-media-images-filter-button'
+        'xing-media-images-filter-button',
     ),
     new GalleryImagesByNoFilterLoader(
         new GalleryImagesManipulator('.xing-media-container'),
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-gifs-filter-button',
-        'xing-media-images-filter-button'
+        'xing-media-images-filter-button',
     ),
     'xing-media-gifs-filter-button',
-    '.xing-media-container'
+    '.xing-media-container',
 );
 new GalleryImagesByImageFilterLoadHandler(
     new GalleryImagesByImageFilterLoader(
@@ -30,15 +30,15 @@ new GalleryImagesByImageFilterLoadHandler(
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-gifs-filter-button',
-        'xing-media-images-filter-button'
+        'xing-media-images-filter-button',
     ),
     new GalleryImagesByNoFilterLoader(
         new GalleryImagesManipulator('.xing-media-container'),
         new ContainerAnimationInitializer(),
         '.lds-dual-ring',
         'xing-media-gifs-filter-button',
-        'xing-media-images-filter-button'
+        'xing-media-images-filter-button',
     ),
     'xing-media-images-filter-button',
-    '.xing-media-container'
+    '.xing-media-container',
 );

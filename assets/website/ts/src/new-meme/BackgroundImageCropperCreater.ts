@@ -17,28 +17,35 @@ export default class BackgroundImageCropperCreater {
     /**
      * @exception Error
      */
-    constructor(downloadButtonId: string,
-                selectTextButtonId: string,
-                memePreviewContainerId: string,
-                memeTextInputClass: string,
-                memeTextColorPickerClass: string,
-                memeTextSizeInputClass: string,
-                memeTemplateImage: HTMLImageElement,
-                private readonly backgroundImageFileInputRemover: BackgroundImageFileInputRemover
+    constructor(
+        downloadButtonId: string,
+        selectTextButtonId: string,
+        memePreviewContainerId: string,
+        memeTextInputClass: string,
+        memeTextColorPickerClass: string,
+        memeTextSizeInputClass: string,
+        memeTemplateImage: HTMLImageElement,
+        private readonly backgroundImageFileInputRemover: BackgroundImageFileInputRemover,
     ) {
         this.downloadButton = document.getElementById(downloadButtonId) as HTMLLabelElement | null;
-        this.selectTextButton = document.getElementById(selectTextButtonId) as HTMLLabelElement | null;
-        this.memePreviewContainer = document.getElementById(memePreviewContainerId) as HTMLDivElement | null;
+        this.selectTextButton = document.getElementById(
+            selectTextButtonId,
+        ) as HTMLLabelElement | null;
+        this.memePreviewContainer = document.getElementById(
+            memePreviewContainerId,
+        ) as HTMLDivElement | null;
         this.memeTextInput = document.querySelector(memeTextInputClass);
         this.memeTextColorPicker = document.querySelector(memeTextColorPickerClass);
         this.memeFontSizeInput = document.querySelector(memeTextSizeInputClass);
         this.memeTemplateImage = memeTemplateImage;
-        if (this.downloadButton === null ||
+        if (
+            this.downloadButton === null ||
             this.selectTextButton === null ||
             this.memePreviewContainer === null ||
             this.memeTextInput === null ||
             this.memeTextColorPicker === null ||
-            this.memeFontSizeInput === null) {
+            this.memeFontSizeInput === null
+        ) {
             throw new Error('Background image cropper could not be created.');
         }
 
@@ -47,8 +54,7 @@ export default class BackgroundImageCropperCreater {
 
     private initEventListener(): void {
         (this.selectTextButton as HTMLElement).addEventListener('click', (): void => {
-            if (this.memeTemplateImage === undefined ||
-                this.memeTemplateImage === null) {
+            if (this.memeTemplateImage === undefined || this.memeTemplateImage === null) {
                 return;
             }
 
@@ -57,21 +63,23 @@ export default class BackgroundImageCropperCreater {
                     this.cropper,
                     this.backgroundImageByFileReader,
                     this.memeTemplateImage,
-                    'meme-preview-container'
+                    'meme-preview-container',
                 );
                 memeCanvasCreater.create();
             }
             if (this.cropper === undefined && this.backgroundImageByFileReader === undefined) {
                 const memeCanvasCreater = new MemeCanvasWithoutBackgroundCreater(
                     '.new-meme-image-container img',
-                    'meme-preview-container'
+                    'meme-preview-container',
                 );
                 memeCanvasCreater.create();
             }
             this.displayMemeTextEditFields();
             this.disableSelectTextButton();
             this.enableDownloadButton();
-            this.backgroundImageFileInputRemover.disableInputFile('label[for="background-image-selector"]');
+            this.backgroundImageFileInputRemover.disableInputFile(
+                'label[for="background-image-selector"]',
+            );
         });
     }
 
@@ -97,7 +105,7 @@ export default class BackgroundImageCropperCreater {
                 cropperFace.style.backgroundImage = `url(${memeTemplateImageSrc})`;
                 cropperFace.style.backgroundSize = 'cover';
                 cropperFace.style.backgroundColor = 'transparent';
-            }
+            },
         });
 
         this.memeTemplateImage.remove();

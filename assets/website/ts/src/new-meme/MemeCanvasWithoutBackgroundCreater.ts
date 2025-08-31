@@ -7,10 +7,12 @@ export default class MemeCanvasWithoutBackgroundCreater {
      */
     constructor(
         memeTemplateImageSelector: string,
-        private readonly memePreviewContainerId: string
+        private readonly memePreviewContainerId: string,
     ) {
         this.memeTemplateImage = document.querySelector(memeTemplateImageSelector);
-        this.memePreviewContainer = document.getElementById(this.memePreviewContainerId) as HTMLDivElement;
+        this.memePreviewContainer = document.getElementById(
+            this.memePreviewContainerId,
+        ) as HTMLDivElement;
         if (this.memePreviewContainer === null || this.memeTemplateImage === null) {
             throw new Error('Meme canvas without background could not be created.');
         }
@@ -28,7 +30,7 @@ export default class MemeCanvasWithoutBackgroundCreater {
 
         canvas.width = (this.memeTemplateImage as HTMLImageElement).naturalWidth;
         canvas.height = (this.memeTemplateImage as HTMLImageElement).naturalHeight;
-        context.drawImage((this.memeTemplateImage as HTMLImageElement), 0, 0);
+        context.drawImage(this.memeTemplateImage as HTMLImageElement, 0, 0);
 
         (this.memePreviewContainer as HTMLElement).innerHTML = '';
 

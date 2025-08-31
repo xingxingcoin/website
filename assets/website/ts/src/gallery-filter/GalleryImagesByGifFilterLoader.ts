@@ -1,6 +1,6 @@
 import GalleryInitialLoadImagesResponse from '../types/GalleryInitialLoadImagesResponse';
 import GalleryImagesManipulator from '../components/GalleryImagesManipulator';
-import ContainerAnimationInitializer from "../components/ContainerAnimationInitializer";
+import ContainerAnimationInitializer from '../components/ContainerAnimationInitializer';
 
 export default class GalleryImagesByGifFilterLoader {
     static readonly URL: string = '/api/v1/gallery/images/filter?filter=gif&counter=';
@@ -21,9 +21,14 @@ export default class GalleryImagesByGifFilterLoader {
         imageFilterButtonId: string,
     ) {
         this.loadingIndicator = document.querySelector(loadingIndicatorClass);
-        this.gifFilterButton = document.getElementById(gifFilterButtonId) as HTMLAnchorElement | null;
-        this.imageFilterButton = document.getElementById(imageFilterButtonId) as HTMLAnchorElement | null;
-        if (this.loadingIndicator === null ||
+        this.gifFilterButton = document.getElementById(
+            gifFilterButtonId,
+        ) as HTMLAnchorElement | null;
+        this.imageFilterButton = document.getElementById(
+            imageFilterButtonId,
+        ) as HTMLAnchorElement | null;
+        if (
+            this.loadingIndicator === null ||
             this.gifFilterButton === null ||
             this.imageFilterButton === null
         ) {
@@ -35,10 +40,16 @@ export default class GalleryImagesByGifFilterLoader {
         this.disableFilterButtons();
         this.displayLoadingIndicator();
         let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
-        ajaxHttpClient.open(GalleryImagesByGifFilterLoader.METHOD, GalleryImagesByGifFilterLoader.URL + 0, true);
+        ajaxHttpClient.open(
+            GalleryImagesByGifFilterLoader.METHOD,
+            GalleryImagesByGifFilterLoader.URL + 0,
+            true,
+        );
         ajaxHttpClient.onreadystatechange = (): void => {
             if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
-                const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
+                const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(
+                    ajaxHttpClient.response,
+                );
                 this.galleryImagesManipulator.displayImagesInGallery(jsonResponse.urls);
                 this.hideLoadingIndicator();
                 this.enableFilterButtonsWithSelectedGifButton();
@@ -60,16 +71,32 @@ export default class GalleryImagesByGifFilterLoader {
     }
 
     private disableFilterButtons(): void {
-        (this.imageFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button', 'xing-media-filter-button-selected');
-        (this.imageFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button-disabled');
-        (this.gifFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-selected', 'xing-media-filter-button');
-        (this.gifFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button-disabled');
+        (this.imageFilterButton as HTMLAnchorElement).classList.remove(
+            'xing-media-filter-button',
+            'xing-media-filter-button-selected',
+        );
+        (this.imageFilterButton as HTMLAnchorElement).classList.add(
+            'xing-media-filter-button-disabled',
+        );
+        (this.gifFilterButton as HTMLAnchorElement).classList.remove(
+            'xing-media-filter-button-selected',
+            'xing-media-filter-button',
+        );
+        (this.gifFilterButton as HTMLAnchorElement).classList.add(
+            'xing-media-filter-button-disabled',
+        );
     }
 
     private enableFilterButtonsWithSelectedGifButton(): void {
-        (this.imageFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-disabled');
+        (this.imageFilterButton as HTMLAnchorElement).classList.remove(
+            'xing-media-filter-button-disabled',
+        );
         (this.imageFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button');
-        (this.gifFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-disabled');
-        (this.gifFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button-selected');
+        (this.gifFilterButton as HTMLAnchorElement).classList.remove(
+            'xing-media-filter-button-disabled',
+        );
+        (this.gifFilterButton as HTMLAnchorElement).classList.add(
+            'xing-media-filter-button-selected',
+        );
     }
 }

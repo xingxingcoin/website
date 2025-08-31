@@ -12,13 +12,13 @@ export default class GalleryImagesByImageFilterLoadHandler {
         private readonly galleryImagesByImageFilterLoader: GalleryImagesByImageFilterLoader,
         private readonly galleryImagesByNoFilterLoader: GalleryImagesByNoFilterLoader,
         imageFilterButtonId: string,
-        galleryContainerClass: string
+        galleryContainerClass: string,
     ) {
-        this.imageFilterButton = document.getElementById(imageFilterButtonId) as HTMLAnchorElement | null;
+        this.imageFilterButton = document.getElementById(
+            imageFilterButtonId,
+        ) as HTMLAnchorElement | null;
         this.galleryContainer = document.querySelector(galleryContainerClass);
-        if (this.imageFilterButton === null ||
-            this.galleryContainer === null
-        ) {
+        if (this.imageFilterButton === null || this.galleryContainer === null) {
             throw new Error('Gallery images by image filter not loaded.');
         }
 
@@ -27,11 +27,19 @@ export default class GalleryImagesByImageFilterLoadHandler {
 
     private initEventListener(): void {
         (this.imageFilterButton as HTMLAnchorElement).addEventListener('click', (): void => {
-            if ((this.imageFilterButton as HTMLAnchorElement).classList.contains('xing-media-filter-button-disabled')) {
+            if (
+                (this.imageFilterButton as HTMLAnchorElement).classList.contains(
+                    'xing-media-filter-button-disabled',
+                )
+            ) {
                 return;
             }
 
-            if ((this.imageFilterButton as HTMLAnchorElement).classList.contains('xing-media-filter-button')) {
+            if (
+                (this.imageFilterButton as HTMLAnchorElement).classList.contains(
+                    'xing-media-filter-button',
+                )
+            ) {
                 this.displayImageButtonAsSelected();
                 this.deleteAllImageHtmlElements();
                 this.galleryImagesByImageFilterLoader.load();
@@ -40,16 +48,20 @@ export default class GalleryImagesByImageFilterLoadHandler {
                 this.deleteAllImageHtmlElements();
                 this.galleryImagesByNoFilterLoader.load();
             }
-        })
+        });
     }
 
     private displayImageButtonAsSelected(): void {
         (this.imageFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button');
-        (this.imageFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button-selected');
+        (this.imageFilterButton as HTMLAnchorElement).classList.add(
+            'xing-media-filter-button-selected',
+        );
     }
 
     private displayImageButtonAsNotSelected(): void {
-        (this.imageFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-selected');
+        (this.imageFilterButton as HTMLAnchorElement).classList.remove(
+            'xing-media-filter-button-selected',
+        );
         (this.imageFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button');
     }
 

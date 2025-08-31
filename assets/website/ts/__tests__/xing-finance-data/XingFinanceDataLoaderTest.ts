@@ -1,4 +1,4 @@
-import {describe, expect, test} from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import XingFinanceDataLoader from '../../src/xing-finance-data/XingFinanceDataLoader';
 
 describe('Xing finance data is loaded.', (): void => {
@@ -20,35 +20,50 @@ describe('Xing finance data is loaded.', (): void => {
             setRequestHeader: jest.fn(),
             readyState: 4,
             status: 200,
-            response: JSON.stringify({url: '/mock/path/to/image.gif', finance: {marketCap: 100000, priceChange: 2.5}}),
+            response: JSON.stringify({
+                url: '/mock/path/to/image.gif',
+                finance: { marketCap: 100000, priceChange: 2.5 },
+            }),
             onreadystatechange: jest.fn(),
         };
-        global.XMLHttpRequest = jest.fn((): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest) as any;
+        global.XMLHttpRequest = jest.fn(
+            (): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest,
+        ) as any;
 
         let xingFinanceDataLoader: XingFinanceDataLoader = new XingFinanceDataLoader(
             '.xing_information-left-container-market-cap-text span',
             '.xing_information-inner-container picture',
-            '.xing_information-right-container-price-change-positive-text'
+            '.xing_information-right-container-price-change-positive-text',
         );
 
         xingFinanceDataLoader.load();
 
         xhrMock.onreadystatechange();
 
-        expect(xhrMock.open).toHaveBeenCalledWith(XingFinanceDataLoader.METHOD, XingFinanceDataLoader.URL, true);
+        expect(xhrMock.open).toHaveBeenCalledWith(
+            XingFinanceDataLoader.METHOD,
+            XingFinanceDataLoader.URL,
+            true,
+        );
         expect(xhrMock.send).toHaveBeenCalled();
-        const capSpans = document.querySelectorAll('.xing_information-left-container-market-cap-text span');
-        const sourceElement = document.querySelector('.xing_information-inner-container picture source');
+        const capSpans = document.querySelectorAll(
+            '.xing_information-left-container-market-cap-text span',
+        );
+        const sourceElement = document.querySelector(
+            '.xing_information-inner-container picture source',
+        );
         const imgElement = document.querySelector('.xing_information-inner-container picture img');
-        const performanceTextElement = document.querySelector('.xing_information-right-container-price-change-positive-text span');
+        const performanceTextElement = document.querySelector(
+            '.xing_information-right-container-price-change-positive-text span',
+        );
         expect((capSpans[0] as Element).textContent).toBe('$ 100,000');
         expect((capSpans[1] as Element).textContent).toBe('$ 999,900,000');
         const expectedResponse = {
             finance: {
                 marketCap: 355976,
-                priceChange: 2.5
+                priceChange: 2.5,
             },
-            url: '/mock/path/to/image.gif'
+            url: '/mock/path/to/image.gif',
         };
 
         expect(sourceElement?.getAttribute('srcset')).toBe(expectedResponse.url);
@@ -63,35 +78,50 @@ describe('Xing finance data is loaded.', (): void => {
             setRequestHeader: jest.fn(),
             readyState: 4,
             status: 200,
-            response: JSON.stringify({url: '/mock/path/to/image.gif', finance: {marketCap: 100000, priceChange: -2.5}}),
+            response: JSON.stringify({
+                url: '/mock/path/to/image.gif',
+                finance: { marketCap: 100000, priceChange: -2.5 },
+            }),
             onreadystatechange: jest.fn(),
         };
-        global.XMLHttpRequest = jest.fn((): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest) as any;
+        global.XMLHttpRequest = jest.fn(
+            (): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest,
+        ) as any;
 
         let xingFinanceDataLoader: XingFinanceDataLoader = new XingFinanceDataLoader(
             '.xing_information-left-container-market-cap-text span',
             '.xing_information-inner-container picture',
-            '.xing_information-right-container-price-change-positive-text'
+            '.xing_information-right-container-price-change-positive-text',
         );
 
         xingFinanceDataLoader.load();
 
         xhrMock.onreadystatechange();
 
-        expect(xhrMock.open).toHaveBeenCalledWith(XingFinanceDataLoader.METHOD, XingFinanceDataLoader.URL, true);
+        expect(xhrMock.open).toHaveBeenCalledWith(
+            XingFinanceDataLoader.METHOD,
+            XingFinanceDataLoader.URL,
+            true,
+        );
         expect(xhrMock.send).toHaveBeenCalled();
-        const capSpans = document.querySelectorAll('.xing_information-left-container-market-cap-text span');
-        const sourceElement = document.querySelector('.xing_information-inner-container picture source');
+        const capSpans = document.querySelectorAll(
+            '.xing_information-left-container-market-cap-text span',
+        );
+        const sourceElement = document.querySelector(
+            '.xing_information-inner-container picture source',
+        );
         const imgElement = document.querySelector('.xing_information-inner-container picture img');
-        const performanceTextElement = document.querySelector('.xing_information-right-container-price-change-negative-text span');
+        const performanceTextElement = document.querySelector(
+            '.xing_information-right-container-price-change-negative-text span',
+        );
         expect((capSpans[0] as Element).textContent).toBe('$ 100,000');
         expect((capSpans[1] as Element).textContent).toBe('$ 999,900,000');
         const expectedResponse = {
             finance: {
                 marketCap: 355976,
-                priceChange: -2.5
+                priceChange: -2.5,
             },
-            url: '/mock/path/to/image.gif'
+            url: '/mock/path/to/image.gif',
         };
 
         expect(sourceElement?.getAttribute('srcset')).toBe(expectedResponse.url);
@@ -105,27 +135,42 @@ describe('Xing finance data is loaded.', (): void => {
             setRequestHeader: jest.fn(),
             readyState: 4,
             status: 500,
-            response: JSON.stringify({url: '/mock/path/to/image.gif', finance: {marketCap: 100000, priceChange: 2.5}}),
+            response: JSON.stringify({
+                url: '/mock/path/to/image.gif',
+                finance: { marketCap: 100000, priceChange: 2.5 },
+            }),
             onreadystatechange: jest.fn(),
         };
-        global.XMLHttpRequest = jest.fn((): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest) as any;
+        global.XMLHttpRequest = jest.fn(
+            (): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest,
+        ) as any;
 
         let xingFinanceDataLoader: XingFinanceDataLoader = new XingFinanceDataLoader(
             '.xing_information-left-container-market-cap-text span',
             '.xing_information-inner-container picture',
-            '.xing_information-right-container-price-change-positive-text'
+            '.xing_information-right-container-price-change-positive-text',
         );
 
         xingFinanceDataLoader.load();
 
         xhrMock.onreadystatechange();
 
-        expect(xhrMock.open).toHaveBeenCalledWith(XingFinanceDataLoader.METHOD, XingFinanceDataLoader.URL, true);
+        expect(xhrMock.open).toHaveBeenCalledWith(
+            XingFinanceDataLoader.METHOD,
+            XingFinanceDataLoader.URL,
+            true,
+        );
         expect(xhrMock.send).toHaveBeenCalled();
-        const capSpans = document.querySelectorAll('.xing_information-left-container-market-cap-text span');
-        const sourceElement = document.querySelector('.xing_information-inner-container picture source');
+        const capSpans = document.querySelectorAll(
+            '.xing_information-left-container-market-cap-text span',
+        );
+        const sourceElement = document.querySelector(
+            '.xing_information-inner-container picture source',
+        );
         const imgElement = document.querySelector('.xing_information-inner-container picture img');
-        const performanceTextElement = document.querySelector('.xing_information-right-container-price-change-positive-text span');
+        const performanceTextElement = document.querySelector(
+            '.xing_information-right-container-price-change-positive-text span',
+        );
         expect((capSpans[0] as Element).textContent).toBe('$ 0');
         expect((capSpans[1] as Element).textContent).toBe('$ 0');
 
@@ -140,27 +185,42 @@ describe('Xing finance data is loaded.', (): void => {
             setRequestHeader: jest.fn(),
             readyState: 1,
             status: 200,
-            response: JSON.stringify({url: '/mock/path/to/image.gif', finance: {marketCap: 100000, priceChange: 2.5}}),
+            response: JSON.stringify({
+                url: '/mock/path/to/image.gif',
+                finance: { marketCap: 100000, priceChange: 2.5 },
+            }),
             onreadystatechange: jest.fn(),
         };
-        global.XMLHttpRequest = jest.fn((): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest) as any;
+        global.XMLHttpRequest = jest.fn(
+            (): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest,
+        ) as any;
 
         let xingFinanceDataLoader: XingFinanceDataLoader = new XingFinanceDataLoader(
             '.xing_information-left-container-market-cap-text span',
             '.xing_information-inner-container picture',
-            '.xing_information-right-container-price-change-positive-text'
+            '.xing_information-right-container-price-change-positive-text',
         );
 
         xingFinanceDataLoader.load();
 
         xhrMock.onreadystatechange();
 
-        expect(xhrMock.open).toHaveBeenCalledWith(XingFinanceDataLoader.METHOD, XingFinanceDataLoader.URL, true);
+        expect(xhrMock.open).toHaveBeenCalledWith(
+            XingFinanceDataLoader.METHOD,
+            XingFinanceDataLoader.URL,
+            true,
+        );
         expect(xhrMock.send).toHaveBeenCalled();
-        const capSpans = document.querySelectorAll('.xing_information-left-container-market-cap-text span');
-        const sourceElement = document.querySelector('.xing_information-inner-container picture source');
+        const capSpans = document.querySelectorAll(
+            '.xing_information-left-container-market-cap-text span',
+        );
+        const sourceElement = document.querySelector(
+            '.xing_information-inner-container picture source',
+        );
         const imgElement = document.querySelector('.xing_information-inner-container picture img');
-        const performanceTextElement = document.querySelector('.xing_information-right-container-price-change-positive-text span');
+        const performanceTextElement = document.querySelector(
+            '.xing_information-right-container-price-change-positive-text span',
+        );
         expect((capSpans[0] as Element).textContent).toBe('$ 0');
         expect((capSpans[1] as Element).textContent).toBe('$ 0');
 
@@ -175,16 +235,21 @@ describe('Xing finance data is loaded.', (): void => {
             setRequestHeader: jest.fn(),
             readyState: 4,
             status: 200,
-            response: JSON.stringify({url: '/mock/path/to/image.gif', finance: {marketCap: 100000, priceChange: 2.5}}),
+            response: JSON.stringify({
+                url: '/mock/path/to/image.gif',
+                finance: { marketCap: 100000, priceChange: 2.5 },
+            }),
             onreadystatechange: jest.fn(),
         };
-        global.XMLHttpRequest = jest.fn((): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest) as any;
+        global.XMLHttpRequest = jest.fn(
+            (): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest,
+        ) as any;
 
         try {
             new XingFinanceDataLoader(
                 '.xing_information-left-container-market-cap-text-wrong span',
                 '.xing_information-inner-container picture',
-                '.xing_information-right-container-price-change-positive-text'
+                '.xing_information-right-container-price-change-positive-text',
             );
         } catch (error: any) {
             expect(error.message).toBe('Xing finance data is not loaded.');
@@ -192,7 +257,11 @@ describe('Xing finance data is loaded.', (): void => {
 
         xhrMock.onreadystatechange();
 
-        expect(xhrMock.open).not.toHaveBeenCalledWith(XingFinanceDataLoader.METHOD, XingFinanceDataLoader.URL, true);
+        expect(xhrMock.open).not.toHaveBeenCalledWith(
+            XingFinanceDataLoader.METHOD,
+            XingFinanceDataLoader.URL,
+            true,
+        );
         expect(xhrMock.send).not.toHaveBeenCalled();
     });
     test('gif picture element is not found.', (): void => {
@@ -202,16 +271,21 @@ describe('Xing finance data is loaded.', (): void => {
             setRequestHeader: jest.fn(),
             readyState: 4,
             status: 200,
-            response: JSON.stringify({url: '/mock/path/to/image.gif', finance: {marketCap: 100000, priceChange: 2.5}}),
+            response: JSON.stringify({
+                url: '/mock/path/to/image.gif',
+                finance: { marketCap: 100000, priceChange: 2.5 },
+            }),
             onreadystatechange: jest.fn(),
         };
-        global.XMLHttpRequest = jest.fn((): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest) as any;
+        global.XMLHttpRequest = jest.fn(
+            (): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest,
+        ) as any;
 
         try {
             new XingFinanceDataLoader(
                 '.xing_information-left-container-market-cap-text span',
                 '.xing_information-inner-container-wrong picture',
-                '.xing_information-right-container-price-change-positive-text'
+                '.xing_information-right-container-price-change-positive-text',
             );
         } catch (error: any) {
             expect(error.message).toBe('Xing finance data is not loaded.');
@@ -219,7 +293,11 @@ describe('Xing finance data is loaded.', (): void => {
 
         xhrMock.onreadystatechange();
 
-        expect(xhrMock.open).not.toHaveBeenCalledWith(XingFinanceDataLoader.METHOD, XingFinanceDataLoader.URL, true);
+        expect(xhrMock.open).not.toHaveBeenCalledWith(
+            XingFinanceDataLoader.METHOD,
+            XingFinanceDataLoader.URL,
+            true,
+        );
         expect(xhrMock.send).not.toHaveBeenCalled();
     });
     test('performance text element is not found.', (): void => {
@@ -229,16 +307,21 @@ describe('Xing finance data is loaded.', (): void => {
             setRequestHeader: jest.fn(),
             readyState: 4,
             status: 200,
-            response: JSON.stringify({url: '/mock/path/to/image.gif', finance: {marketCap: 100000, priceChange: 2.5}}),
+            response: JSON.stringify({
+                url: '/mock/path/to/image.gif',
+                finance: { marketCap: 100000, priceChange: 2.5 },
+            }),
             onreadystatechange: jest.fn(),
         };
-        global.XMLHttpRequest = jest.fn((): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest) as any;
+        global.XMLHttpRequest = jest.fn(
+            (): XMLHttpRequest => xhrMock as unknown as XMLHttpRequest,
+        ) as any;
 
         try {
             new XingFinanceDataLoader(
                 '.xing_information-left-container-market-cap-text span',
                 '.xing_information-inner-container picture',
-                '.xing_information-right-container-price-change-positive-text-wrong'
+                '.xing_information-right-container-price-change-positive-text-wrong',
             );
         } catch (error: any) {
             expect(error.message).toBe('Xing finance data is not loaded.');
@@ -246,7 +329,11 @@ describe('Xing finance data is loaded.', (): void => {
 
         xhrMock.onreadystatechange();
 
-        expect(xhrMock.open).not.toHaveBeenCalledWith(XingFinanceDataLoader.METHOD, XingFinanceDataLoader.URL, true);
+        expect(xhrMock.open).not.toHaveBeenCalledWith(
+            XingFinanceDataLoader.METHOD,
+            XingFinanceDataLoader.URL,
+            true,
+        );
         expect(xhrMock.send).not.toHaveBeenCalled();
     });
 });

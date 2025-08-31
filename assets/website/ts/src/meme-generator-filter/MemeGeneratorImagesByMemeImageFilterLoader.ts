@@ -1,6 +1,6 @@
 import GalleryInitialLoadImagesResponse from '../types/GalleryInitialLoadImagesResponse';
 import GalleryImagesManipulator from '../components/GalleryImagesManipulator';
-import ContainerAnimationInitializer from "../components/ContainerAnimationInitializer";
+import ContainerAnimationInitializer from '../components/ContainerAnimationInitializer';
 
 export default class MemeGeneratorImagesByMemeImageFilterLoader {
     static readonly URL: string = '/api/v1/meme-generator/images/filter?filter=meme_image&counter=';
@@ -21,9 +21,14 @@ export default class MemeGeneratorImagesByMemeImageFilterLoader {
         memeTemplateFilterButtonId: string,
     ) {
         this.loadingIndicator = document.querySelector(loadingIndicatorClass);
-        this.memeImageFilterButton = document.getElementById(memeImageFilterButtonId) as HTMLAnchorElement | null;
-        this.memeTemplateFilterButton = document.getElementById(memeTemplateFilterButtonId) as HTMLAnchorElement | null;
-        if (this.loadingIndicator === null ||
+        this.memeImageFilterButton = document.getElementById(
+            memeImageFilterButtonId,
+        ) as HTMLAnchorElement | null;
+        this.memeTemplateFilterButton = document.getElementById(
+            memeTemplateFilterButtonId,
+        ) as HTMLAnchorElement | null;
+        if (
+            this.loadingIndicator === null ||
             this.memeImageFilterButton === null ||
             this.memeTemplateFilterButton === null
         ) {
@@ -35,10 +40,16 @@ export default class MemeGeneratorImagesByMemeImageFilterLoader {
         this.disableFilterButtons();
         this.displayLoadingIndicator();
         let ajaxHttpClient: XMLHttpRequest = new XMLHttpRequest();
-        ajaxHttpClient.open(MemeGeneratorImagesByMemeImageFilterLoader.METHOD, MemeGeneratorImagesByMemeImageFilterLoader.URL + 0, true);
+        ajaxHttpClient.open(
+            MemeGeneratorImagesByMemeImageFilterLoader.METHOD,
+            MemeGeneratorImagesByMemeImageFilterLoader.URL + 0,
+            true,
+        );
         ajaxHttpClient.onreadystatechange = (): void => {
             if (ajaxHttpClient.readyState === 4 && ajaxHttpClient.status === 200) {
-                const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(ajaxHttpClient.response);
+                const jsonResponse: GalleryInitialLoadImagesResponse = JSON.parse(
+                    ajaxHttpClient.response,
+                );
                 this.galleryImagesManipulator.displayImagesInGallery(jsonResponse.urls);
                 this.hideLoadingIndicator();
                 this.enableFilterButtonsWithSelectedMemeImageButton();
@@ -60,16 +71,34 @@ export default class MemeGeneratorImagesByMemeImageFilterLoader {
     }
 
     private disableFilterButtons(): void {
-        (this.memeTemplateFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button', 'xing-media-filter-button-selected');
-        (this.memeTemplateFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button-disabled');
-        (this.memeImageFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-selected', 'xing-media-filter-button');
-        (this.memeImageFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button-disabled');
+        (this.memeTemplateFilterButton as HTMLAnchorElement).classList.remove(
+            'xing-media-filter-button',
+            'xing-media-filter-button-selected',
+        );
+        (this.memeTemplateFilterButton as HTMLAnchorElement).classList.add(
+            'xing-media-filter-button-disabled',
+        );
+        (this.memeImageFilterButton as HTMLAnchorElement).classList.remove(
+            'xing-media-filter-button-selected',
+            'xing-media-filter-button',
+        );
+        (this.memeImageFilterButton as HTMLAnchorElement).classList.add(
+            'xing-media-filter-button-disabled',
+        );
     }
 
     private enableFilterButtonsWithSelectedMemeImageButton(): void {
-        (this.memeTemplateFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-disabled');
-        (this.memeTemplateFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button');
-        (this.memeImageFilterButton as HTMLAnchorElement).classList.remove('xing-media-filter-button-disabled');
-        (this.memeImageFilterButton as HTMLAnchorElement).classList.add('xing-media-filter-button-selected');
+        (this.memeTemplateFilterButton as HTMLAnchorElement).classList.remove(
+            'xing-media-filter-button-disabled',
+        );
+        (this.memeTemplateFilterButton as HTMLAnchorElement).classList.add(
+            'xing-media-filter-button',
+        );
+        (this.memeImageFilterButton as HTMLAnchorElement).classList.remove(
+            'xing-media-filter-button-disabled',
+        );
+        (this.memeImageFilterButton as HTMLAnchorElement).classList.add(
+            'xing-media-filter-button-selected',
+        );
     }
 }

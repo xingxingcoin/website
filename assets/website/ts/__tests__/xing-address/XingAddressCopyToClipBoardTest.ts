@@ -1,4 +1,4 @@
-import {describe, expect, test} from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import XingAddressCopyToClipBoard from '../../src/xing-address/XingAddressCopyToClipBoard';
 
 Object.assign(navigator, {
@@ -22,7 +22,9 @@ describe('copy xing address to clip board.', (): void => {
         button.click();
 
         expect(button.textContent).toBe('Copied!');
-        expect(navigator.clipboard.writeText).toHaveBeenCalledWith('5JcdnWEwuHh1v3SAARq8zH9tEwDQGpaHzBrZ81m4pump');
+        expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
+            '5JcdnWEwuHh1v3SAARq8zH9tEwDQGpaHzBrZ81m4pump',
+        );
 
         jest.advanceTimersByTime(1000);
         expect(button.textContent).toBe('📋 5JcdnWEwuHh1v3SAARq8zH9tEwDQGpaHzBrZ81m4pump');

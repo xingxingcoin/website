@@ -2,15 +2,20 @@ export default class BackgroundImageFileInputRemover {
     private readonly backgroundImageInput: HTMLInputElement | null;
 
     constructor(backgroundImageSelectorId: string) {
-        this.backgroundImageInput = document.getElementById(backgroundImageSelectorId) as HTMLInputElement | null;
+        this.backgroundImageInput = document.getElementById(
+            backgroundImageSelectorId,
+        ) as HTMLInputElement | null;
     }
 
-    public disableInputFile(inputFileForBackgroundImageLabelSelector: string): void
-    {
-        let backgroundImageFileInputSelector: HTMLLabelElement | null = document.querySelector(inputFileForBackgroundImageLabelSelector);
-        if (this.backgroundImageInput === null ||
+    public disableInputFile(inputFileForBackgroundImageLabelSelector: string): void {
+        let backgroundImageFileInputSelector: HTMLLabelElement | null = document.querySelector(
+            inputFileForBackgroundImageLabelSelector,
+        );
+        if (
+            this.backgroundImageInput === null ||
             backgroundImageFileInputSelector === null ||
-            backgroundImageFileInputSelector.classList.contains('new-meme-button-disabled')) {
+            backgroundImageFileInputSelector.classList.contains('new-meme-button-disabled')
+        ) {
             return;
         }
 

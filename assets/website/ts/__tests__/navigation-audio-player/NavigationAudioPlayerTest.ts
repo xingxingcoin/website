@@ -1,5 +1,5 @@
-import {describe, expect, test} from '@jest/globals';
-import NavigationAudioPlayer from "../../src/navigation-audio-player/NavigationAudioPlayer";
+import { describe, expect, test } from '@jest/globals';
+import NavigationAudioPlayer from '../../src/navigation-audio-player/NavigationAudioPlayer';
 
 describe('add navigation audio player', (): void => {
     let navigationAudioPlayerButton: HTMLButtonElement;
@@ -11,7 +11,9 @@ describe('add navigation audio player', (): void => {
             </audio>
         </div>`;
 
-        navigationAudioPlayerButton = document.querySelector('.navigation-audio-player-button') as HTMLButtonElement;
+        navigationAudioPlayerButton = document.querySelector(
+            '.navigation-audio-player-button',
+        ) as HTMLButtonElement;
     });
     test('play navigation audio player music is successful', (): void => {
         Object.defineProperty(HTMLAudioElement.prototype, 'play', {
@@ -20,13 +22,17 @@ describe('add navigation audio player', (): void => {
 
         new NavigationAudioPlayer('.navigation-audio-player-button');
         navigationAudioPlayerButton.click();
-        expect(navigationAudioPlayerButton.innerHTML.replace(/\s+/g, '')).toBe(`<svgid="pauseIcon"width="24"height="24"viewBox="002424"fill="black"xmlns="http://www.w3.org/2000/svg"><pathd="M65h4v14H6zM145h4v14h-4z"></path></svg>`);
+        expect(navigationAudioPlayerButton.innerHTML.replace(/\s+/g, '')).toBe(
+            `<svgid="pauseIcon"width="24"height="24"viewBox="002424"fill="black"xmlns="http://www.w3.org/2000/svg"><pathd="M65h4v14H6zM145h4v14h-4z"></path></svg>`,
+        );
     });
     test('pause navigation audio player music is successful', (): void => {
-        let audioPlayer: HTMLAudioElement = document.getElementById('navigation-audio-player') as HTMLAudioElement;
+        let audioPlayer: HTMLAudioElement = document.getElementById(
+            'navigation-audio-player',
+        ) as HTMLAudioElement;
         Object.defineProperty(audioPlayer, 'paused', {
             get: jest.fn((): boolean => false),
-            configurable: true
+            configurable: true,
         });
         Object.defineProperty(HTMLAudioElement.prototype, 'pause', {
             value: jest.fn(),
@@ -35,18 +41,26 @@ describe('add navigation audio player', (): void => {
         new NavigationAudioPlayer('.navigation-audio-player-button');
         navigationAudioPlayerButton.click();
 
-        expect(navigationAudioPlayerButton.innerHTML.replace(/\s+/g, '')).toBe(`<svgid="playIcon"width="24"height="24"viewBox="002424"fill="black"xmlns="http://www.w3.org/2000/svg"><pathd="M85v14l11-7z"></path></svg>`);
+        expect(navigationAudioPlayerButton.innerHTML.replace(/\s+/g, '')).toBe(
+            `<svgid="playIcon"width="24"height="24"viewBox="002424"fill="black"xmlns="http://www.w3.org/2000/svg"><pathd="M85v14l11-7z"></path></svg>`,
+        );
     });
     test('end navigation audio player music is successful', (): void => {
-        let audioPlayer: HTMLAudioElement = document.getElementById('navigation-audio-player') as HTMLAudioElement;
+        let audioPlayer: HTMLAudioElement = document.getElementById(
+            'navigation-audio-player',
+        ) as HTMLAudioElement;
         new NavigationAudioPlayer('.navigation-audio-player-button');
         navigationAudioPlayerButton.click();
         audioPlayer.dispatchEvent(new Event('ended'));
 
-        expect(navigationAudioPlayerButton.innerHTML.replace(/\s+/g, '')).toBe(`<svgid="playIcon"width="24"height="24"viewBox="002424"fill="black"xmlns="http://www.w3.org/2000/svg"><pathd="M85v14l11-7z"></path></svg>`);
+        expect(navigationAudioPlayerButton.innerHTML.replace(/\s+/g, '')).toBe(
+            `<svgid="playIcon"width="24"height="24"viewBox="002424"fill="black"xmlns="http://www.w3.org/2000/svg"><pathd="M85v14l11-7z"></path></svg>`,
+        );
     });
     test('audio player is equals to null', (): void => {
-        let audioPlayer: HTMLAudioElement = document.getElementById('navigation-audio-player') as HTMLAudioElement;
+        let audioPlayer: HTMLAudioElement = document.getElementById(
+            'navigation-audio-player',
+        ) as HTMLAudioElement;
         audioPlayer.remove();
 
         new NavigationAudioPlayer('.navigation-audio-player-button');

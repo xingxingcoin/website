@@ -1,12 +1,12 @@
-import {describe, test} from '@jest/globals';
+import { describe, test } from '@jest/globals';
 import MemeFileDownloader from '../../src/new-meme/MemeFileDownloader';
 
 describe('download meme file', (): void => {
     test('download meme file successfully', (): void => {
         const mockBlob = new Blob();
         let memeCanvas: any = {
-            toBlob: jest.fn((callback: any): any => callback(mockBlob))
-        }
+            toBlob: jest.fn((callback: any): any => callback(mockBlob)),
+        };
         global.URL.createObjectURL = jest.fn((): string => 'mock-url');
         global.URL.revokeObjectURL = jest.fn();
 

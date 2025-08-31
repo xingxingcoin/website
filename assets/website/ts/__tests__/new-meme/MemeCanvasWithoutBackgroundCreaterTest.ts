@@ -1,4 +1,4 @@
-import {describe, expect, test} from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import MemeCanvasWithoutBackgroundCreater from '../../src/new-meme/MemeCanvasWithoutBackgroundCreater';
 
 describe('create meme canvas without background', (): void => {
@@ -16,25 +16,37 @@ describe('create meme canvas without background', (): void => {
     test('create meme canvas without background is successful', (): void => {
         Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
             value: jest.fn((): any => ({
-                drawImage: jest.fn()
+                drawImage: jest.fn(),
             })),
         });
-        Object.defineProperty(document.querySelector('.new-meme-image-container img'), 'naturalWidth', {
-            get: () => 500,
-        });
-        Object.defineProperty(document.querySelector('.new-meme-image-container img'), 'naturalHeight', {
-            get: () => 500,
-        });
+        Object.defineProperty(
+            document.querySelector('.new-meme-image-container img'),
+            'naturalWidth',
+            {
+                get: () => 500,
+            },
+        );
+        Object.defineProperty(
+            document.querySelector('.new-meme-image-container img'),
+            'naturalHeight',
+            {
+                get: () => 500,
+            },
+        );
         const memeCanvasGenerator = new MemeCanvasWithoutBackgroundCreater(
             '.new-meme-image-container img',
-            'meme-preview'
+            'meme-preview',
         );
 
         memeCanvasGenerator.create();
 
-        const expectedMemePreviewContainerCanvasDiv: HTMLDivElement = document.querySelector('#meme-preview div') as HTMLDivElement;
+        const expectedMemePreviewContainerCanvasDiv: HTMLDivElement = document.querySelector(
+            '#meme-preview div',
+        ) as HTMLDivElement;
         expect(expectedMemePreviewContainerCanvasDiv).toBeInstanceOf(HTMLDivElement);
-        const expectedMemePreviewContainerCanvas: HTMLCanvasElement = document.querySelector('#meme-preview div canvas') as HTMLCanvasElement;
+        const expectedMemePreviewContainerCanvas: HTMLCanvasElement = document.querySelector(
+            '#meme-preview div canvas',
+        ) as HTMLCanvasElement;
         expect(expectedMemePreviewContainerCanvas).toBeInstanceOf(HTMLCanvasElement);
         memePreviewContainer = document.getElementById('meme-preview') as HTMLElement;
         expect(memePreviewContainer.querySelector('canvas').width).toBe(500);
@@ -49,7 +61,7 @@ describe('create meme canvas without background', (): void => {
         try {
             const memeCanvasCreater = new MemeCanvasWithoutBackgroundCreater(
                 '.new-meme-image-container img',
-                'meme-preview'
+                'meme-preview',
             );
             memeCanvasCreater.create();
         } catch (error: any) {
@@ -63,14 +75,14 @@ describe('create meme canvas without background', (): void => {
     test('meme preview container equals null', (): void => {
         Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
             value: jest.fn((): any => ({
-                drawImage: jest.fn()
+                drawImage: jest.fn(),
             })),
         });
 
         try {
             const memeCanvasCreater = new MemeCanvasWithoutBackgroundCreater(
                 '.new-meme-image-container img',
-                'meme-preview-wrong'
+                'meme-preview-wrong',
             );
             memeCanvasCreater.create();
         } catch (error: any) {
@@ -83,14 +95,14 @@ describe('create meme canvas without background', (): void => {
     test('meme template image equals null', (): void => {
         Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
             value: jest.fn((): any => ({
-                drawImage: jest.fn()
+                drawImage: jest.fn(),
             })),
         });
 
         try {
             const memeCanvasCreater = new MemeCanvasWithoutBackgroundCreater(
                 '.new-meme-image-container-wrong img',
-                'meme-preview'
+                'meme-preview',
             );
             memeCanvasCreater.create();
         } catch (error: any) {

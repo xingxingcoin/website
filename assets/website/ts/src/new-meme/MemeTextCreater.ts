@@ -6,14 +6,20 @@ export default class MemeTextCreater {
     private readonly memeTextColorPicker: HTMLInputElement | null;
     private readonly memeFontSizeInput: HTMLInputElement | null;
 
-    constructor(memeTextInputClass: string, memeColorPickerInputClass: string, memeFontSizeNumberInputClass: string) {
+    constructor(
+        memeTextInputClass: string,
+        memeColorPickerInputClass: string,
+        memeFontSizeNumberInputClass: string,
+    ) {
         this.inputMemeText = document.querySelector(memeTextInputClass);
         this.memeTextColorPicker = document.querySelector(memeColorPickerInputClass);
         this.memeFontSizeInput = document.querySelector(memeFontSizeNumberInputClass);
         this.memeText = document.createElement('p');
-        if (this.inputMemeText === null ||
+        if (
+            this.inputMemeText === null ||
             this.memeTextColorPicker === null ||
-            this.memeFontSizeInput === null) {
+            this.memeFontSizeInput === null
+        ) {
             throw new Error('Meme text could be created.');
         }
 
@@ -21,22 +27,21 @@ export default class MemeTextCreater {
     }
 
     private initEventListener(): void {
-        const position = {x: 0, y: 0}
+        const position = { x: 0, y: 0 };
         interact(this.memeText).draggable({
             listeners: {
                 move(event: any): void {
-                    position.x += event.dx
-                    position.y += event.dy
+                    position.x += event.dx;
+                    position.y += event.dy;
 
-                    event.target.style.transform =
-                        `translate(${position.x}px, ${position.y}px)`
+                    event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
                 },
             },
             modifiers: [
                 interact.modifiers.restrictRect({
                     restriction: 'parent',
-                    endOnly: true
-                })
+                    endOnly: true,
+                }),
             ],
         });
 
@@ -50,7 +55,7 @@ export default class MemeTextCreater {
         });
         (this.memeFontSizeInput as HTMLInputElement).addEventListener('change', (): void => {
             const fontSizeValue: string = (this.memeFontSizeInput as HTMLInputElement).value;
-           this.memeText.style.fontSize = `${fontSizeValue}px`;
+            this.memeText.style.fontSize = `${fontSizeValue}px`;
         });
     }
 }

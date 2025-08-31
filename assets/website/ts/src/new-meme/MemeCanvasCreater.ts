@@ -10,9 +10,11 @@ export default class MemeCanvasCreater {
         private readonly cropper: Cropper,
         private readonly backgroundImageByFileReader: HTMLImageElement,
         private readonly memeTemplateImage: HTMLImageElement,
-        private readonly memePreviewContainerId: string
+        private readonly memePreviewContainerId: string,
     ) {
-        this.memePreviewContainer = document.getElementById(this.memePreviewContainerId) as HTMLDivElement;
+        this.memePreviewContainer = document.getElementById(
+            this.memePreviewContainerId,
+        ) as HTMLDivElement;
         if (this.memePreviewContainer === null) {
             throw new Error('Meme canvas could not be created.');
         }
@@ -38,8 +40,20 @@ export default class MemeCanvasCreater {
         canvas.width = backgroundImageWidth;
         canvas.height = backgroundImageHeight;
         context.imageSmoothingEnabled = true;
-        context.drawImage(this.backgroundImageByFileReader, 0, 0, backgroundImageWidth, backgroundImageHeight);
-        context.drawImage(this.memeTemplateImage, newMemeImagePositionX, newMemeImagePositionY, newMemeImageWidth, newMemeImageHeight);
+        context.drawImage(
+            this.backgroundImageByFileReader,
+            0,
+            0,
+            backgroundImageWidth,
+            backgroundImageHeight,
+        );
+        context.drawImage(
+            this.memeTemplateImage,
+            newMemeImagePositionX,
+            newMemeImagePositionY,
+            newMemeImageWidth,
+            newMemeImageHeight,
+        );
 
         (this.memePreviewContainer as HTMLElement).innerHTML = '';
 

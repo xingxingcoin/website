@@ -12,13 +12,13 @@ export default class GalleryImagesByGifFilterLoadHandler {
         private readonly galleryImagesByGifFilterLoader: GalleryImagesByGifFilterLoader,
         private readonly galleryImagesByNoFilterLoader: GalleryImagesByNoFilterLoader,
         gifFilterButtonId: string,
-        galleryContainerClass: string
+        galleryContainerClass: string,
     ) {
-        this.gifFilterButton = document.getElementById(gifFilterButtonId) as HTMLAnchorElement | null;
+        this.gifFilterButton = document.getElementById(
+            gifFilterButtonId,
+        ) as HTMLAnchorElement | null;
         this.galleryContainer = document.querySelector(galleryContainerClass);
-        if (this.gifFilterButton === null ||
-            this.galleryContainer === null
-        ) {
+        if (this.gifFilterButton === null || this.galleryContainer === null) {
             throw new Error('Gallery images by gif filter not loaded.');
         }
 
@@ -27,18 +27,26 @@ export default class GalleryImagesByGifFilterLoadHandler {
 
     private initEventListener(): void {
         (this.gifFilterButton as HTMLAnchorElement).addEventListener('click', (): void => {
-            if ((this.gifFilterButton as HTMLAnchorElement).classList.contains('xing-media-filter-button-disabled')) {
+            if (
+                (this.gifFilterButton as HTMLAnchorElement).classList.contains(
+                    'xing-media-filter-button-disabled',
+                )
+            ) {
                 return;
             }
 
-            if ((this.gifFilterButton as HTMLAnchorElement).classList.contains('xing-media-filter-button')) {
+            if (
+                (this.gifFilterButton as HTMLAnchorElement).classList.contains(
+                    'xing-media-filter-button',
+                )
+            ) {
                 this.deleteAllImageHtmlElements();
                 this.galleryImagesByGifFilterLoader.load();
             } else {
                 this.deleteAllImageHtmlElements();
                 this.galleryImagesByNoFilterLoader.load();
             }
-        })
+        });
     }
 
     private deleteAllImageHtmlElements(): void {
