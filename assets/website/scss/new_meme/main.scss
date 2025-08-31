@@ -2,147 +2,149 @@
 @use 'sass:color';
 
 .new-meme-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 1rem;
-  cursor: pointer;
-  color: $white;
-  border-radius: 1rem;
-  font-weight: bold;
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    color: $white;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    @media (max-width: 768px) {
+        font-size: 1.2rem;
+    }
 }
 
 .new-meme-settings-button {
-  background-color: $brown;
-  transition: transform 0.3s ease-in-out;
-  &:hover, &:active {
-    box-shadow: 0 0 5px $brown;
-    user-select: none;
-    background-color: color.scale($brown, $lightness: -15%);
-    transform: scale(1.1);
-  }
+    background-color: $brown;
+    transition: transform 0.3s ease-in-out;
+    &:hover,
+    &:active {
+        box-shadow: 0 0 5px $brown;
+        user-select: none;
+        background-color: color.scale($brown, $lightness: -15%);
+        transform: scale(1.1);
+    }
 }
 
 .new-meme-download-button {
-  background-color: $jungleGreen;
-  transition: transform 0.3s ease-in-out;
-  &:hover, &:active {
-    box-shadow: 0 0 5px $jungleGreen;
-    user-select: none;
-    background-color: color.scale($jungleGreen, $lightness: -15%);
-    transform: scale(1.1);
-  }
+    background-color: $jungleGreen;
+    transition: transform 0.3s ease-in-out;
+    &:hover,
+    &:active {
+        box-shadow: 0 0 5px $jungleGreen;
+        user-select: none;
+        background-color: color.scale($jungleGreen, $lightness: -15%);
+        transform: scale(1.1);
+    }
 }
 
 .new-meme-button-disabled {
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 1rem;
-  background-color: $gray;
-  color: $white;
-  border-radius: 1rem;
-  font-weight: bold;
-  font-size: 1.5rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-  }
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1rem;
+    background-color: $gray;
+    color: $white;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    @media (max-width: 768px) {
+        font-size: 1.2rem;
+    }
 }
 
 .new-meme-button-container {
-  display: flex;
-  gap: 2rem;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    gap: 0.1rem;
-  }
+    display: flex;
+    gap: 2rem;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        gap: 0.1rem;
+    }
 }
 
 .new-meme-canvas-container {
-  display: flex;
-  flex-shrink: 1;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: $gray;
-  border-style: solid;
-  border-color: $black;
-  overflow: hidden;
-  box-shadow: 0 0 5px $black;
+    display: flex;
+    flex-shrink: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $gray;
+    border-style: solid;
+    border-color: $black;
+    overflow: hidden;
+    box-shadow: 0 0 5px $black;
 }
 
 #meme-preview-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-height: 20rem;
-  div {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     max-height: 20rem;
-    canvas {
-      max-height: 20rem;
-      width: 100%;
+    div {
+        display: flex;
+        max-height: 20rem;
+        canvas {
+            max-height: 20rem;
+            width: 100%;
+        }
     }
-  }
 }
 
 .new-meme-image-container {
-  img {
-    display: flex;
-  }
+    img {
+        display: flex;
+    }
 }
 
 .new-meme-draggable-text {
-  position: absolute;
-  text-align: center;
-  font: 50px Impact;
-  color: $white;
-  z-index: 100;
-  text-transform: uppercase;
-  -webkit-text-stroke: 2px $black;
-  letter-spacing: 1px;
-  touch-action: none;
-  user-select: none;
-  white-space: nowrap;
+    position: absolute;
+    text-align: center;
+    font: 50px Impact;
+    color: $white;
+    z-index: 100;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px $black;
+    letter-spacing: 1px;
+    touch-action: none;
+    user-select: none;
+    white-space: nowrap;
 }
 
 .new-meme-canvas-input-text-container {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  margin-bottom: 5rem;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    margin-bottom: 5rem;
 }
 
 .new-meme-text-input {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .new-meme-input-container {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 .new-meme-input-color-picker {
-  max-width: 5rem;
+    max-width: 5rem;
 }
 
 .new-meme-input-text-size-number {
-  max-width: 5rem;
+    max-width: 5rem;
 }
 
 .new-meme-description-container {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }

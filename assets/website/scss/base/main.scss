@@ -3,161 +3,175 @@
 @use '../_shared/colors' as *;
 @use 'sass:color';
 
-p, h1, h2, h3, h4, a, label, li, strong {
-  font-family: DynaPuff,system-ui;
+p,
+h1,
+h2,
+h3,
+h4,
+a,
+label,
+li,
+strong {
+    font-family: DynaPuff, system-ui;
 }
 
 body {
-  margin: 0;
-  background-color: color.scale($brown, $lightness: 80%);
+    margin: 0;
+    background-color: color.scale($brown, $lightness: 80%);
 }
 
 main {
-  margin-left: 10rem;
-  margin-right: 10rem;
-  @media (max-width: 768px) {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
+    margin-left: 10rem;
+    margin-right: 10rem;
+    @media (max-width: 768px) {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
 }
 
 @media (max-width: 768px) {
-  iframe {
-    width: 300px;
-    height: 300px;
-  }
+    iframe {
+        width: 300px;
+        height: 300px;
+    }
 }
 
 .title {
-  text-align: center;
-  font-size: 4rem;
+    text-align: center;
+    font-size: 4rem;
 }
 
 @media (max-width: 768px) {
-  .title {
-    font-size: 3rem;
-  }
-  .description {
-    font-size: 0.5rem;
-  }
+    .title {
+        font-size: 3rem;
+    }
+    .description {
+        font-size: 0.5rem;
+    }
 }
 
 .description {
-  font-size: 1.5rem;
-  color: $brown;
+    font-size: 1.5rem;
+    color: $brown;
 }
 
 .description-container {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 1rem;
-  background-color: $brown;
-  font-size: 1.5rem;
-  border-bottom-style: solid;
-  border-radius: 0.75rem;
-  border-width: 0.3rem;
-  border-color: $black;
-  color: $white;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  box-shadow: 0 0 5px $brown;
-  @media (max-width: 768px) {
-    img {
-      width: 300px;
-      height: 300px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1rem;
+    background-color: $brown;
+    font-size: 1.5rem;
+    border-bottom-style: solid;
+    border-radius: 0.75rem;
+    border-width: 0.3rem;
+    border-color: $black;
+    color: $white;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 0 5px $brown;
+    @media (max-width: 768px) {
+        img {
+            width: 300px;
+            height: 300px;
+        }
+        font-size: 1rem;
     }
-    font-size: 1rem;
-  }
 }
 
 .container-left-hidden {
-  opacity: 0;
-  transform: translateX(-200px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    opacity: 0;
+    transform: translateX(-200px);
+    transition:
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
 }
 .container-bottom-hidden {
-  opacity: 0;
-  transform: translateY(200px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    opacity: 0;
+    transform: translateY(200px);
+    transition:
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
 }
 .container-show {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
-input[type="text"], input[type="number"]  {
-  border: 3px solid $brown;
-  border-radius: 5px;
-  height: 50px;
-  line-height: normal;
-  color: $black;
-  width: 100%;
-  box-sizing: border-box;
-  user-select: auto;
-  font-size: 16px;
-  padding: 0 6px 0 12px;
-  transition: all 0.3s ease;
-  &:focus{
-    box-shadow: 0 0 5px $jungleGreen;
-    border: 3px solid $jungleGreen;
-    outline: none;
-  }
+input[type='text'],
+input[type='number'] {
+    border: 3px solid $brown;
+    border-radius: 5px;
+    height: 50px;
+    line-height: normal;
+    color: $black;
+    width: 100%;
+    box-sizing: border-box;
+    user-select: auto;
+    font-size: 16px;
+    padding: 0 6px 0 12px;
+    transition: all 0.3s ease;
+    &:focus {
+        box-shadow: 0 0 5px $jungleGreen;
+        border: 3px solid $jungleGreen;
+        outline: none;
+    }
 }
 
-input[type="color"]  {
-  border: 3px solid $brown;
-  border-radius: 5px;
-  height: 50px;
-  line-height: normal;
-  color: $black;
-  width: 100%;
-  user-select: auto;
-  background-color: $white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  &:hover, &:active{
-    box-shadow: 0 0 5px $jungleGreen;
-    border-color: $jungleGreen;
-    outline: none;
-    background-color: color.scale($white, $lightness: -15%);
-  }
+input[type='color'] {
+    border: 3px solid $brown;
+    border-radius: 5px;
+    height: 50px;
+    line-height: normal;
+    color: $black;
+    width: 100%;
+    user-select: auto;
+    background-color: $white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover,
+    &:active {
+        box-shadow: 0 0 5px $jungleGreen;
+        border-color: $jungleGreen;
+        outline: none;
+        background-color: color.scale($white, $lightness: -15%);
+    }
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 @font-face {
-  font-family: 'DynaPuff';
-  src: url('../../fonts/DynaPuff-Regular.ttf') format('truetype');
-  font-weight: normal;
+    font-family: 'DynaPuff';
+    src: url('../../fonts/DynaPuff-Regular.ttf') format('truetype');
+    font-weight: normal;
 }
 
 @font-face {
-  font-family: 'DynaPuff';
-  src: url('../../fonts/DynaPuff-Bold.ttf') format('truetype');
-  font-weight: bold;
+    font-family: 'DynaPuff';
+    src: url('../../fonts/DynaPuff-Bold.ttf') format('truetype');
+    font-weight: bold;
 }
 
 #cc-main {
-  --cc-font-family: DynaPuff;
+    --cc-font-family: DynaPuff;
 
-  --cc-btn-primary-bg: #d0b886;
-  --cc-btn-primary-border-color: #d0b886;
-  --cc-btn-primary-hover-bg: #92815e;
-  --cc-btn-primary-hover-border-color: #92815e;
+    --cc-btn-primary-bg: #d0b886;
+    --cc-btn-primary-border-color: #d0b886;
+    --cc-btn-primary-hover-bg: #92815e;
+    --cc-btn-primary-hover-border-color: #92815e;
 
-  --cc-toggle-on-bg: var(--cc-btn-primary-bg);
+    --cc-toggle-on-bg: var(--cc-btn-primary-bg);
 
-  --cc-btn-border-radius: 10px;
+    --cc-btn-border-radius: 10px;
 }
 
 .error-text-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

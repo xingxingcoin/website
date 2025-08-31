@@ -1,59 +1,61 @@
 @use '../_shared/colors' as *;
 
 .image-viewer-image-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
 .image-viewer-inner-container {
-  border-color: $brown;
-  border-style: dashed;
-  border-radius: 0.75rem;
-  border-width: 0.2rem;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out;
-  font-size: 0;
-  &:hover, &:active {
-    box-shadow: 0 0 5px $brown;
-    user-select: none;
-    transform: scale(1.1);
-  }
+    border-color: $brown;
+    border-style: dashed;
+    border-radius: 0.75rem;
+    border-width: 0.2rem;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    font-size: 0;
+    &:hover,
+    &:active {
+        box-shadow: 0 0 5px $brown;
+        user-select: none;
+        transform: scale(1.1);
+    }
 }
 
 .image-viewer-file-name {
-  text-align: center;
-  font-size: 1rem;
+    text-align: center;
+    font-size: 1rem;
 }
 
 .image-viewer-image-download-button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
 .image-viewer-image-download-button {
-  padding: 1rem 1rem;
-  font-size: 1rem;
-  font-weight: bolder;
-  border-color: $black;
-  border-style: solid;
-  border-radius: .375rem;
-  border-width: 0.2rem;
-  text-decoration: none;
-  text-align: center;
-  color: $black;
-  background-color: $white;
-  transition: all 0.3s ease;
-  &:hover, &:active {
-    box-shadow: 0 0 5px $black;
-    user-select: none;
-    color: $white;
-    background-color: $black;
-  }
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    font-weight: bolder;
+    border-color: $black;
+    border-style: solid;
+    border-radius: 0.375rem;
+    border-width: 0.2rem;
+    text-decoration: none;
+    text-align: center;
+    color: $black;
+    background-color: $white;
+    transition: all 0.3s ease;
+    &:hover,
+    &:active {
+        box-shadow: 0 0 5px $black;
+        user-select: none;
+        color: $white;
+        background-color: $black;
+    }
 }
