@@ -42,7 +42,7 @@ ddev acceptance
 ddev psalm
 ```
 
-## 🧪 Infection:
+## 🧪 Infection
 1. activate XDebug:
 ```
 ddev xdebug on
@@ -52,12 +52,12 @@ ddev xdebug on
 ddev infection
 ```
 
-## 🧪 PHPCS:
+## 🧪 PHPCS
 ```
 ddev phpcs
 ```
 
-## 🧪 Prettier:
+## 🧪 Prettier
 ```
 ddev prettier
 ```
