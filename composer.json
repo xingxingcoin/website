@@ -49,19 +49,19 @@
         "scheb/2fa-email": "^7.2",
         "scheb/2fa-trusted-device": "^7.2",
         "stof/doctrine-extensions-bundle": "^1.11",
-        "sulu/sulu": "~2.6.7",
+        "sulu/sulu": "^2.6",
         "sulu/web-twig": "^2.6",
-        "symfony/config": "^7.2",
-        "symfony/dotenv": "^7.2",
+        "symfony/config": "^7.4",
+        "symfony/dotenv": "^7.4",
         "symfony/flex": "^1.17 || ^2.0",
-        "symfony/framework-bundle": "^7.2",
-        "symfony/mailer": "^7.2",
-        "symfony/monolog-bridge": "^7.2",
+        "symfony/framework-bundle": "^7.4",
+        "symfony/mailer": "^7.4",
+        "symfony/monolog-bridge": "^7.4",
         "symfony/monolog-bundle": "^3.4",
-        "symfony/runtime": "^7.2",
-        "symfony/security-bundle": "^7.2",
-        "symfony/twig-bundle": "^7.2",
-        "symfony/webpack-encore-bundle": "^2.2",
+        "symfony/runtime": "^7.4",
+        "symfony/security-bundle": "^7.4",
+        "symfony/twig-bundle": "^7.4",
+        "symfony/webpack-encore-bundle": "^2.4",
         "xingxingcoin/api-adapter": "dev-main",
         "xingxingcoin/core": "dev-main",
         "xingxingcoin/json-validator": "dev-main"
@@ -172,7 +172,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "7.2.*"
+            "require": "7.4.*"
         }
     }
 }
