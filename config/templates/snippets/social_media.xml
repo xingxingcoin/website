@@ -41,19 +41,19 @@
                 </param>
             </params>
         </property>
-        <property name="footer_dexscreener_logo" type="single_media_selection" colspan="3" mandatory="true">
+        <property name="footer_instagram_logo" type="single_media_selection" colspan="3" mandatory="true">
             <meta>
-                <title lang="en">Dexscreener logo</title>
-                <title lang="de">Dexscreener Logo</title>
+                <title lang="en">Instagram logo</title>
+                <title lang="de">Instagram Logo</title>
             </meta>
             <params>
                 <param name="types" value="image"/>
             </params>
         </property>
-        <property name="footer_dexscreener_link" type="url" colspan="9" mandatory="true">
+        <property name="footer_instagram_link" type="url" colspan="9" mandatory="true">
             <meta>
-                <title lang="en">Dexscreener link</title>
-                <title lang="de">Dexscreener Link</title>
+                <title lang="en">Instagram link</title>
+                <title lang="de">Instagram Link</title>
             </meta>
             <params>
                 <param name="schemes" type="collection">
