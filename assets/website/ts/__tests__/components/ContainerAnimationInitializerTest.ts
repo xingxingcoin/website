@@ -22,7 +22,7 @@ describe('animate container', (): void => {
             top: 500,
         } as DOMRect);
         jest.spyOn(hiddenContainerBottom, 'getBoundingClientRect').mockReturnValue({
-            top: 700,
+            top: 800,
         } as DOMRect);
 
         containerAnimationInitializer.init();

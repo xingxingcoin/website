@@ -13,7 +13,7 @@ export default class ContainerAnimationInitializer {
 
     private changeClass(hiddenContainer: any): void {
         const rect: DOMRect = hiddenContainer.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.9) {
+        if (rect.top < window.innerHeight) {
             hiddenContainer.classList.add('container-show');
         } else {
             hiddenContainer.classList.remove('container-show');
