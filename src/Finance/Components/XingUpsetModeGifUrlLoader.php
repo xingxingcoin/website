@@ -44,7 +44,7 @@ final readonly class XingUpsetModeGifUrlLoader implements XingGifUrlLoader
             $blocks = $document->getStructure()->getProperty('blocks')->offsetGet(0);
             $mediaId = $blocks[self::MEDIA_IMAGE_KEY]['id'];
             $media = $this->mediaManager->getById($mediaId, $location->value);
-            $financeData = \array_merge($financeDataCollection->data, ['url' => $media->getFormats()['sulu-400x400']]);
+            $financeData = \array_merge($financeDataCollection->data, ['url' => $media->getFormats()['sulu-400x400'], 'mood' => 'A little off, not quite okay today.']);
             $this->logger->info('Xing upset mode gif url is loaded successfully.', [
                 'mediaId' => $mediaId,
                 'url' => $media->getFormats()['sulu-400x400'],

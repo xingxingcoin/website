@@ -88,6 +88,7 @@ final class XingHappyModeGifUrlLoaderTest extends CustomTestCase
         self::assertSame([
             'test' => 'test',
             'url' => 'testUrl',
+            'mood' => 'Bright, cheerful, and full of good vibes.',
         ], $newFinanceDataCollection->data);
         self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame(1, $this->mediaManagerMock->inputId);

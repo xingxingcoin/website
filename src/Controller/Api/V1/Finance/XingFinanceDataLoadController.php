@@ -26,7 +26,7 @@ final readonly class XingFinanceDataLoadController
             $financeDataCollection = $this->xingFinanceDataByDexScreenerApiHandler->handleAndGet($location);
 
             return new JsonResponse([
-                'finance' => $financeDataCollection->data['finance'],
+                'mood' => $financeDataCollection->data['mood'],
                 'url' => $financeDataCollection->data['url'],
             ], 200);
         } catch (\Throwable $exception) {

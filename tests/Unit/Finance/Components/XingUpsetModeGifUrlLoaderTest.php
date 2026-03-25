@@ -88,6 +88,7 @@ final class XingUpsetModeGifUrlLoaderTest extends CustomTestCase
         self::assertSame([
             'test' => 'test',
             'url' => 'testUrl',
+            'mood' => 'A little off, not quite okay today.',
         ], $newFinanceDataCollection->data);
         self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame(1, $this->mediaManagerMock->inputId);

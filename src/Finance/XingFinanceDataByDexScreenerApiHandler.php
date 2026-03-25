@@ -37,7 +37,6 @@ final readonly class XingFinanceDataByDexScreenerApiHandler implements XingFinan
     {
         $xingFinanceData = $this->xingFinanceDataLoader->load();
         $xingPriceInformation = [];
-        $xingPriceInformation['marketCap'] = $xingFinanceData->data['marketCap'] ?? 0;
         /** @var array<string, float> $priceChange */
         $priceChange = $xingFinanceData->data['priceChange'] ?? [];
         $xingPriceInformation['priceChange'] = $priceChange['h24'] ?? 0.0;

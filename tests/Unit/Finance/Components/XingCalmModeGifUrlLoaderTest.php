@@ -88,6 +88,7 @@ final class XingCalmModeGifUrlLoaderTest extends CustomTestCase
         self::assertEquals([
             'test' => 'test',
             'url' => 'testUrl',
+            'mood' => 'Peaceful and steady, just going with the flow.',
         ], $newFinanceDataCollection->data);
         self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame(1, $this->mediaManagerMock->inputId);

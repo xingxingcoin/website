@@ -40,7 +40,7 @@ set('do_not_deploy', [
     'package-lock.json',
     '.gitignore',
     '.prettierrc',
-    '.prettierignore'
+    '.prettierignore',
 ]);
 
 task('local:create:working:dir', static function (): void {

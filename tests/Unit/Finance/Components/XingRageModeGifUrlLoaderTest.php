@@ -88,6 +88,7 @@ final class XingRageModeGifUrlLoaderTest extends CustomTestCase
         self::assertSame([
             'test' => 'test',
             'url' => 'testUrl',
+            'mood' => 'Fired up and ready to explode.',
         ], $newFinanceDataCollection->data);
         self::assertSame($expectedDocumentPath->value, $this->documentByPathLoaderMock->inputDocumentPath->value);
         self::assertSame(1, $this->mediaManagerMock->inputId);
