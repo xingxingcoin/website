@@ -39,6 +39,9 @@ final class XingFinanceDataLoadControllerTest extends TestCase
         $request->setLocale('en');
 
         $financeData = [
+            'finance' => [
+                'test' => 'test',
+            ],
             'mood' => 'test',
             'url' => 'test',
         ];
@@ -48,7 +51,7 @@ final class XingFinanceDataLoadControllerTest extends TestCase
 
         $response = $this->xingFinanceDataLoadController->__invoke($request);
         self::assertSame(200, $response->getStatusCode());
-        self::assertSame('{"mood":"test","url":"test"}', $response->getContent());
+        self::assertSame('{"mood":"test","finance":{"test":"test"},"url":"test"}', $response->getContent());
         self::assertSame('en', $this->xingFinanceDataByDexScreenerApiHandlerMock->inputLocation->value);
         self::assertSame([], $this->loggerMock->logs);
     }
@@ -62,6 +65,7 @@ final class XingFinanceDataLoadControllerTest extends TestCase
             'finance' => [
                 'test' => 'test',
             ],
+            'mood' => 'test',
             'url' => 'test',
         ];
         $this->xingFinanceDataByDexScreenerApiHandlerMock->outputFinanceDataCollection = new FinanceDataCollection($financeData);

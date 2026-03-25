@@ -27,6 +27,7 @@ final readonly class XingFinanceDataLoadController
 
             return new JsonResponse([
                 'mood' => $financeDataCollection->data['mood'],
+                'finance' => $financeDataCollection->data['finance'],
                 'url' => $financeDataCollection->data['url'],
             ], 200);
         } catch (\Throwable $exception) {
